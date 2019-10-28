@@ -1,8 +1,8 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import { render } from 'react-dom'
-import store from './store/store';
-import AppRootComponent from './components/appRoot'
+import React from "react";
+import { Provider } from "react-redux";
+import { render } from "react-dom";
+import store from "./store/store";
+import AppRootComponent from "./components/appRoot";
 
 /*
 User clicks a button...
@@ -26,8 +26,9 @@ new state information arrives at component via connect and triggers re-render
 
 render(
   <Provider store={store}>
-    <AppRootComponent id="game"/>
-  </Provider>
-, document.getElementById('root'));
+    <AppRootComponent id="game" />
+  </Provider>,
+  document.getElementById("root")
+);
 
 // And it works right now! I see my defaults.

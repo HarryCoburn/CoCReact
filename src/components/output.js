@@ -1,14 +1,14 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
 
-const OutputFunc = ({output}) => <div id="maintext">{output}</div>
+const OutputFunc = ({ output }) => <div id="maintext">{output}</div>;
 
 const mapStateToViewProps = function(state) {
   return {
-    output: state.output    
-  }
-}
+    output: state.output
+  };
+};
 
-const Output = connect(mapStateToViewProps)(OutputFunc)
+const Output = connect(mapStateToViewProps)(OutputFunc);
 
-export default Output
+export default Output;
