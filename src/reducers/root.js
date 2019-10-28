@@ -10,10 +10,7 @@ function rootReducer(state = initialState, action) {
       })
     case UI.BUTTON_CHANGE:
     return Object.assign({}, state, {
-      currButtons: [{
-        label: action.payload.newLabel,
-        currFunc: action.payload.newFunc
-      }]
+      currButtons: action.newButtons
     })
     default:
       return state

@@ -9,12 +9,9 @@ export function updateView(newText) {
   }
 }
 
-export function buttonChange(newLabel, newFunc) {
+export function buttonChange(newButtons) {
   return {
     type: BUTTON_CHANGE,
-    payload: {
-      newLabel: newLabel,
-      newFunc: newFunc,
-    }
+    newButtons
   }
 }
