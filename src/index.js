@@ -26,7 +26,7 @@ new state information arrives at component via connect and triggers re-render
 
 render(
   <Provider store={store}>
-    <AppRootComponent />
+    <AppRootComponent id="game"/>
   </Provider>
 , document.getElementById('root'));
 

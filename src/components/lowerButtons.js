@@ -3,9 +3,14 @@ import {connect} from 'react-redux'
 import * as UI from '../actions/UI'
 
 const ButtonFunc = ({ currButtons, update }) => {  
-  return currButtons.map((button, index) => {
-    return <button key={index} onClick={() => update(button)}>{button.label}</button>
-  })  
+  const buttons = currButtons.map((button, index) => {
+    return <button className="button" key={index} onClick={() => update(button)}>{button.label}</button>
+  })
+  return (
+    <div className="lowerGrid">
+      {buttons}
+    </div>
+  )  
 }  
 
 const mapStateToButtonProps = function(state) {
