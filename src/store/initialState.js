@@ -9,7 +9,8 @@ const succ = () => {
       newButtons: []
     }
   ];
-  return newButtons;
+  const newStats = [["strength", -50], ["toughness", +45]];
+  return { newButtons, newStats };
 };
 const bigSucc = () => {
   console.log("We really did it!");
@@ -21,42 +22,68 @@ const bigSucc = () => {
       newButtons: []
     }
   ];
-  return newButtons;
+  return { newButtons };
 };
 
 // And we need an initial state
 const initialState = {
   output: "This is the old stuff...",
-  currStats: [
-    {
-      name: "Strength",
-      val: 100
+  statsUI: {
+    byID: {
+      strength: {
+        id: "strength",
+        name: "Strength",
+        value: 100,
+        max: null
+      },
+      toughness: {
+        id: "toughness",
+        name: "Toughness",
+        value: 100,
+        max: null
+      },
+      speed: {
+        id: "speed",
+        name: "Speed",
+        value: 100,
+        max: null
+      },
+      intelligence: {
+        id: "intelligence",
+        name: "Intelligence",
+        value: 100,
+        max: null
+      },
+      libido: {
+        id: "libido",
+        name: "Libido",
+        value: 100,
+        max: null
+      },
+      sensitivity: {
+        id: "sensitivity",
+        name: "Sensitivity",
+        value: 100,
+        max: null
+      },
+      corruption: {
+        id: "corruption",
+        name: "Corruption",
+        value: 100,
+        max: null
+      }
     },
-    {
-      name: "Toughness",
-      val: 100
-    },
-    {
-      name: "Speed",
-      val: 100
-    },
-    {
-      name: "Intelligence",
-      val: 100
-    },
-    {
-      name: "Libido",
-      val: 100
-    },
-    {
-      name: "Sensitivity",
-      val: 100
-    },
-    {
-      name: "Corruption",
-      val: 100
-    }
-  ],
+    allIDs: [
+      "strength",
+      "toughness",
+      "speed",
+      "intelligence",
+      "libido",
+      "sensitivity",
+      "corruption"
+    ]
+  },
+
   currComStats: [
     {
       name: "HP",

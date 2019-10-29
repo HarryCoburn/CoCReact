@@ -1,5 +1,5 @@
 import React from "react";
-import MainStats from "./mainStats";
+import StatDisplay from "./statDisplay";
 import { connect } from "react-redux";
 
 class StatBarContainer extends React.Component {
@@ -8,19 +8,22 @@ class StatBarContainer extends React.Component {
       <div className="statBar">
         <h2>Name</h2>
         <h2>Core Stats</h2>
-        <MainStats stats={this.props.currStats}></MainStats>
-        <h2>Combat Stats</h2>
-        <MainStats stats={this.props.currComStats}></MainStats>
-        <h2>Advancement</h2>
-        <MainStats stats={this.props.currAdvStats}></MainStats>
+        <StatDisplay stats={this.props.currStats} />
       </div>
     );
   }
 }
 
+/*
+<h2>Combat Stats</h2>
+        <StatDisplay stats={this.props.currComStats} />
+        <h2>Advancement</h2>
+        <StatDisplay stats={this.props.currAdvStats} />
+        */
+
 const mapStateToButtonProps = function(state) {
   return {
-    currStats: state.currStats,
+    currStats: state.statsUI,
     currComStats: state.currComStats,
     currAdvStats: state.currAdvStats
   };

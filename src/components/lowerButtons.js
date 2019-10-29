@@ -22,7 +22,10 @@ const mapStateToButtonProps = function(state) {
 const mapDispatchToButtonProps = dispatch => {
   return {
     update: ({ newOutput, runFunc }) => {
-      let newButtons = runFunc();
+      let { newButtons, newStats } = runFunc();
+      if (newStats !== undefined) {
+        newStats.forEach(stat => dispatch(UI.statChange(stat)));
+      }
       dispatch(UI.updateView(newOutput));
       dispatch(UI.buttonChange(newButtons));
     }
