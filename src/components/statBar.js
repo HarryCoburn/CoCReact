@@ -8,22 +8,28 @@ class StatBarContainer extends React.Component {
       <div className="statBar">
         <h2>Name</h2>
         <h2>Core Stats</h2>
-        <StatDisplay stats={this.props.currStats} />
+        <StatDisplay
+          stats={this.props.newStats}
+          ids={this.props.newStats.coreIDs}
+        />
+        <h2>Combat Stats</h2>
+        <StatDisplay
+          stats={this.props.newStats}
+          ids={this.props.newStats.combatIDs}
+        />
+        <h2>Advancement</h2>
+        <StatDisplay
+          stats={this.props.newStats}
+          ids={this.props.newStats.advIDs}
+        />
       </div>
     );
   }
 }
 
-/*
-<h2>Combat Stats</h2>
-        <StatDisplay stats={this.props.currComStats} />
-        <h2>Advancement</h2>
-        <StatDisplay stats={this.props.currAdvStats} />
-        */
-
 const mapStateToButtonProps = function(state) {
   return {
-    currStats: state.statsUI,
+    newStats: state.statsUI,
     currComStats: state.currComStats,
     currAdvStats: state.currAdvStats
   };

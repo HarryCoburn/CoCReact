@@ -2,7 +2,7 @@ import React from "react";
 
 class StatDisplay extends React.Component {
   render() {
-    return this.props.stats.allIDs.map(stat => (
+    return this.props.ids.map(stat => (
       <div key={this.props.stats.byID[stat].name} className="statFrame">
         <div className="statGradient">
           <p className="statLabel">

@@ -20,6 +20,28 @@ function updateStatUI(state, stat) {
   };
 }
 
+function updateLowerButtonUI(state, buttons) {
+  state.lowerButtons.allIDs.map(id => {
+    if (buttons.hasOwnProperty(id)) {
+      state = {
+        ...state,
+        lowerButtons: {
+          ...state.lowerButtons,
+          byID: {
+            ...state.lowerButtons.byID,
+            [id]: buttons[id]
+          }
+        }
+      };
+    } else {
+      delete state.lowerButtons.byID[id];
+    }
+  });
+
+  console.log(state);
+  return state;
+}
+
 // And an initial reducer
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -28,9 +50,7 @@ function rootReducer(state = initialState, action) {
         output: action.newText
       });
     case UI.BUTTON_CHANGE:
-      return Object.assign({}, state, {
-        currButtons: action.newButtons
-      });
+      return updateLowerButtonUI(state, action.newButtons);
     case UI.STAT_CHANGE:
       return updateStatUI(state, action.newStat);
     default:

@@ -2,11 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import * as UI from "../actions/UI";
 
-const ButtonFunc = ({ currButtons, update }) => {
-  const buttons = currButtons.map((button, index) => {
+const ButtonFunc = ({ lowerButtons, update }) => {
+  const buttons = lowerButtons.allIDs.map(button => {
+    if (lowerButtons.byID[button] === undefined) {
+      return <button key={button} className="blankButton"></button>;
+    }
     return (
-      <button className="button" key={index} onClick={() => update(button)}>
-        {button.label}
+      <button
+        className="button"
+        key={button}
+        onClick={() => update(lowerButtons.byID[button])}
+      >
+        {lowerButtons.byID[button].label}
       </button>
     );
   });
@@ -15,7 +22,7 @@ const ButtonFunc = ({ currButtons, update }) => {
 
 const mapStateToButtonProps = function(state) {
   return {
-    currButtons: state.currButtons
+    lowerButtons: state.lowerButtons
   };
 };
 
@@ -26,8 +33,10 @@ const mapDispatchToButtonProps = dispatch => {
       if (newStats !== undefined) {
         newStats.forEach(stat => dispatch(UI.statChange(stat)));
       }
+      if (newButtons !== undefined) {
+        dispatch(UI.buttonChange(newButtons));
+      }
       dispatch(UI.updateView(newOutput));
-      dispatch(UI.buttonChange(newButtons));
     }
   };
 };
