@@ -1,51 +1,54 @@
 import initialState from "../store/initialState";
 import * as UI from "../actions/UI";
 
-function updateStatUI(state, stat) {
-  const statID = stat[0];
-  const statMod = stat[1];
-  const statToChange = state.statsUI.byID[statID];
-  return {
-    ...state,
-    statsUI: {
-      ...state.statsUI,
-      byID: {
-        ...state.statsUI.byID,
-        [statID]: {
-          ...statToChange,
-          value: statToChange.value + statMod
+function updateStatUI(state, stats) {
+  let newState = Object.assign({}, state, {});
+  state.statsUI.allIDs.forEach(id => {
+    if (stats.hasOwnProperty(id)) {
+      newState = {
+        ...newState,
+        statsUI: {
+          ...newState.statsUI,
+          byID: {
+            ...newState.statsUI.byID,
+            [id]: {
+              ...newState.statsUI.byID[id],
+              value: newState.statsUI.byID[id].value + stats[id].change
+            }
+          }
         }
-      }
+      };
     }
-  };
+  });
+  return newState;
 }
 
 function updateLowerButtonUI(state, buttons) {
-  state.lowerButtons.allIDs.map(id => {
+  let newState = Object.assign({}, state, {});
+  state.Buttons.lowerIDs.forEach(id => {
     if (buttons.hasOwnProperty(id)) {
-      state = {
-        ...state,
-        lowerButtons: {
-          ...state.lowerButtons,
+      newState = {
+        ...newState,
+        Buttons: {
+          ...newState.Buttons,
           byID: {
-            ...state.lowerButtons.byID,
+            ...newState.Buttons.byID,
             [id]: buttons[id]
           }
         }
       };
     } else {
-      delete state.lowerButtons.byID[id];
+      delete newState.Buttons.byID[id];
     }
   });
 
-  console.log(state);
-  return state;
+  return newState;
 }
 
 // And an initial reducer
 function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case UI.UPDATE:
+    case UI.UPDATE_VIEW:
       return Object.assign({}, state, {
         output: action.newText
       });

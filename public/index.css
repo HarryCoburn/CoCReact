@@ -10,11 +10,20 @@ h2 {
 }
 
 #root {
+  border: 2px solid #000000;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 920px;
+}
+
+/* Top Bar */
+.menuBar {
+  margin-bottom: 2px;
+  padding-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 /* Main Text Display */
@@ -38,6 +47,7 @@ h2 {
   float: left;
   margin-left: 0;
   margin-right: 0;
+  border: 2px solid #000000;
 }
 
 .statFrame {
@@ -76,6 +86,21 @@ h2 {
   padding-left: 5px;
   margin-top: 0;
   overflow-x: visible;
+}
+
+.timeDisplay {
+  padding-top: 5px;
+  padding-left: 10px;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.spriteDisplay {
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 0;
+  height: 80px;
+  width: 100px;
+  bottom: 0px;
 }
 
 /* Buttons */

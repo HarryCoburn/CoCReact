@@ -1,5 +1,7 @@
 import React from "react";
 import StatDisplay from "./statDisplay";
+import TimeDisplay from "./timeDisplay";
+import { SpriteDisplay } from "./spriteDisplay";
 import { connect } from "react-redux";
 
 class StatBarContainer extends React.Component {
@@ -22,6 +24,8 @@ class StatBarContainer extends React.Component {
           stats={this.props.newStats}
           ids={this.props.newStats.advIDs}
         />
+        <TimeDisplay />
+        <SpriteDisplay />
       </div>
     );
   }
@@ -29,9 +33,7 @@ class StatBarContainer extends React.Component {
 
 const mapStateToButtonProps = function(state) {
   return {
-    newStats: state.statsUI,
-    currComStats: state.currComStats,
-    currAdvStats: state.currAdvStats
+    newStats: state.statsUI
   };
 };
 

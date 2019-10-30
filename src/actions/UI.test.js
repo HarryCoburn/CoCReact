@@ -4,7 +4,7 @@ describe("actions", () => {
   it("should create an action to update the view", () => {
     const newText = "This is a new scene";
     const expectedAction = {
-      type: UI.UPDATE,
+      type: UI.UPDATE_VIEW,
       newText
     };
     expect(UI.updateView(newText)).toEqual(expectedAction);

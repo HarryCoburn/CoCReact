@@ -9,7 +9,14 @@ const succ = () => {
       newButtons: {}
     }
   };
-  const newStats = [["strength", -50], ["toughness", +45]];
+  const newStats = {
+    strength: {
+      change: -50
+    },
+    toughness: {
+      change: +45
+    }
+  };
   return { newButtons, newStats };
 };
 const bigSucc = () => {
@@ -28,6 +35,9 @@ const bigSucc = () => {
 // And we need an initial state
 const initialState = {
   output: "This is the old stuff...",
+  day: "0",
+  hour: "12",
+  minute: "00",
   statsUI: {
     byID: {
       strength: {
@@ -125,25 +135,25 @@ const initialState = {
       "corruption"
     ],
     combatIDs: ["hp", "lust", "fatigue", "hunger"],
-    advIDs: ["level", "xp", "gems"]
+    advIDs: ["level", "xp", "gems"],
+    allIDs: [
+      "strength",
+      "toughness",
+      "speed",
+      "intelligence",
+      "libido",
+      "sensitivity",
+      "corruption",
+      "hp",
+      "lust",
+      "fatigue",
+      "hunger",
+      "level",
+      "xp",
+      "gems"
+    ]
   },
-
-  currComStats: [],
-  currAdvStats: [
-    {
-      name: "Level",
-      value: 1
-    },
-    {
-      name: "XP",
-      value: 0
-    },
-    {
-      name: "Gems",
-      value: 0
-    }
-  ],
-  lowerButtons: {
+  Buttons: {
     byID: {
       b1: {
         id: "b1",
@@ -156,9 +166,39 @@ const initialState = {
         label: "Click me",
         newOutput: "This is the new stuff",
         runFunc: succ
+      },
+      main: {
+        id: "main",
+        label: "Main Menu",
+        newOutput: "Main Menu",
+        runFunc: succ
+      },
+      level: {
+        id: "level",
+        label: "Level Up",
+        newOutput: "Level Up",
+        runFunc: succ
+      },
+      stats: {
+        id: "stats",
+        label: "Stats",
+        newOutput: "Stats Screen",
+        runFunc: succ
+      },
+      perks: {
+        id: "perks",
+        label: "Perks",
+        newOutput: "Perks Screen",
+        runFunc: succ
+      },
+      appearance: {
+        id: "appearance",
+        label: "Appearance",
+        newOutput: "Appearance Screen",
+        runFunc: succ
       }
     },
-    allIDs: [
+    lowerIDs: [
       "b1",
       "b2",
       "b3",
@@ -174,85 +214,9 @@ const initialState = {
       "b13",
       "b14",
       "b15"
-    ]
-  },
-  currButtons: [
-    {
-      label: "Click me",
-      newOutput: "This is the new stuff",
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    },
-    {
-      label: "New button",
-      newOutput: `This is the extra stuff stuff`,
-      runFunc: succ
-    }
-  ]
+    ],
+    upperIDs: ["main", "level", "stats", "perks", "appearance"]
+  }
 };
 
 export default initialState;

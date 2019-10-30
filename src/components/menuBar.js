@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import * as UI from "../actions/UI";
 
-const ButtonFunc = ({ Buttons, update }) => {
-  const buttons = Buttons.lowerIDs.map(button => {
+const TopMenuFunc = ({ Buttons, update }) => {
+  const buttons = Buttons.upperIDs.map(button => {
     if (Buttons.byID[button] === undefined) {
       return <button key={button} className="blankButton"></button>;
     }
@@ -17,7 +17,7 @@ const ButtonFunc = ({ Buttons, update }) => {
       </button>
     );
   });
-  return <div className="lowerGrid">{buttons}</div>;
+  return <div className="menuBar">{buttons}</div>;
 };
 
 const mapStateToButtonProps = function(state) {
@@ -41,9 +41,9 @@ const mapDispatchToButtonProps = dispatch => {
   };
 };
 
-const LowerButtons = connect(
+const TopMenu = connect(
   mapStateToButtonProps,
   mapDispatchToButtonProps
-)(ButtonFunc);
+)(TopMenuFunc);
 
-export default LowerButtons;
+export default TopMenu;
