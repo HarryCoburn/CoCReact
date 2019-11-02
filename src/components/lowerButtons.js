@@ -1,6 +1,35 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as UI from "../actions/UI";
+import Btn from "./button";
+
+class ButtonGrid extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      buttons: this.props.Buttons.lowerIDs.map(button => {
+        if (this.props.Buttons.byID[button] === undefined) {
+          return <button key={button} className="blankButton"></button>;
+        }
+        return (
+          <Btn
+            key={button}
+            onClick={() => this.props.update(this.props.Buttons.byID[button])}
+            label={this.props.Buttons.byID[button].label}
+          ></Btn>
+        );
+      })
+    };
+  }
+
+  render() {
+    return (
+      <div className="gridContainer">
+        <div className="lowerGrid">{this.state.buttons}</div>
+      </div>
+    );
+  }
+}
 
 const ButtonFunc = ({ Buttons, update }) => {
   const buttons = Buttons.lowerIDs.map(button => {
@@ -8,13 +37,11 @@ const ButtonFunc = ({ Buttons, update }) => {
       return <button key={button} className="blankButton"></button>;
     }
     return (
-      <button
-        className="button"
+      <Btn
         key={button}
         onClick={() => update(Buttons.byID[button])}
-      >
-        {Buttons.byID[button].label}
-      </button>
+        label={Buttons.byID[button].label}
+      ></Btn>
     );
   });
   return (
@@ -48,6 +75,6 @@ const mapDispatchToButtonProps = dispatch => {
 const LowerButtons = connect(
   mapStateToButtonProps,
   mapDispatchToButtonProps
-)(ButtonFunc);
+)(ButtonGrid);
 
 export default LowerButtons;

@@ -169,8 +169,14 @@ const initialState = {
       },
       main: {
         id: "main",
-        label: "Main Menu",
-        newOutput: "Main Menu",
+        label: "New Game",
+        newOutput: "New Game",
+        runFunc: succ
+      },
+      data: {
+        id: "data",
+        label: "Data",
+        newOutput: "Data",
         runFunc: succ
       },
       level: {
@@ -215,7 +221,7 @@ const initialState = {
       "b14",
       "b15"
     ],
-    upperIDs: ["main", "level", "stats", "perks", "appearance"]
+    upperIDs: ["main", "data", "level", "stats", "perks", "appearance"]
   }
 };
 

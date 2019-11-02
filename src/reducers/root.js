@@ -14,6 +14,8 @@ function rootReducer(state = initialState, action) {
       return updateLowerButtonUI(state, action.newButtons);
     case UI.STAT_CHANGE:
       return updateStatUI(state, action.newStat);
+    case UI.START_ENGINE:
+      return state;
     default:
       return state;
   }
