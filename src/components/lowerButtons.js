@@ -17,7 +17,11 @@ const ButtonFunc = ({ Buttons, update }) => {
       </button>
     );
   });
-  return <div className="lowerGrid">{buttons}</div>;
+  return (
+    <div className="gridContainer">
+      <div className="lowerGrid">{buttons}</div>
+    </div>
+  );
 };
 
 const mapStateToButtonProps = function(state) {
