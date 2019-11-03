@@ -7,7 +7,7 @@ const succ = () => {
     b1: {
       newOutput: `This is the extra new stuff`,
       label: "New shiny label!",
-      runFunc: bigSucc,
+      nextScene: bigSucc,
       newButtons: {}
     }
   };
@@ -27,7 +27,7 @@ const bigSucc = () => {
     {
       newOutput: "Hey, the other button works!",
       label: "New shiny shiny label!",
-      runFunc: bigSucc,
+      nextScene: bigSucc,
       newButtons: {}
     }
   ];

@@ -24,18 +24,17 @@ function mapStateToProps(state, ownProps) {
 
 const mapDispatchToButtonProps = dispatch => {
   return {
-    update: ({ newOutput, runFunc }) => {
-      if (runFunc) {
-        let { newButtons, newStats } = runFunc();
+    update: ({ newOutput, nextScene }) => {
+      if (nextScene) {
+        // Undefined means just update the output
+        let { newButtons, newStats } = nextScene();
         if (newStats !== undefined) {
           dispatch(UI.statChange(newStats));
         }
-
-        dispatch(UI.buttonChange(newButtons));
-
-        if (newOutput) {
-          dispatch(UI.updateView(newOutput));
-        }
+        dispatch(UI.buttonChange(newButtons)); // Undefined means clear lower menu completely
+      }
+      if (newOutput) {
+        dispatch(UI.updateView(newOutput));
       }
     }
   };
