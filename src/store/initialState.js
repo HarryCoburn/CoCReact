@@ -1,3 +1,5 @@
+import Menus from "../scenes/menus.js";
+
 // For experimentation
 const succ = () => {
   console.log("We did it!");
@@ -34,7 +36,15 @@ const bigSucc = () => {
 
 // And we need an initial state
 const initialState = {
-  output: "This is the old stuff...",
+  output: `CoC Engine: Clean Version
+  
+  Original concept by Fenoxo and crew
+  Converted to JS/React by Matraia
+
+  Version extremely early.
+
+  Click on New Game to Start 
+  `,
   day: "0",
   hour: "12",
   minute: "00",
@@ -155,57 +165,12 @@ const initialState = {
   },
   Buttons: {
     byID: {
-      b1: {
-        id: "b1",
-        label: "Click me",
-        newOutput: "This is the new stuff",
-        toolTip:
-          "Test this out cause this is really long and I want to see what it does please.",
-        runFunc: succ
-      },
-      b3: {
-        id: "b3",
-        label: "Click me",
-        newOutput: "This is the new stuff",
-        runFunc: succ
-      },
-      main: {
-        id: "main",
-        label: "New Game",
-        newOutput: "New Game",
-        toolTip: "Do we work on top?",
-        runFunc: succ
-      },
-      data: {
-        id: "data",
-        label: "Data",
-        newOutput: "Data",
-        runFunc: succ
-      },
-      level: {
-        id: "level",
-        label: "Level Up",
-        newOutput: "Level Up",
-        runFunc: succ
-      },
-      stats: {
-        id: "stats",
-        label: "Stats",
-        newOutput: "Stats Screen",
-        runFunc: succ
-      },
-      perks: {
-        id: "perks",
-        label: "Perks",
-        newOutput: "Perks Screen",
-        runFunc: succ
-      },
-      appearance: {
-        id: "appearance",
-        label: "Appearance",
-        newOutput: "Appearance Screen",
-        runFunc: succ
-      }
+      main: Menus.main,
+      data: Menus.data,
+      level: Menus.level,
+      stats: Menus.stats,
+      perks: Menus.perks,
+      appearance: Menus.appearance
     },
     lowerIDs: [
       "b1",

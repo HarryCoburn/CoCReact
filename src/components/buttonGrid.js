@@ -5,7 +5,6 @@ import WrappedButton from "./buttonWrap.js";
 
 class ButtonGridClass extends React.Component {
   render() {
-    console.log(this.props);
     const buttons = this.props.IDs.map(button => {
       if (this.props.Buttons.byID[button] === undefined) {
         return (

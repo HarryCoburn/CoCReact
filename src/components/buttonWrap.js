@@ -25,14 +25,18 @@ function mapStateToProps(state, ownProps) {
 const mapDispatchToButtonProps = dispatch => {
   return {
     update: ({ newOutput, runFunc }) => {
-      let { newButtons, newStats } = runFunc();
-      if (newStats !== undefined) {
-        dispatch(UI.statChange(newStats));
+      if (runFunc) {
+        let { newButtons, newStats } = runFunc();
+        if (newStats !== undefined) {
+          dispatch(UI.statChange(newStats));
+        }
+        if (newButtons !== undefined) {
+          dispatch(UI.buttonChange(newButtons));
+        }
       }
-      if (newButtons !== undefined) {
-        dispatch(UI.buttonChange(newButtons));
+      if (newOutput) {
+        dispatch(UI.updateView(newOutput));
       }
-      dispatch(UI.updateView(newOutput));
     }
   };
 };
