@@ -1,18 +1,14 @@
 import React from "react";
 
 class Btn extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showTooltip: false
-    };
-  }
-
   render() {
     return (
-      <button className="button" onClick={this.props.onClick}>
-        {this.props.label}
-      </button>
+      <>
+        <button className="button tooltip" onClick={this.props.onClick}>
+          {this.props.label}
+          <span className="tooltiptext">{this.props.toolTip}</span>
+        </button>
+      </>
     );
   }
 }

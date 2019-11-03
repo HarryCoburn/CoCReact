@@ -159,6 +159,7 @@ const initialState = {
         id: "b1",
         label: "Click me",
         newOutput: "This is the new stuff",
+        toolTip: "Test this out",
         runFunc: succ
       },
       b3: {
