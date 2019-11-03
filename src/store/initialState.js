@@ -158,11 +158,7 @@ const initialState = {
   Buttons: {
     byID: {
       main: Menus.main,
-      data: Menus.data,
-      level: Menus.level,
-      stats: Menus.stats,
-      perks: Menus.perks,
-      appearance: Menus.appearance
+      data: Menus.data
     },
     lowerIDs: [
       "b1",
@@ -181,7 +177,7 @@ const initialState = {
       "b14",
       "b15"
     ],
-    upperIDs: ["main", "data", "level", "stats", "perks", "appearance"]
+    upperIDs: ["main", "data"]
   }
 };
 

@@ -1,26 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import WrappedButton from "./buttonWrap.js";
+import * as UI from "../actions/UI";
 
 class ButtonGridClass extends React.Component {
-  render() {
-    const buttons = this.props.IDs.map(button => {
+  buttons = () =>
+    this.props.IDs.map(button => {
       if (this.props.Buttons.byID[button] === undefined) {
         return (
           <button key={button} id={button} className="blankButton"></button>
         );
       }
+
+      let newBtn = this.props.Buttons.byID[button];
+
       return (
         <WrappedButton
-          key={button}
-          id={button}
+          key={newBtn.id}
+          id={newBtn.id}
           toolTipPos={this.props.toolTipPos}
+          label={newBtn.label}
+          onClick={() => this.props.update(newBtn)}
         />
       );
     });
 
-    return <>{buttons}</>;
+  render() {
+    return <>{this.buttons()}</>;
   }
 }
 
@@ -30,6 +36,23 @@ const mapStateToButtonProps = function(state) {
   };
 };
 
-const ButtonGrid = connect(mapStateToButtonProps)(ButtonGridClass);
+const mapDispatchToButtonProps = dispatch => {
+  return {
+    update: ({ newOutput = "", nextScene = null }) => {
+      dispatch(UI.updateView(newOutput));
+      if (nextScene !== null) {
+        let { newButtons = {}, newStats = {}, newMenuArr = [] } = nextScene();
+        dispatch(UI.buttonChange(newButtons)); // Undefined means clear lower menu completely
+        dispatch(UI.menuChange(newMenuArr)); // Undefined will just return state
+        dispatch(UI.statChange(newStats));
+      }
+    }
+  };
+};
+
+const ButtonGrid = connect(
+  mapStateToButtonProps,
+  mapDispatchToButtonProps
+)(ButtonGridClass);
 
 export default ButtonGrid;

@@ -2,7 +2,7 @@
 export const UPDATE_VIEW = "UPDATE_VIEW";
 export const BUTTON_CHANGE = "BUTTON_CHANGE";
 export const STAT_CHANGE = "STAT_CHANGE";
-export const START_ENGINE = "START_ENGINE";
+export const MENU_CHANGE = "MENU_CHANGE";
 
 export function updateView(newText) {
   return {
@@ -25,9 +25,9 @@ export function statChange(newStat) {
   };
 }
 
-export function startEngine(scene) {
+export function menuChange(newMenuArr) {
   return {
-    type: START_ENGINE,
-    scene
+    type: MENU_CHANGE,
+    newMenuArr
   };
 }

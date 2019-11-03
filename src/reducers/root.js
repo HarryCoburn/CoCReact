@@ -2,6 +2,7 @@ import initialState from "../store/initialState";
 import * as UI from "../actions/UI";
 import updateStatUI from "./updateStatUI";
 import updateLowerButtonUI from "./updateLowerButtonUI";
+import updateMenuBar from "./updateMenuBar";
 
 // And an initial reducer
 function rootReducer(state = initialState, action) {
@@ -14,8 +15,8 @@ function rootReducer(state = initialState, action) {
       return updateLowerButtonUI(state, action.newButtons);
     case UI.STAT_CHANGE:
       return updateStatUI(state, action.newStat);
-    case UI.START_ENGINE:
-      return state;
+    case UI.MENU_CHANGE:
+      return updateMenuBar(state, action.newMenuArr);
     default:
       return state;
   }

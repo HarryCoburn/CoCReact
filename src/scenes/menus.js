@@ -15,12 +15,14 @@ function mainMenu() {
 function startNewGame() {
   const newButtons = {
     b1: {
+      id: "b1",
       newOutput: MainMenuText,
       label: "Go back to Main Menu",
       nextScene: mainMenu
     }
   };
-  return { newButtons };
+  const newMenuArr = ["main", "data", "level"];
+  return { newButtons, newMenuArr };
 }
 
 const Menus = {
