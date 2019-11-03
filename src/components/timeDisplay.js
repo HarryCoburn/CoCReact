@@ -1,14 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const TimeDisplayFunc = ({ day, hour, minute }) => {
+export const TimeDisplayFunc = ({ day, hour, minute }) => {
   return (
     <div className="timeDisplay">
+      <p>Day#: {day}</p>
       <p>
-        Day#: {day}
-        <br />
         Time: {hour}:{minute}
-        <br />
       </p>
     </div>
   );
