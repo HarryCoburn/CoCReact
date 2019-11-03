@@ -10,6 +10,7 @@ class WrappedButtonClass extends React.Component {
         label={this.props.button.label}
         onClick={() => this.props.update(this.props.button)}
         toolTip={this.props.button.toolTip}
+        toolTipPos={this.props.toolTipPos}
       ></Btn>
     );
   }

@@ -159,7 +159,8 @@ const initialState = {
         id: "b1",
         label: "Click me",
         newOutput: "This is the new stuff",
-        toolTip: "Test this out",
+        toolTip:
+          "Test this out cause this is really long and I want to see what it does please.",
         runFunc: succ
       },
       b3: {
@@ -172,6 +173,7 @@ const initialState = {
         id: "main",
         label: "New Game",
         newOutput: "New Game",
+        toolTip: "Do we work on top?",
         runFunc: succ
       },
       data: {

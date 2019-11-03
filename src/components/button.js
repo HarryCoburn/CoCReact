@@ -6,7 +6,11 @@ class Btn extends React.Component {
       <>
         <button className="button tooltip" onClick={this.props.onClick}>
           {this.props.label}
-          <span className="tooltiptext">{this.props.toolTip}</span>
+          {this.props.toolTip && (
+            <span className={`tooltiptext ${this.props.toolTipPos}`}>
+              {this.props.toolTip}
+            </span>
+          )}
         </button>
       </>
     );
