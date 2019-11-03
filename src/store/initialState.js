@@ -1,4 +1,4 @@
-import Menus from "../scenes/menus.js";
+import { Menus, MainMenuText } from "../scenes/menus.js";
 
 // For experimentation
 const succ = () => {
@@ -36,15 +36,7 @@ const bigSucc = () => {
 
 // And we need an initial state
 const initialState = {
-  output: `CoC Engine: Clean Version
-  
-  Original concept by Fenoxo and crew
-  Converted to JS/React by Matraia
-
-  Version extremely early.
-
-  Click on New Game to Start 
-  `,
+  output: MainMenuText,
   day: "0",
   hour: "12",
   minute: "00",

@@ -30,12 +30,12 @@ const mapDispatchToButtonProps = dispatch => {
         if (newStats !== undefined) {
           dispatch(UI.statChange(newStats));
         }
-        if (newButtons !== undefined) {
-          dispatch(UI.buttonChange(newButtons));
+
+        dispatch(UI.buttonChange(newButtons));
+
+        if (newOutput) {
+          dispatch(UI.updateView(newOutput));
         }
-      }
-      if (newOutput) {
-        dispatch(UI.updateView(newOutput));
       }
     }
   };
