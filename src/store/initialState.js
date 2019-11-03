@@ -1,6 +1,7 @@
 import { Menus, MainMenuText } from "../scenes/menus.js";
 
 // For experimentation
+/*
 const succ = () => {
   console.log("We did it!");
   const newButtons = {
@@ -33,6 +34,7 @@ const bigSucc = () => {
   ];
   return { newButtons };
 };
+*/
 
 // And we need an initial state
 const initialState = {

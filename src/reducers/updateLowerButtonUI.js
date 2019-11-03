@@ -2,16 +2,11 @@ export default function updateLowerButtonUI(state, buttons) {
   let newState = Object.assign({}, state, {});
 
   if (Object.keys(buttons).length === 0 && buttons.constructor === Object) {
-    console.log("Received empty object, should clear buttons here");
     newState.Buttons.lowerIDs.forEach(id => {
       delete newState.Buttons.byID[id];
     });
     return newState;
   }
-
-  newState.Buttons.lowerIDs.forEach(id => {
-    delete newState.Buttons.byID[id];
-  });
 
   // Cycle through buttons and update state
   newState.Buttons.lowerIDs.forEach(id => {
@@ -26,6 +21,8 @@ export default function updateLowerButtonUI(state, buttons) {
           }
         }
       };
+    } else {
+      delete newState.Buttons.byID[id];
     }
   });
 

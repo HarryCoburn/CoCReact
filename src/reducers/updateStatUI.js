@@ -1,6 +1,11 @@
 export default function updateStatUI(state, stats) {
+  if (stats !== Object(stats)) {
+    throw Error(
+      "Update Stat UI received malformed stat change object: " + stats
+    );
+  }
   let newState = Object.assign({}, state, {});
-  state.statsUI.allIDs.forEach(id => {
+  newState.statsUI.allIDs.forEach(id => {
     if (stats.hasOwnProperty(id)) {
       newState = {
         ...newState,
@@ -10,7 +15,7 @@ export default function updateStatUI(state, stats) {
             ...newState.statsUI.byID,
             [id]: {
               ...newState.statsUI.byID[id],
-              value: newState.statsUI.byID[id].value + stats[id].change
+              value: changeStat(newState.statsUI.byID[id].value, stats[id])
             }
           }
         }
@@ -18,4 +23,13 @@ export default function updateStatUI(state, stats) {
     }
   });
   return newState;
+}
+
+function changeStat(old, change) {
+  let max = 100;
+  let min = 0;
+  let final = old + change;
+  if (final < min) return 0;
+  if (final > max) return 100;
+  return final;
 }

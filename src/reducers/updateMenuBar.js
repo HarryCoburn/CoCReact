@@ -1,13 +1,20 @@
 import { Menus } from "../scenes/menus";
 
 export default function updateMenuBar(state, newMenuArr) {
-  let newState = Object.assign({}, state, {});
+  if (!Array.isArray(newMenuArr))
+    throw Error("Upper menu bar did not receive array of menu names!");
 
+  // Take care of empty case
   if (newMenuArr.length === 0) {
     newMenuArr = ["main", "data"];
   }
+  // Filter invalid names
+  newMenuArr = newMenuArr.filter(item => item in Menus);
 
-  // Delete menu buttons
+  // Create new state
+  let newState = Object.assign({}, state, {});
+
+  // Delete old menus
   newState.Buttons.upperIDs.forEach(id => {
     delete newState.Buttons.byID[id];
   });
