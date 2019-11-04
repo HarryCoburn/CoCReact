@@ -1,17 +1,15 @@
 import * as SC from "./sceneSymbols";
-import * as charCreation from "./charCreation";
-import * as menus from "./menus";
 
 const Scenes = {
   CharCreation: {
     [SC.START_NEW_GAME]: {
-      function: charCreation.startNewGame,
+      id: SC.START_NEW_GAME,
       text: "Started a new game"
     }
   },
   Menus: {
     [SC.MAIN_MENU]: {
-      function: menus.mainMenu,
+      id: SC.MAIN_MENU,
       text: `CoC Engine: Clean Version
   
       Original concept by Fenoxo and crew
@@ -23,7 +21,7 @@ const Scenes = {
       `
     },
     [SC.DATA_MENU]: {
-      function: menus.multiButton,
+      id: SC.DATA_MENU,
       text: "Data Menu"
     }
   }
