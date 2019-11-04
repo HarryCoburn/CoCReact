@@ -1,114 +1,92 @@
 import { Menus, MainMenuText } from "../scenes/menus.js";
 
-// For experimentation
-/*
-const succ = () => {
-  console.log("We did it!");
-  const newButtons = {
-    b1: {
-      newOutput: `This is the extra new stuff`,
-      label: "New shiny label!",
-      nextScene: bigSucc,
-      newButtons: {}
-    }
-  };
-  const newStats = {
-    strength: {
-      change: -50
-    },
-    toughness: {
-      change: +45
-    }
-  };
-  return { newButtons, newStats };
-};
-const bigSucc = () => {
-  console.log("We really did it!");
-  const newButtons = [
-    {
-      newOutput: "Hey, the other button works!",
-      label: "New shiny shiny label!",
-      nextScene: bigSucc,
-      newButtons: {}
-    }
-  ];
-  return { newButtons };
-};
-*/
-
 // And we need an initial state
 const initialState = {
   output: MainMenuText,
   day: "0",
   hour: "12",
   minute: "00",
+  UI: {
+    showStats: false
+  },
   statsUI: {
     byID: {
       strength: {
         id: "strength",
         name: "Strength",
         value: 100,
-        max: null
+        max: 100,
+        min: 0
       },
       toughness: {
         id: "toughness",
         name: "Toughness",
         value: 100,
-        max: null
+        max: 100,
+        min: 0
       },
       speed: {
         id: "speed",
         name: "Speed",
         value: 100,
-        max: null
+        max: 100,
+        min: 0
       },
       intelligence: {
         id: "intelligence",
         name: "Intelligence",
         value: 100,
-        max: null
+        max: 100,
+        min: 0
       },
       libido: {
         id: "libido",
         name: "Libido",
         value: 100,
-        max: null
+        max: 100,
+        min: 0
       },
       sensitivity: {
         id: "sensitivity",
         name: "Sensitivity",
         value: 100,
-        max: null
+        max: 100,
+        min: 0
       },
       corruption: {
         id: "corruption",
         name: "Corruption",
         value: 100,
-        max: null
+        max: 100,
+        min: 0
       },
       hp: {
         id: "hp",
         name: "HP",
         value: 100,
-        max: 100
+        max: 100,
+        min: 0
       },
       lust: {
         id: "lust",
         name: "Lust",
         value: 100,
-        max: 100
+        max: 100,
+        min: 0
       },
       fatigue: {
         id: "fatigue",
         name: "Fatigue",
         value: 100,
-        max: 100
+        max: 100,
+        min: 0
       },
       hunger: {
         id: "hunger",
         name: "Hunger",
         value: 100,
-        max: 100
+        max: 100,
+        min: 0
       },
       level: {
         id: "level",
@@ -120,12 +98,14 @@ const initialState = {
         id: "xp",
         name: "XP",
         value: 0,
+        min: 0,
         max: 99
       },
       gems: {
         id: "gems",
         name: "Gems",
         value: 0,
+        min: 0,
         max: 9999
       }
     },

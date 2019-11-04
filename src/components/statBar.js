@@ -7,7 +7,9 @@ import { connect } from "react-redux";
 class StatBarContainer extends React.Component {
   render() {
     return (
-      <div className="statBar">
+      <div
+        className={`statBar ${this.props.visibility ? "visible" : "invisible"}`}
+      >
         <h2>Name</h2>
         <h2>Core Stats</h2>
         <StatDisplay
@@ -33,7 +35,8 @@ class StatBarContainer extends React.Component {
 
 const mapStateToButtonProps = function(state) {
   return {
-    newStats: state.statsUI
+    newStats: state.statsUI,
+    visibility: state.UI.showStats
   };
 };
 

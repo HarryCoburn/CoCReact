@@ -53,6 +53,14 @@ h2 {
   border: 2px solid #000000;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
 .statFrame {
   height: 20px;
   width: 160px;

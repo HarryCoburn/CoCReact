@@ -7,6 +7,22 @@ import updateMenuBar from "./updateMenuBar";
 // And an initial reducer
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case UI.HIDE_STATS:
+      return Object.assign({}, state, {
+        ...state,
+        UI: {
+          ...state.UI,
+          showStats: false
+        }
+      });
+    case UI.SHOW_STATS:
+      return Object.assign({}, state, {
+        ...state,
+        UI: {
+          ...state.UI,
+          showStats: true
+        }
+      });
     case UI.UPDATE_VIEW:
       return Object.assign({}, state, {
         output: action.newText

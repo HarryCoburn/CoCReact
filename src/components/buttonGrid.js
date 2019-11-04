@@ -41,7 +41,18 @@ const mapDispatchToButtonProps = dispatch => {
     update: ({ newOutput = "", nextScene = null }) => {
       dispatch(UI.updateView(newOutput));
       if (nextScene !== null) {
-        let { newButtons = {}, newStats = {}, newMenuArr = [] } = nextScene();
+        let {
+          newButtons = {},
+          newStats = {},
+          newMenuArr = [],
+          actions = null
+        } = nextScene();
+        if (actions !== null) {
+          console.log("Found actions");
+          actions.forEach(action => {
+            dispatch(UI.actionSelect(action));
+          });
+        }
         dispatch(UI.buttonChange(newButtons)); // Undefined means clear lower menu completely
         dispatch(UI.menuChange(newMenuArr)); // Undefined will just return state
         dispatch(UI.statChange(newStats));
