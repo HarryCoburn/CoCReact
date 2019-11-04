@@ -23,6 +23,22 @@ function rootReducer(state = initialState, action) {
           showStats: true
         }
       });
+    case UI.HIDE_MENU_BAR:
+      return Object.assign({}, state, {
+        ...state,
+        UI: {
+          ...state.UI,
+          showMenuBar: false
+        }
+      });
+    case UI.SHOW_MENU_BAR:
+      return Object.assign({}, state, {
+        ...state,
+        UI: {
+          ...state.UI,
+          showMenuBar: true
+        }
+      });
     case UI.UPDATE_VIEW:
       return Object.assign({}, state, {
         output: action.newText

@@ -12,6 +12,6 @@ export const startNewGame = () => {
     }
   };
   const newMenuArr = ["main", "data", "level"];
-  const actions = [UI.SHOW_STATS];
+  const actions = [UI.HIDE_MENU_BAR];
   return { newButtons, newMenuArr, actions };
 };

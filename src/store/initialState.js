@@ -19,7 +19,8 @@ const initialState = {
   hour: "12",
   minute: "00",
   UI: {
-    showStats: false
+    showStats: false,
+    showMenuBar: true
   },
   statsUI: {
     byID: {

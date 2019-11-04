@@ -5,7 +5,9 @@ import ButtonGrid from "./buttonGrid";
 class TopMenuClass extends React.Component {
   render() {
     return (
-      <div className="menuBar">
+      <div
+        className={`menuBar ${this.props.visibility ? "visible" : "invisible"}`}
+      >
         <ButtonGrid toolTipPos="bottom" IDs={this.props.IDs}></ButtonGrid>
       </div>
     );
@@ -14,7 +16,8 @@ class TopMenuClass extends React.Component {
 
 const mapStateToButtonProps = function(state) {
   return {
-    IDs: state.Buttons.upperIDs
+    IDs: state.Buttons.upperIDs,
+    visibility: state.UI.showMenuBar
   };
 };
 

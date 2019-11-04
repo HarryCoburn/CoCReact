@@ -5,6 +5,8 @@ export const STAT_CHANGE = "STAT_CHANGE";
 export const MENU_CHANGE = "MENU_CHANGE";
 export const HIDE_STATS = "HIDE_STATS";
 export const SHOW_STATS = "SHOW_STATS";
+export const HIDE_MENU_BAR = "HIDE_MENU_BAR";
+export const SHOW_MENU_BAR = "SHOW_MENU_BAR";
 
 export function actionSelect(action) {
   switch (action) {
@@ -15,6 +17,14 @@ export function actionSelect(action) {
     case SHOW_STATS:
       return {
         type: SHOW_STATS
+      };
+    case HIDE_MENU_BAR:
+      return {
+        type: HIDE_MENU_BAR
+      };
+    case SHOW_MENU_BAR:
+      return {
+        type: SHOW_MENU_BAR
       };
     default:
   }

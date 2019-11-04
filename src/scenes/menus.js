@@ -3,7 +3,7 @@ import Scenes from "./sceneStore";
 import { START_NEW_GAME, DATA_MENU, MAIN_MENU } from "./sceneSymbols";
 
 export function mainMenu() {
-  let actions = [UI.HIDE_STATS];
+  let actions = [UI.HIDE_STATS, UI.SHOW_MENU_BAR];
   return { actions };
 }
 
