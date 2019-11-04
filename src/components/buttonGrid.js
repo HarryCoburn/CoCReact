@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import WrappedButton from "./buttonWrap.js";
 import * as UI from "../actions/UI";
+import * as Core from "../actions/Core";
 
 class ButtonGridClass extends React.Component {
   buttons = () =>
@@ -38,15 +39,16 @@ const mapStateToButtonProps = function(state) {
 
 const mapDispatchToButtonProps = dispatch => {
   return {
-    update: ({ newOutput = "", nextScene = null }) => {
-      dispatch(UI.updateView(newOutput));
+    update: ({ nextScene = null }) => {
       if (nextScene !== null) {
+        let newScene = Core.fetchScene(nextScene); // Middleware to get the changes?
         let {
           newButtons = {},
           newStats = {},
           newMenuArr = [],
           actions = null
-        } = nextScene();
+        } = newScene.stateUpdates;
+        let processedOutput = newScene.output;
         if (actions !== null) {
           console.log("Found actions");
           actions.forEach(action => {
@@ -56,6 +58,7 @@ const mapDispatchToButtonProps = dispatch => {
         dispatch(UI.buttonChange(newButtons)); // Undefined means clear lower menu completely
         dispatch(UI.menuChange(newMenuArr)); // Undefined will just return state
         dispatch(UI.statChange(newStats));
+        dispatch(UI.updateView(processedOutput));
       }
     }
   };

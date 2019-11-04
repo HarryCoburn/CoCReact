@@ -1,46 +1,23 @@
 import * as UI from "../actions/UI";
-const MainMenuText = `CoC Engine: Clean Version
-  
-Original concept by Fenoxo and crew
-Converted to JS/React by Matraia
+import Scenes from "./sceneStore";
+import { START_NEW_GAME, DATA_MENU, MAIN_MENU } from "./sceneSymbols";
 
-Version extremely early.
-
-Click on New Game to Start 
-`;
-
-function mainMenu() {
+export function mainMenu() {
   let actions = [UI.HIDE_STATS];
   return { actions };
 }
 
-function startNewGame() {
+export function multiButton() {
   const newButtons = {
     b1: {
       id: "b1",
-      newOutput: MainMenuText,
       label: "Go back to Main Menu",
-      nextScene: mainMenu
-    }
-  };
-  const newMenuArr = ["main", "data", "level"];
-  const actions = [UI.SHOW_STATS];
-  return { newButtons, newMenuArr, actions };
-}
-
-function multiButton() {
-  const newButtons = {
-    b1: {
-      id: "b1",
-      newOutput: MainMenuText,
-      label: "Go back to Main Menu",
-      nextScene: mainMenu
+      nextScene: Scenes.Menus[MAIN_MENU]
     },
     b3: {
       id: "b3",
-      newOutput: MainMenuText,
       label: "Go back to Main Menu",
-      nextScene: mainMenu
+      nextScene: Scenes.Menus[MAIN_MENU]
     }
   };
   const newMenuArr = ["main", "data", "level"];
@@ -53,14 +30,13 @@ const Menus = {
     label: "New Game",
     newOutput: "New Game",
     toolTip: "Start a new game.",
-    nextScene: startNewGame
+    nextScene: Scenes.CharCreation[START_NEW_GAME]
   },
   data: {
     id: "data",
     label: "Data",
-    newOutput: "Data",
     toolTip: "Save or load your files.",
-    nextScene: multiButton
+    nextScene: Scenes.Menus[DATA_MENU]
   },
   level: {
     id: "level",
@@ -87,4 +63,4 @@ const Menus = {
   }
 };
 
-export { Menus, MainMenuText };
+export { Menus };
