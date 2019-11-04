@@ -1,16 +1,20 @@
+import React from "react";
 import { Menus } from "../scenes/menus.js";
 
 // And we need an initial state
 const initialState = {
-  output: `CoC Engine: Clean Version
-  
-  Original concept by Fenoxo and crew
-  Converted to JS/React by Matraia
-  
-  Version extremely early.
-  
-  Click on New Game to Start 
-  `,
+  output: (
+    <>
+      <p>CoC Engine: Clean Version</p>
+      <p>
+        Original concept by Fenoxo and crew
+        <br />
+        Converted to JS/React by Matraia
+      </p>
+      <p>Version extremely early.</p>
+      <p>Click on New Game to Start </p>
+    </>
+  ),
   day: "0",
   hour: "12",
   minute: "00",
