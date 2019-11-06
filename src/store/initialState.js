@@ -15,14 +15,14 @@ const initialState = {
       <p>Click on New Game to Start </p>
     </>
   ),
-  day: "0",
-  hour: "12",
-  minute: "00",
+  day: "0", //to reduce
+  hour: "12", //to reduce
+  minute: "00", //to reduce
   UI: {
     showStats: false,
     showMenuBar: true
   },
-  statsUI: {
+  stats: {
     byID: {
       strength: {
         id: "strength",
