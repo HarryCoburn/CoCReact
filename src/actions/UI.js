@@ -27,6 +27,9 @@ export function actionSelect(action) {
         type: SHOW_MENU_BAR
       };
     default:
+      throw Error(
+        "Attempted to send an action to UI.actionSelect that isn't in the switch case. Confirm you're sending the right actions!"
+      );
   }
 }
 
@@ -38,6 +41,9 @@ export function updateView(newText) {
 }
 
 export function buttonChange(newButtons) {
+  if (!(newButtons instanceof Object) || newButtons === undefined) {
+    throw Error("UI.buttonChange did not receive an object");
+  }
   return {
     type: BUTTON_CHANGE,
     newButtons
@@ -45,6 +51,9 @@ export function buttonChange(newButtons) {
 }
 
 export function statChange(newStat) {
+  if (!(newStat instanceof Object) || newStat === undefined) {
+    throw Error("UI.statChange did not receive an object");
+  }
   return {
     type: STAT_CHANGE,
     newStat
@@ -52,14 +61,11 @@ export function statChange(newStat) {
 }
 
 export function menuChange(newMenuArr) {
+  if (!Array.isArray(newMenuArr) || newMenuArr === undefined) {
+    throw Error("UI.menuChange did not receive an array.");
+  }
   return {
     type: MENU_CHANGE,
     newMenuArr
-  };
-}
-
-export function showStats() {
-  return {
-    type: SHOW_STATS
   };
 }

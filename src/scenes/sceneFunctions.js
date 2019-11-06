@@ -1,8 +1,10 @@
 import * as SC from "./sceneSymbols";
 import * as charCreation from "./charCreation";
 import * as menus from "./menus";
+import * as testing from "./tests/testing";
 
 const SceneFuncs = {
+  [SC.FETCH_SCENE_TEST]: testing.fetchSceneTest,
   [SC.START_NEW_GAME]: charCreation.startNewGame,
   [SC.MAIN_MENU]: menus.mainMenu,
   [SC.DATA_MENU]: menus.multiButton

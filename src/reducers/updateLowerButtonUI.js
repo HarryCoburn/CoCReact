@@ -1,7 +1,7 @@
 export default function updateLowerButtonUI(state, buttons) {
   let newState = Object.assign({}, state, {});
 
-  if (Object.keys(buttons).length === 0 && buttons.constructor === Object) {
+  if (Object.keys(buttons).length === 0 && buttons instanceof Object) {
     newState.Buttons.lowerIDs.forEach(id => {
       delete newState.Buttons.byID[id];
     });

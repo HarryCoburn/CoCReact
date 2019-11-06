@@ -3,12 +3,13 @@ import * as UI from "../actions/UI";
 import updateStatUI from "./updateStatUI";
 import updateLowerButtonUI from "./updateLowerButtonUI";
 import updateMenuBar from "./updateMenuBar";
+import * as Utils from "../utils";
 
 // And an initial reducer
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case UI.HIDE_STATS:
-      return Object.assign({}, state, {
+      return Utils.updateObject(state, {
         ...state,
         UI: {
           ...state.UI,
@@ -16,7 +17,7 @@ function rootReducer(state = initialState, action) {
         }
       });
     case UI.SHOW_STATS:
-      return Object.assign({}, state, {
+      return Utils.updateObject(state, {
         ...state,
         UI: {
           ...state.UI,
@@ -24,7 +25,7 @@ function rootReducer(state = initialState, action) {
         }
       });
     case UI.HIDE_MENU_BAR:
-      return Object.assign({}, state, {
+      return Utils.updateObject(state, {
         ...state,
         UI: {
           ...state.UI,
@@ -32,7 +33,7 @@ function rootReducer(state = initialState, action) {
         }
       });
     case UI.SHOW_MENU_BAR:
-      return Object.assign({}, state, {
+      return Utils.updateObject(state, {
         ...state,
         UI: {
           ...state.UI,
@@ -40,7 +41,7 @@ function rootReducer(state = initialState, action) {
         }
       });
     case UI.UPDATE_VIEW:
-      return Object.assign({}, state, {
+      return Utils.updateObject(state, {
         output: action.newText
       });
     case UI.BUTTON_CHANGE:
