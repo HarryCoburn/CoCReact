@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import WrappedButton from "./buttonWrap.js";
 import * as UI from "../actions/UI";
+import * as Player from "../actions/Player";
 import * as Core from "../actions/Core";
 
 class ButtonGridClass extends React.Component {
@@ -56,7 +57,7 @@ const mapDispatchToButtonProps = dispatch => {
         }
         dispatch(UI.buttonChange(newButtons)); // Undefined means clear lower menu completely
         dispatch(UI.menuChange(newMenus)); // Undefined will just return state
-        dispatch(UI.statChange(newStats));
+        dispatch(Player.statChange(newStats));
         dispatch(UI.updateView(processedOutput));
       }
     }

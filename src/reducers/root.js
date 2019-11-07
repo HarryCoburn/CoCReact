@@ -1,5 +1,6 @@
 import initialState from "../store/initialState";
 import * as UI from "../actions/UI";
+import * as Player from "../actions/Player";
 import updateStats from "./updateStats";
 import updateLowerButtons from "./updateLowerButtons";
 import updateMenuBar from "./updateMenuBar";
@@ -31,8 +32,9 @@ function outputReducer(output, action) {
 
 function statsReducer(stats, action) {
   switch (action.type) {
-    case UI.STAT_CHANGE:
-      return updateStats(stats, action.newStat);
+    case Player.STAT_CHANGE:
+    case Player.STAT_SET:
+      return updateStats(stats, action);
     default:
       return stats;
   }

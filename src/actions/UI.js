@@ -50,16 +50,6 @@ export function buttonChange(newButtons) {
   };
 }
 
-export function statChange(newStat) {
-  if (!(newStat instanceof Object) || newStat === undefined) {
-    throw Error("UI.statChange did not receive an object");
-  }
-  return {
-    type: STAT_CHANGE,
-    newStat
-  };
-}
-
 export function menuChange(newMenuButtons) {
   if (!(newMenuButtons instanceof Object) || newMenuButtons === undefined) {
     throw Error("UI.menuChange did not receive an object");

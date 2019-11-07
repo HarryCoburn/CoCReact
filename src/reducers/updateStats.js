@@ -1,6 +1,10 @@
 import * as Utils from "../utils";
+import * as Player from "../actions/Player";
 
-export default function updateStats(stats, changes) {
+export default function updateStats(stats, action) {
+  let type = action.type;
+  let changes = action.changes;
+
   if (changes !== Object(changes)) {
     throw Error(
       "Update Stats received malformed statChanges object: " + changes
@@ -12,12 +16,23 @@ export default function updateStats(stats, changes) {
   newStats.allIDs.forEach(id => {
     if (changes.hasOwnProperty(id)) {
       newStats.byID[id] = Utils.updateObject(newStats.byID[id], {
-        value: changeStat(newStats.byID[id], changes[id])
+        value: statChoose(newStats.byID[id], changes[id], type)
       });
     }
   });
 
   return newStats;
+}
+
+function statChoose(stat, change, type) {
+  switch (type) {
+    case Player.STAT_CHANGE:
+      return changeStat(stat, change);
+    case Player.STAT_SET:
+      return change;
+    default:
+      throw Error("Received bad type in statChoose: " + type);
+  }
 }
 
 function changeStat({ value, min, max }, change) {
