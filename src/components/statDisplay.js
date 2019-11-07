@@ -1,17 +1,24 @@
 import React from "react";
+import Stat from "./stat";
 
 class StatDisplay extends React.Component {
+  stats = () =>
+    this.props.ids.map(stat => {
+      let newStat = this.props.stats.byID[stat];
+
+      return (
+        <Stat
+          key={stat}
+          id={stat}
+          name={newStat.name}
+          value={newStat.value}
+          max={newStat.max}
+        />
+      );
+    });
+
   render() {
-    return this.props.ids.map(stat => (
-      <div key={this.props.stats.byID[stat].name} className="statFrame">
-        <div className="statGradient">
-          <p className="statLabel">
-            {this.props.stats.byID[stat].name}:{" "}
-            {this.props.stats.byID[stat].value}
-          </p>
-        </div>
-      </div>
-    ));
+    return <>{this.stats()}</>;
   }
 }
 
