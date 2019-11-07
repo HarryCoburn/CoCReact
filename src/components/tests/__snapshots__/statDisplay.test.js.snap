@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatDisplay Component renders correctly 1`] = `
+Array [
+  <div
+    className="statFrame"
+  >
+    <div
+      className="statGradient"
+    >
+      <p
+        className="statLabel"
+      >
+        Strength
+        : 
+        50
+      </p>
+    </div>
+  </div>,
+  <div
+    className="statFrame"
+  >
+    <div
+      className="statGradient"
+    >
+      <p
+        className="statLabel"
+      >
+        Toughness
+        : 
+        75
+      </p>
+    </div>
+  </div>,
+]
+`;

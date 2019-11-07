@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatBar Component should match the snapshot 1`] = `
+<div
+  className="statBar visible"
+>
+  <h2>
+    Name
+  </h2>
+  <h2>
+    Core Stats
+  </h2>
+  <div
+    className="statFrame"
+  >
+    <div
+      className="statGradient"
+    >
+      <p
+        className="statLabel"
+      >
+        Strength
+        : 
+        50
+      </p>
+    </div>
+  </div>
+  <h2>
+    Combat Stats
+  </h2>
+  <div
+    className="statFrame"
+  >
+    <div
+      className="statGradient"
+    >
+      <p
+        className="statLabel"
+      >
+        Toughness
+        : 
+        75
+      </p>
+    </div>
+  </div>
+  <h2>
+    Advancement
+  </h2>
+  <div
+    className="statFrame"
+  >
+    <div
+      className="statGradient"
+    >
+      <p
+        className="statLabel"
+      >
+        Libido
+        : 
+        50
+      </p>
+    </div>
+  </div>
+  <div
+    className="timeDisplay"
+  >
+    <p>
+      Day#: 
+    </p>
+    <p>
+      Time: 
+      :
+    </p>
+  </div>
+  <div
+    className="spriteDisplay"
+  />
+</div>
+`;
