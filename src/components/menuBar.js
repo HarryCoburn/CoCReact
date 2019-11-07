@@ -16,7 +16,7 @@ class TopMenuClass extends React.Component {
 
 const mapStateToButtonProps = function(state) {
   return {
-    IDs: state.Buttons.upperIDs,
+    IDs: state.buttons.upperIDs,
     visibility: state.UI.showMenuBar
   };
 };

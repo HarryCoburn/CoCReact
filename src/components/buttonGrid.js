@@ -7,13 +7,13 @@ import * as Core from "../actions/Core";
 class ButtonGridClass extends React.Component {
   buttons = () =>
     this.props.IDs.map(button => {
-      if (this.props.Buttons.byID[button] === undefined) {
+      if (this.props.buttons.byID[button] === undefined) {
         return (
           <button key={button} id={button} className="blankButton"></button>
         );
       }
 
-      let newBtn = this.props.Buttons.byID[button];
+      let newBtn = this.props.buttons.byID[button];
 
       return (
         <WrappedButton
@@ -33,7 +33,7 @@ class ButtonGridClass extends React.Component {
 
 const mapStateToButtonProps = function(state) {
   return {
-    Buttons: state.Buttons
+    buttons: state.buttons
   };
 };
 
@@ -45,18 +45,17 @@ const mapDispatchToButtonProps = dispatch => {
         let {
           newButtons = {},
           newStats = {},
-          newMenuArr = [],
+          newMenus = {},
           actions = null
         } = newScene.stateUpdates;
         let processedOutput = newScene.output;
         if (actions !== null) {
-          console.log("Found actions");
           actions.forEach(action => {
             dispatch(UI.actionSelect(action));
           });
         }
         dispatch(UI.buttonChange(newButtons)); // Undefined means clear lower menu completely
-        dispatch(UI.menuChange(newMenuArr)); // Undefined will just return state
+        dispatch(UI.menuChange(newMenus)); // Undefined will just return state
         dispatch(UI.statChange(newStats));
         dispatch(UI.updateView(processedOutput));
       }

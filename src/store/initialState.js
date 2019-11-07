@@ -150,10 +150,10 @@ const initialState = {
       "gems"
     ]
   },
-  Buttons: {
+  buttons: {
     byID: {
-      main: Menus.main,
-      data: Menus.data
+      u1: Menus.main,
+      u2: Menus.data
     },
     lowerIDs: [
       "b1",
@@ -172,7 +172,7 @@ const initialState = {
       "b14",
       "b15"
     ],
-    upperIDs: ["main", "data"]
+    upperIDs: ["u1", "u2", "u3", "u4", "u5", "u6", "u7"]
   }
 };
 

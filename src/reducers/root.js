@@ -1,7 +1,7 @@
 import initialState from "../store/initialState";
 import * as UI from "../actions/UI";
 import updateStats from "./updateStats";
-import updateLowerButtonUI from "./updateLowerButtonUI";
+import updateLowerButtons from "./updateLowerButtons";
 import updateMenuBar from "./updateMenuBar";
 import * as Utils from "../utils";
 
@@ -38,21 +38,22 @@ function statsReducer(stats, action) {
   }
 }
 
-// And an initial reducer
-function rootReducer(state = initialState, action) {
-  return {
-    output: outputReducer(state.output, action),
-    UI: uiReducer(state.UI, action),
-    stats: statsReducer(state.stats, action)
-  };
+function buttonsReducer(buttons, action) {
   switch (action.type) {
     case UI.BUTTON_CHANGE:
-      return updateLowerButtonUI(state, action.newButtons);
+      return updateLowerButtons(buttons, action.newButtons);
     case UI.MENU_CHANGE:
-      return updateMenuBar(state, action.newMenuArr);
+      return updateMenuBar(buttons, action.newMenuButtons);
     default:
-      return state;
+      return buttons;
   }
 }
 
-export default rootReducer;
+export default function rootReducer(state = initialState, action) {
+  return {
+    output: outputReducer(state.output, action),
+    UI: uiReducer(state.UI, action),
+    stats: statsReducer(state.stats, action),
+    buttons: buttonsReducer(state.buttons, action)
+  };
+}

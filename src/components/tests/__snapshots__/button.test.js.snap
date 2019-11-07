@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Btn Component Btn rendered correctly 1`] = `
+<button
+  className="button tooltip"
+  onClick={[Function]}
+>
+  test label
+  <span
+    className="tooltiptext top"
+  >
+    test toolTip
+  </span>
+</button>
+`;

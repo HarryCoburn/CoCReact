@@ -1,21 +1,21 @@
 import * as Utils from "../utils";
 import omit from "lodash.omit";
 
-export default function updateMenuBar(buttons, newMenuButtons) {
-  if (newMenuButtons !== Object(newMenuButtons)) {
+export default function updateLowerButtons(buttons, newLowerButtons) {
+  if (newLowerButtons !== Object(newLowerButtons)) {
     throw Error(
-      "Update menu bar Buttons received malfored newMenuButtons object:" +
-        newMenuButtons
+      "Update Lower Buttons received malfored newButtons object:" +
+        newLowerButtons
     );
   }
 
   let newButtons = Utils.updateObject({}, buttons);
 
-  newButtons.upperIDs.forEach(id => {
-    if (newMenuButtons.hasOwnProperty(id)) {
+  newButtons.lowerIDs.forEach(id => {
+    if (newLowerButtons.hasOwnProperty(id)) {
       newButtons.byID[id] = Utils.updateObject(
         newButtons.byID[id],
-        newMenuButtons[id]
+        newLowerButtons[id]
       );
     } else {
       newButtons.byID = omit(newButtons.byID, id);

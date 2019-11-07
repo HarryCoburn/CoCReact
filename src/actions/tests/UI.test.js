@@ -38,13 +38,13 @@ describe("actions", () => {
   });
 
   it("should create an action to update the upper menu bar", () => {
-    const newMenuArr = [];
+    const newMenuButtons = {};
     const badMenuNonArr = "Bad Array";
     const expectedAction = {
       type: UI.MENU_CHANGE,
-      newMenuArr
+      newMenuButtons
     };
-    expect(UI.menuChange(newMenuArr)).toEqual(expectedAction);
+    expect(UI.menuChange(newMenuButtons)).toEqual(expectedAction);
     expect(() => {
       UI.menuChange(badMenuNonArr);
     }).toThrow();

@@ -3,8 +3,12 @@ import Scenes from "./sceneStore";
 import { START_NEW_GAME, DATA_MENU, MAIN_MENU } from "./sceneSymbols";
 
 export function mainMenu() {
+  const newMenus = {
+    u1: Menus.main,
+    u2: Menus.data
+  };
   let actions = [UI.HIDE_STATS, UI.SHOW_MENU_BAR];
-  return { actions };
+  return { newMenus, actions };
 }
 
 export function multiButton() {
@@ -20,8 +24,8 @@ export function multiButton() {
       nextScene: Scenes.Menus[MAIN_MENU]
     }
   };
-  const newMenuArr = ["main", "data", "level"];
-  return { newButtons, newMenuArr };
+
+  return { newButtons };
 }
 
 const Menus = {
@@ -53,7 +57,8 @@ const Menus = {
     id: "perks",
     label: "Perks",
     newOutput: "Perks Screen",
-    toolTip: "View your perks."
+    toolTip: "View your perks.",
+    nextScene: null
   },
   appearance: {
     id: "appearance",

@@ -2,24 +2,22 @@ import React from "react";
 import { Provider } from "react-redux";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
-import TimeDisplay from "../timeDisplay";
+import Output from "../output";
 
 const mockStore = configureStore([]);
 
-describe("Time Display Component", () => {
+describe("Output Component", () => {
   let store;
   let component;
 
   beforeEach(() => {
     store = mockStore({
-      day: "0",
-      minute: "12",
-      hour: "5"
+      output: <p>This is some output</p>
     });
 
     component = renderer.create(
       <Provider store={store}>
-        <TimeDisplay />
+        <Output />
       </Provider>
     );
   });

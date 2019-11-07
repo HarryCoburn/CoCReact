@@ -3,6 +3,10 @@ import { createStore } from "redux";
 
 // Now we make a store
 
-const store = createStore(rootReducer);
+const store = createStore(
+  rootReducer,
+  /* preloated state, */ window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default store;

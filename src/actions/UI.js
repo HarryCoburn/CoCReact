@@ -60,12 +60,12 @@ export function statChange(newStat) {
   };
 }
 
-export function menuChange(newMenuArr) {
-  if (!Array.isArray(newMenuArr) || newMenuArr === undefined) {
-    throw Error("UI.menuChange did not receive an array.");
+export function menuChange(newMenuButtons) {
+  if (!(newMenuButtons instanceof Object) || newMenuButtons === undefined) {
+    throw Error("UI.menuChange did not receive an object");
   }
   return {
     type: MENU_CHANGE,
-    newMenuArr
+    newMenuButtons
   };
 }

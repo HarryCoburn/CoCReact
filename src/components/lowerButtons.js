@@ -16,7 +16,7 @@ class LowerButtonsClass extends React.Component {
 
 const mapStateToButtonProps = function(state) {
   return {
-    IDs: state.Buttons.lowerIDs
+    IDs: state.buttons.lowerIDs
   };
 };
 

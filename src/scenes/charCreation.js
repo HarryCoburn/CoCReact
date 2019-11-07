@@ -1,6 +1,7 @@
 import Scenes from "./sceneStore";
-import * as UI from "../actions/UI";
+import { Menus } from "./menus";
 import { MAIN_MENU } from "./sceneSymbols";
+import * as UI from "../actions/UI";
 
 export const startNewGame = () => {
   const newButtons = {
@@ -8,10 +9,16 @@ export const startNewGame = () => {
       id: "b1",
       newOutput: "Went back to main menu",
       label: "Go back to Main Menu",
+      toolTip: "Testing",
       nextScene: Scenes.Menus[MAIN_MENU]
     }
   };
-  const newMenuArr = ["main", "data", "level"];
-  const actions = [UI.HIDE_MENU_BAR];
-  return { newButtons, newMenuArr, actions };
+  const newMenus = {
+    u1: Menus.main,
+    u2: Menus.data,
+    u3: Menus.level
+  };
+  const newStats = { strength: -23 };
+  const actions = [UI.SHOW_STATS];
+  return { newButtons, newMenus, newStats, actions };
 };

@@ -1,5 +1,15 @@
 import React from "react";
 
+const Btn = props => (
+  <button className="button tooltip" onClick={props.onClick}>
+    {props.label}
+    {props.toolTip && (
+      <span className={`tooltiptext ${props.toolTipPos}`}>{props.toolTip}</span>
+    )}
+  </button>
+);
+
+/*
 class Btn extends React.Component {
   render() {
     return (
@@ -16,5 +26,6 @@ class Btn extends React.Component {
     );
   }
 }
+*/
 
 export default Btn;
