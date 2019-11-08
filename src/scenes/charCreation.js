@@ -27,7 +27,16 @@ export const startNewGame = () => {
       speed: 15,
       intelligence: 15,
       sensitivity: 15,
-      libido: 15
+      libido: 15,
+      corruption: 15,
+      hunger: 80,
+      obey: 10,
+      esteem: 50,
+      will: 80,
+      lust: 15,
+      xp: 0,
+      level: 1,
+      gems: 0
     })
   );
   const actions = [UI.SHOW_STATS];

@@ -78,28 +78,32 @@ const initialState = {
         name: "HP",
         value: 100,
         max: 100,
-        min: 0
+        min: 0,
+        displayMax: true
       },
       lust: {
         id: "lust",
         name: "Lust",
         value: 100,
         max: 100,
-        min: 0
+        min: 0,
+        displayMax: true
       },
       fatigue: {
         id: "fatigue",
         name: "Fatigue",
         value: 100,
         max: 100,
-        min: 0
+        min: 0,
+        displayMax: true
       },
       hunger: {
         id: "hunger",
         name: "Hunger",
         value: 100,
         max: 100,
-        min: 0
+        min: 0,
+        displayMax: true
       },
       level: {
         id: "level",
@@ -112,7 +116,8 @@ const initialState = {
         name: "XP",
         value: 0,
         min: 0,
-        max: 99
+        max: 99,
+        displayMax: true
       },
       gems: {
         id: "gems",
@@ -120,6 +125,18 @@ const initialState = {
         value: 0,
         min: 0,
         max: 9999
+      },
+      obey: {
+        id: "obey",
+        value: 0
+      },
+      esteem: {
+        id: "esteem",
+        value: 0
+      },
+      will: {
+        id: "will",
+        value: 0
       }
     },
     coreIDs: [
@@ -147,7 +164,10 @@ const initialState = {
       "hunger",
       "level",
       "xp",
-      "gems"
+      "gems",
+      "obey",
+      "esteem",
+      "will"
     ]
   },
   buttons: {

@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 export const TimeDisplayFunc = ({ day, hour, minute }) => {
   return (
     <div className="timeDisplay">
-      <p>Day#: {day}</p>
       <p>
+        Day#: {day}
+        <br />
         Time: {hour}:{minute}
       </p>
     </div>

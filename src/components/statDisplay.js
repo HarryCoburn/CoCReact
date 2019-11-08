@@ -13,6 +13,7 @@ class StatDisplay extends React.Component {
           name={newStat.name}
           value={newStat.value}
           max={newStat.max}
+          displayMax={newStat.displayMax}
         />
       );
     });
