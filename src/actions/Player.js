@@ -1,5 +1,6 @@
 export const STAT_SET = "player/STAT_SET";
 export const STAT_CHANGE = "player/STAT_CHANGE";
+export const RESTORE_HP = "player/RESTORE_HP";
 
 // Set player stats to a fixed number
 export function setStats(changes) {
@@ -20,5 +21,11 @@ export function statChange(changes) {
   return {
     type: STAT_CHANGE,
     changes
+  };
+}
+
+export function restoreHP() {
+  return {
+    type: RESTORE_HP
   };
 }

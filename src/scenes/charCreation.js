@@ -39,6 +39,7 @@ export const startNewGame = () => {
       gems: 0
     })
   );
+  store.dispatch(Player.restoreHP());
   const actions = [UI.SHOW_STATS];
   return { newButtons, newMenus, actions };
 };

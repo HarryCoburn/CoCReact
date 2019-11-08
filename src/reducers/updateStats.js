@@ -3,6 +3,11 @@ import * as Player from "../actions/Player";
 
 export default function updateStats(stats, action) {
   let type = action.type;
+  console.log(type);
+  if (type === Player.RESTORE_HP) {
+    return playerHPToMax(stats);
+  }
+
   let changes = action.changes;
 
   if (changes !== Object(changes)) {
@@ -42,4 +47,17 @@ function changeStat({ value, min, max }, change) {
   if (final > max) return max;
 
   return final;
+}
+
+function playerHPToMax(stats) {
+  return Utils.updateObject(stats, {
+    ...stats,
+    byID: {
+      ...stats.byID,
+      hp: {
+        ...stats.byID.hp,
+        value: stats.byID.hp.max
+      }
+    }
+  });
 }

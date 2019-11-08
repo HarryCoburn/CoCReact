@@ -76,7 +76,7 @@ const initialState = {
       hp: {
         id: "hp",
         name: "HP",
-        value: 100,
+        value: 0,
         max: 100,
         min: 0,
         displayMax: true

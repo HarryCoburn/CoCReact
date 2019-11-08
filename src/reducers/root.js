@@ -34,6 +34,7 @@ function statsReducer(stats, action) {
   switch (action.type) {
     case Player.STAT_CHANGE:
     case Player.STAT_SET:
+    case Player.RESTORE_HP:
       return updateStats(stats, action);
     default:
       return stats;
