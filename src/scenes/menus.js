@@ -39,7 +39,7 @@ const Menus = {
     id: "data",
     label: "Data",
     toolTip: "Save or load your files.",
-    nextScene: Scenes.Menus[DATA_MENU]
+    nextScene: DATA_MENU
   },
   level: {
     id: "level",

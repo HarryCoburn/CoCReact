@@ -59,3 +59,13 @@ export function menuChange(newMenuButtons) {
     newMenuButtons
   };
 }
+
+export function statChange(newStats) {
+  if (!(newStats instanceof Object) || newStats === undefined) {
+    throw Error("UI.statChange did not receive an object");
+  }
+  return {
+    type: STAT_CHANGE,
+    newStats
+  };
+}

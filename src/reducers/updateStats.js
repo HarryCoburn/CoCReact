@@ -3,7 +3,7 @@ import * as Player from "../actions/Player";
 
 export default function updateStats(stats, action) {
   let type = action.type;
-  console.log(type);
+
   if (type === Player.RESTORE_HP) {
     return playerHPToMax(stats);
   }

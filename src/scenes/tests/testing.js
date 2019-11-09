@@ -1,3 +1,3 @@
 export function fetchSceneTest() {
-  return "Worked";
+  return { newText: "Worked" };
 }

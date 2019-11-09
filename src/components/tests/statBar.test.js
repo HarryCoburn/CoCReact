@@ -36,6 +36,9 @@ describe("StatBar Component", () => {
         coreIDs: ["strength"],
         combatIDs: ["toughness"],
         advIDs: ["libido"]
+      },
+      appearance: {
+        name: "Testing"
       }
     });
 

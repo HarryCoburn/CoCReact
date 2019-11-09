@@ -5,7 +5,7 @@ exports[`StatBar Component should match the snapshot 1`] = `
   className="statBar visible"
 >
   <h2>
-    Name
+    Testing
   </h2>
   <h2>
     Core Stats
@@ -22,6 +22,7 @@ exports[`StatBar Component should match the snapshot 1`] = `
         Strength
         : 
         50
+         
       </p>
     </div>
   </div>
@@ -40,6 +41,7 @@ exports[`StatBar Component should match the snapshot 1`] = `
         Toughness
         : 
         75
+         
       </p>
     </div>
   </div>
@@ -58,6 +60,7 @@ exports[`StatBar Component should match the snapshot 1`] = `
         Libido
         : 
         50
+         
       </p>
     </div>
   </div>
@@ -66,8 +69,7 @@ exports[`StatBar Component should match the snapshot 1`] = `
   >
     <p>
       Day#: 
-    </p>
-    <p>
+      <br />
       Time: 
       :
     </p>

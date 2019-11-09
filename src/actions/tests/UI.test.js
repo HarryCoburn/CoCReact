@@ -51,13 +51,13 @@ describe("actions", () => {
   });
 
   it("should create an action to update the stats", () => {
-    const newStat = {};
+    const newStats = {};
     const badNewStat = "Bad stats!";
     const expectedAction = {
       type: UI.STAT_CHANGE,
-      newStat
+      newStats
     };
-    expect(UI.statChange(newStat)).toEqual(expectedAction);
+    expect(UI.statChange(newStats)).toEqual(expectedAction);
     expect(() => {
       UI.statChange(badNewStat);
     }).toThrow();

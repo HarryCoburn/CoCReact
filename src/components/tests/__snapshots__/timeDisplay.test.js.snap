@@ -7,8 +7,7 @@ exports[`Time Display Component should match the snapshot 1`] = `
   <p>
     Day#: 
     0
-  </p>
-  <p>
+    <br />
     Time: 
     5
     :
