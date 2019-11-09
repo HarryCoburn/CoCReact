@@ -193,6 +193,9 @@ const initialState = {
       "b15"
     ],
     upperIDs: ["u1", "u2", "u3", "u4", "u5", "u6", "u7"]
+  },
+  appearance: {
+    name: ""
   }
 };
 

@@ -1,6 +1,7 @@
 export const STAT_SET = "player/STAT_SET";
 export const STAT_CHANGE = "player/STAT_CHANGE";
 export const RESTORE_HP = "player/RESTORE_HP";
+export const SET_PLAYER_NAME = "player/SET_PLAYER_NAME";
 
 // Set player stats to a fixed number
 export function setStats(changes) {
@@ -24,8 +25,16 @@ export function statChange(changes) {
   };
 }
 
+// Restore player to maximum HP
 export function restoreHP() {
   return {
     type: RESTORE_HP
+  };
+}
+
+export function setPlayerName(name) {
+  return {
+    type: SET_PLAYER_NAME,
+    payload: name
   };
 }

@@ -1,0 +1,17 @@
+import React from "react";
+import store from "../store/store";
+import { setPlayerName } from "../actions/Player";
+
+export default class NameInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    store.dispatch(setPlayerName(e.target.value));
+  }
+  render() {
+    return <input onChange={this.handleChange}></input>;
+  }
+}

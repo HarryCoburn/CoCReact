@@ -1,5 +1,6 @@
 import React from "react";
 import * as SC from "./sceneSymbols";
+import NameInput from "../components/nameInput";
 
 const Scenes = {
   CharCreation: {
@@ -22,8 +23,10 @@ const Scenes = {
             This year, <b>you</b> have been selected to be the champion.
           </p>
           <p>What is your name?</p>
+          <NameInput />
         </>
-      )
+      ),
+      showInput: true
     }
   },
   Menus: {

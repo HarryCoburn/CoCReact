@@ -52,11 +52,21 @@ function buttonsReducer(buttons, action) {
   }
 }
 
+function appearanceReducer(appearance, action) {
+  switch (action.type) {
+    case Player.SET_PLAYER_NAME:
+      return { ...appearance, name: action.payload };
+    default:
+      return appearance;
+  }
+}
+
 export default function rootReducer(state = initialState, action) {
   return {
     output: outputReducer(state.output, action),
     UI: uiReducer(state.UI, action),
     stats: statsReducer(state.stats, action),
-    buttons: buttonsReducer(state.buttons, action)
+    buttons: buttonsReducer(state.buttons, action),
+    appearance: appearanceReducer(state.appearance, action)
   };
 }

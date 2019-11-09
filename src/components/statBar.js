@@ -10,7 +10,7 @@ class StatBarContainer extends React.Component {
       <div
         className={`statBar ${this.props.visibility ? "visible" : "invisible"}`}
       >
-        <h2>Name</h2>
+        <h2>{this.props.name || "Name:"}</h2>
         <h2>Core Stats</h2>
         <StatDisplay
           stats={this.props.newStats}
@@ -36,7 +36,8 @@ class StatBarContainer extends React.Component {
 const mapStateToButtonProps = function(state) {
   return {
     newStats: state.stats,
-    visibility: state.UI.showStats
+    visibility: state.UI.showStats,
+    name: state.appearance.name
   };
 };
 
