@@ -41,15 +41,26 @@ const mapStateToButtonProps = function(state) {
 const mapDispatchToButtonProps = dispatch => {
   return {
     update: ({ nextScene = null }) => {
+      console.log("The next scene is...");
+      console.log(nextScene);
+      if (nextScene === null) {
+        console.log("Something tried to dispatch with no nextScene!");
+        return;
+      }
       if (nextScene !== null) {
         let newScene = Core.fetchScene(nextScene); // Middleware to get the changes?
+        console.log(newScene);
+        if (newScene === undefined) {
+          throw Error("newScene returned undefined");
+        }
         let {
           newButtons = {},
           newStats = {},
           newMenus = {},
-          actions = null
-        } = newScene.stateUpdates;
-        let processedOutput = newScene.output;
+          actions = null,
+          newText = ""
+        } = newScene;
+        let processedOutput = newText;
         if (actions !== null) {
           actions.forEach(action => {
             dispatch(UI.actionSelect(action));

@@ -1,12 +1,12 @@
 import SceneFuncs from "../scenes/sceneFunctions";
 
 export function fetchScene(scene) {
-  let sceneFunction = SceneFuncs[scene.id];
+  console.log(scene);
+  let sceneFunction = SceneFuncs[scene];
+  console.log(sceneFunction);
   if (typeof sceneFunction === "function") {
     let stateUpdates = sceneFunction();
-    let output = scene.text;
-
-    return { output, stateUpdates };
+    return stateUpdates;
   } else {
     throw Error(
       "Core.fetchscene tried to retrieve a sceneFunction that was not a function."

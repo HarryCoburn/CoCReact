@@ -2,7 +2,7 @@ import React from "react";
 import * as SC from "./sceneSymbols";
 import NameInput from "../components/nameInput";
 
-const Scenes = {
+const SceneText = {
   CharCreation: {
     [SC.START_NEW_GAME]: {
       id: SC.START_NEW_GAME,
@@ -25,8 +25,15 @@ const Scenes = {
           <p>What is your name?</p>
           <NameInput />
         </>
-      ),
-      showInput: true
+      )
+    },
+    [SC.NAME_SELECTED]: {
+      id: SC.NAME_SELECTED,
+      text: (
+        <>
+          <p>We've selected a name!</p>
+        </>
+      )
     }
   },
   Menus: {
@@ -56,4 +63,4 @@ const Scenes = {
   }
 };
 
-export default Scenes;
+export default SceneText;

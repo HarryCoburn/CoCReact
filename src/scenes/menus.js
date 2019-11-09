@@ -1,5 +1,5 @@
 import * as UI from "../actions/UI";
-import Scenes from "./sceneStore";
+import Scenes from "./sceneTextStore";
 import { START_NEW_GAME, DATA_MENU, MAIN_MENU } from "./sceneSymbols";
 
 export function mainMenu() {
@@ -32,9 +32,8 @@ const Menus = {
   main: {
     id: "main",
     label: "New Game",
-    newOutput: "New Game",
     toolTip: "Start a new game.",
-    nextScene: Scenes.CharCreation[START_NEW_GAME]
+    nextScene: START_NEW_GAME
   },
   data: {
     id: "data",
@@ -45,26 +44,25 @@ const Menus = {
   level: {
     id: "level",
     label: "Level Up",
-    newOutput: "Level Up"
+    nextScene: null
   },
   stats: {
     id: "stats",
     label: "Stats",
-    newOutput: "Stats Screen",
-    toolTip: "View your stats."
+    toolTip: "View your stats.",
+    nextScene: null
   },
   perks: {
     id: "perks",
     label: "Perks",
-    newOutput: "Perks Screen",
     toolTip: "View your perks.",
     nextScene: null
   },
   appearance: {
     id: "appearance",
     label: "Appearance",
-    newOutput: "Appearance Screen",
-    toolTip: "View your detailed appearance."
+    toolTip: "View your detailed appearance.",
+    nextScene: null
   }
 };
 

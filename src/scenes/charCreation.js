@@ -1,6 +1,6 @@
-import Scenes from "./sceneStore";
+import SceneText from "./sceneTextStore";
 import { Menus } from "./menus";
-import { MAIN_MENU } from "./sceneSymbols";
+import { NAME_SELECTED, START_NEW_GAME } from "./sceneSymbols";
 import * as UI from "../actions/UI";
 import store from "../store/store";
 import * as Player from "../actions/Player";
@@ -9,12 +9,12 @@ export const startNewGame = () => {
   const newButtons = {
     b1: {
       id: "b1",
-      newOutput: "Went back to main menu",
-      label: "Go back to Main Menu",
-      toolTip: "Testing",
-      nextScene: Scenes.Menus[MAIN_MENU]
+      label: "Confirm Name",
+      toolTip: "Click to confirm name",
+      nextScene: NAME_SELECTED
     }
   };
+  const newText = SceneText.CharCreation[START_NEW_GAME].text;
   const newMenus = {
     u1: Menus.main,
     u2: Menus.data,
@@ -41,5 +41,9 @@ export const startNewGame = () => {
   );
   store.dispatch(Player.restoreHP());
   const actions = [UI.SHOW_STATS];
-  return { newButtons, newMenus, actions };
+  return { newText, newButtons, newMenus, actions };
+};
+
+export const nameSelected = () => {
+  return {};
 };
