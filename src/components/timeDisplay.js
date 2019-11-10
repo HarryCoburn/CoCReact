@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 
-export const TimeDisplayFunc = ({ day, hour, minute }) => {
+export const TimeDisplayFunc = props => {
   return (
     <div className="timeDisplay">
       <p>
-        Day#: {day}
+        Day#: {props.time.day}
         <br />
-        Time: {hour}:{minute}
+        Time: {props.time.hour}:{props.time.minute}
       </p>
     </div>
   );
@@ -15,9 +15,7 @@ export const TimeDisplayFunc = ({ day, hour, minute }) => {
 
 const mapStateToTimeProps = function(state) {
   return {
-    day: state.day,
-    hour: state.hour,
-    minute: state.minute
+    time: state.time
   };
 };
 

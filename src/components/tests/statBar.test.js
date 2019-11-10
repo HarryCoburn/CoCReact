@@ -39,6 +39,11 @@ describe("StatBar Component", () => {
       },
       appearance: {
         name: "Testing"
+      },
+      time: {
+        day: 1,
+        hour: 3,
+        minute: 43
       }
     });
 

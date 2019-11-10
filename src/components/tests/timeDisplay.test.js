@@ -12,9 +12,11 @@ describe("Time Display Component", () => {
 
   beforeEach(() => {
     store = mockStore({
-      day: "0",
-      minute: "12",
-      hour: "5"
+      time: {
+        day: "0",
+        minute: "12",
+        hour: "5"
+      }
     });
 
     component = renderer.create(

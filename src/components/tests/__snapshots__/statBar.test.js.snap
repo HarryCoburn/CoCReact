@@ -69,9 +69,12 @@ exports[`StatBar Component should match the snapshot 1`] = `
   >
     <p>
       Day#: 
+      1
       <br />
       Time: 
+      3
       :
+      43
     </p>
   </div>
   <div

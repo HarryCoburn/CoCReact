@@ -69,12 +69,17 @@ function appearanceReducer(appearance = iAppearance, action) {
   }
 }
 
+function timeReducer(time = iTime, action) {
+  return time;
+}
+
 const rootReducer = combineReducers({
   output: outputReducer,
   UI: uiReducer,
   stats: statsReducer,
   buttons: buttonsReducer,
-  appearance: appearanceReducer
+  appearance: appearanceReducer,
+  time: timeReducer
 });
 
 export default rootReducer;
