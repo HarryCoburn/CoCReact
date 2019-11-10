@@ -18,6 +18,7 @@ class ButtonGridClass extends React.Component {
         <WrappedButton
           key={button}
           id={button}
+          toolTip={newBtn.toolTip}
           toolTipPos={this.props.toolTipPos}
           label={newBtn.label}
           onClick={() => this.props.update(newBtn)}
