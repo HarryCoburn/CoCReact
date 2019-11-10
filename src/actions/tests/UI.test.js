@@ -16,50 +16,37 @@ describe("actions", () => {
   });
 
   it("should create an action to update the view", () => {
-    const newText = "This is a new scene";
+    const payload = "This is a new scene";
     const expectedAction = {
       type: UI.UPDATE_VIEW,
-      newText
+      payload
     };
-    expect(UI.updateView(newText)).toEqual(expectedAction);
+    expect(UI.updateView(payload)).toEqual(expectedAction);
   });
 
   it("should create an action to update the lower buttons", () => {
-    const newButtons = {};
+    const payload = {};
     const badNewButtons = "Bad buttons!";
     const expectedAction = {
       type: UI.BUTTON_CHANGE,
-      newButtons
+      payload
     };
-    expect(UI.buttonChange(newButtons)).toEqual(expectedAction);
+    expect(UI.buttonChange(payload)).toEqual(expectedAction);
     expect(() => {
       UI.buttonChange(badNewButtons);
     }).toThrow();
   });
 
   it("should create an action to update the upper menu bar", () => {
-    const newMenuButtons = {};
+    const payload = {};
     const badMenuNonArr = "Bad Array";
     const expectedAction = {
       type: UI.MENU_CHANGE,
-      newMenuButtons
+      payload
     };
-    expect(UI.menuChange(newMenuButtons)).toEqual(expectedAction);
+    expect(UI.menuChange(payload)).toEqual(expectedAction);
     expect(() => {
       UI.menuChange(badMenuNonArr);
-    }).toThrow();
-  });
-
-  it("should create an action to update the stats", () => {
-    const newStats = {};
-    const badNewStat = "Bad stats!";
-    const expectedAction = {
-      type: UI.STAT_CHANGE,
-      newStats
-    };
-    expect(UI.statChange(newStats)).toEqual(expectedAction);
-    expect(() => {
-      UI.statChange(badNewStat);
     }).toThrow();
   });
 });

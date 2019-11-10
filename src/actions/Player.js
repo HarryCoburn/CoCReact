@@ -3,35 +3,53 @@ export const STAT_CHANGE = "player/STAT_CHANGE";
 export const RESTORE_HP = "player/RESTORE_HP";
 export const SET_PLAYER_NAME = "player/SET_PLAYER_NAME";
 
-// Set player stats to a fixed number
-export function setStats(changes) {
-  if (!(changes instanceof Object) || changes === undefined) {
+/**
+ * Sends message to set a stat to a particular number
+ * Payload shape: { strength: 23 }
+ * @param {object} payload
+ * @return {object} Redux action
+ */
+export function setStats(payload) {
+  if (!(payload instanceof Object) || payload === undefined) {
     throw Error("Player.statChange did not receive an object");
   }
   return {
     type: STAT_SET,
-    changes
+    payload
   };
 }
 
-// Changes player stats by the amount given
-export function statChange(changes) {
-  if (!(changes instanceof Object) || changes === undefined) {
+/**
+ * Sends message to increase or decrease a stat by a particular number
+ * Payload shape: { strength: 8 } or { strength: -19 }
+ * @param {object} payload
+ * @return {object} Redux action
+ */
+export function statChange(payload) {
+  if (!(payload instanceof Object) || payload === undefined) {
     throw Error("UI.statChange did not receive an object");
   }
   return {
     type: STAT_CHANGE,
-    changes
+    payload
   };
 }
 
-// Restore player to maximum HP
+/**
+ * Sends message to set the hp value to equal the maxiumum
+ * @return {object} Redux action
+ */
 export function restoreHP() {
   return {
     type: RESTORE_HP
   };
 }
 
+/**
+ * Sends message to set the player name
+ * @param {string} name
+ * @return {object} Redux action
+ */
 export function setPlayerName(name) {
   return {
     type: SET_PLAYER_NAME,
