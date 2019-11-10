@@ -1,20 +1,7 @@
-import React from "react";
 import { Menus } from "../scenes/menus.js";
 
 // And we need an initial state
 const initialState = {
-  output: (
-    <>
-      <p>CoC Engine: Clean Version</p>
-      <p>
-        Original concept by Fenoxo and crew
-        <br />
-        Converted to JS/React by Matraia
-      </p>
-      <p>Version extremely early.</p>
-      <p>Click on New Game to Start </p>
-    </>
-  ),
   day: "0", //to reduce
   hour: "12", //to reduce
   minute: "00", //to reduce

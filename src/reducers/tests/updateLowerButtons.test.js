@@ -1,26 +1,5 @@
 import updateLowerButtons from "../updateLowerButtons";
-
-let buttonState = {
-  byID: {},
-  lowerIDs: [
-    "b1",
-    "b2",
-    "b3",
-    "b4",
-    "b5",
-    "b6",
-    "b7",
-    "b8",
-    "b9",
-    "b10",
-    "b11",
-    "b12",
-    "b13",
-    "b14",
-    "b15"
-  ],
-  upperIDs: ["main", "data"]
-};
+import * as UI from "../../actions/UI";
 
 let newButtons = {
   b1: {
@@ -38,18 +17,54 @@ let newButtons2 = {
 };
 
 describe("Update Lower Buttons UI Reducer", () => {
+  let buttonState;
+
+  beforeEach(() => {
+    buttonState = {
+      byID: {},
+      lowerIDs: [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15"
+      ],
+      upperIDs: ["main", "data"]
+    };
+  });
+
   it("should return the initial state", () => {
-    expect(updateLowerButtons(buttonState, {})).toEqual(buttonState);
+    expect(
+      updateLowerButtons(buttonState, { action: UI.BUTTON_CHANGE, payload: {} })
+    ).toEqual(buttonState);
   });
 
   it("should throw error if it doesn't receive an object", () => {
     expect(() => {
-      updateLowerButtons(buttonState, "Boo!");
+      updateLowerButtons(buttonState, {
+        action: UI.BUTTON_CHANGE,
+        payload: "Boo!"
+      });
     }).toThrow();
   });
 
   it("should add buttons correctly", () => {
-    expect(updateLowerButtons(buttonState, newButtons)).toEqual({
+    expect(
+      updateLowerButtons(buttonState, {
+        action: UI.BUTTON_CHANGE,
+        payload: newButtons
+      })
+    ).toEqual({
       byID: {
         b1: {
           label: "I'm a button!"
@@ -80,7 +95,16 @@ describe("Update Lower Buttons UI Reducer", () => {
   });
 
   it("should replace buttons correctly", () => {
-    expect(updateLowerButtons(buttonState, newButtons2)).toEqual({
+    buttonState = updateLowerButtons(buttonState, {
+      action: UI.BUTTON_CHANGE,
+      payload: newButtons
+    });
+    expect(
+      updateLowerButtons(buttonState, {
+        action: UI.BUTTON_CHANGE,
+        payload: newButtons2
+      })
+    ).toEqual({
       byID: {
         b1: {
           label: "I'm a new button!"
@@ -108,7 +132,13 @@ describe("Update Lower Buttons UI Reducer", () => {
   });
 
   it("should remove all buttons correctly", () => {
-    expect(updateLowerButtons(buttonState, {})).toEqual({
+    buttonState = updateLowerButtons(buttonState, {
+      action: UI.BUTTON_CHANGE,
+      payload: newButtons
+    });
+    expect(
+      updateLowerButtons(buttonState, { action: UI.BUTTON_CHANGE, payload: {} })
+    ).toEqual({
       byID: {},
       lowerIDs: [
         "b1",

@@ -1,3 +1,4 @@
+import React from "react";
 import initialState from "../store/initialState";
 import * as UI from "../actions/UI";
 import * as Player from "../actions/Player";
@@ -21,7 +22,21 @@ function uiReducer(uiState, action) {
   }
 }
 
-function outputReducer(output, action) {
+function outputReducer(
+  output = (
+    <>
+      <p>CoC Engine: Clean Version</p>
+      <p>
+        Original concept by Fenoxo and crew
+        <br />
+        Converted to JS/React by Matraia
+      </p>
+      <p>Version extremely early.</p>
+      <p>Click on New Game to Start </p>
+    </>
+  ),
+  action
+) {
   switch (action.type) {
     case UI.UPDATE_VIEW:
       return action.newText;
@@ -44,9 +59,9 @@ function statsReducer(stats, action) {
 function buttonsReducer(buttons, action) {
   switch (action.type) {
     case UI.BUTTON_CHANGE:
-      return updateLowerButtons(buttons, action.newButtons);
+      return updateLowerButtons(buttons, action);
     case UI.MENU_CHANGE:
-      return updateMenuBar(buttons, action.newMenuButtons);
+      return updateMenuBar(buttons, action);
     default:
       return buttons;
   }

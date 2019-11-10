@@ -1,10 +1,11 @@
 import * as Utils from "../utils";
 import omit from "lodash.omit";
 
-export default function updateLowerButtons(buttons, newLowerButtons) {
+export default function updateLowerButtons(buttons, action) {
+  let newLowerButtons = action.payload;
   if (newLowerButtons !== Object(newLowerButtons)) {
     throw Error(
-      "Update Lower Buttons received malfored newButtons object:" +
+      "Update Lower Buttons received malformed action payload:" +
         newLowerButtons
     );
   }

@@ -8,7 +8,7 @@ export default function updateStats(stats, action) {
     return playerHPToMax(stats);
   }
 
-  let changes = action.changes;
+  let changes = action.payload;
 
   if (changes !== Object(changes)) {
     throw Error(

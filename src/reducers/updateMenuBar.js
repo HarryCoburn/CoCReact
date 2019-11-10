@@ -1,10 +1,11 @@
 import * as Utils from "../utils";
 import omit from "lodash.omit";
 
-export default function updateMenuBar(buttons, newMenuButtons) {
+export default function updateMenuBar(buttons, action) {
+  let newMenuButtons = action.payload;
   if (newMenuButtons !== Object(newMenuButtons)) {
     throw Error(
-      "Update menu bar Buttons received malfored newMenuButtons object:" +
+      "Update menu bar Buttons received malformed newMenuButtons object:" +
         newMenuButtons
     );
   }

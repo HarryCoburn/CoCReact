@@ -24,19 +24,19 @@ describe("Update Stat UI Reducer", () => {
   describe("Player.STAT_CHANGE", () => {
     it("should return the initial state", () => {
       expect(
-        updateStats(statState, { type: Player.STAT_CHANGE, changes: {} })
+        updateStats(statState, { type: Player.STAT_CHANGE, payload: {} })
       ).toEqual(statState);
     });
 
     it("should change by given value", () => {
       statState = updateStats(statState, {
         type: Player.STAT_CHANGE,
-        changes: { strength: 50 }
+        payload: { strength: 50 }
       });
       expect(statState.byID.strength.value).toEqual(100);
       statState = updateStats(statState, {
         type: Player.STAT_CHANGE,
-        changes: { strength: -50 }
+        payload: { strength: -50 }
       });
       expect(statState.byID.strength.value).toEqual(50);
     });
@@ -44,12 +44,12 @@ describe("Update Stat UI Reducer", () => {
     it("should stay within range", () => {
       statState = updateStats(statState, {
         type: Player.STAT_CHANGE,
-        changes: { strength: -51 }
+        payload: { strength: -51 }
       });
       expect(statState.byID.strength.value).toEqual(0);
       statState = updateStats(statState, {
         type: Player.STAT_CHANGE,
-        changes: { strength: 150 }
+        payload: { strength: 150 }
       });
       expect(statState.byID.strength.value).toEqual(100);
     });
@@ -57,7 +57,7 @@ describe("Update Stat UI Reducer", () => {
     it("should ignore stat parameters that aren't in allIDs", () => {
       statState = updateStats(statState, {
         type: Player.STAT_CHANGE,
-        changes: { strength: 50, buffness: 20 }
+        payload: { strength: 50, buffness: 20 }
       });
       expect(statState.byID.strength.value).toEqual(100);
       expect(statState).toEqual({
@@ -79,7 +79,10 @@ describe("Update Stat UI Reducer", () => {
 
     it("should throw exception if an object isn't passed correctly", () => {
       expect(() => {
-        updateStats(statState, "bad entry");
+        updateStats(statState, {
+          type: Player.STAT_CHANGE,
+          payload: "Not an object"
+        });
       }).toThrow();
     });
   });
@@ -93,7 +96,7 @@ describe("Update Stat UI Reducer", () => {
     it("should explicitly set a value for a stat", () => {
       updateStats(statState, {
         type: Player.STAT_SET,
-        changes: { strength: 23 }
+        payload: { strength: 23 }
       });
       expect(statState.byID.strength.value).toEqual(23);
     });
