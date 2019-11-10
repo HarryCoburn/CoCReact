@@ -69,17 +69,6 @@ function appearanceReducer(appearance = iAppearance, action) {
   }
 }
 
-/*
-export default function rootReducer(state = {}, action) {
-  return {
-    output: outputReducer(state.output, action),
-    UI: uiReducer(state.UI, action),
-    stats: statsReducer(state.stats, action),
-    buttons: buttonsReducer(state.buttons, action),
-    appearance: appearanceReducer(state.appearance, action)
-  };
-}*/
-
 const rootReducer = combineReducers({
   output: outputReducer,
   UI: uiReducer,
