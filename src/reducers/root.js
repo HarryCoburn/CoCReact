@@ -1,13 +1,20 @@
-import React from "react";
-import initialState from "../store/initialState";
+import { combineReducers } from "redux";
+import * as Utils from "../utils";
 import * as UI from "../actions/UI";
 import * as Player from "../actions/Player";
 import updateStats from "./updateStats";
 import updateLowerButtons from "./updateLowerButtons";
 import updateMenuBar from "./updateMenuBar";
-import * as Utils from "../utils";
+import {
+  iOutput,
+  iTime,
+  iUIState,
+  iStats,
+  iButtons,
+  iAppearance
+} from "../store/initialState";
 
-function uiReducer(uiState, action) {
+function uiReducer(uiState = iUIState, action) {
   switch (action.type) {
     case UI.HIDE_STATS:
       return Utils.updateObject(uiState, { showStats: false });
@@ -22,30 +29,16 @@ function uiReducer(uiState, action) {
   }
 }
 
-function outputReducer(
-  output = (
-    <>
-      <p>CoC Engine: Clean Version</p>
-      <p>
-        Original concept by Fenoxo and crew
-        <br />
-        Converted to JS/React by Matraia
-      </p>
-      <p>Version extremely early.</p>
-      <p>Click on New Game to Start </p>
-    </>
-  ),
-  action
-) {
+function outputReducer(output = iOutput, action) {
   switch (action.type) {
     case UI.UPDATE_VIEW:
-      return action.newText;
+      return action.payload;
     default:
       return output;
   }
 }
 
-function statsReducer(stats, action) {
+function statsReducer(stats = iStats, action) {
   switch (action.type) {
     case Player.STAT_CHANGE:
     case Player.STAT_SET:
@@ -56,7 +49,7 @@ function statsReducer(stats, action) {
   }
 }
 
-function buttonsReducer(buttons, action) {
+function buttonsReducer(buttons = iButtons, action) {
   switch (action.type) {
     case UI.BUTTON_CHANGE:
       return updateLowerButtons(buttons, action);
@@ -67,7 +60,7 @@ function buttonsReducer(buttons, action) {
   }
 }
 
-function appearanceReducer(appearance, action) {
+function appearanceReducer(appearance = iAppearance, action) {
   switch (action.type) {
     case Player.SET_PLAYER_NAME:
       return { ...appearance, name: action.payload };
@@ -76,7 +69,8 @@ function appearanceReducer(appearance, action) {
   }
 }
 
-export default function rootReducer(state = initialState, action) {
+/*
+export default function rootReducer(state = {}, action) {
   return {
     output: outputReducer(state.output, action),
     UI: uiReducer(state.UI, action),
@@ -84,4 +78,14 @@ export default function rootReducer(state = initialState, action) {
     buttons: buttonsReducer(state.buttons, action),
     appearance: appearanceReducer(state.appearance, action)
   };
-}
+}*/
+
+const rootReducer = combineReducers({
+  output: outputReducer,
+  UI: uiReducer,
+  stats: statsReducer,
+  buttons: buttonsReducer,
+  appearance: appearanceReducer
+});
+
+export default rootReducer;
