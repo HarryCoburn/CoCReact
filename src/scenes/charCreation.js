@@ -1,7 +1,7 @@
 import SceneText from "./sceneTextStore";
 import { Menus } from "./menus";
 import { NAME_SELECTED, START_NEW_GAME } from "./sceneSymbols";
-import * as UI from "../actions/UI";
+import * as Core from "../actions/Core";
 import store from "../store/store";
 import * as Player from "../actions/Player";
 
@@ -40,7 +40,7 @@ export const startNewGame = () => {
     })
   );
   store.dispatch(Player.restoreHP());
-  const actions = [UI.SHOW_STATS];
+  const actions = [Core.SHOW_STATS];
   return { newText, newButtons, newMenus, actions };
 };
 

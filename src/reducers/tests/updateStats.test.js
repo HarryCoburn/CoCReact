@@ -92,10 +92,10 @@ describe("Update Stat UI Reducer", () => {
       expect(statState.byID.hp.value).toEqual(statState.byID.hp.max);
     });
   });
-  describe("Player.STAT_SET", () => {
+  describe("Player.SET_STATS", () => {
     it("should explicitly set a value for a stat", () => {
       updateStats(statState, {
-        type: Player.STAT_SET,
+        type: Player.SET_STATS,
         payload: { strength: 23 }
       });
       expect(statState.byID.strength.value).toEqual(23);

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import * as Utils from "../utils";
-import * as UI from "../actions/UI";
+import * as Core from "../actions/Core";
 import * as Player from "../actions/Player";
 import updateStats from "./updateStats";
 import updateLowerButtons from "./updateLowerButtons";
@@ -17,13 +17,13 @@ import {
 
 function uiReducer(uiState = iUIState, action) {
   switch (action.type) {
-    case UI.HIDE_STATS:
+    case Core.HIDE_STATS:
       return Utils.updateObject(uiState, { showStats: false });
-    case UI.SHOW_STATS:
+    case Core.SHOW_STATS:
       return Utils.updateObject(uiState, { showStats: true });
-    case UI.HIDE_MENU_BAR:
+    case Core.HIDE_MENU_BAR:
       return Utils.updateObject(uiState, { showMenuBar: false });
-    case UI.SHOW_MENU_BAR:
+    case Core.SHOW_MENU_BAR:
       return Utils.updateObject(uiState, { showMenuBar: true });
     default:
       return uiState;
@@ -32,7 +32,7 @@ function uiReducer(uiState = iUIState, action) {
 
 function outputReducer(output = iOutput, action) {
   switch (action.type) {
-    case UI.UPDATE_VIEW:
+    case Core.UPDATE_VIEW:
       return action.payload;
     default:
       return output;
@@ -42,7 +42,7 @@ function outputReducer(output = iOutput, action) {
 function statsReducer(stats = iStats, action) {
   switch (action.type) {
     case Player.UPDATE_STATS:
-    case Player.STAT_SET:
+    case Player.SET_STATS:
     case Player.RESTORE_HP:
       return updateStats(stats, action);
     default:
@@ -52,9 +52,9 @@ function statsReducer(stats = iStats, action) {
 
 function buttonsReducer(buttons = iButtons, action) {
   switch (action.type) {
-    case UI.UPDATE_BUTTONS:
+    case Core.UPDATE_BUTTONS:
       return updateLowerButtons(buttons, action);
-    case UI.UPDATE_MENUS:
+    case Core.UPDATE_MENUS:
       return updateMenuBar(buttons, action);
     default:
       return buttons;
@@ -72,7 +72,7 @@ function appearanceReducer(appearance = iAppearance, action) {
 
 function timeReducer(time = iTime, action) {
   switch (action.type) {
-    case UI.UPDATE_TIME:
+    case Core.UPDATE_TIME:
       return updateTime(time, action);
     default:
       return time;

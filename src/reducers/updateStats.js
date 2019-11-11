@@ -1,5 +1,6 @@
 import * as Utils from "../utils";
 import * as Player from "../actions/Player";
+import * as Core from "../actions/Core";
 
 export default function updateStats(stats, action) {
   let type = action.type;
@@ -37,9 +38,9 @@ export default function updateStats(stats, action) {
 
 function statChoose(stat, change, type) {
   switch (type) {
-    case Player.UPDATE_STATS:
+    case Core.UPDATE_STATS:
       return changeStat(stat, change);
-    case Player.STAT_SET:
+    case Core.SET_STATS:
       return change;
     default:
       throw Error("Received bad type in statChoose: " + type);
