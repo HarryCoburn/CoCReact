@@ -14,6 +14,7 @@ class StatDisplay extends React.Component {
           value={newStat.value}
           max={newStat.max}
           displayMax={newStat.displayMax}
+          arrow={newStat.arrow}
         />
       );
     });

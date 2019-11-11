@@ -17,6 +17,9 @@ Array [
          
       </p>
     </div>
+    <div
+      className="statUpDown"
+    />
   </div>,
   <div
     className="statFrame"
@@ -33,6 +36,9 @@ Array [
          
       </p>
     </div>
+    <div
+      className="statUpDown"
+    />
   </div>,
 ]
 `;

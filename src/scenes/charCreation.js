@@ -45,5 +45,16 @@ export const startNewGame = () => {
 };
 
 export const nameSelected = () => {
-  return {};
+  let newStats = {
+    strength: 30
+  };
+  const newButtons = {
+    b1: {
+      id: "b1",
+      label: "Confirm Name",
+      toolTip: "Click to confirm name",
+      nextScene: NAME_SELECTED
+    }
+  };
+  return { newButtons, newStats };
 };

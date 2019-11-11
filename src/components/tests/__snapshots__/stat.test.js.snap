@@ -16,5 +16,8 @@ exports[`Stat Component renders correctly 1`] = `
        
     </p>
   </div>
+  <div
+    className="statUpDown"
+  />
 </div>
 `;

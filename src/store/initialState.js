@@ -11,49 +11,49 @@ export const iStats = {
     strength: {
       id: "strength",
       name: "Strength",
-      value: 100,
+      value: 0,
       max: 100,
       min: 0
     },
     toughness: {
       id: "toughness",
       name: "Toughness",
-      value: 100,
+      value: 0,
       max: 100,
       min: 0
     },
     speed: {
       id: "speed",
       name: "Speed",
-      value: 100,
+      value: 0,
       max: 100,
       min: 0
     },
     intelligence: {
       id: "intelligence",
       name: "Intelligence",
-      value: 100,
+      value: 0,
       max: 100,
       min: 0
     },
     libido: {
       id: "libido",
       name: "Libido",
-      value: 100,
+      value: 0,
       max: 100,
       min: 0
     },
     sensitivity: {
       id: "sensitivity",
       name: "Sensitivity",
-      value: 100,
+      value: 0,
       max: 100,
       min: 0
     },
     corruption: {
       id: "corruption",
       name: "Corruption",
-      value: 100,
+      value: 0,
       max: 100,
       min: 0
     },
@@ -68,7 +68,7 @@ export const iStats = {
     lust: {
       id: "lust",
       name: "Lust",
-      value: 100,
+      value: 0,
       max: 100,
       min: 0,
       displayMax: true
@@ -76,7 +76,7 @@ export const iStats = {
     fatigue: {
       id: "fatigue",
       name: "Fatigue",
-      value: 100,
+      value: 0,
       max: 100,
       min: 0,
       displayMax: true
@@ -84,7 +84,7 @@ export const iStats = {
     hunger: {
       id: "hunger",
       name: "Hunger",
-      value: 100,
+      value: 0,
       max: 100,
       min: 0,
       displayMax: true

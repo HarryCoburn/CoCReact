@@ -99,6 +99,27 @@ h2 {
   overflow-x: visible;
 }
 
+.statUpDown {
+  float: inherit;
+  position: relative;
+  left: 165px;
+  bottom: 22px;
+  height: 24px;
+  width: 24px;
+}
+
+.statUpDown.up {
+  background-image: url(assets/arrow-up.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.statUpDown.down {
+  background-image: url(assets/arrow-down.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .timeDisplay {
   padding-top: 5px;
   padding-left: 10px;

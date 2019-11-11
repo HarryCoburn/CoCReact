@@ -16,6 +16,12 @@ export default function updateStats(stats, action) {
     );
   }
 
+  /*
+  if (!Object.keys(changes).length) {
+    return stats;
+  }
+  */
+
   let newStats = Utils.updateObject({}, stats);
 
   newStats.allIDs.forEach(id => {
