@@ -5,6 +5,7 @@ import * as Player from "../actions/Player";
 import updateStats from "./updateStats";
 import updateLowerButtons from "./updateLowerButtons";
 import updateMenuBar from "./updateMenuBar";
+import updateTime from "./updateTime";
 import {
   iOutput,
   iTime,
@@ -70,7 +71,12 @@ function appearanceReducer(appearance = iAppearance, action) {
 }
 
 function timeReducer(time = iTime, action) {
-  return time;
+  switch (action.type) {
+    case UI.UPDATE_TIME:
+      return updateTime(time, action);
+    default:
+      return time;
+  }
 }
 
 const rootReducer = combineReducers({

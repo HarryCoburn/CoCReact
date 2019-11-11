@@ -9,6 +9,14 @@ export const HIDE_STATS = "HIDE_STATS";
 export const SHOW_STATS = "SHOW_STATS";
 export const HIDE_MENU_BAR = "HIDE_MENU_BAR";
 export const SHOW_MENU_BAR = "SHOW_MENU_BAR";
+export const UPDATE_TIME = "UPDATE_TIME";
+
+export function updateTime(payload) {
+  return {
+    type: UPDATE_TIME,
+    payload: payload
+  };
+}
 
 /**
  * Message sender for certain simple UI actions,

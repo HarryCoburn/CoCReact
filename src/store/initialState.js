@@ -195,9 +195,9 @@ export const iAppearance = {
 };
 
 export const iTime = {
-  day: "0", //to reduce
-  hour: "12", //to reduce
-  minute: "00" //to reduce
+  day: 0, //to reduce
+  hour: 12, //to reduce
+  minute: 0 //to reduce
 };
 
 export const iOutput = (
