@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import * as Utils from "../utils";
-import * as Core from "../actions/Core";
+import * as CoreMsg from "../actions/coreMsg";
 import * as Player from "../actions/Player";
 import updateStats from "./updateStats";
 import updateLowerButtons from "./updateLowerButtons";
@@ -17,13 +17,13 @@ import {
 
 function uiReducer(uiState = iUIState, action) {
   switch (action.type) {
-    case Core.HIDE_STATS:
+    case CoreMsg.HIDE_STATS:
       return Utils.updateObject(uiState, { showStats: false });
-    case Core.SHOW_STATS:
+    case CoreMsg.SHOW_STATS:
       return Utils.updateObject(uiState, { showStats: true });
-    case Core.HIDE_MENU_BAR:
+    case CoreMsg.HIDE_MENU_BAR:
       return Utils.updateObject(uiState, { showMenuBar: false });
-    case Core.SHOW_MENU_BAR:
+    case CoreMsg.SHOW_MENU_BAR:
       return Utils.updateObject(uiState, { showMenuBar: true });
     default:
       return uiState;
@@ -32,7 +32,7 @@ function uiReducer(uiState = iUIState, action) {
 
 function outputReducer(output = iOutput, action) {
   switch (action.type) {
-    case Core.UPDATE_VIEW:
+    case CoreMsg.UPDATE_VIEW:
       return action.payload;
     default:
       return output;
@@ -41,8 +41,8 @@ function outputReducer(output = iOutput, action) {
 
 function statsReducer(stats = iStats, action) {
   switch (action.type) {
-    case Player.UPDATE_STATS:
-    case Player.SET_STATS:
+    case CoreMsg.UPDATE_STATS:
+    case CoreMsg.SET_STATS:
     case Player.RESTORE_HP:
       return updateStats(stats, action);
     default:
@@ -52,9 +52,9 @@ function statsReducer(stats = iStats, action) {
 
 function buttonsReducer(buttons = iButtons, action) {
   switch (action.type) {
-    case Core.UPDATE_BUTTONS:
+    case CoreMsg.UPDATE_BUTTONS:
       return updateLowerButtons(buttons, action);
-    case Core.UPDATE_MENUS:
+    case CoreMsg.UPDATE_MENUS:
       return updateMenuBar(buttons, action);
     default:
       return buttons;
@@ -72,7 +72,7 @@ function appearanceReducer(appearance = iAppearance, action) {
 
 function timeReducer(time = iTime, action) {
   switch (action.type) {
-    case Core.UPDATE_TIME:
+    case CoreMsg.UPDATE_TIME:
       return updateTime(time, action);
     default:
       return time;

@@ -1,20 +1,8 @@
 // The core of the engine
 import SceneFuncs from "../scenes/sceneFunctions";
 import store from "../store/store";
-
+import * as CoreMsg from "./coreMsg";
 // Here are our actions
-export const UPDATE_VIEW = Symbol("UPDATE_VIEW");
-export const UPDATE_BUTTONS = Symbol("UPDATE_BUTTONS");
-export const UPDATE_STATS = Symbol("UPDATE_STATS");
-export const SET_STATS = Symbol("SET_STATS");
-export const UPDATE_MENUS = Symbol("UPDATE_MENUS");
-export const UPDATE_TIME = Symbol("UPDATE_TIME");
-
-export const HIDE_STATS = Symbol("HIDE_STATS");
-export const SHOW_STATS = Symbol("SHOW_STATS");
-
-export const HIDE_MENU_BAR = Symbol("HIDE_MENU_BAR");
-export const SHOW_MENU_BAR = Symbol("SHOW_MENU_BAR");
 
 /**
  * Takes a scene noun, calls its matching function,
@@ -68,7 +56,7 @@ export function fetchScene(scene) {
 
 export function updateTime(payload) {
   return {
-    type: UPDATE_TIME,
+    type: CoreMsg.UPDATE_TIME,
     payload: payload
   };
 }
@@ -81,25 +69,25 @@ export function updateTime(payload) {
  */
 export function actionSelect(action) {
   switch (action) {
-    case HIDE_STATS:
+    case CoreMsg.HIDE_STATS:
       return {
-        type: HIDE_STATS
+        type: CoreMsg.HIDE_STATS
       };
-    case SHOW_STATS:
+    case CoreMsg.SHOW_STATS:
       return {
-        type: SHOW_STATS
+        type: CoreMsg.SHOW_STATS
       };
-    case HIDE_MENU_BAR:
+    case CoreMsg.HIDE_MENU_BAR:
       return {
-        type: HIDE_MENU_BAR
+        type: CoreMsg.HIDE_MENU_BAR
       };
-    case SHOW_MENU_BAR:
+    case CoreMsg.SHOW_MENU_BAR:
       return {
-        type: SHOW_MENU_BAR
+        type: CoreMsg.SHOW_MENU_BAR
       };
     default:
       throw Error(
-        "Attempted to send an action to UI.actionSelect that isn't in the switch case. Confirm you're sending the right actions!"
+        "Attempted to send an action to Core.actionSelect that isn't in the switch case. Confirm you're sending the right actions!"
       );
   }
 }
@@ -111,7 +99,7 @@ export function actionSelect(action) {
  */
 export function updateView(payload) {
   return {
-    type: UPDATE_VIEW,
+    type: CoreMsg.UPDATE_VIEW,
     payload
   };
 }
@@ -129,7 +117,7 @@ export function buttonChange(payload) {
   }
   //TODO Check for all required button properties before sending message
   return {
-    type: UPDATE_BUTTONS,
+    type: CoreMsg.UPDATE_BUTTONS,
     payload
   };
 }
@@ -147,7 +135,7 @@ export function menuChange(payload) {
   }
   //TODO Check for all required button properties before sending message
   return {
-    type: UPDATE_MENUS,
+    type: CoreMsg.UPDATE_MENUS,
     payload
   };
 }
@@ -163,7 +151,7 @@ export function setStats(payload) {
     throw Error("Player.statChange did not receive an object");
   }
   return {
-    type: SET_STATS,
+    type: CoreMsg.SET_STATS,
     payload
   };
 }
@@ -179,7 +167,7 @@ export function statChange(payload) {
     throw Error("UI.statChange did not receive an object");
   }
   return {
-    type: UPDATE_STATS,
+    type: CoreMsg.UPDATE_STATS,
     payload
   };
 }

@@ -1,6 +1,7 @@
 import SceneText from "./sceneTextStore";
 import { Menus } from "./menus";
 import { NAME_SELECTED, START_NEW_GAME } from "./sceneSymbols";
+import * as CoreMsg from "../actions/coreMsg";
 import * as Core from "../actions/Core";
 import store from "../store/store";
 import * as Player from "../actions/Player";
@@ -21,7 +22,7 @@ export const startNewGame = () => {
     u3: Menus.level
   };
   store.dispatch(
-    Player.setStats({
+    Core.setStats({
       strength: 15,
       toughness: 15,
       speed: 15,
@@ -40,7 +41,7 @@ export const startNewGame = () => {
     })
   );
   store.dispatch(Player.restoreHP());
-  const actions = [Core.SHOW_STATS];
+  const actions = [CoreMsg.SHOW_STATS];
   return { newText, newButtons, newMenus, actions };
 };
 

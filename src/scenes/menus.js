@@ -1,4 +1,4 @@
-import * as Core from "../actions/Core";
+import * as CoreMsg from "../actions/coreMsg";
 import Scenes from "./sceneTextStore";
 import { START_NEW_GAME, DATA_MENU, MAIN_MENU } from "./sceneSymbols";
 
@@ -7,7 +7,7 @@ export function mainMenu() {
     u1: Menus.main,
     u2: Menus.data
   };
-  let actions = [Core.HIDE_STATS, Core.SHOW_MENU_BAR];
+  let actions = [CoreMsg.HIDE_STATS, CoreMsg.SHOW_MENU_BAR];
   return { newMenus, actions };
 }
 
