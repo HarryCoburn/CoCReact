@@ -28,7 +28,7 @@ describe("actions", () => {
     const payload = {};
     const badNewButtons = "Bad buttons!";
     const expectedAction = {
-      type: UI.BUTTON_CHANGE,
+      type: UI.UPDATE_BUTTONS,
       payload
     };
     expect(UI.buttonChange(payload)).toEqual(expectedAction);
@@ -41,7 +41,7 @@ describe("actions", () => {
     const payload = {};
     const badMenuNonArr = "Bad Array";
     const expectedAction = {
-      type: UI.MENU_CHANGE,
+      type: UI.UPDATE_MENUS,
       payload
     };
     expect(UI.menuChange(payload)).toEqual(expectedAction);

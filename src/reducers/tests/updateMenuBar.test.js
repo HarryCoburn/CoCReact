@@ -6,7 +6,7 @@ let buttonState = { byID: {}, upperIDs: ["b1", "b2", "b3"] };
 describe("Update Upper Menu Bar", () => {
   it("should return the initial state from empty start", () => {
     expect(
-      updateMenuBar(buttonState, { action: UI.MENU_CHANGE, payload: {} })
+      updateMenuBar(buttonState, { action: UI.UPDATE_MENUS, payload: {} })
     ).toEqual({
       byID: {},
       upperIDs: ["b1", "b2", "b3"]
@@ -16,7 +16,7 @@ describe("Update Upper Menu Bar", () => {
   it("should add menu correctly", () => {
     expect(
       updateMenuBar(buttonState, {
-        action: UI.MENU_CHANGE,
+        action: UI.UPDATE_MENUS,
         payload: { b1: { label: "main" } }
       })
     ).toEqual({
@@ -29,7 +29,7 @@ describe("Update Upper Menu Bar", () => {
 
   it("should delete menus correctly", () => {
     expect(
-      updateMenuBar(buttonState, { action: UI.MENU_CHANGE, payload: {} })
+      updateMenuBar(buttonState, { action: UI.UPDATE_MENUS, payload: {} })
     ).toEqual({
       byID: {},
       upperIDs: ["b1", "b2", "b3"]
@@ -38,12 +38,12 @@ describe("Update Upper Menu Bar", () => {
 
   it("should replace menus correctly", () => {
     updateMenuBar(buttonState, {
-      action: UI.MENU_CHANGE,
+      action: UI.UPDATE_MENUS,
       payload: { b1: { label: "main" } }
     });
     expect(
       updateMenuBar(buttonState, {
-        action: UI.MENU_CHANGE,
+        action: UI.UPDATE_MENUS,
         payload: { b1: { label: "perks" } }
       })
     ).toEqual({

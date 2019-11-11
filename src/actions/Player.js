@@ -1,5 +1,5 @@
 export const STAT_SET = "player/STAT_SET";
-export const STAT_CHANGE = "player/STAT_CHANGE";
+export const UPDATE_STATS = "player/UPDATE_STATS";
 export const RESTORE_HP = "player/RESTORE_HP";
 export const SET_PLAYER_NAME = "player/SET_PLAYER_NAME";
 
@@ -30,7 +30,7 @@ export function statChange(payload) {
     throw Error("UI.statChange did not receive an object");
   }
   return {
-    type: STAT_CHANGE,
+    type: UPDATE_STATS,
     payload
   };
 }

@@ -97,7 +97,7 @@ describe("Testing rootReducer", () => {
     xit("should return changed stat value", () => {
       expect(
         rootReducer(mockState, {
-          type: UI.STAT_CHANGE,
+          type: UI.UPDATE_STATS,
           newStat: { strength: 100 }
         })
       ).toEqual({
@@ -124,7 +124,7 @@ describe("Testing rootReducer", () => {
     xit("should return changed button values", () => {
       expect(
         rootReducer(mockState, {
-          type: UI.BUTTON_CHANGE,
+          type: UI.UPDATE_BUTTONS,
           newButtons: { lower: { label: "newLower" } }
         })
       ).toEqual({
@@ -147,7 +147,7 @@ describe("Testing rootReducer", () => {
 
       expect(
         rootReducer(mockState, {
-          type: UI.MENU_CHANGE,
+          type: UI.UPDATE_MENUS,
           newMenuButtons: { upper: { label: "newUpper" } }
         })
       ).toEqual({

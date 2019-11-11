@@ -45,14 +45,17 @@ describe("Update Lower Buttons UI Reducer", () => {
 
   it("should return the initial state", () => {
     expect(
-      updateLowerButtons(buttonState, { action: UI.BUTTON_CHANGE, payload: {} })
+      updateLowerButtons(buttonState, {
+        action: UI.UPDATE_BUTTONS,
+        payload: {}
+      })
     ).toEqual(buttonState);
   });
 
   it("should throw error if it doesn't receive an object", () => {
     expect(() => {
       updateLowerButtons(buttonState, {
-        action: UI.BUTTON_CHANGE,
+        action: UI.UPDATE_BUTTONS,
         payload: "Boo!"
       });
     }).toThrow();
@@ -61,7 +64,7 @@ describe("Update Lower Buttons UI Reducer", () => {
   it("should add buttons correctly", () => {
     expect(
       updateLowerButtons(buttonState, {
-        action: UI.BUTTON_CHANGE,
+        action: UI.UPDATE_BUTTONS,
         payload: newButtons
       })
     ).toEqual({
@@ -96,12 +99,12 @@ describe("Update Lower Buttons UI Reducer", () => {
 
   it("should replace buttons correctly", () => {
     buttonState = updateLowerButtons(buttonState, {
-      action: UI.BUTTON_CHANGE,
+      action: UI.UPDATE_BUTTONS,
       payload: newButtons
     });
     expect(
       updateLowerButtons(buttonState, {
-        action: UI.BUTTON_CHANGE,
+        action: UI.UPDATE_BUTTONS,
         payload: newButtons2
       })
     ).toEqual({
@@ -133,11 +136,14 @@ describe("Update Lower Buttons UI Reducer", () => {
 
   it("should remove all buttons correctly", () => {
     buttonState = updateLowerButtons(buttonState, {
-      action: UI.BUTTON_CHANGE,
+      action: UI.UPDATE_BUTTONS,
       payload: newButtons
     });
     expect(
-      updateLowerButtons(buttonState, { action: UI.BUTTON_CHANGE, payload: {} })
+      updateLowerButtons(buttonState, {
+        action: UI.UPDATE_BUTTONS,
+        payload: {}
+      })
     ).toEqual({
       byID: {},
       lowerIDs: [

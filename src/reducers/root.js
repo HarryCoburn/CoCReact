@@ -41,7 +41,7 @@ function outputReducer(output = iOutput, action) {
 
 function statsReducer(stats = iStats, action) {
   switch (action.type) {
-    case Player.STAT_CHANGE:
+    case Player.UPDATE_STATS:
     case Player.STAT_SET:
     case Player.RESTORE_HP:
       return updateStats(stats, action);
@@ -52,9 +52,9 @@ function statsReducer(stats = iStats, action) {
 
 function buttonsReducer(buttons = iButtons, action) {
   switch (action.type) {
-    case UI.BUTTON_CHANGE:
+    case UI.UPDATE_BUTTONS:
       return updateLowerButtons(buttons, action);
-    case UI.MENU_CHANGE:
+    case UI.UPDATE_MENUS:
       return updateMenuBar(buttons, action);
     default:
       return buttons;

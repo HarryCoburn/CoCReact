@@ -1,15 +1,15 @@
 // Consider moving all this to Core.js?
 
 // Here are our actions
-export const UPDATE_VIEW = "UPDATE_VIEW";
-export const BUTTON_CHANGE = "BUTTON_CHANGE";
-export const STAT_CHANGE = "STAT_CHANGE";
-export const MENU_CHANGE = "MENU_CHANGE";
-export const HIDE_STATS = "HIDE_STATS";
-export const SHOW_STATS = "SHOW_STATS";
-export const HIDE_MENU_BAR = "HIDE_MENU_BAR";
-export const SHOW_MENU_BAR = "SHOW_MENU_BAR";
-export const UPDATE_TIME = "UPDATE_TIME";
+export const UPDATE_VIEW = Symbol("UPDATE_VIEW");
+export const UPDATE_BUTTONS = Symbol("UPDATE_BUTTONS");
+export const UPDATE_STATS = Symbol("UPDATE_STATS");
+export const UPDATE_MENUS = Symbol("UPDATE_MENUS");
+export const HIDE_STATS = Symbol("HIDE_STATS");
+export const SHOW_STATS = Symbol("SHOW_STATS");
+export const HIDE_MENU_BAR = Symbol("HIDE_MENU_BAR");
+export const SHOW_MENU_BAR = Symbol("SHOW_MENU_BAR");
+export const UPDATE_TIME = Symbol("UPDATE_TIME");
 
 export function updateTime(payload) {
   return {
@@ -74,7 +74,7 @@ export function buttonChange(payload) {
   }
   //TODO Check for all required button properties before sending message
   return {
-    type: BUTTON_CHANGE,
+    type: UPDATE_BUTTONS,
     payload
   };
 }
@@ -92,7 +92,7 @@ export function menuChange(payload) {
   }
   //TODO Check for all required button properties before sending message
   return {
-    type: MENU_CHANGE,
+    type: UPDATE_MENUS,
     payload
   };
 }

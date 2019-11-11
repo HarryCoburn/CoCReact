@@ -21,21 +21,21 @@ describe("Update Stat UI Reducer", () => {
       allIDs: ["strength", "hp"]
     };
   });
-  describe("Player.STAT_CHANGE", () => {
+  describe("Player.UPDATE_STATS", () => {
     it("should return the initial state", () => {
       expect(
-        updateStats(statState, { type: Player.STAT_CHANGE, payload: {} })
+        updateStats(statState, { type: Player.UPDATE_STATS, payload: {} })
       ).toEqual(statState);
     });
 
     it("should change by given value", () => {
       statState = updateStats(statState, {
-        type: Player.STAT_CHANGE,
+        type: Player.UPDATE_STATS,
         payload: { strength: 50 }
       });
       expect(statState.byID.strength.value).toEqual(100);
       statState = updateStats(statState, {
-        type: Player.STAT_CHANGE,
+        type: Player.UPDATE_STATS,
         payload: { strength: -50 }
       });
       expect(statState.byID.strength.value).toEqual(50);
@@ -43,12 +43,12 @@ describe("Update Stat UI Reducer", () => {
 
     it("should stay within range", () => {
       statState = updateStats(statState, {
-        type: Player.STAT_CHANGE,
+        type: Player.UPDATE_STATS,
         payload: { strength: -51 }
       });
       expect(statState.byID.strength.value).toEqual(0);
       statState = updateStats(statState, {
-        type: Player.STAT_CHANGE,
+        type: Player.UPDATE_STATS,
         payload: { strength: 150 }
       });
       expect(statState.byID.strength.value).toEqual(100);
@@ -56,7 +56,7 @@ describe("Update Stat UI Reducer", () => {
 
     it("should ignore stat parameters that aren't in allIDs", () => {
       statState = updateStats(statState, {
-        type: Player.STAT_CHANGE,
+        type: Player.UPDATE_STATS,
         payload: { strength: 50, buffness: 20 }
       });
       expect(statState.byID.strength.value).toEqual(100);
@@ -80,7 +80,7 @@ describe("Update Stat UI Reducer", () => {
     it("should throw exception if an object isn't passed correctly", () => {
       expect(() => {
         updateStats(statState, {
-          type: Player.STAT_CHANGE,
+          type: Player.UPDATE_STATS,
           payload: "Not an object"
         });
       }).toThrow();

@@ -37,7 +37,7 @@ export default function updateStats(stats, action) {
 
 function statChoose(stat, change, type) {
   switch (type) {
-    case Player.STAT_CHANGE:
+    case Player.UPDATE_STATS:
       return changeStat(stat, change);
     case Player.STAT_SET:
       return change;
