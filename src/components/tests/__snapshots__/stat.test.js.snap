@@ -6,6 +6,11 @@ exports[`Stat Component renders correctly 1`] = `
 >
   <div
     className="statGradient"
+    style={
+      Object {
+        "width": "50%",
+      }
+    }
   >
     <p
       className="statLabel"

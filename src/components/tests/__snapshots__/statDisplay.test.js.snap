@@ -7,6 +7,11 @@ Array [
   >
     <div
       className="statGradient"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
     >
       <p
         className="statLabel"
@@ -26,6 +31,11 @@ Array [
   >
     <div
       className="statGradient"
+      style={
+        Object {
+          "width": "75%",
+        }
+      }
     >
       <p
         className="statLabel"

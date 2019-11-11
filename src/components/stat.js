@@ -29,7 +29,14 @@ class Stat extends React.Component {
   render() {
     return (
       <div key={this.props.name} className="statFrame">
-        <div className="statGradient">
+        <div
+          className="statGradient"
+          style={{
+            width:
+              Math.floor((this.props.value / this.props.max) * this.props.max) +
+              "%"
+          }}
+        >
           <p className="statLabel">
             {this.props.name}: {this.props.value}{" "}
             {this.props.displayMax && `/ ${this.props.max}`}
