@@ -1,5 +1,5 @@
 import React from "react";
-import { Menus } from "../scenes/menus.js";
+import { START_NEW_GAME, DATA_MENU } from "../scenes/sceneSymbols";
 
 export const iUIState = {
   showStats: false,
@@ -157,8 +157,18 @@ export const iStats = {
 
 export const iButtons = {
   byID: {
-    u1: Menus.main,
-    u2: Menus.data
+    u1: {
+      id: "main",
+      label: "New Game",
+      toolTip: "Start a new game.",
+      nextScene: START_NEW_GAME
+    },
+    u2: {
+      id: "data",
+      label: "Data",
+      toolTip: "Save or load your files.",
+      nextScene: DATA_MENU
+    }
   },
   lowerIDs: [
     "b1",
