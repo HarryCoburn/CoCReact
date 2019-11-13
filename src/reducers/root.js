@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import * as Utils from "../utils";
 import * as CoreMsg from "../actions/coreMsg";
-import * as Player from "../actions/Player";
+import * as PlayerMsg from "../actions/playerMsg";
 import * as EngineMsg from "../actions/engineMsg";
 import updateStats from "./updateStats";
 import updateLowerButtons from "./updateLowerButtons";
@@ -57,7 +57,7 @@ function statsReducer(stats = iStats, action) {
       });
     case CoreMsg.UPDATE_STATS:
     case CoreMsg.SET_STATS:
-    case Player.RESTORE_HP:
+    case PlayerMsg.RESTORE_HP:
       return updateStats(stats, action);
     default:
       return stats;
@@ -85,7 +85,7 @@ function appearanceReducer(appearance = iAppearance, action) {
       return Utils.updateObject(appearance, {
         ...action.payload.appearance
       });
-    case Player.SET_PLAYER_NAME:
+    case PlayerMsg.SET_PLAYER_NAME:
       return { ...appearance, name: action.payload };
     default:
       return appearance;

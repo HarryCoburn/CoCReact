@@ -1,23 +1,23 @@
-import * as CoreMsg from "../actions/coreMsg";
+import * as Core from "../actions/Core";
 import { START_NEW_GAME, DATA_MENU, MAIN_MENU, GO_BACK } from "./sceneSymbols";
-import store from "../store/store";
 
 export function mainMenu(store) {
-  console.log("We've entred the main menu...");
-  const prevState = store.getState();
-  const newMenus = {
+  Core.storeState();
+  Core.changeMenus({
     u1: MenuButtons.goBack,
     u2: MenuButtons.data
-  };
-  let actions = [CoreMsg.HIDE_STATS, CoreMsg.SHOW_MENU_BAR];
-  return { newMenus, actions, prevState };
+  });
+  Core.hideStatBar();
+  Core.showMenuBar();
+
+  return;
 }
 
 export function dataMenu() {
-  const newMenus = {
+  Core.changeMenus({
     u2: MenuButtons.data
-  };
-  const newButtons = {
+  });
+  Core.changeButtons({
     b1: {
       id: "b1",
       label: "Go back to Main Menu",
@@ -28,18 +28,16 @@ export function dataMenu() {
       label: "Go back to Main Menu",
       nextScene: MAIN_MENU
     }
-  };
-  return { newMenus, newButtons };
+  });
+
+  return;
 }
 
+/*
 export function goBack() {
-  let oldStore = store.getState();
-  console.log(oldStore.engine.prevState);
-  store.dispatch({
-    type: CoreMsg.GO_BACK,
-    payload: oldStore.engine.prevState
-  });
+  Core.goBack();
 }
+*/
 
 export const MenuButtons = {
   newGame: {

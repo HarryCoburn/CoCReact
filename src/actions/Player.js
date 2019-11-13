@@ -1,15 +1,17 @@
-export const RESTORE_HP = Symbol("player/RESTORE_HP");
-export const SET_PLAYER_NAME = Symbol("player/SET_PLAYER_NAME");
+import store from "../store/store";
+import * as PlayerMsg from "./playerMsg";
 
 /**
  * Sends message to set the hp value to equal the maxiumum
  * @return {object} Redux action
  */
-export function restoreHP() {
+function _restoreHP() {
   return {
-    type: RESTORE_HP
+    type: PlayerMsg.RESTORE_HP
   };
 }
+
+export const restoreHP = () => store.dispatch(_restoreHP());
 
 /**
  * Sends message to set the player name
@@ -18,7 +20,7 @@ export function restoreHP() {
  */
 export function setPlayerName(name) {
   return {
-    type: SET_PLAYER_NAME,
+    type: PlayerMsg.SET_PLAYER_NAME,
     payload: name
   };
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import WrappedButton from "./buttonWrap.js";
-import * as Core from "../actions/Core";
+import * as Engine from "../actions/Engine";
 
 class ButtonGridClass extends React.Component {
   buttons = () =>
@@ -46,7 +46,7 @@ const mapDispatchToButtonProps = dispatch => {
         console.log("Something tried to dispatch with no nextScene!");
         return;
       }
-      Core.fetchScene(nextScene);
+      Engine.fetchScene(nextScene);
     }
   };
 };

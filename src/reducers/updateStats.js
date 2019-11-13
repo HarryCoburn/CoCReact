@@ -1,11 +1,11 @@
 import * as Utils from "../utils";
-import * as Player from "../actions/Player";
+import * as PlayerMsg from "../actions/playerMsg";
 import * as CoreMsg from "../actions/coreMsg";
 
 export default function updateStats(stats, action) {
   let type = action.type;
 
-  if (type === Player.RESTORE_HP) {
+  if (type === PlayerMsg.RESTORE_HP) {
     return playerHPToMax(stats);
   }
 
