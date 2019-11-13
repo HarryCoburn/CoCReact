@@ -1,0 +1,515 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Root Component App root rendered correctly 1`] = `
+<div>
+  <div
+    className="menuBar visible"
+  >
+    <button
+      className="button tooltip"
+      onClick={[Function]}
+    >
+      New Game
+      <span
+        className="tooltiptext bottom"
+      >
+        Start a new game.
+      </span>
+    </button>
+    <button
+      className="button tooltip"
+      onClick={[Function]}
+    >
+      Data
+      <span
+        className="tooltiptext bottom"
+      >
+        Save or load your files.
+      </span>
+    </button>
+    <button
+      className="blankButton"
+      id="u3"
+    />
+    <button
+      className="blankButton"
+      id="u4"
+    />
+    <button
+      className="blankButton"
+      id="u5"
+    />
+    <button
+      className="blankButton"
+      id="u6"
+    />
+    <button
+      className="blankButton"
+      id="u7"
+    />
+    <button
+      className="blankButton"
+      id="u8"
+    />
+  </div>
+  <div
+    className="statBar invisible"
+  >
+    <h2>
+      Name:
+    </h2>
+    <h2>
+      Core Stats
+    </h2>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Strength
+          : 
+          0
+           
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Toughness
+          : 
+          0
+           
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Speed
+          : 
+          0
+           
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Intelligence
+          : 
+          0
+           
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Libido
+          : 
+          0
+           
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Sensitivity
+          : 
+          0
+           
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Corruption
+          : 
+          0
+           
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <h2>
+      Combat Stats
+    </h2>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          HP
+          : 
+          0
+           
+          / 100
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Lust
+          : 
+          0
+           
+          / 100
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Fatigue
+          : 
+          0
+           
+          / 100
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Hunger
+          : 
+          0
+           
+          / 100
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <h2>
+      Advancement
+    </h2>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "1%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Level
+          : 
+          1
+           
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          XP
+          : 
+          0
+           
+          / 99
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="statFrame"
+    >
+      <div
+        className="statGradient"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      >
+        <p
+          className="statLabel"
+        >
+          Gems
+          : 
+          0
+           
+        </p>
+      </div>
+      <div
+        className="statUpDown"
+      />
+    </div>
+    <div
+      className="timeDisplay"
+    >
+      <p>
+        Day#: 
+        0
+        <br />
+        Time: 
+        12
+        :
+        00
+      </p>
+    </div>
+    <div
+      className="spriteDisplay"
+    />
+  </div>
+  <div
+    id="maintext"
+  >
+    <p>
+      CoC Engine: Clean Version
+    </p>
+    <p>
+      Original concept by Fenoxo and crew
+      <br />
+      Converted to JS/React by Matraia
+    </p>
+    <p>
+      Version extremely early.
+    </p>
+    <p>
+      Click on New Game to Start 
+    </p>
+  </div>
+  <div
+    className="gridContainer"
+  >
+    <div
+      className="lowerGrid"
+    >
+      <button
+        className="blankButton"
+        id="b1"
+      />
+      <button
+        className="blankButton"
+        id="b2"
+      />
+      <button
+        className="blankButton"
+        id="b3"
+      />
+      <button
+        className="blankButton"
+        id="b4"
+      />
+      <button
+        className="blankButton"
+        id="b5"
+      />
+      <button
+        className="blankButton"
+        id="b6"
+      />
+      <button
+        className="blankButton"
+        id="b7"
+      />
+      <button
+        className="blankButton"
+        id="b8"
+      />
+      <button
+        className="blankButton"
+        id="b9"
+      />
+      <button
+        className="blankButton"
+        id="b10"
+      />
+      <button
+        className="blankButton"
+        id="b11"
+      />
+      <button
+        className="blankButton"
+        id="b12"
+      />
+      <button
+        className="blankButton"
+        id="b13"
+      />
+      <button
+        className="blankButton"
+        id="b14"
+      />
+      <button
+        className="blankButton"
+        id="b15"
+      />
+    </div>
+  </div>
+</div>
+`;
