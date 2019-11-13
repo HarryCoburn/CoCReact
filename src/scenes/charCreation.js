@@ -1,8 +1,7 @@
 import SceneText from "./sceneTextStore";
-import { Menus } from "./menus";
+import { MenuButtons } from "./menus";
 import { NAME_SELECTED, START_NEW_GAME } from "./sceneSymbols";
 import * as CoreMsg from "../actions/coreMsg";
-import * as Core from "../actions/Core";
 import store from "../store/store";
 import * as Player from "../actions/Player";
 
@@ -17,12 +16,13 @@ export const startNewGame = () => {
   };
   const newText = SceneText.CharCreation[START_NEW_GAME].text;
   const newMenus = {
-    u1: Menus.main,
-    u2: Menus.data,
-    u3: Menus.level
+    u1: MenuButtons.main,
+    u2: MenuButtons.data,
+    u3: MenuButtons.level
   };
-  store.dispatch(
-    Core.setStats({
+  store.dispatch({
+    type: CoreMsg.SET_STATS,
+    payload: {
       strength: 15,
       toughness: 15,
       speed: 15,
@@ -38,8 +38,8 @@ export const startNewGame = () => {
       xp: 0,
       level: 1,
       gems: 0
-    })
-  );
+    }
+  });
   store.dispatch(Player.restoreHP());
   const actions = [CoreMsg.SHOW_STATS];
   return { newText, newButtons, newMenus, actions };

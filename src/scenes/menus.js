@@ -1,36 +1,49 @@
 import * as CoreMsg from "../actions/coreMsg";
-import Scenes from "./sceneTextStore";
-import { START_NEW_GAME, DATA_MENU, MAIN_MENU } from "./sceneSymbols";
+import { START_NEW_GAME, DATA_MENU, MAIN_MENU, GO_BACK } from "./sceneSymbols";
+import store from "../store/store";
 
-export function mainMenu() {
+export function mainMenu(store) {
+  console.log("We've entred the main menu...");
+  const prevState = store.getState();
   const newMenus = {
-    u1: Menus.main,
-    u2: Menus.data
+    u1: MenuButtons.goBack,
+    u2: MenuButtons.data
   };
   let actions = [CoreMsg.HIDE_STATS, CoreMsg.SHOW_MENU_BAR];
-  return { newMenus, actions };
+  return { newMenus, actions, prevState };
 }
 
-export function multiButton() {
+export function dataMenu() {
+  const newMenus = {
+    u2: MenuButtons.data
+  };
   const newButtons = {
     b1: {
       id: "b1",
       label: "Go back to Main Menu",
-      nextScene: Scenes.Menus[MAIN_MENU]
+      nextScene: MAIN_MENU
     },
     b3: {
       id: "b3",
       label: "Go back to Main Menu",
-      nextScene: Scenes.Menus[MAIN_MENU]
+      nextScene: MAIN_MENU
     }
   };
-
-  return { newButtons };
+  return { newMenus, newButtons };
 }
 
-const Menus = {
-  main: {
-    id: "main",
+export function goBack() {
+  let oldStore = store.getState();
+  console.log(oldStore.engine.prevState);
+  store.dispatch({
+    type: CoreMsg.GO_BACK,
+    payload: oldStore.engine.prevState
+  });
+}
+
+export const MenuButtons = {
+  newGame: {
+    id: "newGame",
     label: "New Game",
     toolTip: "Start a new game.",
     nextScene: START_NEW_GAME
@@ -40,6 +53,16 @@ const Menus = {
     label: "Data",
     toolTip: "Save or load your files.",
     nextScene: DATA_MENU
+  },
+  main: {
+    id: "main",
+    label: "Main Menu",
+    nextScene: MAIN_MENU
+  },
+  goBack: {
+    id: "goBack",
+    label: "Go Back",
+    nextScene: GO_BACK
   },
   level: {
     id: "level",
@@ -65,5 +88,3 @@ const Menus = {
     nextScene: null
   }
 };
-
-export { Menus };

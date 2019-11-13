@@ -6,6 +6,11 @@ export const iUIState = {
   showMenuBar: true
 };
 
+export const iEngineState = {
+  gameStarted: false,
+  prevState: null
+};
+
 export const iStats = {
   byID: {
     strength: {
@@ -158,7 +163,7 @@ export const iStats = {
 export const iButtons = {
   byID: {
     u1: {
-      id: "main",
+      id: "newGame",
       label: "New Game",
       toolTip: "Start a new game.",
       nextScene: START_NEW_GAME
