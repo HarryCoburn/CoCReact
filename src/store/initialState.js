@@ -8,7 +8,7 @@ export const iUIState = {
 
 export const iEngineState = {
   gameStarted: false,
-  prevState: null
+  prevState: []
 };
 
 export const iStats = {
@@ -192,7 +192,7 @@ export const iButtons = {
     "b14",
     "b15"
   ],
-  upperIDs: ["u1", "u2", "u3", "u4", "u5", "u6", "u7"]
+  upperIDs: ["u1", "u2", "u3", "u4", "u5", "u6", "u7", "u8"]
 };
 
 export const iAppearance = {

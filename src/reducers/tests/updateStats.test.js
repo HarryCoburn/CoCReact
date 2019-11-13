@@ -22,13 +22,13 @@ describe("Update Stat UI Reducer", () => {
     };
   });
   describe("Player.UPDATE_STATS", () => {
-    it("should return the initial state", () => {
+    xit("should return the initial state", () => {
       expect(
         updateStats(statState, { type: Player.UPDATE_STATS, payload: {} })
       ).toEqual(statState);
     });
 
-    it("should change by given value", () => {
+    xit("should change by given value", () => {
       statState = updateStats(statState, {
         type: Player.UPDATE_STATS,
         payload: { strength: 50 }
@@ -41,7 +41,7 @@ describe("Update Stat UI Reducer", () => {
       expect(statState.byID.strength.value).toEqual(50);
     });
 
-    it("should stay within range", () => {
+    xit("should stay within range", () => {
       statState = updateStats(statState, {
         type: Player.UPDATE_STATS,
         payload: { strength: -51 }
@@ -54,7 +54,7 @@ describe("Update Stat UI Reducer", () => {
       expect(statState.byID.strength.value).toEqual(100);
     });
 
-    it("should ignore stat parameters that aren't in allIDs", () => {
+    xit("should ignore stat parameters that aren't in allIDs", () => {
       statState = updateStats(statState, {
         type: Player.UPDATE_STATS,
         payload: { strength: 50, buffness: 20 }
@@ -77,7 +77,7 @@ describe("Update Stat UI Reducer", () => {
       });
     });
 
-    it("should throw exception if an object isn't passed correctly", () => {
+    xit("should throw exception if an object isn't passed correctly", () => {
       expect(() => {
         updateStats(statState, {
           type: Player.UPDATE_STATS,
@@ -87,13 +87,13 @@ describe("Update Stat UI Reducer", () => {
     });
   });
   describe("Player.RESTORE_HP", () => {
-    it("should restore HP to max", () => {
+    xit("should restore HP to max", () => {
       statState = updateStats(statState, { type: Player.RESTORE_HP });
       expect(statState.byID.hp.value).toEqual(statState.byID.hp.max);
     });
   });
   describe("Player.SET_STATS", () => {
-    it("should explicitly set a value for a stat", () => {
+    xit("should explicitly set a value for a stat", () => {
       updateStats(statState, {
         type: Player.SET_STATS,
         payload: { strength: 23 }

@@ -4,9 +4,9 @@ import * as CoreMsg from "../actions/coreMsg";
 import * as PlayerMsg from "../actions/playerMsg";
 import * as EngineMsg from "../actions/engineMsg";
 import updateStats from "./updateStats";
-import updateLowerButtons from "./updateLowerButtons";
-import updateMenuBar from "./updateMenuBar";
+
 import updateTime from "./updateTime";
+import updateButtons from "./updateButtons";
 import {
   iOutput,
   iTime,
@@ -53,7 +53,7 @@ function statsReducer(stats = iStats, action) {
   switch (action.type) {
     case CoreMsg.GO_BACK:
       return Utils.updateObject(stats, {
-        ...action.stats
+        ...action.payload.stats
       });
     case CoreMsg.UPDATE_STATS:
     case CoreMsg.SET_STATS:
@@ -66,14 +66,16 @@ function statsReducer(stats = iStats, action) {
 
 function buttonsReducer(buttons = iButtons, action) {
   switch (action.type) {
+    /*
     case CoreMsg.GO_BACK:
-      return Utils.updateObject(buttons, {
-        ...action.payload.buttons
+      return updateLowerButtons(buttons, {
+        type: CoreMsg.UPDATE_BUTTONS,
+        payload: { ...action.payload.buttons.byID }
       });
+      */
     case CoreMsg.UPDATE_BUTTONS:
-      return updateLowerButtons(buttons, action);
     case CoreMsg.UPDATE_MENUS:
-      return updateMenuBar(buttons, action);
+      return updateButtons(buttons, action);
     default:
       return buttons;
   }
@@ -114,7 +116,10 @@ function engineReducer(engine = iEngineState, action) {
     case EngineMsg.GAME_STARTED:
       return Utils.updateObject(engine, { gameStarted: true });
     case CoreMsg.STATE_STORE:
-      return Utils.updateObject(engine, { prevState: action.payload });
+      let newState = [action.payload];
+      return Utils.updateObject(engine, {
+        prevState: [...engine.prevState, ...newState]
+      });
     default:
       return engine;
   }

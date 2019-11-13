@@ -1,12 +1,27 @@
 import * as Core from "../actions/Core";
-import { START_NEW_GAME, DATA_MENU, MAIN_MENU, GO_BACK } from "./sceneSymbols";
+import SceneText from "./sceneTextStore";
+import {
+  START_NEW_GAME,
+  DATA_MENU,
+  MAIN_MENU,
+  GO_BACK,
+  INSTRUCTIONS
+} from "./sceneSymbols";
 
 export function mainMenu(store) {
   Core.storeState();
+  Core.newText(SceneText.Menus[MAIN_MENU].text);
   Core.changeMenus({
     u1: MenuButtons.goBack,
-    u2: MenuButtons.data
+    u2: MenuButtons.newGame,
+    u3: MenuButtons.data,
+    u4: MenuButtons.options,
+    u5: MenuButtons.achievements,
+    u6: MenuButtons.instructions,
+    u7: MenuButtons.credits,
+    u8: MenuButtons.github
   });
+  Core.changeButtons({});
   Core.hideStatBar();
   Core.showMenuBar();
 
@@ -33,6 +48,18 @@ export function dataMenu() {
   return;
 }
 
+export function instructions() {
+  Core.storeState();
+  Core.changeButtons({
+    b1: {
+      label: "Go Back",
+      nextScene: GO_BACK
+    }
+  });
+  Core.newText(SceneText.Menus[INSTRUCTIONS].text);
+  return;
+}
+
 /*
 export function goBack() {
   Core.goBack();
@@ -49,7 +76,7 @@ export const MenuButtons = {
   data: {
     id: "data",
     label: "Data",
-    toolTip: "Save or load your files.",
+    toolTip: "Load or manage saved games.",
     nextScene: DATA_MENU
   },
   main: {
@@ -60,6 +87,7 @@ export const MenuButtons = {
   goBack: {
     id: "goBack",
     label: "Go Back",
+    toolTip: "Go back to gameplay?",
     nextScene: GO_BACK
   },
   level: {
@@ -83,6 +111,38 @@ export const MenuButtons = {
     id: "appearance",
     label: "Appearance",
     toolTip: "View your detailed appearance.",
+    nextScene: null
+  },
+  options: {
+    id: "options",
+    label: "Options",
+    toolTip: "Configure game settings and enable cheats.",
+    nextScene: null
+  },
+  achievements: {
+    id: "achievements",
+    label: "Achievements",
+    toolTip: "View all achievements you have earned so far.",
+    nextScene: null
+  },
+  instructions: {
+    id: "instructions",
+    label: "Instructions",
+    toolTip:
+      "How to play. Starting tips. And hotkeys for easy left-handed play...",
+    nextScene: INSTRUCTIONS
+  },
+  credits: {
+    id: "credits",
+    label: "Credits",
+    toolTip:
+      "See a list of all the cool people who have contributed to content for this game!",
+    nextScene: null
+  },
+  github: {
+    id: "github",
+    label: "Github",
+    toolTip: "Go to the Github for this engine",
     nextScene: null
   }
 };

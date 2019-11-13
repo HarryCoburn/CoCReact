@@ -25,6 +25,7 @@ h2 {
   padding: 5px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  z-index: 0;
 }
 
 /* Main Text Display */

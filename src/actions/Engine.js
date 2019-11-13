@@ -8,18 +8,18 @@ import * as SceneMsg from "../scenes/sceneSymbols";
  * @returns {object} object containing new scene information
  */
 export function fetchScene(scene) {
-  console.log("Incoming scene is...");
-  console.log(scene);
-  let stateUpdates;
+  //console.log("Incoming scene is...");
+  //console.log(scene);
+  //let stateUpdates;
   let sceneFunction = SceneFuncs[scene];
-  console.log("Our scene function is...");
-  console.log(sceneFunction);
+  //console.log("Our scene function is...");
+  //console.log(sceneFunction);
 
   // Make sure there's a sceneFunction
   if (typeof sceneFunction === "function") {
-    stateUpdates = sceneFunction();
-    console.log("State updates has: ");
-    console.log(stateUpdates);
+    sceneFunction();
+    //console.log("State updates has: ");
+    //console.log(stateUpdates);
   } else {
     throw Error(
       "Core.fetchscene tried to retrieve a sceneFunction that was not a function."

@@ -4,7 +4,7 @@ import * as CoreMsg from "./coreMsg";
 
 // Here are our actions
 
-export function _stateStore() {
+function _stateStore() {
   let oldState = store.getState();
   return {
     type: CoreMsg.STATE_STORE,
@@ -12,7 +12,10 @@ export function _stateStore() {
   };
 }
 
-export function _updateTime(payload) {
+function _updateTime(payload) {
+  if (!(payload instanceof Object) || payload === undefined) {
+    throw Error("Core._updateTime did not receive an object");
+  }
   return {
     type: CoreMsg.UPDATE_TIME,
     payload: payload
@@ -25,6 +28,9 @@ export function _updateTime(payload) {
  * @return {object} Redux action
  */
 function _updateView(payload) {
+  if (payload === undefined || payload === null) {
+    throw Error("Core._updateView recevied undefined or null text ouput");
+  }
   return {
     type: CoreMsg.UPDATE_VIEW,
     payload
@@ -40,12 +46,15 @@ function _updateView(payload) {
  */
 function _buttonChange(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
-    throw Error("UI.buttonChange did not receive an object");
+    throw Error("Core._buttonChange did not receive an object");
   }
+  let state = store.getState();
+  let array = state.buttons.lowerIDs;
   //TODO Check for all required button properties before sending message
   return {
     type: CoreMsg.UPDATE_BUTTONS,
-    payload
+    payload,
+    array
   };
 }
 
@@ -60,10 +69,13 @@ function _menuChange(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
     throw Error("UI.menuChange did not receive an object");
   }
+  let state = store.getState();
+  let array = state.buttons.upperIDs;
   //TODO Check for all required button properties before sending message
   return {
     type: CoreMsg.UPDATE_MENUS,
-    payload
+    payload,
+    array
   };
 }
 
@@ -75,7 +87,7 @@ function _menuChange(payload) {
  */
 function _setStats(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
-    throw Error("Player.statChange did not receive an object");
+    throw Error("Core._setStats did not receive an object");
   }
   return {
     type: CoreMsg.SET_STATS,
@@ -91,7 +103,7 @@ function _setStats(payload) {
  */
 function _statChange(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
-    throw Error("UI.statChange did not receive an object");
+    throw Error("Core._statChange did not receive an object");
   }
   return {
     type: CoreMsg.UPDATE_STATS,
@@ -101,9 +113,13 @@ function _statChange(payload) {
 
 function _goBack() {
   let oldStore = store.getState();
+  if (oldStore.engine.prevState.length === 0) {
+    return;
+  }
+  let oldState = oldStore.engine.prevState.pop();
   store.dispatch({
     type: CoreMsg.GO_BACK,
-    payload: oldStore.engine.prevState
+    payload: oldState
   });
 }
 
@@ -130,7 +146,7 @@ export const showMenuBar = () =>
     type: CoreMsg.SHOW_MENU_BAR
   });
 export const changeTime = time => store.dispatch(_updateTime(time));
-export const storeState = () => store.dispatch(_stateStore);
+export const storeState = () => store.dispatch(_stateStore());
 export const goBack = () => _goBack();
 /*
 export function gameStarted() {
