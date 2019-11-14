@@ -5,10 +5,8 @@ import * as CoreMsg from "./coreMsg";
 // Here are our actions
 
 function _stateStore() {
-  let oldState = store.getState();
   return {
-    type: CoreMsg.STATE_STORE,
-    payload: oldState
+    type: CoreMsg.STATE_STORE
   };
 }
 
@@ -48,13 +46,11 @@ function _buttonChange(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
     throw Error("Core._buttonChange did not receive an object");
   }
-  let state = store.getState();
-  let array = state.buttons.lowerIDs;
+
   //TODO Check for all required button properties before sending message
   return {
     type: CoreMsg.UPDATE_BUTTONS,
-    payload,
-    array
+    payload
   };
 }
 
@@ -69,13 +65,10 @@ function _menuChange(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
     throw Error("UI.menuChange did not receive an object");
   }
-  let state = store.getState();
-  let array = state.buttons.upperIDs;
   //TODO Check for all required button properties before sending message
   return {
     type: CoreMsg.UPDATE_MENUS,
-    payload,
-    array
+    payload
   };
 }
 
@@ -112,14 +105,8 @@ function _statChange(payload) {
 }
 
 function _goBack() {
-  let oldStore = store.getState();
-  if (oldStore.engine.prevState.length === 0) {
-    return;
-  }
-  let oldState = oldStore.engine.prevState.pop();
   store.dispatch({
-    type: CoreMsg.GO_BACK,
-    payload: oldState
+    type: CoreMsg.GO_BACK
   });
 }
 

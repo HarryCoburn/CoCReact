@@ -36,7 +36,7 @@ class StatBarContainer extends React.Component {
 const mapStateToButtonProps = function(state) {
   return {
     newStats: state.stats,
-    visibility: state.UI.showStats,
+    visibility: state.UI.present.showStats,
     name: state.appearance.name
   };
 };

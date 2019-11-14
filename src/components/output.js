@@ -5,7 +5,7 @@ const OutputFunc = ({ output }) => <div id="maintext">{output}</div>;
 
 const mapStateToViewProps = function(state) {
   return {
-    output: state.output
+    output: state.output.present
   };
 };
 

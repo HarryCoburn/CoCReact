@@ -5,14 +5,14 @@ import * as Engine from "../actions/Engine";
 
 class ButtonGridClass extends React.Component {
   buttons = () =>
-    this.props.IDs.map(button => {
-      if (this.props.buttons.byID[button] === undefined) {
+    this.props.buttonState.IDs.map(button => {
+      if (this.props.buttonState.present[button] === undefined) {
         return (
           <button key={button} id={button} className="blankButton"></button>
         );
       }
 
-      let newBtn = this.props.buttons.byID[button];
+      let newBtn = this.props.buttonState.present[button];
 
       return (
         <WrappedButton
@@ -31,12 +31,6 @@ class ButtonGridClass extends React.Component {
   }
 }
 
-const mapStateToButtonProps = function(state) {
-  return {
-    buttons: state.buttons
-  };
-};
-
 const mapDispatchToButtonProps = dispatch => {
   return {
     update: ({ nextScene = null }) => {
@@ -51,9 +45,6 @@ const mapDispatchToButtonProps = dispatch => {
   };
 };
 
-const ButtonGrid = connect(
-  mapStateToButtonProps,
-  mapDispatchToButtonProps
-)(ButtonGridClass);
+const ButtonGrid = connect(mapDispatchToButtonProps)(ButtonGridClass);
 
 export default ButtonGrid;

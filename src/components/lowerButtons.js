@@ -7,7 +7,10 @@ class LowerButtonsClass extends React.Component {
     return (
       <div className="gridContainer">
         <div className="lowerGrid">
-          <ButtonGrid toolTipPos="top" IDs={this.props.IDs}></ButtonGrid>
+          <ButtonGrid
+            toolTipPos="top"
+            buttonState={this.props.buttonState}
+          ></ButtonGrid>
         </div>
       </div>
     );
@@ -16,7 +19,7 @@ class LowerButtonsClass extends React.Component {
 
 const mapStateToButtonProps = function(state) {
   return {
-    IDs: state.buttons.lowerIDs
+    buttonState: state.lower
   };
 };
 

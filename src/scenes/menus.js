@@ -29,27 +29,26 @@ export function mainMenu(store) {
 }
 
 export function dataMenu() {
+  Core.storeState();
+  Core.hideStatBar();
   Core.changeMenus({
     u2: MenuButtons.data
   });
   Core.changeButtons({
     b1: {
       id: "b1",
-      label: "Go back to Main Menu",
-      nextScene: MAIN_MENU
-    },
-    b3: {
-      id: "b3",
-      label: "Go back to Main Menu",
-      nextScene: MAIN_MENU
+      label: "Go back",
+      nextScene: GO_BACK
     }
   });
+  Core.newText("Data Menu");
 
   return;
 }
 
 export function instructions() {
   Core.storeState();
+  Core.hideMenuBar();
   Core.changeButtons({
     b1: {
       label: "Go Back",

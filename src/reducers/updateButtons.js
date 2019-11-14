@@ -15,12 +15,12 @@ export default function updateButtons(buttons, action) {
 
   buttonArray.forEach(id => {
     if (newLowerButtons.hasOwnProperty(id)) {
-      newButtons.byID[id] = Utils.updateObject(
-        newButtons.byID[id],
+      newButtons.byID.present[id] = Utils.updateObject(
+        newButtons.byID.present[id],
         newLowerButtons[id]
       );
     } else {
-      newButtons.byID = omit(newButtons.byID, id);
+      newButtons.byID.present = omit(newButtons.byID.present, id);
     }
   });
 

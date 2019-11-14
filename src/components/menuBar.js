@@ -8,7 +8,10 @@ class TopMenuClass extends React.Component {
       <div
         className={`menuBar ${this.props.visibility ? "visible" : "invisible"}`}
       >
-        <ButtonGrid toolTipPos="bottom" IDs={this.props.IDs}></ButtonGrid>
+        <ButtonGrid
+          toolTipPos="bottom"
+          buttonState={this.props.buttonState}
+        ></ButtonGrid>
       </div>
     );
   }
@@ -16,8 +19,8 @@ class TopMenuClass extends React.Component {
 
 const mapStateToButtonProps = function(state) {
   return {
-    IDs: state.buttons.upperIDs,
-    visibility: state.UI.showMenuBar
+    buttonState: state.upper,
+    visibility: state.UI.present.showMenuBar
   };
 };
 

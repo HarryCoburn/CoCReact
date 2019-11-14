@@ -2,13 +2,18 @@ import React from "react";
 import { START_NEW_GAME, DATA_MENU } from "../scenes/sceneSymbols";
 
 export const iUIState = {
-  showStats: false,
-  showMenuBar: true
+  past: [],
+  present: {
+    showStats: false,
+    showMenuBar: true
+  }
 };
 
 export const iEngineState = {
-  gameStarted: false,
-  prevState: []
+  past: [],
+  present: {
+    gameStarted: false
+  }
 };
 
 export const iStats = {
@@ -160,22 +165,11 @@ export const iStats = {
   ]
 };
 
-export const iButtons = {
-  byID: {
-    u1: {
-      id: "newGame",
-      label: "New Game",
-      toolTip: "Start a new game.",
-      nextScene: START_NEW_GAME
-    },
-    u2: {
-      id: "data",
-      label: "Data",
-      toolTip: "Save or load your files.",
-      nextScene: DATA_MENU
-    }
-  },
-  lowerIDs: [
+export const iLower = {
+  past: [],
+  present: {},
+
+  IDs: [
     "b1",
     "b2",
     "b3",
@@ -191,8 +185,26 @@ export const iButtons = {
     "b13",
     "b14",
     "b15"
-  ],
-  upperIDs: ["u1", "u2", "u3", "u4", "u5", "u6", "u7", "u8"]
+  ]
+};
+
+export const iUpper = {
+  past: [],
+  present: {
+    u1: {
+      id: "newGame",
+      label: "New Game",
+      toolTip: "Start a new game.",
+      nextScene: START_NEW_GAME
+    },
+    u2: {
+      id: "data",
+      label: "Data",
+      toolTip: "Save or load your files.",
+      nextScene: DATA_MENU
+    }
+  },
+  IDs: ["u1", "u2", "u3", "u4", "u5", "u6", "u7", "u8"]
 };
 
 export const iAppearance = {
@@ -205,17 +217,20 @@ export const iTime = {
   minute: 0 //to reduce
 };
 
-export const iOutput = (
-  <>
-    <p>CoC Engine: Clean Version</p>
-    <p>
-      Original concept by Fenoxo and crew
-      <br />
-      Converted to JS/React by Matraia
-    </p>
-    <p>Version extremely early.</p>
-    <p>Click on New Game to Start </p>
-  </>
-);
+export const iOutput = {
+  past: [],
+  present: (
+    <>
+      <p>CoC Engine: Clean Version</p>
+      <p>
+        Original concept by Fenoxo and crew
+        <br />
+        Converted to JS/React by Matraia
+      </p>
+      <p>Version extremely early.</p>
+      <p>Click on New Game to Start </p>
+    </>
+  )
+};
 
 export const iState = {};
