@@ -76,17 +76,6 @@ function outputReducer(output = iOutput, action) {
   }
 }
 
-function statsReducer(stats = iStats, action) {
-  switch (action.type) {
-    case CoreMsg.UPDATE_STATS:
-    case CoreMsg.SET_STATS:
-    case PlayerMsg.RESTORE_HP:
-      return updateStats(stats, action);
-    default:
-      return stats;
-  }
-}
-
 function lowerReducer(lower = iLower, action) {
   switch (action.type) {
     case CoreMsg.GO_BACK:
@@ -135,10 +124,24 @@ function upperReducer(upper = iUpper, action) {
   }
 }
 
+function statsReducer(stats = iStats, action) {
+  switch (action.type) {
+    case CoreMsg.UPDATE_STATS:
+    case CoreMsg.SET_STATS:
+    case PlayerMsg.RESTORE_HP:
+      return updateStats(stats, action);
+    default:
+      return stats;
+  }
+}
+
 function appearanceReducer(appearance = iAppearance, action) {
   switch (action.type) {
     case PlayerMsg.SET_PLAYER_NAME:
       return { ...appearance, name: action.payload };
+    case PlayerMsg.SET_APPEARANCE:
+    case PlayerMsg.CHANGE_APPEARANCE:
+      return updateStats(appearance, action);
     default:
       return appearance;
   }

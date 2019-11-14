@@ -1,5 +1,11 @@
 export const START_NEW_GAME = Symbol("CharCreation/START_NEW_GAME");
-export const NAME_SELECTED = Symbol("CharCreation/NAME_SELECTED");
+export const GENDER_SELECT = Symbol("CharCreation/GENDER_SELECT");
+export const IS_A_MAN = Symbol("CharCreation/IS_A_MAN");
+export const IS_A_WOMAN = Symbol("CharCreation/IS_A_WOMAN");
+export const BUILD_LEAN_MALE = Symbol("CharCreation/BUILD_LEAN_MALE");
+export const BUILD_AVERAGE_MALE = Symbol("CharCreation/BUILD_AVERAGE_MALE");
+export const BUILD_THICK_MALE = Symbol("CharCreation/BUILD_THICK_MALE");
+export const BUILD_GIRLY_MALE = Symbol("CharCreation/BUILD_GIRLY_MALE");
 
 export const MAIN_MENU = Symbol("Menus/MAIN_MENU");
 export const DATA_MENU = Symbol("Menus/DATA_MENU");

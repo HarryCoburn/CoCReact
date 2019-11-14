@@ -24,3 +24,23 @@ export function setPlayerName(name) {
     payload: name
   };
 }
+
+function _setPlayerAppearance(stats) {
+  return {
+    type: PlayerMsg.SET_APPEARANCE,
+    payload: stats
+  };
+}
+
+function _changePlayerAppearance(stats) {
+  return {
+    type: PlayerMsg.CHANGE_APPEARANCE,
+    payload: stats
+  };
+}
+
+export const setPlayerAppearance = stats =>
+  store.dispatch(_setPlayerAppearance(stats));
+
+export const changePlayerAppearance = stats =>
+  store.dispatch(_changePlayerAppearance(stats));

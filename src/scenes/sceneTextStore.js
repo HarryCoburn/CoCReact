@@ -26,14 +26,6 @@ const SceneText = {
           <NameInput />
         </>
       )
-    },
-    [SC.NAME_SELECTED]: {
-      id: SC.NAME_SELECTED,
-      text: (
-        <>
-          <p>We've selected a name!</p>
-        </>
-      )
     }
   },
   Menus: {

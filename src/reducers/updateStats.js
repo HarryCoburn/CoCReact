@@ -17,12 +17,6 @@ export default function updateStats(stats, action) {
     );
   }
 
-  /*
-  if (!Object.keys(changes).length) {
-    return stats;
-  }
-  */
-
   let newStats = Utils.updateObject({}, stats);
 
   newStats.allIDs.forEach(id => {
@@ -39,15 +33,17 @@ export default function updateStats(stats, action) {
 function statChoose(stat, change, type) {
   switch (type) {
     case CoreMsg.UPDATE_STATS:
+    case PlayerMsg.CHANGE_APPEARANCE:
       return changeStat(stat, change);
     case CoreMsg.SET_STATS:
+    case PlayerMsg.SET_APPEARANCE:
       return change;
     default:
       throw Error("Received bad type in statChoose: " + type);
   }
 }
 
-function changeStat({ value, min, max }, change) {
+function changeStat({ value, min = 0, max = 100 }, change) {
   let final = value + change;
 
   if (final < min) return min;

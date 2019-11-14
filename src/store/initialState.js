@@ -208,8 +208,30 @@ export const iUpper = {
 };
 
 export const iAppearance = {
-  name: ""
+  name: "",
+  byID: {
+    tallness: {
+      value: 0
+    },
+    tone: {
+      value: 0
+    }
+  },
+  allIDs: ["name", "tallness", "tone"]
 };
+
+export const iPregnancy = {
+  fertility: 0,
+  allIDs: ["fertility"]
+};
+
+export const iCocks = {
+  cocks: [],
+  balls: 0,
+  ballSize: 0
+};
+
+export const iBreasts = {};
 
 export const iTime = {
   day: 0, //to reduce
