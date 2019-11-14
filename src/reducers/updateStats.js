@@ -40,6 +40,8 @@ function statChoose(stat, change, type) {
     case CoreMsg.SET_STATS:
     case PlayerMsg.SET_APPEARANCE:
     case PlayerMsg.SET_HAIR:
+    case PlayerMsg.SET_BUTT_STATS:
+    case PlayerMsg.SET_HIPS_STATS:
     case PlayerMsg.SET_PREG_STATS:
     case PlayerMsg.SET_BALLS_STATS:
       return change;

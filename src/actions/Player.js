@@ -70,6 +70,20 @@ function _setBallsStats(stats) {
   };
 }
 
+function _setButtStats(stats) {
+  return {
+    type: PlayerMsg.SET_BUTT_STATS,
+    payload: stats
+  };
+}
+
+function _setHipsStats(stats) {
+  return {
+    type: PlayerMsg.SET_HIPS_STATS,
+    payload: stats
+  };
+}
+
 function _changeBallsStats(stats) {
   return {
     type: PlayerMsg.CHANGE_BALLS_STATS,
@@ -135,3 +149,5 @@ export const changeBalls = stats => store.dispatch(_changeBallsStats(stats));
 export const createCock = () => store.dispatch(_createCock());
 export const createBreastRow = () => store.dispatch(_createBreastRow());
 export const createVagina = () => store.dispatch(_createVagina());
+export const setButt = stats => store.dispatch(_setButtStats(stats));
+export const setHips = stats => store.dispatch(_setHipsStats(stats));

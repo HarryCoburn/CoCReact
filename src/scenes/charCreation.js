@@ -17,6 +17,8 @@ import {
 } from "./sceneSymbols";
 import * as Core from "../actions/Core";
 import * as Player from "../actions/Player";
+import Butt from "../symbols/butt.js";
+import Hips from "../symbols/hips.js";
 
 export const startNewGame = () => {
   Core.changeButtons({
@@ -122,17 +124,12 @@ export const isAMan = () => {
 };
 
 export const buildLeanMale = () => {
-  /*
-  player.str -= 1;
-			player.spe += 1;
-			player.femininity = 34;
-			player.thickness = 30;
-			player.tone += 5;
-			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.butt.rating = Butt.RATING_TIGHT;
-			player.hips.rating = Hips.RATING_SLENDER;
-      chooseComplexion();
-      */
+  Core.changeStats({ strength: -1, speed: 1 });
+  Player.setPlayerAppearance({ femininity: 34, thickness: 30 });
+  Player.changePlayerAppearance({ tone: 5 });
+  Player.setButt({ rating: Butt.TIGHT });
+  Player.setHips({ rating: Hips.SLENDER });
+  chooseComplexion();
 };
 
 export const buildAverageMale = () => {
@@ -268,3 +265,5 @@ export const buildTomboyishFemale = () => {
       chooseComplexion();
   */
 };
+
+const chooseComplexion = () => {};

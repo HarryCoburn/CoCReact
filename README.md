@@ -8,6 +8,8 @@ The goal of the project is to make something that others can use so they can mak
 
 THIS IS NOT A CoC PORT. However, if this engine gets good enough I may fork it into a new repository and pull over the parts of CoC I like.
 
+Needless to say, the content of these files may be NSFW!
+
 ## Installation
 
 1. You will need NPM installed first.

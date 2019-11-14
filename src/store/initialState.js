@@ -217,11 +217,29 @@ export const iAppearance = {
     },
     allIDs: ["length"]
   },
+  butt: {
+    byID: {
+      rating: null
+    },
+    allIDs: ["rating"]
+  },
+  hips: {
+    byID: {
+      rating: null
+    },
+    allIDs: ["rating"]
+  },
   byID: {
     tallness: {
       value: 0
     },
     tone: {
+      value: 0
+    },
+    femininity: {
+      value: 0
+    },
+    thickness: {
       value: 0
     }
   },
