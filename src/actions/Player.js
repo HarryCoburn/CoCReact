@@ -1,5 +1,7 @@
 import store from "../store/store";
 import * as PlayerMsg from "./playerMsg";
+import * as CockType from "../symbols/cockType";
+import * as BreastCup from "../symbols/breastCup";
 
 /**
  * Sends message to set the hp value to equal the maxiumum
@@ -60,6 +62,43 @@ function _setHair(stats) {
   };
 }
 
+function _setBallsStats(stats) {
+  return {
+    type: PlayerMsg.SET_BALLS_STATS,
+    payload: stats
+  };
+}
+
+function _changeBallsStats(stats) {
+  return {
+    type: PlayerMsg.CHANGE_BALLS_STATS,
+    payload: stats
+  };
+}
+
+function _createCock() {
+  return {
+    type: PlayerMsg.CREATE_COCK,
+    payload: { length: 5.5, thickness: 1, type: CockType.HUMAN } // Default cock
+  };
+}
+
+function _createBreastRow() {
+  return {
+    type: PlayerMsg.CREATE_BREAST_ROW,
+    payload: {
+      number: 2,
+      size: BreastCup.FLAT,
+      numNipple: 1,
+      lactationMultiplier: 0,
+      milkFullness: 0,
+      fullness: 0,
+      fuckable: false,
+      nippleCocks: false
+    }
+  };
+}
+
 export const setPlayerAppearance = stats =>
   store.dispatch(_setPlayerAppearance(stats));
 
@@ -69,3 +108,7 @@ export const changePlayerAppearance = stats =>
 export const setPregStats = stats => store.dispatch(_setPregStats(stats));
 export const changePregStats = stats => store.dispatch(_changePregStats(stats));
 export const setHair = stats => store.dispatch(_setHair(stats));
+export const setBalls = stats => store.dispatch(_setBallsStats(stats));
+export const changeBalls = stats => store.dispatch(_changeBallsStats(stats));
+export const createCock = () => store.dispatch(_createCock());
+export const createBreastRow = () => store.dispatch(_createBreastRow());

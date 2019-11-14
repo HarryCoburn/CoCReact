@@ -5,6 +5,7 @@ import * as PlayerMsg from "../actions/playerMsg";
 import * as EngineMsg from "../actions/engineMsg";
 import updateStats from "./updateStats";
 import updateTime from "./updateTime";
+import updateBodyArr from "./updateBodyArr";
 
 import {
   iOutput,
@@ -15,7 +16,9 @@ import {
   iUpper,
   iAppearance,
   iEngineState,
-  iPregnancy
+  iPregnancy,
+  iCocks,
+  iBreasts
 } from "../store/initialState";
 
 function uiReducer(uiState = iUIState, action) {
@@ -190,6 +193,27 @@ function pregnancyReducer(pregnancy = iPregnancy, action) {
   }
 }
 
+function cocksReducer(cocks = iCocks, action) {
+  switch (action.type) {
+    case PlayerMsg.SET_BALLS_STATS:
+    case PlayerMsg.CHANGE_BALLS_STATS:
+      return { ...cocks, balls: updateStats(cocks.balls, action) };
+    case PlayerMsg.CREATE_COCK:
+      return updateBodyArr(cocks, action);
+    default:
+      return cocks;
+  }
+}
+
+function breastsReducer(breasts = iBreasts, action) {
+  switch (action.type) {
+    case PlayerMsg.CREATE_BREAST_ROW:
+      return updateBodyArr(breasts, action);
+    default:
+      return breasts;
+  }
+}
+
 const rootReducer = combineReducers({
   output: outputReducer,
   UI: uiReducer,
@@ -199,7 +223,9 @@ const rootReducer = combineReducers({
   appearance: appearanceReducer,
   time: timeReducer,
   engine: engineReducer,
-  pregnancy: pregnancyReducer
+  pregnancy: pregnancyReducer,
+  cocks: cocksReducer,
+  breasts: breastsReducer
 });
 
 export default rootReducer;

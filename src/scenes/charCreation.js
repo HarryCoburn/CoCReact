@@ -79,19 +79,10 @@ export const isAMan = () => {
   Player.setPlayerAppearance({ tallness: 71, tone: 60 });
   Player.setHair({ length: 1 });
   Player.setPregStats({ fertility: 5 });
+  Player.setBalls({ number: 2, size: 1 });
+  Player.createCock();
+  Player.createBreastRow();
 
-  /*
-  
-			
-			//Genetalia
-			player.balls = 2;
-			player.ballSize = 1;
-			player.createCock();
-			player.cocks[0].cockLength = 5.5;
-			player.cocks[0].cockThickness = 1;
-			player.cocks[0].cockType = CockTypesEnum.HUMAN;
-      player.createBreastRow(); //breasts
-  */
   Core.newText(
     <>
       <p>

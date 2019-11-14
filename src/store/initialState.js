@@ -238,12 +238,24 @@ export const iPregnancy = {
 };
 
 export const iCocks = {
-  cocks: [],
-  balls: 0,
-  ballSize: 0
+  balls: {
+    byID: {
+      number: {
+        value: 0
+      },
+      size: {
+        value: 0
+      }
+    },
+    allIDs: ["number", "size"]
+  },
+  cocks: []
 };
 
-export const iBreasts = {};
+export const iBreasts = {
+  breasts: [],
+  maxBreastRows: 10
+};
 
 export const iTime = {
   day: 0, //to reduce
