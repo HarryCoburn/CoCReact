@@ -257,6 +257,10 @@ export const iBreasts = {
   maxBreastRows: 10
 };
 
+export const iVaginas = {
+  vaginas: []
+};
+
 export const iTime = {
   day: 0, //to reduce
   hour: 12, //to reduce

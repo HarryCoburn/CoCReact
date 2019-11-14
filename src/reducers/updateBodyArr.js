@@ -11,6 +11,8 @@ export default function updateBodyArr(part, action) {
   switch (type) {
     case PlayerMsg.CREATE_COCK:
       return { ...part, cocks: [...part.cocks, action.payload] };
+    case PlayerMsg.CREATE_VAGINA:
+      return { ...part, vaginas: [...part.vaginas, action.payload] };
     case PlayerMsg.CREATE_BREAST_ROW:
       if (part.breasts.length > part.maxBreastRows) {
         return part;

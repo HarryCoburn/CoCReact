@@ -8,7 +8,5 @@ export const CHANGE_BALLS_STATS = Symbol("player/SET_BALLS_STATS");
 export const SET_PREG_STATS = Symbol("player/SET_PREG_STATS");
 export const CREATE_COCK = Symbol("player/CREATE_COCK");
 export const CREATE_BREAST_ROW = Symbol("player/CREATE_BREAST_ROW");
-
+export const CREATE_VAGINA = Symbol("player/CREATE_VAGINA");
 export const CHANGE_PREG_STATS = Symbol("player/SET_PREG_STATS");
-export const ADD_COCK = Symbol("player/ADD_COCK");
-export const ADD_BREASTS = Symbol("player/ADD_BREASTS");

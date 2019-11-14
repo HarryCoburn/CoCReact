@@ -16,6 +16,10 @@ const SceneFuncs = {
   [SC.BUILD_LEAN_MALE]: charCreation.buildLeanMale,
   [SC.BUILD_THICK_MALE]: charCreation.buildThickMale,
   [SC.BUILD_GIRLY_MALE]: charCreation.buildGirlyMale,
+  [SC.BUILD_SLENDER_FEMALE]: charCreation.buildSlenderFemale,
+  [SC.BUILD_AVERAGE_FEMALE]: charCreation.buildAverageFemale,
+  [SC.BUILD_CURVY_FEMALE]: charCreation.buildCurvyFemale,
+  [SC.BUILD_TOMBOYISH_FEMALE]: charCreation.buildTomboyishFemale,
   [SC.MAIN_MENU]: () => {
     return menus.mainMenu(store);
   },

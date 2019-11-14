@@ -9,7 +9,11 @@ import {
   BUILD_LEAN_MALE,
   BUILD_AVERAGE_MALE,
   BUILD_THICK_MALE,
-  BUILD_GIRLY_MALE
+  BUILD_GIRLY_MALE,
+  BUILD_SLENDER_FEMALE,
+  BUILD_AVERAGE_FEMALE,
+  BUILD_CURVY_FEMALE,
+  BUILD_TOMBOYISH_FEMALE
 } from "./sceneSymbols";
 import * as Core from "../actions/Core";
 import * as Player from "../actions/Player";
@@ -172,27 +176,95 @@ export const buildGirlyMale = () => {
 };
 
 export const isAWoman = () => {
-  /*if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] === 0) { //attributes
-				player.spe += 3;
-				player.inte += 2;
-			}
-			//Body attributes
-			player.fertility = 10;
-			player.hair.length = 10;
-			player.tallness = 67;
-			player.tone = 30;
-			//Genetalia
-			player.balls = 0;
-			player.ballSize = 0;
-			player.createVagina();
-			player.createBreastRow(); //breasts
-			clearOutput();
-			outputText(images.showImage("event-question"));
-			outputText("You are a woman.  Your upbringing has provided you an advantage in speed and intellect.\n\nWhat type of build do you have?");
-			menu(); //choices
-			addButton(0, "Slender", buildSlenderFemale);
-			addButton(1, "Average", buildAverageFemale);
-			addButton(2, "Curvy", buildCurvyFemale);
-      addButton(3, "Tomboyish", buildTomboyishFemale);
+  Core.changeStats({ speed: 3, intelligence: 2 });
+  Player.setPregStats({ fertility: 10 });
+  Player.setHair({ length: 10 });
+  Player.setPlayerAppearance({ tallness: 67, tone: 30 });
+  Player.setBalls({ number: 0, size: 0 });
+  Player.createBreastRow();
+  Player.createVagina();
+  Core.newText(
+    <>
+      <p>
+        You are a woman. Your upbringing has provided you an advantage in speed
+        and intellect.
+      </p>
+      <p>What type of build do you have?</p>
+    </>
+  );
+  Core.changeButtons({
+    b1: {
+      id: "b1",
+      label: "Slender",
+      nextScene: BUILD_SLENDER_FEMALE
+    },
+    b2: {
+      id: "b2",
+      label: "Average",
+      nextScene: BUILD_AVERAGE_FEMALE
+    },
+    b3: {
+      id: "b3",
+      label: "Thick",
+      nextScene: BUILD_CURVY_FEMALE
+    },
+    b4: {
+      id: "b4",
+      label: "Girly",
+      nextScene: BUILD_TOMBOYISH_FEMALE
+    }
+  });
+};
+
+export const buildSlenderFemale = () => {
+  /*
+  player.str -= 1;
+			player.spe += 1;
+			player.femininity = 66;
+			player.thickness = 30;
+			player.tone += 5;
+			player.breastRows[0].breastRating = BreastCup.B;
+			player.butt.rating = Butt.RATING_TIGHT;
+			player.hips.rating = Hips.RATING_AMPLE;
+      chooseComplexion();
       */
+};
+
+export const buildAverageFemale = () => {
+  /*
+  	player.femininity = 70;
+			player.thickness = 50;
+			player.breastRows[0].breastRating = BreastCup.C;
+			player.butt.rating = Butt.RATING_NOTICEABLE;
+			player.hips.rating = Hips.RATING_AMPLE;
+      chooseComplexion();
+      */
+};
+
+export const buildCurvyFemale = () => {
+  /*
+  player.spe -= 2;
+  player.str += 1;
+  player.tou += 1;
+  player.femininity = 71;
+  player.thickness = 70;
+  player.breastRows[0].breastRating = BreastCup.D;
+  player.butt.rating = Butt.RATING_LARGE;
+  player.hips.rating = Hips.RATING_CURVY;
+  chooseComplexion();
+  */
+};
+
+export const buildTomboyishFemale = () => {
+  /*
+  	player.str += 1;
+			player.spe -= 1;
+			player.femininity = player.hasCock() ? 55 : 56;
+			player.thickness = 50;
+			player.tone = 50;
+			player.breastRows[0].breastRating = BreastCup.A;
+			player.butt.rating = Butt.RATING_TIGHT;
+			player.hips.rating = Hips.RATING_SLENDER;
+      chooseComplexion();
+  */
 };

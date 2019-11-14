@@ -6,6 +6,12 @@ export const BUILD_LEAN_MALE = Symbol("CharCreation/BUILD_LEAN_MALE");
 export const BUILD_AVERAGE_MALE = Symbol("CharCreation/BUILD_AVERAGE_MALE");
 export const BUILD_THICK_MALE = Symbol("CharCreation/BUILD_THICK_MALE");
 export const BUILD_GIRLY_MALE = Symbol("CharCreation/BUILD_GIRLY_MALE");
+export const BUILD_SLENDER_FEMALE = Symbol("CharCreation/BUILD_SLENDER_FEMALE");
+export const BUILD_AVERAGE_FEMALE = Symbol("CharCreation/BUILD_AVERAGE_FEMALE");
+export const BUILD_CURVY_FEMALE = Symbol("CharCreation/BUILD_CURVY_FEMALE");
+export const BUILD_TOMBOYISH_FEMALE = Symbol(
+  "CharCreation/BUILD_TOMBOYISH_FEMALE"
+);
 
 export const MAIN_MENU = Symbol("Menus/MAIN_MENU");
 export const DATA_MENU = Symbol("Menus/DATA_MENU");

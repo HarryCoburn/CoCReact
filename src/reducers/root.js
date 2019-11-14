@@ -18,7 +18,8 @@ import {
   iEngineState,
   iPregnancy,
   iCocks,
-  iBreasts
+  iBreasts,
+  iVaginas
 } from "../store/initialState";
 
 function uiReducer(uiState = iUIState, action) {
@@ -214,6 +215,15 @@ function breastsReducer(breasts = iBreasts, action) {
   }
 }
 
+function vaginasReducer(vaginas = iVaginas, action) {
+  switch (action.type) {
+    case PlayerMsg.CREATE_VAGINA:
+      return updateBodyArr(vaginas, action);
+    default:
+      return vaginas;
+  }
+}
+
 const rootReducer = combineReducers({
   output: outputReducer,
   UI: uiReducer,
@@ -225,7 +235,8 @@ const rootReducer = combineReducers({
   engine: engineReducer,
   pregnancy: pregnancyReducer,
   cocks: cocksReducer,
-  breasts: breastsReducer
+  breasts: breastsReducer,
+  vaginas: vaginasReducer
 });
 
 export default rootReducer;

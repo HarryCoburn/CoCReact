@@ -1,6 +1,7 @@
 import store from "../store/store";
 import * as PlayerMsg from "./playerMsg";
 import * as CockType from "../symbols/cockType";
+import * as Vagina from "../symbols/vaginas";
 import * as BreastCup from "../symbols/breastCup";
 
 /**
@@ -99,6 +100,27 @@ function _createBreastRow() {
   };
 }
 
+function _createVagina() {
+  return {
+    type: PlayerMsg.CREATE_VAGINA,
+    payload: {
+      virgin: true,
+      wetness: Vagina.WETNESS.NORMAL,
+      looseness: Vagina.LOOSENESS.TIGHT,
+      clitLength: 0.5,
+      recoveryProgress: 0,
+      type: Vagina.TYPE.HUMAN,
+      fullness: 0,
+      labiaPierced: 0,
+      labiaPShort: "",
+      labiaPLong: "",
+      clitPierced: 0,
+      clitPShort: "",
+      clitPLong: 0
+    }
+  };
+}
+
 export const setPlayerAppearance = stats =>
   store.dispatch(_setPlayerAppearance(stats));
 
@@ -112,3 +134,4 @@ export const setBalls = stats => store.dispatch(_setBallsStats(stats));
 export const changeBalls = stats => store.dispatch(_changeBallsStats(stats));
 export const createCock = () => store.dispatch(_createCock());
 export const createBreastRow = () => store.dispatch(_createBreastRow());
+export const createVagina = () => store.dispatch(_createVagina());

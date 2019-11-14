@@ -3,3 +3,11 @@ export function updateObject(oldObject, newValues) {
   // to Object.assign to ensure we correctly copy data instead of mutating
   return Object.assign({}, oldObject, newValues);
 }
+
+export function makeSymbols(arr) {
+  let obj = {};
+  for (let val in arr) {
+    obj[arr[val]] = Symbol(arr[val]);
+  }
+  return Object.freeze(obj);
+}
