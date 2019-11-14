@@ -14,7 +14,8 @@ import {
   iLower,
   iUpper,
   iAppearance,
-  iEngineState
+  iEngineState,
+  iPregnancy
 } from "../store/initialState";
 
 function uiReducer(uiState = iUIState, action) {
@@ -142,6 +143,8 @@ function appearanceReducer(appearance = iAppearance, action) {
     case PlayerMsg.SET_APPEARANCE:
     case PlayerMsg.CHANGE_APPEARANCE:
       return updateStats(appearance, action);
+    case PlayerMsg.SET_HAIR:
+      return { ...appearance, hair: updateStats(appearance.hair, action) };
     default:
       return appearance;
   }
@@ -177,6 +180,16 @@ function engineReducer(engine = iEngineState, action) {
   }
 }
 
+function pregnancyReducer(pregnancy = iPregnancy, action) {
+  switch (action.type) {
+    case PlayerMsg.SET_PREG_STATS:
+    case PlayerMsg.CHANGE_PREG_STATS:
+      return updateStats(pregnancy, action);
+    default:
+      return pregnancy;
+  }
+}
+
 const rootReducer = combineReducers({
   output: outputReducer,
   UI: uiReducer,
@@ -185,7 +198,8 @@ const rootReducer = combineReducers({
   upper: upperReducer,
   appearance: appearanceReducer,
   time: timeReducer,
-  engine: engineReducer
+  engine: engineReducer,
+  pregnancy: pregnancyReducer
 });
 
 export default rootReducer;

@@ -209,6 +209,14 @@ export const iUpper = {
 
 export const iAppearance = {
   name: "",
+  hair: {
+    byID: {
+      length: {
+        value: 0
+      }
+    },
+    allIDs: ["length"]
+  },
   byID: {
     tallness: {
       value: 0
@@ -221,7 +229,11 @@ export const iAppearance = {
 };
 
 export const iPregnancy = {
-  fertility: 0,
+  byID: {
+    fertility: {
+      value: 0
+    }
+  },
   allIDs: ["fertility"]
 };
 

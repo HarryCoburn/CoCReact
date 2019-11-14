@@ -39,8 +39,33 @@ function _changePlayerAppearance(stats) {
   };
 }
 
+function _setPregStats(stats) {
+  return {
+    type: PlayerMsg.SET_PREG_STATS,
+    payload: stats
+  };
+}
+
+function _changePregStats(stats) {
+  return {
+    type: PlayerMsg.CHANGE_PREG_STATS,
+    payload: stats
+  };
+}
+
+function _setHair(stats) {
+  return {
+    type: PlayerMsg.SET_HAIR,
+    payload: stats
+  };
+}
+
 export const setPlayerAppearance = stats =>
   store.dispatch(_setPlayerAppearance(stats));
 
 export const changePlayerAppearance = stats =>
   store.dispatch(_changePlayerAppearance(stats));
+
+export const setPregStats = stats => store.dispatch(_setPregStats(stats));
+export const changePregStats = stats => store.dispatch(_changePregStats(stats));
+export const setHair = stats => store.dispatch(_setHair(stats));

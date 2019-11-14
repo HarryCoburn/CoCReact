@@ -77,11 +77,12 @@ export const genderSelect = () => {
 export const isAMan = () => {
   Core.changeStats({ strength: 3, toughness: 2 });
   Player.setPlayerAppearance({ tallness: 71, tone: 60 });
+  Player.setHair({ length: 1 });
+  Player.setPregStats({ fertility: 5 });
+
   /*
-  player.fertility = 5;
-			player.hair.length = 1;
-			player.tallness = 71;
-			player.tone = 60;
+  
+			
 			//Genetalia
 			player.balls = 2;
 			player.ballSize = 1;

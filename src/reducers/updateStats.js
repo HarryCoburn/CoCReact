@@ -37,6 +37,8 @@ function statChoose(stat, change, type) {
       return changeStat(stat, change);
     case CoreMsg.SET_STATS:
     case PlayerMsg.SET_APPEARANCE:
+    case PlayerMsg.SET_HAIR:
+    case PlayerMsg.SET_PREG_STATS:
       return change;
     default:
       throw Error("Received bad type in statChoose: " + type);
