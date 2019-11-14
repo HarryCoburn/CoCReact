@@ -214,6 +214,8 @@ function breastsReducer(breasts = iBreasts, action) {
   switch (action.type) {
     case PlayerMsg.CREATE_BREAST_ROW:
       return updateBodyArr(breasts, action);
+    case PlayerMsg.CHANGE_BREAST_ROW:
+      return updateBodyArr(breasts, action);
     default:
       return breasts;
   }

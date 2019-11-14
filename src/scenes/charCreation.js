@@ -17,8 +17,9 @@ import {
 } from "./sceneSymbols";
 import * as Core from "../actions/Core";
 import * as Player from "../actions/Player";
-import Butt from "../symbols/butt.js";
-import Hips from "../symbols/hips.js";
+import Butt from "../symbols/butt";
+import Hips from "../symbols/hips";
+import BreastCup from "../symbols/breastCup";
 
 export const startNewGame = () => {
   Core.changeButtons({
@@ -133,43 +134,29 @@ export const buildLeanMale = () => {
 };
 
 export const buildAverageMale = () => {
-  /*
-  player.femininity = 30;
-  player.thickness = 50;
-  player.breastRows[0].breastRating = BreastCup.FLAT;
-  player.butt.rating = Butt.RATING_AVERAGE;
-  player.hips.rating = Hips.RATING_AVERAGE;
+  Player.setPlayerAppearance({ femininity: 30, thickness: 50 });
+  Player.setButt({ rating: Butt.AVERAGE });
+  Player.setHips({ rating: Hips.AVERAGE });
   chooseComplexion();
-  */
 };
 
 export const buildThickMale = () => {
-  /*
-  player.spe -= 4;
-			player.str += 2;
-			player.tou += 2;
-			player.femininity = 29;
-			player.thickness = 70;
-			player.tone -= 5;
-			player.breastRows[0].breastRating = BreastCup.FLAT;
-			player.butt.rating = Butt.RATING_NOTICEABLE;
-			player.hips.rating = Hips.RATING_AVERAGE;
-      chooseComplexion();
-      */
+  Core.changeStats({ speed: -4, strength: 2, toughness: 2 });
+  Player.setPlayerAppearance({ femininity: 29, thickness: 70 });
+  Player.changePlayerAppearance({ tone: -5 });
+  Player.setButt({ rating: Butt.AVERAGE });
+  Player.setHips({ rating: Hips.AVERAGE });
+  chooseComplexion();
 };
 
 export const buildGirlyMale = () => {
-  /*
-  	player.str -= 2;
-			player.spe += 2;
-			player.femininity = player.hasVagina() ? 49 : 50;
-			player.thickness = 50;
-			player.tone = 26;
-			player.breastRows[0].breastRating = BreastCup.A;
-			player.butt.rating = Butt.RATING_NOTICEABLE;
-			player.hips.rating = Hips.RATING_SLENDER;
-      chooseComplexion();
-  */
+  Core.changeStats({ strength: -2, speed: +2 });
+  Player.setPlayerAppearance({ femininity: 50, thickness: 50, tone: 26 });
+  Player.setButt({ rating: Butt.NOTICEABLE });
+  Player.setHips({ rating: Hips.SLENDER });
+  Player.changeBreasts({ rating: BreastCup.A });
+
+  chooseComplexion();
 };
 
 export const isAWoman = () => {
@@ -214,56 +201,35 @@ export const isAWoman = () => {
 };
 
 export const buildSlenderFemale = () => {
-  /*
-  player.str -= 1;
-			player.spe += 1;
-			player.femininity = 66;
-			player.thickness = 30;
-			player.tone += 5;
-			player.breastRows[0].breastRating = BreastCup.B;
-			player.butt.rating = Butt.RATING_TIGHT;
-			player.hips.rating = Hips.RATING_AMPLE;
-      chooseComplexion();
-      */
+  Core.changeStats({ strength: -1, speed: 1 });
+  Player.setPlayerAppearance({ thickness: 30, femininity: 66 });
+  Player.changePlayerAppearance({ tone: 5 });
+  Player.setButt({ rating: Butt.TIGHT });
+  Player.setHips({ rating: Hips.AMPLE });
+  chooseComplexion();
 };
 
 export const buildAverageFemale = () => {
-  /*
-  	player.femininity = 70;
-			player.thickness = 50;
-			player.breastRows[0].breastRating = BreastCup.C;
-			player.butt.rating = Butt.RATING_NOTICEABLE;
-			player.hips.rating = Hips.RATING_AMPLE;
-      chooseComplexion();
-      */
+  Player.setPlayerAppearance({ femininity: 70, thickness: 50 });
+  Player.setButt({ rating: Butt.NOTICEABLE });
+  Player.setHips({ rating: Hips.AMPLE });
+  chooseComplexion();
 };
 
 export const buildCurvyFemale = () => {
-  /*
-  player.spe -= 2;
-  player.str += 1;
-  player.tou += 1;
-  player.femininity = 71;
-  player.thickness = 70;
-  player.breastRows[0].breastRating = BreastCup.D;
-  player.butt.rating = Butt.RATING_LARGE;
-  player.hips.rating = Hips.RATING_CURVY;
+  Core.changeStats({ speed: -2, strength: 1, toughness: 1 });
+  Player.setPlayerAppearance({ femininity: 71, thickness: 70 });
+  Player.setButt({ rating: Butt.LARGE });
+  Player.setHips({ rating: Hips.CURVY });
   chooseComplexion();
-  */
 };
 
 export const buildTomboyishFemale = () => {
-  /*
-  	player.str += 1;
-			player.spe -= 1;
-			player.femininity = player.hasCock() ? 55 : 56;
-			player.thickness = 50;
-			player.tone = 50;
-			player.breastRows[0].breastRating = BreastCup.A;
-			player.butt.rating = Butt.RATING_TIGHT;
-			player.hips.rating = Hips.RATING_SLENDER;
-      chooseComplexion();
-  */
+  Core.changeStats({ strength: 1, speed: -1 });
+  Player.setPlayerAppearance({ femininity: 56, thickness: 50, tone: 50 });
+  Player.setButt({ rating: Butt.TIGHT });
+  Player.setHips({ rating: Hips.SLENDER });
+  chooseComplexion();
 };
 
 const chooseComplexion = () => {};

@@ -243,7 +243,7 @@ export const iAppearance = {
       value: 0
     }
   },
-  allIDs: ["name", "tallness", "tone"]
+  allIDs: ["name", "tallness", "tone", "femininity", "thickness"]
 };
 
 export const iPregnancy = {

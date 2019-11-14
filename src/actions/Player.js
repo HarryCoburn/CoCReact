@@ -2,7 +2,7 @@ import store from "../store/store";
 import * as PlayerMsg from "./playerMsg";
 import * as CockType from "../symbols/cockType";
 import * as Vagina from "../symbols/vaginas";
-import * as BreastCup from "../symbols/breastCup";
+import BreastCup from "../symbols/breastCup";
 
 /**
  * Sends message to set the hp value to equal the maxiumum
@@ -135,6 +135,14 @@ function _createVagina() {
   };
 }
 
+function _changeBreastRow(payload, ind) {
+  return {
+    type: PlayerMsg.CHANGE_BREAST_ROW,
+    payload: payload,
+    index: ind
+  };
+}
+
 export const setPlayerAppearance = stats =>
   store.dispatch(_setPlayerAppearance(stats));
 
@@ -151,3 +159,5 @@ export const createBreastRow = () => store.dispatch(_createBreastRow());
 export const createVagina = () => store.dispatch(_createVagina());
 export const setButt = stats => store.dispatch(_setButtStats(stats));
 export const setHips = stats => store.dispatch(_setHipsStats(stats));
+export const changeBreasts = (payload, ind = 0) =>
+  store.dispatch(_changeBreastRow(payload, ind));
