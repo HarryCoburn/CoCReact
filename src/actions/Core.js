@@ -4,13 +4,7 @@ import * as CoreMsg from "./coreMsg";
 
 // Here are our actions
 
-function _stateStore() {
-  return {
-    type: CoreMsg.STATE_STORE
-  };
-}
-
-function _updateTime(payload) {
+export function _updateTime(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
     throw Error("Core._updateTime did not receive an object");
   }
@@ -25,7 +19,7 @@ function _updateTime(payload) {
  * @param {JSX} payload
  * @return {object} Redux action
  */
-function _updateView(payload) {
+export function _updateView(payload) {
   if (payload === undefined || payload === null) {
     throw Error("Core._updateView recevied undefined or null text ouput");
   }
@@ -42,7 +36,7 @@ function _updateView(payload) {
  * @param {object} payload
  * @return {object} Redux action
  */
-function _buttonChange(payload) {
+export function _buttonChange(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
     throw Error("Core._buttonChange did not receive an object");
   }
@@ -61,7 +55,7 @@ function _buttonChange(payload) {
  * @param {object} payload
  * @return {object} Redux action
  */
-function _menuChange(payload) {
+export function _menuChange(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
     throw Error("UI.menuChange did not receive an object");
   }
@@ -78,7 +72,7 @@ function _menuChange(payload) {
  * @param {object} payload
  * @return {object} Redux action
  */
-function _setStats(payload) {
+export function _setStats(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
     throw Error("Core._setStats did not receive an object");
   }
@@ -94,7 +88,7 @@ function _setStats(payload) {
  * @param {object} payload
  * @return {object} Redux action
  */
-function _statChange(payload) {
+export function _statChange(payload) {
   if (!(payload instanceof Object) || payload === undefined) {
     throw Error("Core._statChange did not receive an object");
   }
@@ -104,10 +98,16 @@ function _statChange(payload) {
   };
 }
 
-function _goBack() {
-  store.dispatch({
+export function _goBack() {
+  return {
     type: CoreMsg.GO_BACK
-  });
+  };
+}
+
+export function _stateStore() {
+  return {
+    type: CoreMsg.STATE_STORE
+  };
 }
 
 export const changeStats = newStats => store.dispatch(_statChange(newStats));
@@ -134,7 +134,7 @@ export const showMenuBar = () =>
   });
 export const changeTime = time => store.dispatch(_updateTime(time));
 export const storeState = () => store.dispatch(_stateStore());
-export const goBack = () => _goBack();
+export const goBack = () => store.dispatch(_goBack());
 /*
 export function gameStarted() {
   return {

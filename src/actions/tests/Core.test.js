@@ -1,43 +1,29 @@
 import * as Core from "../Core";
 import * as CoreMsg from "../coreMsg";
-import store from "../../store/store";
 import * as I from "../../store/initialState";
-//import { createStore } from "redux";
-//import { rootReducer } from "../../reducers/root";
+import { createStore } from "redux";
+import { rootReducer } from "../../reducers/root";
 
 describe("Testing Core functions", () => {
-  let mockStore = {
-    output: I.iOutput,
-    UI: I.iUIState,
-    stats: I.iStats,
-    buttons: I.iButtons,
-    appearance: I.iAppearance,
-    time: I.iTime,
-    engine: I.iEngineState
-  };
-
-  beforeEach(() => {
-    Core.changeMenus({});
-    Core.changeButtons({});
-  });
-
   describe("changeStats function", () => {
     it("should return empty action", () => {
-      expect(Core.changeStats({})).toEqual({
-        type: CoreMsg.UPDATE_STATS,
-        payload: {}
-      });
-      let changedStore = store.getState();
-      expect(mockStore.stats).toEqual(changedStore.stats);
+      const store = createStore(rootReducer);
+      const stat = {};
+      const action = Core._statChange(stat);
+      store.dispatch(action);
+      const actual = store.getState().stats;
+      const expected = I.iStats;
+      expect(actual).toEqual(expected);
     });
 
     it("should have correct payload", () => {
-      expect(Core.changeStats({ strength: 50 })).toEqual({
-        type: CoreMsg.UPDATE_STATS,
-        payload: { strength: 50 }
-      });
-      let changedStore = store.getState();
-      expect(changedStore.stats.byID.strength.value).toEqual(50);
+      const store = createStore(rootReducer);
+      const stat = { strength: 50 };
+      const action = Core._statChange(stat);
+      store.dispatch(action);
+      const actual = store.getState().stats.byID.strength.value;
+      const expected = stat.strength;
+      expect(actual).toEqual(expected);
     });
 
     it("show throw error with incorrect payload", () => {
@@ -49,21 +35,23 @@ describe("Testing Core functions", () => {
 
   describe("setStats function", () => {
     it("should return empty action", () => {
-      expect(Core.setStats({})).toEqual({
-        type: CoreMsg.SET_STATS,
-        payload: {}
-      });
-      let changedStore = store.getState();
-      expect(mockStore.stats).toEqual(changedStore.stats);
+      const store = createStore(rootReducer);
+      const stat = {};
+      const action = Core._setStats(stat);
+      store.dispatch(action);
+      const actual = store.getState().stats;
+      const expected = I.iStats;
+      expect(actual).toEqual(expected);
     });
 
     it("should have correct payload", () => {
-      expect(Core.setStats({ strength: 75 })).toEqual({
-        type: CoreMsg.SET_STATS,
-        payload: { strength: 75 }
-      });
-      let changedStore = store.getState();
-      expect(changedStore.stats.byID.strength.value).toEqual(75);
+      const store = createStore(rootReducer);
+      const stat = { strength: 75 };
+      const action = Core._setStats(stat);
+      store.dispatch(action);
+      const actual = store.getState().stats.byID.strength.value;
+      const expected = stat.strength;
+      expect(actual).toEqual(expected);
     });
 
     it("show throw error with incorrect payload", () => {
@@ -75,25 +63,23 @@ describe("Testing Core functions", () => {
 
   describe("changeMenus function", () => {
     it("should clear menus", () => {
-      expect(Core.changeMenus({})).toEqual({
-        type: CoreMsg.UPDATE_MENUS,
-        payload: {},
-        array: mockStore.buttons.upperIDs
-      });
-      let changedStore = store.getState();
-      expect(changedStore.buttons.byID).toEqual({});
+      const store = createStore(rootReducer);
+      const empty = {};
+      const action = Core._menuChange(empty);
+      store.dispatch(action);
+      const actual = store.getState().upper.present;
+      const expected = {};
+      expect(actual).toEqual(expected);
     });
 
     it("should have correct payload", () => {
-      expect(Core.changeMenus({ u1: { label: "Blah" } })).toEqual({
-        type: CoreMsg.UPDATE_MENUS,
-        payload: { u1: { label: "Blah" } },
-        array: mockStore.buttons.upperIDs
-      });
-      let changedStore = store.getState();
-      expect(changedStore.buttons.byID).toEqual({
-        u1: { label: "Blah" }
-      });
+      const store = createStore(rootReducer);
+      const menus = { u1: { label: "Blah" } };
+      const action = Core._menuChange(menus);
+      store.dispatch(action);
+      const actual = store.getState().upper.present;
+      const expected = menus;
+      expect(actual).toEqual(expected);
     });
 
     it("show throw error with incorrect payload", () => {
@@ -102,27 +88,26 @@ describe("Testing Core functions", () => {
       }).toThrow();
     });
   });
-  describe("changeButtons function", () => {
-    //Reset buttons
 
-    it("should return empty action", () => {
-      expect(Core.changeButtons({})).toEqual({
-        type: CoreMsg.UPDATE_BUTTONS,
-        payload: {},
-        array: mockStore.buttons.lowerIDs
-      });
-      let changedStore = store.getState();
-      expect(changedStore.buttons.byID).toEqual({});
+  describe("changeButtons function", () => {
+    it("should clear buttons", () => {
+      const store = createStore(rootReducer);
+      const empty = {};
+      const action = Core._buttonChange(empty);
+      store.dispatch(action);
+      const actual = store.getState().lower.present;
+      const expected = empty;
+      expect(actual).toEqual(expected);
     });
 
     it("should have correct payload", () => {
-      expect(Core.changeButtons({ b1: { label: "Blah" } })).toEqual({
-        type: CoreMsg.UPDATE_BUTTONS,
-        payload: { b1: { label: "Blah" } },
-        array: mockStore.buttons.lowerIDs
-      });
-      let changedStore = store.getState();
-      expect(changedStore.buttons.byID).toEqual({ b1: { label: "Blah" } });
+      const store = createStore(rootReducer);
+      const buttons = { b1: { label: "Blah" } };
+      const action = Core._buttonChange(buttons);
+      store.dispatch(action);
+      const actual = store.getState().lower.present;
+      const expected = buttons;
+      expect(actual).toEqual(expected);
     });
 
     it("show throw error with incorrect payload", () => {
@@ -134,12 +119,13 @@ describe("Testing Core functions", () => {
 
   describe("newText", () => {
     it("should return whatever its sent", () => {
-      expect(Core.newText({})).toEqual({
-        type: CoreMsg.UPDATE_VIEW,
-        payload: {}
-      });
-      let changedStore = store.getState();
-      expect(changedStore.output).toEqual({});
+      const store = createStore(rootReducer);
+      const text = "Foo!";
+      const action = Core._updateView(text);
+      store.dispatch(action);
+      const actual = store.getState().output.present;
+      const expected = text;
+      expect(actual).toEqual(expected);
     });
     it("should throw on null or undefined", () => {
       expect(() => {
@@ -153,42 +139,60 @@ describe("Testing Core functions", () => {
 
   describe("Show/Hide", () => {
     it("Should send show and hide properly", () => {
-      expect(Core.hideStatBar()).toEqual({
-        type: CoreMsg.HIDE_STATS
-      });
-      let changedStore = store.getState();
-      expect(changedStore.UI.showStats).toEqual(false);
-      expect(Core.showStatBar()).toEqual({
+      const store = createStore(rootReducer);
+      let action = {
         type: CoreMsg.SHOW_STATS
-      });
-      changedStore = store.getState();
-      expect(changedStore.UI.showStats).toEqual(true);
-      expect(Core.hideMenuBar()).toEqual({
+      };
+      store.dispatch(action);
+      let actual = store.getState().UI.present.showStats;
+      let expected = true;
+      expect(actual).toEqual(expected);
+
+      action = {
+        type: CoreMsg.HIDE_STATS
+      };
+      store.dispatch(action);
+      actual = store.getState().UI.present.showStats;
+      expected = false;
+      expect(actual).toEqual(expected);
+
+      action = {
         type: CoreMsg.HIDE_MENU_BAR
-      });
-      changedStore = store.getState();
-      expect(changedStore.UI.showMenuBar).toEqual(false);
-      expect(Core.showMenuBar()).toEqual({
+      };
+      store.dispatch(action);
+      actual = store.getState().UI.present.showMenuBar;
+      expected = false;
+      expect(actual).toEqual(expected);
+
+      action = {
         type: CoreMsg.SHOW_MENU_BAR
-      });
-      changedStore = store.getState();
-      expect(changedStore.UI.showMenuBar).toEqual(true);
+      };
+      store.dispatch(action);
+      actual = store.getState().UI.present.showMenuBar;
+      expected = true;
+      expect(actual).toEqual(expected);
     });
   });
 
   describe("changeTime function", () => {
     it("should return empty action", () => {
-      expect(Core.changeTime({})).toEqual({
-        type: CoreMsg.UPDATE_TIME,
-        payload: {}
-      });
+      const store = createStore(rootReducer);
+      const empty = {};
+      const action = Core._updateTime(empty);
+      store.dispatch(action);
+      const actual = store.getState().time;
+      const expected = I.iTime;
+      expect(actual).toEqual(expected);
     });
 
-    it("should have correct payload", () => {
-      expect(Core.changeTime({ day: 1 })).toEqual({
-        type: CoreMsg.UPDATE_TIME,
-        payload: { day: 1 }
-      });
+    it("should update time", () => {
+      const store = createStore(rootReducer);
+      const time = { day: 1 };
+      const action = Core._updateTime(time);
+      store.dispatch(action);
+      const actual = store.getState().time.day;
+      const expected = time.day;
+      expect(actual).toEqual(expected);
     });
 
     it("show throw error with incorrect payload", () => {
@@ -199,23 +203,28 @@ describe("Testing Core functions", () => {
   });
 
   // To fix after learning how to mock the store
-  describe("storeState function", () => {
-    let storeState = store.getState();
-    xit("should send a stored state", () => {
-      expect(Core.storeState()).toEqual({
-        type: CoreMsg.STATE_STORE,
-        payload: storeState
-      });
-    });
-  });
+  describe("saving and restoring states", () => {
+    it("should save and restore state", () => {
+      const store = createStore(rootReducer);
+      let action = Core._updateView("Foo");
+      store.dispatch(action);
 
-  // To fix affter learning how to mock the store
-  describe("goBack function", () => {
-    xit("should go back", () => {
-      expect(Core.goBack()).toEqual({
-        type: CoreMsg.GO_BACK,
-        payload: {}
-      });
+      action = Core._stateStore();
+      store.dispatch(action);
+
+      action = Core._updateView("Bar");
+      store.dispatch(action);
+
+      let currState = store.getState().output.present;
+      let prevState = store.getState().output.past[0];
+
+      expect(currState).toEqual("Bar");
+      expect(prevState).toEqual("Foo");
+
+      action = Core._goBack();
+      store.dispatch(action);
+      currState = store.getState().output.present;
+      expect(currState).toEqual("Foo");
     });
   });
 });

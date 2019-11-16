@@ -8,7 +8,7 @@ import BreastCup from "../symbols/breastCup";
  * Sends message to set the hp value to equal the maxiumum
  * @return {object} Redux action
  */
-function _restoreHP() {
+export function _restoreHP() {
   return {
     type: PlayerMsg.RESTORE_HP
   };
@@ -28,35 +28,35 @@ export function setPlayerName(name) {
   };
 }
 
-function _setPlayerAppearance(stats) {
+export function _setPlayerAppearance(stats) {
   return {
     type: PlayerMsg.SET_APPEARANCE,
     payload: stats
   };
 }
 
-function _changePlayerAppearance(stats) {
+export function _changePlayerAppearance(stats) {
   return {
     type: PlayerMsg.CHANGE_APPEARANCE,
     payload: stats
   };
 }
 
-function _setPregStats(stats) {
+export function _setPregStats(stats) {
   return {
     type: PlayerMsg.SET_PREG_STATS,
     payload: stats
   };
 }
 
-function _changePregStats(stats) {
+export function _changePregStats(stats) {
   return {
     type: PlayerMsg.CHANGE_PREG_STATS,
     payload: stats
   };
 }
 
-function _setHair(stats) {
+export function _setHair(stats) {
   return {
     type: PlayerMsg.SET_HAIR,
     payload: stats

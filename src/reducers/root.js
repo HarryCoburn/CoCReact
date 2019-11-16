@@ -22,7 +22,7 @@ import {
   iVaginas
 } from "../store/initialState";
 
-function uiReducer(uiState = iUIState, action) {
+export function uiReducer(uiState = iUIState, action) {
   switch (action.type) {
     case CoreMsg.GO_BACK:
       return Utils.updateObject(uiState, {
@@ -60,7 +60,7 @@ function uiReducer(uiState = iUIState, action) {
   }
 }
 
-function outputReducer(output = iOutput, action) {
+export function outputReducer(output = iOutput, action) {
   switch (action.type) {
     case CoreMsg.GO_BACK:
       return Utils.updateObject(output, {
@@ -81,7 +81,7 @@ function outputReducer(output = iOutput, action) {
   }
 }
 
-function lowerReducer(lower = iLower, action) {
+export function lowerReducer(lower = iLower, action) {
   switch (action.type) {
     case CoreMsg.GO_BACK:
       return Utils.updateObject(lower, {
@@ -105,7 +105,7 @@ function lowerReducer(lower = iLower, action) {
   }
 }
 
-function upperReducer(upper = iUpper, action) {
+export function upperReducer(upper = iUpper, action) {
   switch (action.type) {
     case CoreMsg.GO_BACK:
       return Utils.updateObject(upper, {
@@ -129,7 +129,7 @@ function upperReducer(upper = iUpper, action) {
   }
 }
 
-function statsReducer(stats = iStats, action) {
+export function statsReducer(stats = iStats, action) {
   switch (action.type) {
     case CoreMsg.UPDATE_STATS:
     case CoreMsg.SET_STATS:
@@ -140,7 +140,7 @@ function statsReducer(stats = iStats, action) {
   }
 }
 
-function appearanceReducer(appearance = iAppearance, action) {
+export function appearanceReducer(appearance = iAppearance, action) {
   switch (action.type) {
     case PlayerMsg.SET_PLAYER_NAME:
       return { ...appearance, name: action.payload };
@@ -158,7 +158,7 @@ function appearanceReducer(appearance = iAppearance, action) {
   }
 }
 
-function timeReducer(time = iTime, action) {
+export function timeReducer(time = iTime, action) {
   switch (action.type) {
     case CoreMsg.UPDATE_TIME:
       return updateTime(time, action);
@@ -167,7 +167,7 @@ function timeReducer(time = iTime, action) {
   }
 }
 
-function engineReducer(engine = iEngineState, action) {
+export function engineReducer(engine = iEngineState, action) {
   switch (action.type) {
     case CoreMsg.GO_BACK:
       return Utils.updateObject(engine, {
@@ -188,7 +188,7 @@ function engineReducer(engine = iEngineState, action) {
   }
 }
 
-function pregnancyReducer(pregnancy = iPregnancy, action) {
+export function pregnancyReducer(pregnancy = iPregnancy, action) {
   switch (action.type) {
     case PlayerMsg.SET_PREG_STATS:
     case PlayerMsg.CHANGE_PREG_STATS:
@@ -198,7 +198,7 @@ function pregnancyReducer(pregnancy = iPregnancy, action) {
   }
 }
 
-function cocksReducer(cocks = iCocks, action) {
+export function cocksReducer(cocks = iCocks, action) {
   switch (action.type) {
     case PlayerMsg.SET_BALLS_STATS:
     case PlayerMsg.CHANGE_BALLS_STATS:
@@ -210,7 +210,7 @@ function cocksReducer(cocks = iCocks, action) {
   }
 }
 
-function breastsReducer(breasts = iBreasts, action) {
+export function breastsReducer(breasts = iBreasts, action) {
   switch (action.type) {
     case PlayerMsg.CREATE_BREAST_ROW:
       return updateBodyArr(breasts, action);
@@ -221,7 +221,7 @@ function breastsReducer(breasts = iBreasts, action) {
   }
 }
 
-function vaginasReducer(vaginas = iVaginas, action) {
+export function vaginasReducer(vaginas = iVaginas, action) {
   switch (action.type) {
     case PlayerMsg.CREATE_VAGINA:
       return updateBodyArr(vaginas, action);
@@ -230,7 +230,7 @@ function vaginasReducer(vaginas = iVaginas, action) {
   }
 }
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   output: outputReducer,
   UI: uiReducer,
   stats: statsReducer,
@@ -244,5 +244,3 @@ const rootReducer = combineReducers({
   breasts: breastsReducer,
   vaginas: vaginasReducer
 });
-
-export default rootReducer;

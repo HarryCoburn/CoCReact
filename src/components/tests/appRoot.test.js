@@ -19,7 +19,7 @@ describe("App Root Component", () => {
   });
   let component;
 
-  test("App root rendered correctly", () => {
+  xtest("App root rendered correctly", () => {
     component = renderer.create(
       <Provider store={store}>
         <AppRootComponent></AppRootComponent>
