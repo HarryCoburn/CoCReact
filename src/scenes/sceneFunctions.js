@@ -20,6 +20,7 @@ const SceneFuncs = {
   [SC.BUILD_AVERAGE_FEMALE]: charCreation.buildAverageFemale,
   [SC.BUILD_CURVY_FEMALE]: charCreation.buildCurvyFemale,
   [SC.BUILD_TOMBOYISH_FEMALE]: charCreation.buildTomboyishFemale,
+  [SC.SET_COMPLEXION]: charCreation.setComplexion,
   [SC.MAIN_MENU]: () => {
     return menus.mainMenu(store);
   },

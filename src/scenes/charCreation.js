@@ -13,7 +13,8 @@ import {
   BUILD_SLENDER_FEMALE,
   BUILD_AVERAGE_FEMALE,
   BUILD_CURVY_FEMALE,
-  BUILD_TOMBOYISH_FEMALE
+  BUILD_TOMBOYISH_FEMALE,
+  SET_COMPLEXION
 } from "./sceneSymbols";
 import * as Core from "../actions/Core";
 import * as Player from "../actions/Player";
@@ -232,4 +233,61 @@ export const buildTomboyishFemale = () => {
   chooseComplexion();
 };
 
-const chooseComplexion = () => {};
+const chooseComplexion = () => {
+  Core.newText(
+    <>
+      <p>What is your complexion?</p>
+    </>
+  );
+  Core.changeButtons({
+    b1: {
+      id: "b1",
+      label: "Light",
+      nextScene: SET_COMPLEXION,
+      p1: "light"
+    },
+    b2: {
+      id: "b2",
+      label: "Fair",
+      nextScene: SET_COMPLEXION,
+      p1: "fair"
+    },
+    b3: {
+      id: "b3",
+      label: "Olive",
+      nextScene: SET_COMPLEXION,
+      p1: "olive"
+    },
+    b4: {
+      id: "b4",
+      label: "Dark",
+      nextScene: SET_COMPLEXION,
+      p1: "dark"
+    },
+    b5: {
+      id: "b5",
+      label: "Ebony",
+      nextScene: SET_COMPLEXION,
+      p1: "ebony"
+    },
+    b6: {
+      id: "b6",
+      label: "Mahogany",
+      nextScene: SET_COMPLEXION,
+      p1: "mahogany"
+    },
+    b7: {
+      id: "b7",
+      label: "Russet",
+      nextScene: SET_COMPLEXION,
+      p1: "russet"
+    }
+  });
+};
+
+export const setComplexion = color => {
+  console.log(color);
+  setHair();
+};
+
+const setHair = () => {};

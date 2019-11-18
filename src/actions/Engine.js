@@ -6,11 +6,11 @@ import SceneFuncs from "../scenes/sceneFunctions";
  * @param {Symbol} scene
  * @returns {object} object containing new scene information
  */
-export function fetchScene(scene) {
+export function fetchScene(scene, p1) {
   let sceneFunction = SceneFuncs[scene];
 
   if (typeof sceneFunction === "function") {
-    sceneFunction();
+    sceneFunction(p1);
   } else {
     throw Error(
       "Core.fetchscene tried to retrieve a sceneFunction that was not a function."

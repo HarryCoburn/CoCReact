@@ -33,14 +33,14 @@ class ButtonGridClass extends React.Component {
 
 const mapDispatchToButtonProps = dispatch => {
   return {
-    update: ({ nextScene = null }) => {
+    update: ({ nextScene = null, p1 = undefined }) => {
       console.log("The next scene is...");
       console.log(nextScene);
       if (nextScene === null) {
         console.log("Something tried to dispatch with no nextScene!");
         return;
       }
-      Engine.fetchScene(nextScene);
+      Engine.fetchScene(nextScene, p1);
     }
   };
 };
