@@ -12,14 +12,19 @@ describe("App Root Component", () => {
     output: I.iOutput,
     UI: I.iUIState,
     stats: I.iStats,
-    buttons: I.iButtons,
     appearance: I.iAppearance,
     time: I.iTime,
-    engine: I.iEngineState
+    engine: I.iEngineState,
+    lower: I.iLower,
+    upper: I.iUpper,
+    pregnancy: I.iPregnancy,
+    cocks: I.iCocks,
+    breasts: I.iBreasts,
+    vaginas: I.iVaginas
   });
   let component;
 
-  xtest("App root rendered correctly", () => {
+  test("App root rendered correctly", () => {
     component = renderer.create(
       <Provider store={store}>
         <AppRootComponent></AppRootComponent>

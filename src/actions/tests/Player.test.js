@@ -73,4 +73,73 @@ describe("Testing Player Functions", () => {
     let actual = store.getState().appearance.hair.byID.length.value;
     expect(actual).toEqual(expected);
   });
+
+  it("should set balls stats", () => {
+    const store = createStore(rootReducer);
+    const param = { number: 2 };
+    const action = Player._setBallsStats(param);
+    store.dispatch(action);
+    let expected = 2;
+    let actual = store.getState().cocks.balls.byID.number.value;
+    expect(actual).toEqual(expected);
+  });
+
+  it("should change balls stats", () => {
+    const store = createStore(rootReducer);
+    const param = { number: 1 };
+    const action = Player._changeBallsStats(param);
+    store.dispatch(action);
+    let expected = 3;
+    let actual = store.getState().cocks.balls.byID.number.value;
+    expect(actual).toEqual(expected);
+  });
+
+  it("should set butt stats", () => {
+    const store = createStore(rootReducer);
+    const param = { rating: "test" };
+    const action = Player._setButtStats(param);
+    store.dispatch(action);
+    let expected = "test";
+    let actual = store.getState().appearance.butt.byID.rating.value;
+    expect(actual).toEqual(expected);
+  });
+
+  it("should set hips stats", () => {
+    const store = createStore(rootReducer);
+    const param = { rating: "test" };
+    const action = Player._setHipsStats(param);
+    store.dispatch(action);
+    let expected = "test";
+    let actual = store.getState().appearance.hips.byID.rating.value;
+    expect(actual).toEqual(expected);
+  });
+
+  it("should add something to the cock array", () => {
+    const store = createStore(rootReducer);
+    const action = Player._createCock();
+    store.dispatch(action);
+    expect(store.getState().cocks.cocks.length).toEqual(1);
+  });
+
+  it("should add something to the breast array", () => {
+    const store = createStore(rootReducer);
+    const action = Player._createBreastRow();
+    store.dispatch(action);
+    expect(store.getState().breasts.breasts.length).toEqual(1);
+  });
+
+  it("should change something to the breast array", () => {
+    const store = createStore(rootReducer);
+    store.dispatch(Player._createBreastRow());
+    const action = Player._changeBreastRow({ number: 3 });
+    store.dispatch(action);
+    expect(store.getState().breasts.breasts[0].number).toEqual(3);
+  });
+
+  it("should add something to the vagina array", () => {
+    const store = createStore(rootReducer);
+    const action = Player._createVagina();
+    store.dispatch(action);
+    expect(store.getState().vaginas.vaginas.length).toEqual(1);
+  });
 });

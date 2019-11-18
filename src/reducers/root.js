@@ -230,7 +230,7 @@ export function vaginasReducer(vaginas = iVaginas, action) {
   }
 }
 
-export const rootReducer = combineReducers({
+const appReducer = combineReducers({
   output: outputReducer,
   UI: uiReducer,
   stats: statsReducer,
@@ -244,3 +244,11 @@ export const rootReducer = combineReducers({
   breasts: breastsReducer,
   vaginas: vaginasReducer
 });
+
+export const rootReducer = (state, action) => {
+  if (action.type === "RESET_APP") {
+    state = undefined;
+  }
+
+  return appReducer(state, action);
+};

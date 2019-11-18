@@ -10,7 +10,7 @@ const dummy = {
 };
 
 describe("Stat Component", () => {
-  xit("renders correctly", () => {
+  it("renders correctly", () => {
     const component = renderer.create(
       <Stat
         key={dummy.stat}

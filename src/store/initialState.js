@@ -219,13 +219,17 @@ export const iAppearance = {
   },
   butt: {
     byID: {
-      rating: null
+      rating: {
+        value: null
+      }
     },
     allIDs: ["rating"]
   },
   hips: {
     byID: {
-      rating: null
+      rating: {
+        value: null
+      }
     },
     allIDs: ["rating"]
   },

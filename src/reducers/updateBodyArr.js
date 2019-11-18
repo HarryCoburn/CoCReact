@@ -27,6 +27,7 @@ export default function updateBodyArr(part, action) {
           if (index !== row) {
             return item;
           }
+
           return {
             ...item,
             ...changes

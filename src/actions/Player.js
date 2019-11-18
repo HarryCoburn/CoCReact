@@ -63,45 +63,46 @@ export function _setHair(stats) {
   };
 }
 
-function _setBallsStats(stats) {
+export function _setBallsStats(stats) {
   return {
     type: PlayerMsg.SET_BALLS_STATS,
     payload: stats
   };
 }
 
-function _setButtStats(stats) {
+export function _setButtStats(stats) {
   return {
     type: PlayerMsg.SET_BUTT_STATS,
     payload: stats
   };
 }
 
-function _setHipsStats(stats) {
+export function _setHipsStats(stats) {
   return {
     type: PlayerMsg.SET_HIPS_STATS,
     payload: stats
   };
 }
 
-function _changeBallsStats(stats) {
+export function _changeBallsStats(stats) {
   return {
     type: PlayerMsg.CHANGE_BALLS_STATS,
     payload: stats
   };
 }
 
-function _createCock() {
+export function _createCock() {
   return {
     type: PlayerMsg.CREATE_COCK,
     payload: { length: 5.5, thickness: 1, type: CockType.HUMAN } // Default cock
   };
 }
 
-function _createBreastRow() {
+export function _createBreastRow() {
   return {
     type: PlayerMsg.CREATE_BREAST_ROW,
     payload: {
+      // Default breastrow
       number: 2,
       size: BreastCup.FLAT,
       numNipple: 1,
@@ -114,7 +115,7 @@ function _createBreastRow() {
   };
 }
 
-function _createVagina() {
+export function _createVagina() {
   return {
     type: PlayerMsg.CREATE_VAGINA,
     payload: {
@@ -135,13 +136,15 @@ function _createVagina() {
   };
 }
 
-function _changeBreastRow(payload, ind) {
+export function _changeBreastRow(payload, ind = 0) {
   return {
     type: PlayerMsg.CHANGE_BREAST_ROW,
     payload: payload,
     index: ind
   };
 }
+
+/* ---- */
 
 export const setPlayerAppearance = stats =>
   store.dispatch(_setPlayerAppearance(stats));
@@ -159,5 +162,5 @@ export const createBreastRow = () => store.dispatch(_createBreastRow());
 export const createVagina = () => store.dispatch(_createVagina());
 export const setButt = stats => store.dispatch(_setButtStats(stats));
 export const setHips = stats => store.dispatch(_setHipsStats(stats));
-export const changeBreasts = (payload, ind = 0) =>
+export const changeBreasts = (payload, ind) =>
   store.dispatch(_changeBreastRow(payload, ind));
