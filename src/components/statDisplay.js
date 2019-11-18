@@ -4,7 +4,7 @@ import Stat from "./stat";
 class StatDisplay extends React.Component {
   stats = () =>
     this.props.ids.map(stat => {
-      let newStat = this.props.stats.byID[stat];
+      let newStat = this.props.stats.stats[stat];
 
       return (
         <Stat

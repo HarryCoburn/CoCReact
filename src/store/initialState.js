@@ -18,58 +18,50 @@ export const iEngineState = {
 };
 
 export const iStats = {
-  byID: {
+  stats: {
     strength: {
-      id: "strength",
       name: "Strength",
       value: 0,
       max: 100,
       min: 0
     },
     toughness: {
-      id: "toughness",
       name: "Toughness",
       value: 0,
       max: 100,
       min: 0
     },
     speed: {
-      id: "speed",
       name: "Speed",
       value: 0,
       max: 100,
       min: 0
     },
     intelligence: {
-      id: "intelligence",
       name: "Intelligence",
       value: 0,
       max: 100,
       min: 0
     },
     libido: {
-      id: "libido",
       name: "Libido",
       value: 0,
       max: 100,
       min: 0
     },
     sensitivity: {
-      id: "sensitivity",
       name: "Sensitivity",
       value: 0,
       max: 100,
       min: 0
     },
     corruption: {
-      id: "corruption",
       name: "Corruption",
       value: 0,
       max: 100,
       min: 0
     },
     hp: {
-      id: "hp",
       name: "HP",
       value: 0,
       max: 100,
@@ -77,7 +69,6 @@ export const iStats = {
       displayMax: true
     },
     lust: {
-      id: "lust",
       name: "Lust",
       value: 0,
       max: 100,
@@ -85,7 +76,6 @@ export const iStats = {
       displayMax: true
     },
     fatigue: {
-      id: "fatigue",
       name: "Fatigue",
       value: 0,
       max: 100,
@@ -93,7 +83,6 @@ export const iStats = {
       displayMax: true
     },
     hunger: {
-      id: "hunger",
       name: "Hunger",
       value: 0,
       max: 100,
@@ -101,13 +90,11 @@ export const iStats = {
       displayMax: true
     },
     level: {
-      id: "level",
       name: "Level",
       value: 1,
       max: 99
     },
     xp: {
-      id: "xp",
       name: "XP",
       value: 0,
       min: 0,
@@ -115,24 +102,14 @@ export const iStats = {
       displayMax: true
     },
     gems: {
-      id: "gems",
       name: "Gems",
       value: 0,
       min: 0,
       max: 9999
     },
-    obey: {
-      id: "obey",
-      value: 0
-    },
-    esteem: {
-      id: "esteem",
-      value: 0
-    },
-    will: {
-      id: "will",
-      value: 0
-    }
+    obey: 0,
+    esteem: 0,
+    will: 0
   },
   coreIDs: [
     "strength",
@@ -211,78 +188,52 @@ export const iUpper = {
 export const iAppearance = {
   name: "",
   hair: {
-    byID: {
-      length: {
-        value: 5
-      },
-      color: {
-        value: "brown"
-      }
+    stats: {
+      length: 5,
+      color: "brown"
     },
     allIDs: ["length", "color"]
   },
   butt: {
-    byID: {
-      rating: {
-        value: null
-      }
+    stats: {
+      rating: null
     },
     allIDs: ["rating"]
   },
   hips: {
-    byID: {
-      rating: {
-        value: null
-      }
+    stats: {
+      rating: null
     },
     allIDs: ["rating"]
   },
   skin: {
-    byID: {
-      tone: {
-        value: "light"
-      },
-      type: {
-        value: Skin.TYPE.PLAIN
-      }
+    stats: {
+      tone: "light",
+      type: Skin.TYPE.PLAIN
     },
     allIDs: ["tone", "type"]
   },
-  byID: {
-    tallness: {
-      value: 60
-    },
-    tone: {
-      value: 50
-    },
-    femininity: {
-      value: 0
-    },
-    thickness: {
-      value: 50
-    }
+  stats: {
+    tallness: 60,
+    tone: 50,
+    femininity: 0,
+    thickness: 50
   },
   allIDs: ["name", "tallness", "tone", "femininity", "thickness"]
 };
 
 export const iPregnancy = {
-  byID: {
-    fertility: {
-      value: 0
-    }
+  stats: {
+    fertility: 0
   },
   allIDs: ["fertility"]
 };
 
 export const iCocks = {
   balls: {
-    byID: {
-      number: {
-        value: 0
-      },
-      size: {
-        value: 0
-      }
+    stats: {
+      number: 0,
+      size: 0
     },
     allIDs: ["number", "size"]
   },
@@ -301,7 +252,8 @@ export const iVaginas = {
 export const iTime = {
   day: 0, //to reduce
   hour: 0, //to reduce
-  minute: 0 //to reduce
+  minute: 0, //to reduce
+  allIDs: ["day", "hour", "minute"]
 };
 
 export const iOutput = {

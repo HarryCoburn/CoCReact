@@ -9,8 +9,8 @@ describe("Testing Player Functions", () => {
     const store = createStore(rootReducer);
     const action = Player._restoreHP();
     store.dispatch(action);
-    let expected = store.getState().stats.byID.hp.max;
-    let actual = store.getState().stats.byID.hp.value;
+    let expected = store.getState().stats.stats.hp.max;
+    let actual = store.getState().stats.stats.hp.value;
     expect(actual).toEqual(expected);
   });
 
@@ -30,7 +30,7 @@ describe("Testing Player Functions", () => {
     const action = Player._setPlayerAppearance(param);
     store.dispatch(action);
     let expected = 66;
-    let actual = store.getState().appearance.byID.tone.value;
+    let actual = store.getState().appearance.stats.tone;
     expect(actual).toEqual(expected);
   });
 
@@ -40,7 +40,7 @@ describe("Testing Player Functions", () => {
     const action = Player._changePlayerAppearance(param);
     store.dispatch(action);
     let expected = 65;
-    let actual = store.getState().appearance.byID.tallness.value;
+    let actual = store.getState().appearance.stats.tallness;
     expect(actual).toEqual(expected);
   });
 
@@ -50,7 +50,7 @@ describe("Testing Player Functions", () => {
     const action = Player._setPregStats(param);
     store.dispatch(action);
     let expected = 25;
-    let actual = store.getState().pregnancy.byID.fertility.value;
+    let actual = store.getState().pregnancy.stats.fertility;
     expect(actual).toEqual(expected);
   });
 
@@ -60,7 +60,7 @@ describe("Testing Player Functions", () => {
     const action = Player._changePregStats(param);
     store.dispatch(action);
     let expected = 50;
-    let actual = store.getState().pregnancy.byID.fertility.value;
+    let actual = store.getState().pregnancy.stats.fertility;
     expect(actual).toEqual(expected);
   });
 
@@ -70,7 +70,7 @@ describe("Testing Player Functions", () => {
     const action = Player._setHair(param);
     store.dispatch(action);
     let expected = 5;
-    let actual = store.getState().appearance.hair.byID.length.value;
+    let actual = store.getState().appearance.hair.stats.length;
     expect(actual).toEqual(expected);
   });
 
@@ -80,7 +80,7 @@ describe("Testing Player Functions", () => {
     const action = Player._setBallsStats(param);
     store.dispatch(action);
     let expected = 2;
-    let actual = store.getState().cocks.balls.byID.number.value;
+    let actual = store.getState().cocks.balls.stats.number;
     expect(actual).toEqual(expected);
   });
 
@@ -90,7 +90,7 @@ describe("Testing Player Functions", () => {
     const action = Player._changeBallsStats(param);
     store.dispatch(action);
     let expected = 3;
-    let actual = store.getState().cocks.balls.byID.number.value;
+    let actual = store.getState().cocks.balls.stats.number;
     expect(actual).toEqual(expected);
   });
 
@@ -100,7 +100,7 @@ describe("Testing Player Functions", () => {
     const action = Player._setButtStats(param);
     store.dispatch(action);
     let expected = "test";
-    let actual = store.getState().appearance.butt.byID.rating.value;
+    let actual = store.getState().appearance.butt.stats.rating;
     expect(actual).toEqual(expected);
   });
 
@@ -110,7 +110,7 @@ describe("Testing Player Functions", () => {
     const action = Player._setHipsStats(param);
     store.dispatch(action);
     let expected = "test";
-    let actual = store.getState().appearance.hips.byID.rating.value;
+    let actual = store.getState().appearance.hips.stats.rating;
     expect(actual).toEqual(expected);
   });
 

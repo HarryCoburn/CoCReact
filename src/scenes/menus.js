@@ -31,7 +31,7 @@ export function mainMenu(store) {
 export function dataMenu() {
   Core.storeState();
   Core.hideStatBar();
-  Core.changeMenus([MenuButtons.data]);
+  Core.changeMenus([, MenuButtons.data]);
 
   Core.changeButtons([["Go back", GO_BACK]]);
   Core.newText("Data Menu");

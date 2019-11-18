@@ -1,12 +1,13 @@
 import updateStats from "../updateStats";
-import * as Player from "../../actions/Player";
+import * as Core from "../../actions/coreMsg";
+import * as Player from "../../actions/playerMsg";
 
 describe("Update Stat UI Reducer", () => {
   let statState;
 
   beforeEach(() => {
     statState = {
-      byID: {
+      stats: {
         strength: {
           value: 50,
           max: 100,
@@ -16,52 +17,78 @@ describe("Update Stat UI Reducer", () => {
           value: 0,
           max: 100,
           min: 0
-        }
+        },
+        obey: 0
       },
-      allIDs: ["strength", "hp"]
+      allIDs: ["strength", "hp", "obey"]
     };
   });
   describe("Player.UPDATE_STATS", () => {
-    xit("should return the initial state", () => {
+    it("should return the initial state", () => {
       expect(
-        updateStats(statState, { type: Player.UPDATE_STATS, payload: {} })
+        updateStats(statState, { type: Core.UPDATE_STATS, payload: {} })
       ).toEqual(statState);
     });
 
-    xit("should change by given value", () => {
+    it("should change by given value", () => {
       statState = updateStats(statState, {
-        type: Player.UPDATE_STATS,
+        type: Core.UPDATE_STATS,
         payload: { strength: 50 }
       });
-      expect(statState.byID.strength.value).toEqual(100);
+      expect(statState.stats.strength.value).toEqual(100);
       statState = updateStats(statState, {
-        type: Player.UPDATE_STATS,
+        type: Core.UPDATE_STATS,
         payload: { strength: -50 }
       });
-      expect(statState.byID.strength.value).toEqual(50);
+      expect(statState.stats.strength.value).toEqual(50);
     });
 
-    xit("should stay within range", () => {
+    it("should stay within range", () => {
       statState = updateStats(statState, {
-        type: Player.UPDATE_STATS,
+        type: Core.UPDATE_STATS,
         payload: { strength: -51 }
       });
-      expect(statState.byID.strength.value).toEqual(0);
+      expect(statState.stats.strength.value).toEqual(0);
       statState = updateStats(statState, {
-        type: Player.UPDATE_STATS,
+        type: Core.UPDATE_STATS,
         payload: { strength: 150 }
       });
-      expect(statState.byID.strength.value).toEqual(100);
+      expect(statState.stats.strength.value).toEqual(100);
     });
 
-    xit("should ignore stat parameters that aren't in allIDs", () => {
+    it("should change a non-object stat value", () => {
       statState = updateStats(statState, {
-        type: Player.UPDATE_STATS,
+        type: Core.UPDATE_STATS,
+        payload: { obey: 5 }
+      });
+      expect(statState.stats.obey).toEqual(5);
+    });
+
+    it("should set a non-object stat value", () => {
+      statState = updateStats(statState, {
+        type: Core.SET_STATS,
+        payload: { obey: 23 }
+      });
+      expect(statState.stats.obey).toEqual(23);
+    });
+
+    it("should change object stat value that's not 'value'", () => {
+      statState = updateStats(statState, {
+        type: Core.UPDATE_STATS,
+        payload: { strength: { value: -25, max: 200 } }
+      });
+      expect(statState.stats.strength.value).toEqual(25);
+      expect(statState.stats.strength.max).toEqual(300);
+    });
+
+    it("should ignore stat parameters that aren't in allIDs", () => {
+      statState = updateStats(statState, {
+        type: Core.UPDATE_STATS,
         payload: { strength: 50, buffness: 20 }
       });
-      expect(statState.byID.strength.value).toEqual(100);
+      expect(statState.stats.strength.value).toEqual(100);
       expect(statState).toEqual({
-        byID: {
+        stats: {
           strength: {
             value: 100,
             max: 100,
@@ -71,13 +98,14 @@ describe("Update Stat UI Reducer", () => {
             value: 0,
             max: 100,
             min: 0
-          }
+          },
+          obey: 0
         },
-        allIDs: ["strength", "hp"]
+        allIDs: ["strength", "hp", "obey"]
       });
     });
 
-    xit("should throw exception if an object isn't passed correctly", () => {
+    it("should throw exception if an object isn't passed correctly", () => {
       expect(() => {
         updateStats(statState, {
           type: Player.UPDATE_STATS,
@@ -87,9 +115,9 @@ describe("Update Stat UI Reducer", () => {
     });
   });
   describe("Player.RESTORE_HP", () => {
-    xit("should restore HP to max", () => {
+    it("should restore HP to max", () => {
       statState = updateStats(statState, { type: Player.RESTORE_HP });
-      expect(statState.byID.hp.value).toEqual(statState.byID.hp.max);
+      expect(statState.stats.hp.value).toEqual(statState.stats.hp.max);
     });
   });
   describe("Player.SET_STATS", () => {

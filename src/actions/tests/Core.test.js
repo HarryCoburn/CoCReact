@@ -21,7 +21,7 @@ describe("Testing Core functions", () => {
       const stat = { strength: 50 };
       const action = Core._statChange(stat);
       store.dispatch(action);
-      const actual = store.getState().stats.byID.strength.value;
+      const actual = store.getState().stats.stats.strength.value;
       const expected = stat.strength;
       expect(actual).toEqual(expected);
     });
@@ -49,7 +49,7 @@ describe("Testing Core functions", () => {
       const stat = { strength: 75 };
       const action = Core._setStats(stat);
       store.dispatch(action);
-      const actual = store.getState().stats.byID.strength.value;
+      const actual = store.getState().stats.stats.strength.value;
       const expected = stat.strength;
       expect(actual).toEqual(expected);
     });
@@ -64,7 +64,7 @@ describe("Testing Core functions", () => {
   describe("changeMenus function", () => {
     it("should clear menus", () => {
       const store = createStore(rootReducer);
-      const empty = {};
+      const empty = [];
       const action = Core._menuChange(empty);
       store.dispatch(action);
       const actual = store.getState().upper.present;
@@ -74,11 +74,11 @@ describe("Testing Core functions", () => {
 
     it("should have correct payload", () => {
       const store = createStore(rootReducer);
-      const menus = { u1: { label: "Blah" } };
+      const menus = [["Blah"]];
       const action = Core._menuChange(menus);
       store.dispatch(action);
       const actual = store.getState().upper.present;
-      const expected = menus;
+      const expected = { u1: { label: "Blah" } };
       expect(actual).toEqual(expected);
     });
 
@@ -92,21 +92,21 @@ describe("Testing Core functions", () => {
   describe("changeButtons function", () => {
     it("should clear buttons", () => {
       const store = createStore(rootReducer);
-      const empty = {};
+      const empty = [];
       const action = Core._buttonChange(empty);
       store.dispatch(action);
       const actual = store.getState().lower.present;
-      const expected = empty;
+      const expected = {};
       expect(actual).toEqual(expected);
     });
 
     it("should have correct payload", () => {
       const store = createStore(rootReducer);
-      const buttons = { b1: { label: "Blah" } };
+      const buttons = [["Blah"]];
       const action = Core._buttonChange(buttons);
       store.dispatch(action);
       const actual = store.getState().lower.present;
-      const expected = buttons;
+      const expected = { b1: { label: "Blah" } };
       expect(actual).toEqual(expected);
     });
 

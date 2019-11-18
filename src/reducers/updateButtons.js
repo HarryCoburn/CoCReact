@@ -1,7 +1,6 @@
 import * as CoreMsg from "../actions/coreMsg";
 
 const updateButtons = action => {
-  console.log(action);
   let buttonObj = {};
   let buttonPrefix = "";
   if (action.payload === undefined) return buttonObj;
@@ -22,7 +21,7 @@ const updateButtons = action => {
       };
     }
   });
-  console.log(buttonObj);
+
   return buttonObj;
 };
 
