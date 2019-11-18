@@ -32,21 +32,11 @@ import Hips from "../symbols/hips";
 import BreastCup from "../symbols/breastCup";
 
 export const startNewGame = () => {
-  Core.changeButtons({
-    b1: {
-      id: "b1",
-      label: "Confirm Name",
-      toolTip: "Click to confirm name",
-      nextScene: GENDER_SELECT
-    }
-  });
-
+  Core.changeButtons([
+    ["Confirm Name", GENDER_SELECT, , "Click to confirm name"]
+  ]);
   Core.newText(SceneText.CharCreation[START_NEW_GAME].text);
-  Core.changeMenus({
-    u1: MenuButtons.main,
-    u2: MenuButtons.data,
-    u3: MenuButtons.level
-  });
+  Core.changeMenus([MenuButtons.main, MenuButtons.data, MenuButtons.level]);
   Core.setStats({
     strength: 15,
     toughness: 15,
@@ -71,21 +61,10 @@ export const startNewGame = () => {
 
 export const genderSelect = () => {
   // TODO Put check in here before loading for having valid name, or setting default.
-  Core.changeButtons({
-    b1: {
-      label: "Man",
-      nextScene: IS_A_MAN
-    },
-    b2: {
-      label: "Woman",
-      nextScene: IS_A_WOMAN
-    }
-  });
-
+  Core.changeButtons([["Man", IS_A_MAN], ["Woman", IS_A_WOMAN]]);
   Core.newText(
     "Your name carries little significance beyond it being your name.  What is your gender?"
   );
-
   return;
 };
 
@@ -108,24 +87,12 @@ export const isAMan = () => {
     </>
   );
 
-  Core.changeButtons({
-    b1: {
-      label: "Lean",
-      nextScene: BUILD_LEAN_MALE
-    },
-    b2: {
-      label: "Average",
-      nextScene: BUILD_AVERAGE_MALE
-    },
-    b3: {
-      label: "Thick",
-      nextScene: BUILD_THICK_MALE
-    },
-    b4: {
-      label: "Girly",
-      nextScene: BUILD_GIRLY_MALE
-    }
-  });
+  Core.changeButtons([
+    ["Lean", BUILD_LEAN_MALE],
+    ["Average", BUILD_AVERAGE_MALE],
+    ["Thick", BUILD_THICK_MALE],
+    ["Girly", BUILD_GIRLY_MALE]
+  ]);
 };
 
 export const buildLeanMale = () => {
@@ -184,24 +151,12 @@ export const isAWoman = () => {
       <p>What type of build do you have?</p>
     </>
   );
-  Core.changeButtons({
-    b1: {
-      label: "Slender",
-      nextScene: BUILD_SLENDER_FEMALE
-    },
-    b2: {
-      label: "Average",
-      nextScene: BUILD_AVERAGE_FEMALE
-    },
-    b3: {
-      label: "Curvy",
-      nextScene: BUILD_CURVY_FEMALE
-    },
-    b4: {
-      label: "Tomboyish",
-      nextScene: BUILD_TOMBOYISH_FEMALE
-    }
-  });
+  Core.changeButtons([
+    ["Slender", BUILD_SLENDER_FEMALE],
+    ["Average", BUILD_AVERAGE_FEMALE],
+    ["Curvy", BUILD_CURVY_FEMALE],
+    ["Tomboyish", BUILD_TOMBOYISH_FEMALE]
+  ]);
 };
 
 export const buildSlenderFemale = () => {
@@ -246,43 +201,15 @@ const chooseComplexion = () => {
       <p>What is your complexion?</p>
     </>
   );
-  Core.changeButtons({
-    b1: {
-      label: "Light",
-      nextScene: SET_COMPLEXION,
-      params: ["light"]
-    },
-    b2: {
-      label: "Fair",
-      nextScene: SET_COMPLEXION,
-      params: ["fair"]
-    },
-    b3: {
-      label: "Olive",
-      nextScene: SET_COMPLEXION,
-      params: ["olive"]
-    },
-    b4: {
-      label: "Dark",
-      nextScene: SET_COMPLEXION,
-      params: ["dark"]
-    },
-    b5: {
-      label: "Ebony",
-      nextScene: SET_COMPLEXION,
-      params: ["ebony"]
-    },
-    b6: {
-      label: "Mahogany",
-      nextScene: SET_COMPLEXION,
-      params: ["mahogany"]
-    },
-    b7: {
-      label: "Russet",
-      nextScene: SET_COMPLEXION,
-      params: ["russet"]
-    }
-  });
+  Core.changeButtons([
+    ["Light", SET_COMPLEXION, ["light"]],
+    ["Fair", SET_COMPLEXION, ["fair"]],
+    ["Olive", SET_COMPLEXION, ["olive"]],
+    ["Dark", SET_COMPLEXION, ["dark"]],
+    ["Ebony", SET_COMPLEXION, ["ebony"]],
+    ["Mahogany", SET_COMPLEXION, ["mahogany"]],
+    ["Russet", SET_COMPLEXION, ["russet"]]
+  ]);
 };
 
 export const setComplexion = params => {
@@ -300,38 +227,14 @@ const chooseHair = () => {
     </>
   );
 
-  Core.changeButtons({
-    b1: {
-      label: "Blonde",
-      nextScene: SET_HAIR,
-      params: ["blonde"]
-    },
-    b2: {
-      label: "Brown",
-      nextScene: SET_HAIR,
-      params: ["brown"]
-    },
-    b3: {
-      label: "Red",
-      nextScene: SET_HAIR,
-      params: ["red"]
-    },
-    b4: {
-      label: "Gray",
-      nextScene: SET_HAIR,
-      params: ["gray"]
-    },
-    b5: {
-      label: "White",
-      nextScene: SET_HAIR,
-      params: ["white"]
-    },
-    b6: {
-      label: "Auburn",
-      nextScene: SET_HAIR,
-      params: ["auburn"]
-    }
-  });
+  Core.changeButtons([
+    ["Blonde", SET_HAIR, ["blonde"]],
+    ["Brown", SET_HAIR, ["brown"]],
+    ["Red", SET_HAIR, ["red"]],
+    ["Gray", SET_HAIR, ["gray"]],
+    ["White", SET_HAIR, ["white"]],
+    ["Auburn", SET_HAIR, ["auburn"]]
+  ]);
 };
 
 export const setHair = params => {
@@ -343,12 +246,7 @@ export const setHair = params => {
       <p>You may now proceed to final customization</p>
     </>
   );
-  Core.changeButtons({
-    b1: {
-      label: "Proceed",
-      nextScene: CONFIRM_STYLE
-    }
-  });
+  Core.changeButtons([["Proceed", CONFIRM_STYLE]]);
 };
 
 export const confirmStyle = () => {
@@ -372,29 +270,21 @@ export const confirmStyle = () => {
       <p>Breast size: {A.breastCup()}</p>
     </>
   );
-  Core.changeButtons({
-    b1: {
-      label: "Complexion",
-      nextScene: CONFIRM_COMPLEXION
-    },
-    b2: {
-      label: "Hair Color",
-      nextScene: CONFIRM_HAIR_COLOR
-    },
-    b4: {
-      label: "Set Height",
-      nextScene: CONFIRM_HEIGHT
-    },
-    ...(A.hasCock() && {
-      b6: { label: "Cock Size", nextScene: CONFIRM_COCK_LENGTH }
-    }),
-    b7: {
-      label: "Breast Size",
-      nextScene: CONFIRM_BREAST_SIZE
-    },
-    b10: {
-      label: "Done",
-      nextScene: CHOOSE_ENDOWMENT
-    }
-  });
+  Core.changeButtons([
+    ["Complexion", CONFIRM_COMPLEXION],
+    [
+      "Hair Color",
+      CONFIRM_HAIR_COLOR
+    ] /*if (player.mf("m", "f") === "m") {
+				if (player.hasBeard()) outputText("Beard: " + player.beardDescript() + "\n");
+				addButton(2, "Beard Style", menuBeardSettings);
+      }	 */,
+
+    ["Set Height", CONFIRM_HEIGHT],
+
+    ...(A.hasCock() ? ["Cock Size", CONFIRM_COCK_LENGTH] : []),
+    ["Breast Size", CONFIRM_BREAST_SIZE],
+
+    ["Done", CHOOSE_ENDOWMENT]
+  ]);
 };
