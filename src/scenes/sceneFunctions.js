@@ -21,6 +21,8 @@ const SceneFuncs = {
   [SC.BUILD_CURVY_FEMALE]: charCreation.buildCurvyFemale,
   [SC.BUILD_TOMBOYISH_FEMALE]: charCreation.buildTomboyishFemale,
   [SC.SET_COMPLEXION]: charCreation.setComplexion,
+  [SC.SET_HAIR]: charCreation.setHair,
+  [SC.CONFIRM_STYLE]: charCreation.confirmStyle,
   [SC.MAIN_MENU]: () => {
     return menus.mainMenu(store);
   },

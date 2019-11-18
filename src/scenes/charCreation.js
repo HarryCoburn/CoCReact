@@ -14,7 +14,9 @@ import {
   BUILD_AVERAGE_FEMALE,
   BUILD_CURVY_FEMALE,
   BUILD_TOMBOYISH_FEMALE,
-  SET_COMPLEXION
+  SET_COMPLEXION,
+  SET_HAIR,
+  CONFIRM_STYLE
 } from "./sceneSymbols";
 import * as A from "../appearance/appearance";
 import * as Core from "../actions/Core";
@@ -290,14 +292,73 @@ export const setComplexion = params => {
   let [color] = params;
   Player.setSkin({ tone: color });
   //player.arms.claws.tone = "";
-  setHair();
+  chooseHair();
 };
 
-const setHair = () => {
+const chooseHair = () => {
   Core.newText(
     <>
       <p>You selected a {A.skinColor()} complexion</p>
       <p>What color is your hair?</p>
     </>
   );
+
+  Core.changeButtons({
+    b1: {
+      id: "b1",
+      label: "Blonde",
+      nextScene: SET_HAIR,
+      params: ["blonde"]
+    },
+    b2: {
+      id: "b2",
+      label: "Brown",
+      nextScene: SET_HAIR,
+      params: ["brown"]
+    },
+    b3: {
+      id: "b3",
+      label: "Red",
+      nextScene: SET_HAIR,
+      params: ["red"]
+    },
+    b4: {
+      id: "b4",
+      label: "Gray",
+      nextScene: SET_HAIR,
+      params: ["gray"]
+    },
+    b5: {
+      id: "b5",
+      label: "White",
+      nextScene: SET_HAIR,
+      params: ["white"]
+    },
+    b6: {
+      id: "b6",
+      label: "Auburn",
+      nextScene: SET_HAIR,
+      params: ["auburn"]
+    }
+  });
 };
+
+export const setHair = params => {
+  let [color] = params;
+  Player.setHair({ color: color });
+  Core.newText(
+    <>
+      <p>You have {A.hairDesc()}.</p>
+      <p>You may now proceed to final customization</p>
+    </>
+  );
+  Core.changeButtons({
+    b1: {
+      id: "b1",
+      label: "Proceed",
+      nextScene: CONFIRM_STYLE
+    }
+  });
+};
+
+export const confirmStyle = () => {};

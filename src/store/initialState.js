@@ -213,9 +213,12 @@ export const iAppearance = {
     byID: {
       length: {
         value: 0
+      },
+      color: {
+        value: ""
       }
     },
-    allIDs: ["length"]
+    allIDs: ["length", "color"]
   },
   butt: {
     byID: {

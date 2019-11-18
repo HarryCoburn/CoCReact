@@ -13,6 +13,8 @@ export const BUILD_TOMBOYISH_FEMALE = Symbol(
   "CharCreation/BUILD_TOMBOYISH_FEMALE"
 );
 export const SET_COMPLEXION = Symbol("CharCreation/SET_COMPLEXION");
+export const SET_HAIR = Symbol("CharCreation/SET_HAIR");
+export const CONFIRM_STYLE = Symbol("CharCreation/CONFIRM_STYLE");
 
 export const MAIN_MENU = Symbol("Menus/MAIN_MENU");
 export const DATA_MENU = Symbol("Menus/DATA_MENU");
