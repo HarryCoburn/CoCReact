@@ -31,16 +31,9 @@ export function mainMenu(store) {
 export function dataMenu() {
   Core.storeState();
   Core.hideStatBar();
-  Core.changeMenus({
-    u2: MenuButtons.data
-  });
-  Core.changeButtons({
-    b1: {
-      id: "b1",
-      label: "Go back",
-      nextScene: GO_BACK
-    }
-  });
+  Core.changeMenus([MenuButtons.data]);
+
+  Core.changeButtons([["Go back", GO_BACK]]);
   Core.newText("Data Menu");
 
   return;
@@ -49,46 +42,16 @@ export function dataMenu() {
 export function instructions() {
   Core.storeState();
   Core.hideMenuBar();
-  Core.changeButtons({
-    b1: {
-      label: "Go Back",
-      nextScene: GO_BACK
-    }
-  });
+  Core.changeButtons([["Go back", GO_BACK]]);
   Core.newText(SceneText.Menus[INSTRUCTIONS].text);
   return;
 }
 
-/*
-export function goBack() {
-  Core.goBack();
-}
-*/
-
 export const MenuButtons = {
-  newGame: {
-    id: "newGame",
-    label: "New Game",
-    toolTip: "Start a new game.",
-    nextScene: START_NEW_GAME
-  },
-  data: {
-    id: "data",
-    label: "Data",
-    toolTip: "Load or manage saved games.",
-    nextScene: DATA_MENU
-  },
-  main: {
-    id: "main",
-    label: "Main Menu",
-    nextScene: MAIN_MENU
-  },
-  goBack: {
-    id: "goBack",
-    label: "Go Back",
-    toolTip: "Go back to gameplay?",
-    nextScene: GO_BACK
-  },
+  newGame: ["New Game", START_NEW_GAME, , "Start a new game."],
+  data: ["Data", DATA_MENU, , "Load or manage saved games."],
+  main: ["Main Menu", MAIN_MENU],
+  goBack: ["Go Back", GO_BACK, , "Go back to gameplay?"],
   level: {
     id: "level",
     label: "Level Up",

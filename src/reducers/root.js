@@ -6,6 +6,7 @@ import * as EngineMsg from "../actions/engineMsg";
 import updateStats from "./updateStats";
 import updateTime from "./updateTime";
 import updateBodyArr from "./updateBodyArr";
+import updateButtons from "./updateButtons";
 
 import {
   iOutput,
@@ -98,7 +99,7 @@ export function lowerReducer(lower = iLower, action) {
     case CoreMsg.UPDATE_BUTTONS:
       return Utils.updateObject(lower, {
         ...lower,
-        present: action.payload
+        present: updateButtons(action)
       });
     default:
       return lower;
@@ -122,7 +123,7 @@ export function upperReducer(upper = iUpper, action) {
     case CoreMsg.UPDATE_MENUS:
       return Utils.updateObject(upper, {
         ...upper,
-        present: action.payload
+        present: updateButtons(action)
       });
     default:
       return upper;
