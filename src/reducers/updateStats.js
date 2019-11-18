@@ -44,6 +44,7 @@ function statChoose(stat, change, type) {
     case PlayerMsg.SET_HIPS_STATS:
     case PlayerMsg.SET_PREG_STATS:
     case PlayerMsg.SET_BALLS_STATS:
+    case PlayerMsg.SET_SKIN:
       return change;
     default:
       throw Error("Received bad type in statChoose: " + type);

@@ -16,6 +16,7 @@ import {
   BUILD_TOMBOYISH_FEMALE,
   SET_COMPLEXION
 } from "./sceneSymbols";
+import * as A from "../appearance/appearance";
 import * as Core from "../actions/Core";
 import * as Player from "../actions/Player";
 import Butt from "../symbols/butt";
@@ -244,50 +245,59 @@ const chooseComplexion = () => {
       id: "b1",
       label: "Light",
       nextScene: SET_COMPLEXION,
-      p1: "light"
+      params: ["light"]
     },
     b2: {
       id: "b2",
       label: "Fair",
       nextScene: SET_COMPLEXION,
-      p1: "fair"
+      params: ["fair"]
     },
     b3: {
       id: "b3",
       label: "Olive",
       nextScene: SET_COMPLEXION,
-      p1: "olive"
+      params: ["olive"]
     },
     b4: {
       id: "b4",
       label: "Dark",
       nextScene: SET_COMPLEXION,
-      p1: "dark"
+      params: ["dark"]
     },
     b5: {
       id: "b5",
       label: "Ebony",
       nextScene: SET_COMPLEXION,
-      p1: "ebony"
+      params: ["ebony"]
     },
     b6: {
       id: "b6",
       label: "Mahogany",
       nextScene: SET_COMPLEXION,
-      p1: "mahogany"
+      params: ["mahogany"]
     },
     b7: {
       id: "b7",
       label: "Russet",
       nextScene: SET_COMPLEXION,
-      p1: "russet"
+      params: ["russet"]
     }
   });
 };
 
-export const setComplexion = color => {
-  console.log(color);
+export const setComplexion = params => {
+  let [color] = params;
+  Player.setSkin({ tone: color });
+  //player.arms.claws.tone = "";
   setHair();
 };
 
-const setHair = () => {};
+const setHair = () => {
+  Core.newText(
+    <>
+      <p>You selected a {A.skinColor()} complexion</p>
+      <p>What color is your hair?</p>
+    </>
+  );
+};

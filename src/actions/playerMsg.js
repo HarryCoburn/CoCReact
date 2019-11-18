@@ -13,3 +13,4 @@ export const CREATE_BREAST_ROW = Symbol("player/CREATE_BREAST_ROW");
 export const CHANGE_BREAST_ROW = Symbol("player/CHANGE_BREAST_ROW");
 export const CREATE_VAGINA = Symbol("player/CREATE_VAGINA");
 export const CHANGE_PREG_STATS = Symbol("player/SET_PREG_STATS");
+export const SET_SKIN = Symbol("player/SET_SKIN");

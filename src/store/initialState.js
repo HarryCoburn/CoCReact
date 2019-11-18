@@ -233,6 +233,14 @@ export const iAppearance = {
     },
     allIDs: ["rating"]
   },
+  skin: {
+    byID: {
+      tone: {
+        value: ""
+      }
+    },
+    allIDs: ["tone"]
+  },
   byID: {
     tallness: {
       value: 0

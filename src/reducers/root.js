@@ -153,6 +153,8 @@ export function appearanceReducer(appearance = iAppearance, action) {
       return { ...appearance, butt: updateStats(appearance.butt, action) };
     case PlayerMsg.SET_HIPS_STATS:
       return { ...appearance, hips: updateStats(appearance.hips, action) };
+    case PlayerMsg.SET_SKIN:
+      return { ...appearance, skin: updateStats(appearance.skin, action) };
     default:
       return appearance;
   }

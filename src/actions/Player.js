@@ -144,6 +144,13 @@ export function _changeBreastRow(payload, ind = 0) {
   };
 }
 
+export function _setSkin(payload) {
+  return {
+    type: PlayerMsg.SET_SKIN,
+    payload: payload
+  };
+}
+
 /* ---- */
 
 export const setPlayerAppearance = stats =>
@@ -164,3 +171,4 @@ export const setButt = stats => store.dispatch(_setButtStats(stats));
 export const setHips = stats => store.dispatch(_setHipsStats(stats));
 export const changeBreasts = (payload, ind) =>
   store.dispatch(_changeBreastRow(payload, ind));
+export const setSkin = stats => store.dispatch(_setSkin(stats));
