@@ -16,7 +16,13 @@ import {
   BUILD_TOMBOYISH_FEMALE,
   SET_COMPLEXION,
   SET_HAIR,
-  CONFIRM_STYLE
+  CONFIRM_STYLE,
+  CONFIRM_COMPLEXION,
+  CONFIRM_HAIR_COLOR,
+  CONFIRM_HEIGHT,
+  CONFIRM_COCK_LENGTH,
+  CONFIRM_BREAST_SIZE,
+  CHOOSE_ENDOWMENT
 } from "./sceneSymbols";
 import * as A from "../appearance/appearance";
 import * as Core from "../actions/Core";
@@ -67,13 +73,11 @@ export const genderSelect = () => {
   // TODO Put check in here before loading for having valid name, or setting default.
   Core.changeButtons({
     b1: {
-      id: "b1",
       label: "Man",
       nextScene: IS_A_MAN
     },
     b2: {
-      id: "b2",
-      label: "WOMAN",
+      label: "Woman",
       nextScene: IS_A_WOMAN
     }
   });
@@ -106,22 +110,18 @@ export const isAMan = () => {
 
   Core.changeButtons({
     b1: {
-      id: "b1",
       label: "Lean",
       nextScene: BUILD_LEAN_MALE
     },
     b2: {
-      id: "b2",
       label: "Average",
       nextScene: BUILD_AVERAGE_MALE
     },
     b3: {
-      id: "b3",
       label: "Thick",
       nextScene: BUILD_THICK_MALE
     },
     b4: {
-      id: "b4",
       label: "Girly",
       nextScene: BUILD_GIRLY_MALE
     }
@@ -132,6 +132,7 @@ export const buildLeanMale = () => {
   Core.changeStats({ strength: -1, speed: 1 });
   Player.setPlayerAppearance({ femininity: 34, thickness: 30 });
   Player.changePlayerAppearance({ tone: 5 });
+  Player.changeBreasts({ size: BreastCup.FLAT });
   Player.setButt({ rating: Butt.TIGHT });
   Player.setHips({ rating: Hips.SLENDER });
   chooseComplexion();
@@ -139,6 +140,7 @@ export const buildLeanMale = () => {
 
 export const buildAverageMale = () => {
   Player.setPlayerAppearance({ femininity: 30, thickness: 50 });
+  Player.changeBreasts({ size: BreastCup.FLAT });
   Player.setButt({ rating: Butt.AVERAGE });
   Player.setHips({ rating: Hips.AVERAGE });
   chooseComplexion();
@@ -147,6 +149,7 @@ export const buildAverageMale = () => {
 export const buildThickMale = () => {
   Core.changeStats({ speed: -4, strength: 2, toughness: 2 });
   Player.setPlayerAppearance({ femininity: 29, thickness: 70 });
+  Player.changeBreasts({ size: BreastCup.FLAT });
   Player.changePlayerAppearance({ tone: -5 });
   Player.setButt({ rating: Butt.AVERAGE });
   Player.setHips({ rating: Hips.AVERAGE });
@@ -156,6 +159,7 @@ export const buildThickMale = () => {
 export const buildGirlyMale = () => {
   Core.changeStats({ strength: -2, speed: +2 });
   Player.setPlayerAppearance({ femininity: 50, thickness: 50, tone: 26 });
+  Player.changeBreasts({ size: BreastCup.A });
   Player.setButt({ rating: Butt.NOTICEABLE });
   Player.setHips({ rating: Hips.SLENDER });
   Player.changeBreasts({ rating: BreastCup.A });
@@ -182,23 +186,19 @@ export const isAWoman = () => {
   );
   Core.changeButtons({
     b1: {
-      id: "b1",
       label: "Slender",
       nextScene: BUILD_SLENDER_FEMALE
     },
     b2: {
-      id: "b2",
       label: "Average",
       nextScene: BUILD_AVERAGE_FEMALE
     },
     b3: {
-      id: "b3",
-      label: "Thick",
+      label: "Curvy",
       nextScene: BUILD_CURVY_FEMALE
     },
     b4: {
-      id: "b4",
-      label: "Girly",
+      label: "Tomboyish",
       nextScene: BUILD_TOMBOYISH_FEMALE
     }
   });
@@ -208,6 +208,7 @@ export const buildSlenderFemale = () => {
   Core.changeStats({ strength: -1, speed: 1 });
   Player.setPlayerAppearance({ thickness: 30, femininity: 66 });
   Player.changePlayerAppearance({ tone: 5 });
+  Player.changeBreasts({ size: BreastCup.B });
   Player.setButt({ rating: Butt.TIGHT });
   Player.setHips({ rating: Hips.AMPLE });
   chooseComplexion();
@@ -215,6 +216,7 @@ export const buildSlenderFemale = () => {
 
 export const buildAverageFemale = () => {
   Player.setPlayerAppearance({ femininity: 70, thickness: 50 });
+  Player.changeBreasts({ size: BreastCup.C });
   Player.setButt({ rating: Butt.NOTICEABLE });
   Player.setHips({ rating: Hips.AMPLE });
   chooseComplexion();
@@ -223,6 +225,7 @@ export const buildAverageFemale = () => {
 export const buildCurvyFemale = () => {
   Core.changeStats({ speed: -2, strength: 1, toughness: 1 });
   Player.setPlayerAppearance({ femininity: 71, thickness: 70 });
+  Player.changeBreasts({ size: BreastCup.D });
   Player.setButt({ rating: Butt.LARGE });
   Player.setHips({ rating: Hips.CURVY });
   chooseComplexion();
@@ -231,6 +234,7 @@ export const buildCurvyFemale = () => {
 export const buildTomboyishFemale = () => {
   Core.changeStats({ strength: 1, speed: -1 });
   Player.setPlayerAppearance({ femininity: 56, thickness: 50, tone: 50 });
+  Player.changeBreasts({ size: BreastCup.A });
   Player.setButt({ rating: Butt.TIGHT });
   Player.setHips({ rating: Hips.SLENDER });
   chooseComplexion();
@@ -244,43 +248,36 @@ const chooseComplexion = () => {
   );
   Core.changeButtons({
     b1: {
-      id: "b1",
       label: "Light",
       nextScene: SET_COMPLEXION,
       params: ["light"]
     },
     b2: {
-      id: "b2",
       label: "Fair",
       nextScene: SET_COMPLEXION,
       params: ["fair"]
     },
     b3: {
-      id: "b3",
       label: "Olive",
       nextScene: SET_COMPLEXION,
       params: ["olive"]
     },
     b4: {
-      id: "b4",
       label: "Dark",
       nextScene: SET_COMPLEXION,
       params: ["dark"]
     },
     b5: {
-      id: "b5",
       label: "Ebony",
       nextScene: SET_COMPLEXION,
       params: ["ebony"]
     },
     b6: {
-      id: "b6",
       label: "Mahogany",
       nextScene: SET_COMPLEXION,
       params: ["mahogany"]
     },
     b7: {
-      id: "b7",
       label: "Russet",
       nextScene: SET_COMPLEXION,
       params: ["russet"]
@@ -305,37 +302,31 @@ const chooseHair = () => {
 
   Core.changeButtons({
     b1: {
-      id: "b1",
       label: "Blonde",
       nextScene: SET_HAIR,
       params: ["blonde"]
     },
     b2: {
-      id: "b2",
       label: "Brown",
       nextScene: SET_HAIR,
       params: ["brown"]
     },
     b3: {
-      id: "b3",
       label: "Red",
       nextScene: SET_HAIR,
       params: ["red"]
     },
     b4: {
-      id: "b4",
       label: "Gray",
       nextScene: SET_HAIR,
       params: ["gray"]
     },
     b5: {
-      id: "b5",
       label: "White",
       nextScene: SET_HAIR,
       params: ["white"]
     },
     b6: {
-      id: "b6",
       label: "Auburn",
       nextScene: SET_HAIR,
       params: ["auburn"]
@@ -354,11 +345,56 @@ export const setHair = params => {
   );
   Core.changeButtons({
     b1: {
-      id: "b1",
       label: "Proceed",
       nextScene: CONFIRM_STYLE
     }
   });
 };
 
-export const confirmStyle = () => {};
+export const confirmStyle = () => {
+  Core.newText(
+    <>
+      <p>
+        You can finalize your appearance customization before you proceed to
+        perk selection. You will be able to alter your appearance through the
+        usage of certain items.
+      </p>
+      <p>
+        Height: {Math.floor(A.tallness() / 12)}'{A.tallness() % 12}"
+      </p>
+      <p>Skin tone: {A.skinColor()}</p>
+      <p>Hair color: {A.hairColor()}</p>
+      {A.hasCock() && (
+        <p>
+          Cock size: {A.cockLength()}" long, {A.cockThickness()}" thick
+        </p>
+      )}
+      <p>Breast size: {A.breastCup()}</p>
+    </>
+  );
+  Core.changeButtons({
+    b1: {
+      label: "Complexion",
+      nextScene: CONFIRM_COMPLEXION
+    },
+    b2: {
+      label: "Hair Color",
+      nextScene: CONFIRM_HAIR_COLOR
+    },
+    b4: {
+      label: "Set Height",
+      nextScene: CONFIRM_HEIGHT
+    },
+    ...(A.hasCock() && {
+      b6: { label: "Cock Size", nextScene: CONFIRM_COCK_LENGTH }
+    }),
+    b7: {
+      label: "Breast Size",
+      nextScene: CONFIRM_BREAST_SIZE
+    },
+    b10: {
+      label: "Done",
+      nextScene: CHOOSE_ENDOWMENT
+    }
+  });
+};

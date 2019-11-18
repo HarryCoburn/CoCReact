@@ -1,8 +1,36 @@
 import store from "../store/store";
 import sample from "lodash/sample";
+import BreastCup from "../symbols/breastCup";
+
+export const hasCock = () => {
+  return store.getState().cocks.cocks.length > 0;
+};
+
+export const cockLength = (cockInd = 0) => {
+  return store.getState().cocks.cocks[cockInd].length;
+};
+
+export const cockThickness = (cockInd = 0) => {
+  return store.getState().cocks.cocks[cockInd].thickness;
+};
+
+export const breastCup = (breastInd = 0) => {
+  let symbol = store.getState().breasts.breasts[breastInd].size;
+  return {
+    [BreastCup.FLAT]: "flat-chested",
+    [BreastCup.A]: "A-cup",
+    [BreastCup.B]: "B-cup",
+    [BreastCup.C]: "C-cup",
+    [BreastCup.D]: "D-cup"
+  }[symbol];
+};
 
 export const skinColor = () => {
   return store.getState().appearance.skin.byID.tone.value;
+};
+
+export const hairColor = () => {
+  return store.getState().appearance.hair.byID.color.value;
 };
 
 export const tallness = () => {
@@ -13,8 +41,6 @@ export const hairDesc = (hairObj = store.getState().appearance.hair.byID) => {
   let lengthNum = hairObj.length.value;
   let color = hairObj.color.value;
   // let type = hairObj.type.value
-
-  let desc = "";
 
   let length;
 

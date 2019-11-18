@@ -39,7 +39,7 @@ describe("Testing Player Functions", () => {
     const param = { tallness: 5 };
     const action = Player._changePlayerAppearance(param);
     store.dispatch(action);
-    let expected = 5;
+    let expected = 65;
     let actual = store.getState().appearance.byID.tallness.value;
     expect(actual).toEqual(expected);
   });

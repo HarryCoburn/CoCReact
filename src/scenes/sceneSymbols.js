@@ -15,6 +15,12 @@ export const BUILD_TOMBOYISH_FEMALE = Symbol(
 export const SET_COMPLEXION = Symbol("CharCreation/SET_COMPLEXION");
 export const SET_HAIR = Symbol("CharCreation/SET_HAIR");
 export const CONFIRM_STYLE = Symbol("CharCreation/CONFIRM_STYLE");
+export const CONFIRM_COMPLEXION = Symbol("CharCreation/CONFIRM_COMPLEXION");
+export const CONFIRM_HAIR_COLOR = Symbol("CharCreation/CONFIRM_HAIR_COLOR");
+export const CONFIRM_HEIGHT = Symbol("CharCreation/CONFIRM_HEIGHT");
+export const CONFIRM_COCK_LENGTH = Symbol("CharCreation/CONFIRM_COCK_LENGTH");
+export const CONFIRM_BREAST_SIZE = Symbol("CharCreation/CONFIRM_BREAST_SIZE");
+export const CHOOSE_ENDOWMENT = Symbol("CharCreation/CHOOSE_ENDOWMENT");
 
 export const MAIN_MENU = Symbol("Menus/MAIN_MENU");
 export const DATA_MENU = Symbol("Menus/DATA_MENU");

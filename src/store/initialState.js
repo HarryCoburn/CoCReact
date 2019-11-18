@@ -1,5 +1,6 @@
 import React from "react";
 import { START_NEW_GAME, DATA_MENU } from "../scenes/sceneSymbols";
+import * as Skin from "../symbols/skin";
 
 export const iUIState = {
   past: [],
@@ -212,10 +213,10 @@ export const iAppearance = {
   hair: {
     byID: {
       length: {
-        value: 0
+        value: 5
       },
       color: {
-        value: ""
+        value: "brown"
       }
     },
     allIDs: ["length", "color"]
@@ -239,23 +240,26 @@ export const iAppearance = {
   skin: {
     byID: {
       tone: {
-        value: ""
+        value: "light"
+      },
+      type: {
+        value: Skin.TYPE.PLAIN
       }
     },
-    allIDs: ["tone"]
+    allIDs: ["tone", "type"]
   },
   byID: {
     tallness: {
-      value: 0
+      value: 60
     },
     tone: {
-      value: 0
+      value: 50
     },
     femininity: {
       value: 0
     },
     thickness: {
-      value: 0
+      value: 50
     }
   },
   allIDs: ["name", "tallness", "tone", "femininity", "thickness"]
@@ -296,7 +300,7 @@ export const iVaginas = {
 
 export const iTime = {
   day: 0, //to reduce
-  hour: 12, //to reduce
+  hour: 0, //to reduce
   minute: 0 //to reduce
 };
 
