@@ -2,22 +2,7 @@ import React from "react";
 import SceneText from "./sceneTextStore";
 import { MenuButtons } from "./menus";
 import {
-  GENDER_SELECT,
   START_NEW_GAME,
-  IS_A_MAN,
-  IS_A_WOMAN,
-  BUILD_LEAN_MALE,
-  BUILD_AVERAGE_MALE,
-  BUILD_THICK_MALE,
-  BUILD_GIRLY_MALE,
-  BUILD_SLENDER_FEMALE,
-  BUILD_AVERAGE_FEMALE,
-  BUILD_CURVY_FEMALE,
-  BUILD_TOMBOYISH_FEMALE,
-  SET_COMPLEXION,
-  SET_HAIR,
-  CONFIRM_STYLE,
-  CONFIRM_COMPLEXION,
   CONFIRM_HAIR_COLOR,
   CONFIRM_HEIGHT,
   CONFIRM_COCK_LENGTH,
@@ -35,7 +20,7 @@ import Gender from "../symbols/gender";
 
 export const startNewGame = () => {
   Core.changeButtons([
-    ["Confirm Name", GENDER_SELECT, , "Click to confirm name"]
+    ["Confirm Name", genderSelect, , "Click to confirm name"]
   ]);
   Core.newText(SceneText.CharCreation[START_NEW_GAME].text);
   Core.changeMenus([MenuButtons.main, MenuButtons.data, MenuButtons.level]);
@@ -63,7 +48,7 @@ export const startNewGame = () => {
 
 export const genderSelect = () => {
   // TODO Put check in here before loading for having valid name, or setting default.
-  Core.changeButtons([["Man", IS_A_MAN], ["Woman", IS_A_WOMAN]]);
+  Core.changeButtons([["Man", isAMan], ["Woman", isAWoman]]);
   Core.newText(
     "Your name carries little significance beyond it being your name.  What is your gender?"
   );
@@ -90,10 +75,10 @@ export const isAMan = () => {
   );
 
   Core.changeButtons([
-    ["Lean", BUILD_LEAN_MALE],
-    ["Average", BUILD_AVERAGE_MALE],
-    ["Thick", BUILD_THICK_MALE],
-    ["Girly", BUILD_GIRLY_MALE]
+    ["Lean", buildLeanMale],
+    ["Average", buildAverageMale],
+    ["Thick", buildThickMale],
+    ["Girly", buildGirlyMale]
   ]);
 };
 
@@ -154,10 +139,10 @@ export const isAWoman = () => {
     </>
   );
   Core.changeButtons([
-    ["Slender", BUILD_SLENDER_FEMALE],
-    ["Average", BUILD_AVERAGE_FEMALE],
-    ["Curvy", BUILD_CURVY_FEMALE],
-    ["Tomboyish", BUILD_TOMBOYISH_FEMALE]
+    ["Slender", buildSlenderFemale],
+    ["Average", buildAverageFemale],
+    ["Curvy", buildCurvyFemale],
+    ["Tomboyish", buildTomboyishFemale]
   ]);
 };
 
@@ -204,13 +189,13 @@ const chooseComplexion = () => {
     </>
   );
   Core.changeButtons([
-    ["Light", SET_COMPLEXION, ["light"]],
-    ["Fair", SET_COMPLEXION, ["fair"]],
-    ["Olive", SET_COMPLEXION, ["olive"]],
-    ["Dark", SET_COMPLEXION, ["dark"]],
-    ["Ebony", SET_COMPLEXION, ["ebony"]],
-    ["Mahogany", SET_COMPLEXION, ["mahogany"]],
-    ["Russet", SET_COMPLEXION, ["russet"]]
+    ["Light", setComplexion, ["light"]],
+    ["Fair", setComplexion, ["fair"]],
+    ["Olive", setComplexion, ["olive"]],
+    ["Dark", setComplexion, ["dark"]],
+    ["Ebony", setComplexion, ["ebony"]],
+    ["Mahogany", setComplexion, ["mahogany"]],
+    ["Russet", setComplexion, ["russet"]]
   ]);
 };
 
@@ -230,12 +215,12 @@ const chooseHair = () => {
   );
 
   Core.changeButtons([
-    ["Blonde", SET_HAIR, ["blonde"]],
-    ["Brown", SET_HAIR, ["brown"]],
-    ["Red", SET_HAIR, ["red"]],
-    ["Gray", SET_HAIR, ["gray"]],
-    ["White", SET_HAIR, ["white"]],
-    ["Auburn", SET_HAIR, ["auburn"]]
+    ["Blonde", setHair, ["blonde"]],
+    ["Brown", setHair, ["brown"]],
+    ["Red", setHair, ["red"]],
+    ["Gray", setHair, ["gray"]],
+    ["White", setHair, ["white"]],
+    ["Auburn", setHair, ["auburn"]]
   ]);
 };
 
@@ -248,7 +233,7 @@ export const setHair = params => {
       <p>You may now proceed to final customization</p>
     </>
   );
-  Core.changeButtons([["Proceed", CONFIRM_STYLE]]);
+  Core.changeButtons([["Proceed", confirmStyle]]);
 };
 
 export const confirmStyle = () => {
@@ -274,14 +259,39 @@ export const confirmStyle = () => {
     </>
   );
   Core.changeButtons([
-    ["Complexion", CONFIRM_COMPLEXION],
-    ["Hair Color", CONFIRM_HAIR_COLOR],
+    [0, "Complexion", changeComplexion],
+    [1, "Hair Color", CONFIRM_HAIR_COLOR],
     ...(A.mf() === Gender.MALE && A.hasBeard()
-      ? [["Beard Style", CONFIRM_BEARD]]
+      ? [[2, "Beard Style", CONFIRM_BEARD]]
       : [,]),
-    ["Set Height", CONFIRM_HEIGHT],
-    ...(A.hasCock() ? [["Cock Size", CONFIRM_COCK_LENGTH]] : [,]),
-    ["Breast Size", CONFIRM_BREAST_SIZE],
-    ["Done", CHOOSE_ENDOWMENT]
+    [3, "Set Height", CONFIRM_HEIGHT],
+    ...(A.hasCock() ? [[4, "Cock Size", CONFIRM_COCK_LENGTH]] : [,]),
+    [5, "Breast Size", CONFIRM_BREAST_SIZE],
+    [6, "Done", CHOOSE_ENDOWMENT]
   ]);
+};
+
+export const changeComplexion = () => {
+  Core.newText(
+    <>
+      <p>What is your complexion?</p>
+    </>
+  );
+  Core.changeButtons([
+    ["Light", confirmComplexion, ["light"]],
+    ["Fair", confirmComplexion, ["fair"]],
+    ["Olive", confirmComplexion, ["olive"]],
+    ["Dark", confirmComplexion, ["dark"]],
+    ["Ebony", confirmComplexion, ["ebony"]],
+    ["Mahogany", confirmComplexion, ["mahogany"]],
+    ["Russet", confirmComplexion, ["russet"]],
+    [15, "Back", confirmStyle]
+  ]);
+};
+
+export const confirmComplexion = params => {
+  let [color] = params;
+  Player.setSkin({ tone: color });
+  //player.arms.claws.tone = "";
+  confirmStyle();
 };

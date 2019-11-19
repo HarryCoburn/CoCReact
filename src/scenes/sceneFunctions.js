@@ -9,20 +9,7 @@ const SceneFuncs = {
   [SC.FETCH_SCENE_TEST]: testing.fetchSceneTest,
   [SC.FETCH_SCENE_TEST_NOFUNC]: "Nofunction!",
   [SC.START_NEW_GAME]: charCreation.startNewGame,
-  [SC.GENDER_SELECT]: charCreation.genderSelect,
-  [SC.IS_A_MAN]: charCreation.isAMan,
-  [SC.IS_A_WOMAN]: charCreation.isAWoman,
-  [SC.BUILD_AVERAGE_MALE]: charCreation.buildAverageMale,
-  [SC.BUILD_LEAN_MALE]: charCreation.buildLeanMale,
-  [SC.BUILD_THICK_MALE]: charCreation.buildThickMale,
-  [SC.BUILD_GIRLY_MALE]: charCreation.buildGirlyMale,
-  [SC.BUILD_SLENDER_FEMALE]: charCreation.buildSlenderFemale,
-  [SC.BUILD_AVERAGE_FEMALE]: charCreation.buildAverageFemale,
-  [SC.BUILD_CURVY_FEMALE]: charCreation.buildCurvyFemale,
-  [SC.BUILD_TOMBOYISH_FEMALE]: charCreation.buildTomboyishFemale,
-  [SC.SET_COMPLEXION]: charCreation.setComplexion,
-  [SC.SET_HAIR]: charCreation.setHair,
-  [SC.CONFIRM_STYLE]: charCreation.confirmStyle,
+
   [SC.MAIN_MENU]: () => {
     return menus.mainMenu(store);
   },
