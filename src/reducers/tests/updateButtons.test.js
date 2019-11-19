@@ -3,7 +3,7 @@ import * as CoreMsg from "../../actions/coreMsg";
 
 describe("Testing updateButtons", () => {
   it("returns empty correctly", () => {
-    const expected = {};
+    const expected = [];
     let actual = updateButtons({
       type: CoreMsg.UPDATE_BUTTONS,
       payload: undefined
@@ -18,13 +18,13 @@ describe("Testing updateButtons", () => {
   });
 
   it("Constructs correct button object", () => {
-    const expected = {
-      b1: {
+    const expected = [
+      {
         label: "Foo",
         nextScene: "bar",
         params: ["baz"]
       }
-    };
+    ];
     const actual = updateButtons({
       type: CoreMsg.UPDATE_BUTTONS,
       payload: [["Foo", "bar", ["baz"]]]
@@ -33,21 +33,23 @@ describe("Testing updateButtons", () => {
   });
 
   it("Skips buttons correctly", () => {
-    const expected = {
-      b1: {
+    const expected = [
+      ,
+      {
         label: "Foo",
         nextScene: "bar",
         params: ["baz"]
       },
-      b3: {
+      ,
+      {
         label: "Foo",
         nextScene: "bar",
         params: ["baz"]
       }
-    };
+    ];
     const actual = updateButtons({
       type: CoreMsg.UPDATE_BUTTONS,
-      payload: [["Foo", "bar", ["baz"]], , ["Foo", "bar", ["baz"]]]
+      payload: [, ["Foo", "bar", ["baz"]], , ["Foo", "bar", ["baz"]]]
     });
     expect(actual).toEqual(expected);
   });

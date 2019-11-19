@@ -38,20 +38,20 @@ export const startNewGame = () => {
   Core.newText(SceneText.CharCreation[START_NEW_GAME].text);
   Core.changeMenus([MenuButtons.main, MenuButtons.data, MenuButtons.level]);
   Core.setStats({
-    strength: 15,
-    toughness: 15,
-    speed: 15,
-    intelligence: 15,
-    sensitivity: 15,
-    libido: 15,
-    corruption: 15,
-    hunger: 80,
+    str: 15,
+    tou: 15,
+    spe: 15,
+    int: 15,
+    sen: 15,
+    lib: 15,
+    cor: 15,
+    hun: 80,
     obey: 10,
     esteem: 50,
     will: 80,
     lust: 15,
     xp: 0,
-    level: 1,
+    lvl: 1,
     gems: 0
   });
   Player.restoreHP();
@@ -69,7 +69,7 @@ export const genderSelect = () => {
 };
 
 export const isAMan = () => {
-  Core.changeStats({ strength: 3, toughness: 2 });
+  Core.changeStats({ str: 3, tou: 2 });
   Player.setPlayerAppearance({ tallness: 71, tone: 60 });
   Player.setHair({ length: 1 });
   Player.setPregStats({ fertility: 5 });
@@ -96,7 +96,7 @@ export const isAMan = () => {
 };
 
 export const buildLeanMale = () => {
-  Core.changeStats({ strength: -1, speed: 1 });
+  Core.changeStats({ str: -1, spe: 1 });
   Player.setPlayerAppearance({ femininity: 34, thickness: 30 });
   Player.changePlayerAppearance({ tone: 5 });
   Player.changeBreasts({ size: BreastCup.FLAT });
@@ -114,7 +114,7 @@ export const buildAverageMale = () => {
 };
 
 export const buildThickMale = () => {
-  Core.changeStats({ speed: -4, strength: 2, toughness: 2 });
+  Core.changeStats({ spe: -4, str: 2, tou: 2 });
   Player.setPlayerAppearance({ femininity: 29, thickness: 70 });
   Player.changeBreasts({ size: BreastCup.FLAT });
   Player.changePlayerAppearance({ tone: -5 });
@@ -124,7 +124,7 @@ export const buildThickMale = () => {
 };
 
 export const buildGirlyMale = () => {
-  Core.changeStats({ strength: -2, speed: +2 });
+  Core.changeStats({ str: -2, spe: +2 });
   Player.setPlayerAppearance({ femininity: 50, thickness: 50, tone: 26 });
   Player.changeBreasts({ size: BreastCup.A });
   Player.setButt({ rating: Butt.NOTICEABLE });
@@ -135,7 +135,7 @@ export const buildGirlyMale = () => {
 };
 
 export const isAWoman = () => {
-  Core.changeStats({ speed: 3, intelligence: 2 });
+  Core.changeStats({ spe: 3, int: 2 });
   Player.setPregStats({ fertility: 10 });
   Player.setHair({ length: 10 });
   Player.setPlayerAppearance({ tallness: 67, tone: 30 });
@@ -160,7 +160,7 @@ export const isAWoman = () => {
 };
 
 export const buildSlenderFemale = () => {
-  Core.changeStats({ strength: -1, speed: 1 });
+  Core.changeStats({ str: -1, spe: 1 });
   Player.setPlayerAppearance({ thickness: 30, femininity: 66 });
   Player.changePlayerAppearance({ tone: 5 });
   Player.changeBreasts({ size: BreastCup.B });
@@ -178,7 +178,7 @@ export const buildAverageFemale = () => {
 };
 
 export const buildCurvyFemale = () => {
-  Core.changeStats({ speed: -2, strength: 1, toughness: 1 });
+  Core.changeStats({ spe: -2, str: 1, tou: 1 });
   Player.setPlayerAppearance({ femininity: 71, thickness: 70 });
   Player.changeBreasts({ size: BreastCup.D });
   Player.setButt({ rating: Butt.LARGE });
@@ -187,7 +187,7 @@ export const buildCurvyFemale = () => {
 };
 
 export const buildTomboyishFemale = () => {
-  Core.changeStats({ strength: 1, speed: -1 });
+  Core.changeStats({ str: 1, spe: -1 });
   Player.setPlayerAppearance({ femininity: 56, thickness: 50, tone: 50 });
   Player.changeBreasts({ size: BreastCup.A });
   Player.setButt({ rating: Butt.TIGHT });
@@ -282,7 +282,7 @@ export const confirmStyle = () => {
 
     ["Set Height", CONFIRM_HEIGHT],
 
-    ...(A.hasCock() ? ["Cock Size", CONFIRM_COCK_LENGTH] : []),
+    ...(A.hasCock() ? ["Cock Size", CONFIRM_COCK_LENGTH] : [,]),
     ["Breast Size", CONFIRM_BREAST_SIZE],
 
     ["Done", CHOOSE_ENDOWMENT]

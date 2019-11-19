@@ -18,11 +18,11 @@ describe("Testing Core functions", () => {
 
     it("should have correct payload", () => {
       const store = createStore(rootReducer);
-      const stat = { strength: 50 };
+      const stat = { str: 50 };
       const action = Core._statChange(stat);
       store.dispatch(action);
-      const actual = store.getState().stats.stats.strength.value;
-      const expected = stat.strength;
+      const actual = store.getState().stats.stats.str.value;
+      const expected = stat.str;
       expect(actual).toEqual(expected);
     });
 
@@ -46,11 +46,11 @@ describe("Testing Core functions", () => {
 
     it("should have correct payload", () => {
       const store = createStore(rootReducer);
-      const stat = { strength: 75 };
+      const stat = { str: 75 };
       const action = Core._setStats(stat);
       store.dispatch(action);
-      const actual = store.getState().stats.stats.strength.value;
-      const expected = stat.strength;
+      const actual = store.getState().stats.stats.str.value;
+      const expected = stat.str;
       expect(actual).toEqual(expected);
     });
 
@@ -68,7 +68,7 @@ describe("Testing Core functions", () => {
       const action = Core._menuChange(empty);
       store.dispatch(action);
       const actual = store.getState().upper.present;
-      const expected = {};
+      const expected = [];
       expect(actual).toEqual(expected);
     });
 
@@ -78,7 +78,14 @@ describe("Testing Core functions", () => {
       const action = Core._menuChange(menus);
       store.dispatch(action);
       const actual = store.getState().upper.present;
-      const expected = { u1: { label: "Blah" } };
+      const expected = [
+        {
+          label: "Blah",
+          nextScene: undefined,
+          params: undefined,
+          toolTip: undefined
+        }
+      ];
       expect(actual).toEqual(expected);
     });
 
@@ -96,7 +103,7 @@ describe("Testing Core functions", () => {
       const action = Core._buttonChange(empty);
       store.dispatch(action);
       const actual = store.getState().lower.present;
-      const expected = {};
+      const expected = [];
       expect(actual).toEqual(expected);
     });
 
@@ -106,7 +113,14 @@ describe("Testing Core functions", () => {
       const action = Core._buttonChange(buttons);
       store.dispatch(action);
       const actual = store.getState().lower.present;
-      const expected = { b1: { label: "Blah" } };
+      const expected = [
+        {
+          label: "Blah",
+          nextScene: undefined,
+          params: undefined,
+          toolTip: undefined
+        }
+      ];
       expect(actual).toEqual(expected);
     });
 

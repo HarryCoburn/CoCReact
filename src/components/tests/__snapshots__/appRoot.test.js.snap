@@ -29,27 +29,27 @@ exports[`App Root Component App root rendered correctly 1`] = `
     </button>
     <button
       className="blankButton"
-      id="u3"
+      id={2}
     />
     <button
       className="blankButton"
-      id="u4"
+      id={3}
     />
     <button
       className="blankButton"
-      id="u5"
+      id={4}
     />
     <button
       className="blankButton"
-      id="u6"
+      id={5}
     />
     <button
       className="blankButton"
-      id="u7"
+      id={6}
     />
     <button
       className="blankButton"
-      id="u8"
+      id={7}
     />
   </div>
   <div
@@ -451,63 +451,67 @@ exports[`App Root Component App root rendered correctly 1`] = `
     >
       <button
         className="blankButton"
-        id="b1"
+        id={0}
       />
       <button
         className="blankButton"
-        id="b2"
+        id={1}
       />
       <button
         className="blankButton"
-        id="b3"
+        id={2}
       />
       <button
         className="blankButton"
-        id="b4"
+        id={3}
       />
       <button
         className="blankButton"
-        id="b5"
+        id={4}
       />
       <button
         className="blankButton"
-        id="b6"
+        id={5}
       />
       <button
         className="blankButton"
-        id="b7"
+        id={6}
       />
       <button
         className="blankButton"
-        id="b8"
+        id={7}
       />
       <button
         className="blankButton"
-        id="b9"
+        id={8}
       />
       <button
         className="blankButton"
-        id="b10"
+        id={9}
       />
       <button
         className="blankButton"
-        id="b11"
+        id={10}
       />
       <button
         className="blankButton"
-        id="b12"
+        id={11}
       />
       <button
         className="blankButton"
-        id="b13"
+        id={12}
       />
       <button
         className="blankButton"
-        id="b14"
+        id={13}
       />
       <button
         className="blankButton"
-        id="b15"
+        id={14}
+      />
+      <button
+        className="blankButton"
+        id={15}
       />
     </div>
   </div>

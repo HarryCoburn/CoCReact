@@ -4,27 +4,28 @@ import WrappedButton from "./buttonWrap.js";
 import * as Engine from "../actions/Engine";
 
 class ButtonGridClass extends React.Component {
-  buttons = () =>
-    this.props.buttonState.IDs.map(button => {
-      if (this.props.buttonState.present[button] === undefined) {
-        return (
-          <button key={button} id={button} className="blankButton"></button>
+  buttons = () => {
+    let end = [];
+    let buttonArr = this.props.buttonState.present;
+    // Forced to use for loop due to sparse arrays
+    for (let i = 0, n = this.props.buttonState.maxButtons; i < n; ++i) {
+      if (!(i in buttonArr) || buttonArr[i] === undefined) {
+        end.push(<button key={i} id={i} className="blankButton"></button>);
+      } else {
+        end.push(
+          <WrappedButton
+            key={i}
+            id={i}
+            toolTip={buttonArr[i].toolTip}
+            toolTipPos={this.props.toolTipPos}
+            label={buttonArr[i].label}
+            onClick={() => this.props.update(buttonArr[i])}
+          />
         );
       }
-
-      let newBtn = this.props.buttonState.present[button];
-
-      return (
-        <WrappedButton
-          key={button}
-          id={button}
-          toolTip={newBtn.toolTip}
-          toolTipPos={this.props.toolTipPos}
-          label={newBtn.label}
-          onClick={() => this.props.update(newBtn)}
-        />
-      );
-    });
+    }
+    return end;
+  };
 
   render() {
     return <>{this.buttons()}</>;

@@ -19,43 +19,43 @@ export const iEngineState = {
 
 export const iStats = {
   stats: {
-    strength: {
+    str: {
       name: "Strength",
       value: 0,
       max: 100,
       min: 0
     },
-    toughness: {
+    tou: {
       name: "Toughness",
       value: 0,
       max: 100,
       min: 0
     },
-    speed: {
+    spe: {
       name: "Speed",
       value: 0,
       max: 100,
       min: 0
     },
-    intelligence: {
+    int: {
       name: "Intelligence",
       value: 0,
       max: 100,
       min: 0
     },
-    libido: {
+    lib: {
       name: "Libido",
       value: 0,
       max: 100,
       min: 0
     },
-    sensitivity: {
+    sen: {
       name: "Sensitivity",
       value: 0,
       max: 100,
       min: 0
     },
-    corruption: {
+    cor: {
       name: "Corruption",
       value: 0,
       max: 100,
@@ -75,21 +75,21 @@ export const iStats = {
       min: 0,
       displayMax: true
     },
-    fatigue: {
+    fat: {
       name: "Fatigue",
       value: 0,
       max: 100,
       min: 0,
       displayMax: true
     },
-    hunger: {
+    hun: {
       name: "Hunger",
       value: 0,
       max: 100,
       min: 0,
       displayMax: true
     },
-    level: {
+    lvl: {
       name: "Level",
       value: 1,
       max: 99
@@ -111,30 +111,22 @@ export const iStats = {
     esteem: 0,
     will: 0
   },
-  coreIDs: [
-    "strength",
-    "toughness",
-    "speed",
-    "intelligence",
-    "libido",
-    "sensitivity",
-    "corruption"
-  ],
-  combatIDs: ["hp", "lust", "fatigue", "hunger"],
-  advIDs: ["level", "xp", "gems"],
+  coreIDs: ["str", "tou", "spe", "int", "lib", "sen", "cor"],
+  combatIDs: ["hp", "lust", "fat", "hun"],
+  advIDs: ["lvl", "xp", "gems"],
   allIDs: [
-    "strength",
-    "toughness",
-    "speed",
-    "intelligence",
-    "libido",
-    "sensitivity",
-    "corruption",
+    "str",
+    "tou",
+    "spe",
+    "int",
+    "lib",
+    "sen",
+    "cor",
     "hp",
     "lust",
-    "fatigue",
-    "hunger",
-    "level",
+    "fat",
+    "hun",
+    "lvl",
     "xp",
     "gems",
     "obey",
@@ -145,44 +137,26 @@ export const iStats = {
 
 export const iLower = {
   past: [],
-  present: {},
-
-  IDs: [
-    "b1",
-    "b2",
-    "b3",
-    "b4",
-    "b5",
-    "b6",
-    "b7",
-    "b8",
-    "b9",
-    "b10",
-    "b11",
-    "b12",
-    "b13",
-    "b14",
-    "b15"
-  ]
+  present: [],
+  maxButtons: 16
 };
 
 export const iUpper = {
   past: [],
-  present: {
-    u1: {
-      id: "newGame",
+  present: [
+    {
       label: "New Game",
       toolTip: "Start a new game.",
       nextScene: START_NEW_GAME
     },
-    u2: {
+    {
       id: "data",
       label: "Data",
       toolTip: "Save or load your files.",
       nextScene: DATA_MENU
     }
-  },
-  IDs: ["u1", "u2", "u3", "u4", "u5", "u6", "u7", "u8"]
+  ],
+  maxButtons: 8
 };
 
 export const iAppearance = {

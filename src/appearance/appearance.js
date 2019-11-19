@@ -26,20 +26,20 @@ export const breastCup = (breastInd = 0) => {
 };
 
 export const skinColor = () => {
-  return store.getState().appearance.skin.byID.tone.value;
+  return store.getState().appearance.skin.stats.tone;
 };
 
 export const hairColor = () => {
-  return store.getState().appearance.hair.byID.color.value;
+  return store.getState().appearance.hair.stats.color;
 };
 
 export const tallness = () => {
-  return store.getState().appearance.byID.tallness.value;
+  return store.getState().appearance.stats.tallness;
 };
 
-export const hairDesc = (hairObj = store.getState().appearance.hair.byID) => {
-  let lengthNum = hairObj.length.value;
-  let color = hairObj.color.value;
+export const hairDesc = (hairObj = store.getState().appearance.hair.stats) => {
+  let lengthNum = hairObj.length;
+  let color = hairObj.color;
   // let type = hairObj.type.value
 
   let length;
