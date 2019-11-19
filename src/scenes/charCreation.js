@@ -22,6 +22,7 @@ import {
   CONFIRM_HEIGHT,
   CONFIRM_COCK_LENGTH,
   CONFIRM_BREAST_SIZE,
+  CONFIRM_BEARD,
   CHOOSE_ENDOWMENT
 } from "./sceneSymbols";
 import * as A from "../appearance/appearance";
@@ -30,6 +31,7 @@ import * as Player from "../actions/Player";
 import Butt from "../symbols/butt";
 import Hips from "../symbols/hips";
 import BreastCup from "../symbols/breastCup";
+import Gender from "../symbols/gender";
 
 export const startNewGame = () => {
   Core.changeButtons([
@@ -268,23 +270,18 @@ export const confirmStyle = () => {
         </p>
       )}
       <p>Breast size: {A.breastCup()}</p>
+      {A.mf() === Gender.MALE && A.hasBeard() && <p>Beard: {A.beardDesc()}</p>}
     </>
   );
   Core.changeButtons([
     ["Complexion", CONFIRM_COMPLEXION],
-    [
-      "Hair Color",
-      CONFIRM_HAIR_COLOR
-    ] /*if (player.mf("m", "f") === "m") {
-				if (player.hasBeard()) outputText("Beard: " + player.beardDescript() + "\n");
-				addButton(2, "Beard Style", menuBeardSettings);
-      }	 */,
-
+    ["Hair Color", CONFIRM_HAIR_COLOR],
+    ...(A.mf() === Gender.MALE && A.hasBeard()
+      ? [["Beard Style", CONFIRM_BEARD]]
+      : [,]),
     ["Set Height", CONFIRM_HEIGHT],
-
-    ...(A.hasCock() ? ["Cock Size", CONFIRM_COCK_LENGTH] : [,]),
+    ...(A.hasCock() ? [["Cock Size", CONFIRM_COCK_LENGTH]] : [,]),
     ["Breast Size", CONFIRM_BREAST_SIZE],
-
     ["Done", CHOOSE_ENDOWMENT]
   ]);
 };

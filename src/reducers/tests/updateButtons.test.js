@@ -3,7 +3,7 @@ import * as CoreMsg from "../../actions/coreMsg";
 
 describe("Testing updateButtons", () => {
   it("returns empty correctly", () => {
-    const expected = [];
+    let expected = [];
     let actual = updateButtons({
       type: CoreMsg.UPDATE_BUTTONS,
       payload: undefined
@@ -14,6 +14,7 @@ describe("Testing updateButtons", () => {
       type: CoreMsg.UPDATE_BUTTONS,
       payload: []
     });
+    expected = [undefined];
     expect(actual).toEqual(expected);
   });
 
@@ -27,7 +28,7 @@ describe("Testing updateButtons", () => {
     ];
     const actual = updateButtons({
       type: CoreMsg.UPDATE_BUTTONS,
-      payload: [["Foo", "bar", ["baz"]]]
+      payload: [[0, "Foo", "bar", ["baz"]]]
     });
     expect(actual).toEqual(expected);
   });
@@ -49,7 +50,7 @@ describe("Testing updateButtons", () => {
     ];
     const actual = updateButtons({
       type: CoreMsg.UPDATE_BUTTONS,
-      payload: [, ["Foo", "bar", ["baz"]], , ["Foo", "bar", ["baz"]]]
+      payload: [[1, "Foo", "bar", ["baz"]], [3, "Foo", "bar", ["baz"]]]
     });
     expect(actual).toEqual(expected);
   });

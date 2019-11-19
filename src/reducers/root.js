@@ -99,7 +99,7 @@ export function lowerReducer(lower = iLower, action) {
     case CoreMsg.UPDATE_BUTTONS:
       return Utils.updateObject(lower, {
         ...lower,
-        present: updateButtons(action)
+        present: updateButtons(action, lower.maxButtons)
       });
     default:
       return lower;
@@ -123,7 +123,7 @@ export function upperReducer(upper = iUpper, action) {
     case CoreMsg.UPDATE_MENUS:
       return Utils.updateObject(upper, {
         ...upper,
-        present: updateButtons(action)
+        present: updateButtons(action, upper.maxButtons)
       });
     default:
       return upper;

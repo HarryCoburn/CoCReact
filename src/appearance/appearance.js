@@ -1,9 +1,26 @@
 import store from "../store/store";
 import sample from "lodash/sample";
 import BreastCup from "../symbols/breastCup";
+import Gender from "../symbols/gender";
 
 export const hasCock = () => {
   return store.getState().cocks.cocks.length > 0;
+};
+
+export const hasVagina = () => {
+  return store.getState().vaginas.vaginas.length > 0;
+};
+
+export const hasBeard = () => {
+  return store.getState().appearance.beard.stats.length > 0;
+};
+
+export const beardDesc = () => {
+  // This feels like a placeholder
+  if (hasBeard()) return "beard";
+  else {
+    throw Error("Tried to call beardDesc when there's no beard!");
+  }
 };
 
 export const cockLength = (cockInd = 0) => {
@@ -12,6 +29,51 @@ export const cockLength = (cockInd = 0) => {
 
 export const cockThickness = (cockInd = 0) => {
   return store.getState().cocks.cocks[cockInd].thickness;
+};
+
+export const femininity = () => {
+  return store.getState().appearance.stats.femininity;
+};
+
+export const breastRows = () => {
+  return store.getState().breasts.breasts;
+};
+
+export const biggestTitSize = () => {
+  if (breastRows().length === 0) return -1;
+  let biggest = breastRows().reduce((acc, item) => {
+    acc = item.size > acc ? item.size : acc;
+    return acc;
+  }, 0);
+
+  return biggest;
+};
+
+export const mf = () => {
+  if (hasCock() && hasVagina()) {
+    return biggestTitSize() >= 2 ||
+      (biggestTitSize() === 1 && femininity() >= 50) ||
+      femininity() >= 75
+      ? Gender.FEMALE
+      : Gender.MALE;
+  }
+  if (hasCock()) {
+    // male
+    return (biggestTitSize() >= 1 && femininity() > 55) || femininity() >= 75
+      ? Gender.FEMALE
+      : Gender.MALE;
+  }
+
+  if (hasVagina()) {
+    // pure female
+    return biggestTitSize() > 1 || femininity() >= 45
+      ? Gender.FEMALE
+      : Gender.MALE;
+  }
+  // genderless
+  return biggestTitSize() >= 3 || femininity() >= 75
+    ? Gender.FEMALE
+    : Gender.MALE;
 };
 
 export const breastCup = (breastInd = 0) => {

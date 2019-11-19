@@ -1,5 +1,5 @@
-import { makeSymbols } from "../utils";
+import { makeEnums } from "../utils";
 
-const BreastCup = makeSymbols(["FLAT", "A", "B", "C", "D"]);
+const BreastCup = makeEnums(["FLAT", "A", "B", "C", "D"]);
 
 export default BreastCup;

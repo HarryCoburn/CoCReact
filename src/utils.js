@@ -12,6 +12,14 @@ export function makeSymbols(arr) {
   return Object.freeze(obj);
 }
 
+export function makeEnums(arr) {
+  let obj = {};
+  arr.forEach((item, ind) => {
+    obj[item] = ind + 1;
+  });
+  return Object.freeze(obj);
+}
+
 export const types = {
   get: function(prop) {
     return Object.prototype.toString.call(prop);

@@ -21,6 +21,7 @@ export const CONFIRM_HEIGHT = Symbol("CharCreation/CONFIRM_HEIGHT");
 export const CONFIRM_COCK_LENGTH = Symbol("CharCreation/CONFIRM_COCK_LENGTH");
 export const CONFIRM_BREAST_SIZE = Symbol("CharCreation/CONFIRM_BREAST_SIZE");
 export const CHOOSE_ENDOWMENT = Symbol("CharCreation/CHOOSE_ENDOWMENT");
+export const CONFIRM_BEARD = Symbol("CharCreation/CONFIRM_BEARD");
 
 export const MAIN_MENU = Symbol("Menus/MAIN_MENU");
 export const DATA_MENU = Symbol("Menus/DATA_MENU");

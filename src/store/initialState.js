@@ -187,6 +187,13 @@ export const iAppearance = {
     },
     allIDs: ["tone", "type"]
   },
+  beard: {
+    stats: {
+      length: 0,
+      style: 0
+    },
+    allIDs: ["length", "style"]
+  },
   stats: {
     tallness: 60,
     tone: 50,
@@ -245,5 +252,3 @@ export const iOutput = {
     </>
   )
 };
-
-export const iState = {};
