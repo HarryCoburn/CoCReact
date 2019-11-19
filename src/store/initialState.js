@@ -1,6 +1,10 @@
 import React from "react";
 import { START_NEW_GAME, DATA_MENU } from "../scenes/sceneSymbols";
 import * as Skin from "../symbols/skin";
+import Face from "../symbols/face";
+import LowerBody from "../symbols/lowerBody";
+import Tongue from "../symbols/tongue";
+import Tail from "../symbols/tail";
 
 export const iUIState = {
   past: [],
@@ -170,9 +174,12 @@ export const iAppearance = {
   },
   butt: {
     stats: {
-      rating: null
+      rating: null,
+      looseness: 0,
+      wetness: 0,
+      fullness: 0
     },
-    allIDs: ["rating"]
+    allIDs: ["rating", "looseness", "wetness", "fullness"]
   },
   hips: {
     stats: {
@@ -183,9 +190,11 @@ export const iAppearance = {
   skin: {
     stats: {
       tone: "light",
-      type: Skin.TYPE.PLAIN
+      type: Skin.TYPE.PLAIN,
+      desc: "skin",
+      adj: ""
     },
-    allIDs: ["tone", "type"]
+    allIDs: ["tone", "type", "desc", "adj"]
   },
   beard: {
     stats: {
@@ -194,10 +203,44 @@ export const iAppearance = {
     },
     allIDs: ["length", "style"]
   },
+  lowerBody: {
+    stats: {
+      type: LowerBody.HUMAN,
+      legCount: 2
+    },
+    allIDs: ["type", "legCount"]
+  },
+  face: {
+    stats: {
+      type: Face.HUMAN,
+      horns: 0
+    },
+    allIDs: ["type", "horns"]
+  },
+  eyes: {
+    stats: {
+      count: 2
+    },
+    allIDs: ["count"]
+  },
+  tongue: {
+    stats: {
+      type: Tongue.HUMAN
+    },
+    allIDs: ["type"]
+  },
+  tail: {
+    stats: {
+      type: Tail.NONE,
+      venom: 0,
+      recharge: 0
+    },
+    allIDs: ["type", "venom", "recharge"]
+  },
   stats: {
     tallness: 60,
     tone: 50,
-    femininity: 0,
+    femininity: 50,
     thickness: 50
   },
   allIDs: ["name", "tallness", "tone", "femininity", "thickness"]
@@ -205,7 +248,7 @@ export const iAppearance = {
 
 export const iPregnancy = {
   stats: {
-    fertility: 0
+    fertility: 5
   },
   allIDs: ["fertility"]
 };
@@ -228,6 +271,14 @@ export const iBreasts = {
 
 export const iVaginas = {
   vaginas: []
+};
+
+export const iSex = {
+  stats: {
+    hoursSinceCum: 0,
+    cumMultiplier: 1
+  },
+  allIDs: ["hoursSinceCum", "cumMultiplier"]
 };
 
 export const iTime = {
