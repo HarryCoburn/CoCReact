@@ -7,7 +7,7 @@ import {
   GO_BACK,
   INSTRUCTIONS
 } from "./sceneSymbols";
-import {setPerk} from "../symbols/perks"
+import { setPerk } from "../actions/Perks";
 
 export function mainMenu(store) {
   Core.storeState();

@@ -193,6 +193,9 @@ export function engineReducer(engine = iEngineState, action) {
         present: { ...engine.present, selectedPerk: action.payload }
       });
     case EngineMsg.SET_PERK:
+      if (engine.present.selectedPerk === null) {
+        return engine;
+      }
       return Utils.updateObject(engine, {
         ...engine,
         present: {
