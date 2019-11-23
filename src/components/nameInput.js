@@ -9,6 +9,7 @@ export default class NameInput extends React.Component {
   }
 
   handleChange(e) {
+    console.log(e.target.value)
     store.dispatch(setPlayerName(e.target.value || "Timothy"));
   }
   render() {

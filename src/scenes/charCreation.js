@@ -17,6 +17,7 @@ import Butt from "../symbols/butt";
 import Hips from "../symbols/hips";
 import BreastCup from "../symbols/breastCup";
 import Gender from "../symbols/gender";
+import store from "../store/store";
 
 export const startNewGame = () => {
   Core.changeButtons([
@@ -47,7 +48,11 @@ export const startNewGame = () => {
 };
 
 export const genderSelect = () => {
-  // TODO Put check in here before loading for having valid name, or setting default.
+  if (store.getState().appearance.name === "") {
+    startNewGame();
+    return;
+  }
+
   Core.changeButtons([["Man", isAMan], ["Woman", isAWoman]]);
   Core.newText(
     "Your name carries little significance beyond it being your name.  What is your gender?"

@@ -30,7 +30,6 @@ export function mainMenu(store) {
 }
 
 export function dataMenu() {
-  setPerk();
   Core.storeState();
   Core.hideStatBar();
   Core.changeMenus([, MenuButtons.data]);

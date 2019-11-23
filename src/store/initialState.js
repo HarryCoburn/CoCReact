@@ -6,10 +6,7 @@ import LowerBody from "../symbols/lowerBody";
 import Tongue from "../symbols/tongue";
 import Tail from "../symbols/tail";
 import Wings from "../symbols/wings";
-import { armors, weapons } from "../symbols/gear";
-import Dropdown from "../components/dropdown";
-
-import { createPerkList, preparePerk } from "../symbols/perks";
+import { armors, weapons, undergarments } from "../symbols/gear";
 
 export const iUIState = {
   past: [],
@@ -362,7 +359,6 @@ export const iOutput = {
       </p>
       <p>Version extremely early.</p>
       <p>Click on New Game to Start </p>
-      <Dropdown list={createPerkList()} action={preparePerk} />
     </>
   )
 };
@@ -374,5 +370,6 @@ export const iInventory = {
 
 export const iCombat = {
   armor: armors.C_CLOTH,
-  weapon: weapons.FISTS
+  weapon: weapons.FISTS,
+  undergarment: undergarments.C_LOIN
 };
