@@ -1,8 +1,9 @@
 import React from "react";
-import store from "../store/store";
-import { preparePerk, createPerkList, Perks } from "../actions/Engine";
+import { connect } from "react-redux";
+import Perks, { createPerkList } from "../symbols/perks";
+import * as Engine from "../actions/engineMsg";
 
-export default class Dropdown extends React.Component {
+class _dropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +23,7 @@ export default class Dropdown extends React.Component {
     });
   }
 
-  hideDropdownMenu(event) {
+  hideDropdownMenu() {
     this.setState({ displayMenu: false }, () => {
       document.removeEventListener("click", this.hideDropdownMenu);
     });
@@ -30,7 +31,10 @@ export default class Dropdown extends React.Component {
 
   handleChange(item) {
     this.setState({ chosenPerk: Perks.properties[item].name });
-    preparePerk(item)
+    this.props.dispatch({
+      type: Engine.PREPARE_PERK,
+      payload: item
+    });
   }
 
   perks() {
@@ -55,3 +59,7 @@ export default class Dropdown extends React.Component {
     );
   }
 }
+
+const Dropdown = connect()(_dropdown);
+
+export default Dropdown;
