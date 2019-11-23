@@ -186,6 +186,11 @@ export function engineReducer(engine = iEngineState, action) {
     }
     case EngineMsg.GAME_STARTED:
       return Utils.updateObject(engine, { gameStarted: true });
+    case EngineMsg.PREPARE_PERK:
+      return Utils.updateObject(engine, {
+        ...engine,
+        present: { ...engine.present, selectedPerk: action.payload }
+      });
     default:
       return engine;
   }

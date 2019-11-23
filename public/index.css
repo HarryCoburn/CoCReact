@@ -84,7 +84,7 @@ h2 {
 
 .statLabel {
   position: relative;
-  left: 0px;
+  left: 0;
   top: -2px;
   font-family: "Palatino Linotype", Palatino, Georgia, "Times New Roman",
     sans-serif;
@@ -133,7 +133,7 @@ h2 {
   margin-bottom: 0;
   height: 80px;
   width: 100px;
-  bottom: 0px;
+  bottom: 0;
 }
 
 /* Buttons */
@@ -209,4 +209,10 @@ h2 {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.dropdown {
+  background-color: White;
+  width: 400px;
+  padding-left: 10px;
 }

@@ -5,6 +5,7 @@ import Face from "../symbols/face";
 import LowerBody from "../symbols/lowerBody";
 import Tongue from "../symbols/tongue";
 import Tail from "../symbols/tail";
+import Dropdown from "../components/dropdown";
 
 export const iUIState = {
   past: [],
@@ -17,7 +18,9 @@ export const iUIState = {
 export const iEngineState = {
   past: [],
   present: {
-    gameStarted: false
+    gameStarted: false,
+    selectedPerk: null,
+    perksGained: []
   }
 };
 
@@ -300,6 +303,7 @@ export const iOutput = {
       </p>
       <p>Version extremely early.</p>
       <p>Click on New Game to Start </p>
+      <Dropdown />
     </>
   )
 };
