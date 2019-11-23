@@ -7,6 +7,7 @@ import {
   GO_BACK,
   INSTRUCTIONS
 } from "./sceneSymbols";
+import {setPerk} from "../symbols/perks"
 
 export function mainMenu(store) {
   Core.storeState();
@@ -29,6 +30,7 @@ export function mainMenu(store) {
 }
 
 export function dataMenu() {
+  setPerk();
   Core.storeState();
   Core.hideStatBar();
   Core.changeMenus([, MenuButtons.data]);

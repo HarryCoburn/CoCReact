@@ -7,6 +7,7 @@ import updateStats from "./updateStats";
 import updateTime from "./updateTime";
 import updateBodyArr from "./updateBodyArr";
 import updateButtons from "./updateButtons";
+import Perks from "../symbols/perks";
 
 import {
   iOutput,
@@ -190,6 +191,18 @@ export function engineReducer(engine = iEngineState, action) {
       return Utils.updateObject(engine, {
         ...engine,
         present: { ...engine.present, selectedPerk: action.payload }
+      });
+    case EngineMsg.SET_PERK:
+      return Utils.updateObject(engine, {
+        ...engine,
+        present: {
+          ...engine.present,
+          perks: engine.present.perks.concat({
+            [engine.present.selectedPerk]:
+              Perks.properties[engine.present.selectedPerk]
+          }),
+          selectedPerk: null
+        }
       });
     default:
       return engine;

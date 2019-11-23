@@ -5,7 +5,11 @@ import Face from "../symbols/face";
 import LowerBody from "../symbols/lowerBody";
 import Tongue from "../symbols/tongue";
 import Tail from "../symbols/tail";
+import Wings from "../symbols/wings";
+import { armors, weapons } from "../symbols/gear";
 import Dropdown from "../components/dropdown";
+
+import { createPerkList, preparePerk } from "../symbols/perks";
 
 export const iUIState = {
   past: [],
@@ -20,6 +24,12 @@ export const iEngineState = {
   present: {
     gameStarted: false,
     selectedPerk: null,
+    perks: [],
+    inDungeon: false,
+    inCombat: false,
+    dungeonLoc: 0,
+    inRoomedDungeon: false,
+    inRoomedDungeonResume: null,
     perksGained: []
   }
 };
@@ -222,13 +232,20 @@ export const iAppearance = {
   },
   eyes: {
     stats: {
+      type: null,
       count: 2
     },
-    allIDs: ["count"]
+    allIDs: ["type", "count"]
   },
   tongue: {
     stats: {
       type: Tongue.HUMAN
+    },
+    allIDs: ["type"]
+  },
+  wings: {
+    stats: {
+      type: Wings.NONE
     },
     allIDs: ["type"]
   },
@@ -239,6 +256,48 @@ export const iAppearance = {
       recharge: 0
     },
     allIDs: ["type", "venom", "recharge"]
+  },
+  piercings: {
+    stats: {
+      nipplesPierced: 0,
+      nipplesPShort: "",
+      nipplesPLong: "",
+      lipPierced: 0,
+      lipPShort: "",
+      lipPLong: "",
+      tonguePierced: 0,
+      tonguePShort: "",
+      tonguePLong: "",
+      eyebrowPierced: 0,
+      eyebrowPShort: "",
+      eyebrowPLong: "",
+      earsPierced: 0,
+      earsPShort: "",
+      earsPLong: "",
+      nosePierced: 0,
+      nosePShort: "",
+      nosePLong: ""
+    },
+    allIDs: [
+      "nipplesPierced",
+      "nipplesPShort",
+      "nipplesPLong",
+      "lipPierced",
+      "lipPShort",
+      "lipPLong",
+      "tonguePierced",
+      "tonguePShort",
+      "tonguePLong",
+      "eyebrowPierced",
+      "eyebrowPShort",
+      "eyebrowPLong",
+      "earsPierced",
+      "earsPShort",
+      "earsPLong",
+      "nosePierced",
+      "nosePShort",
+      "nosePLong"
+    ]
   },
   stats: {
     tallness: 60,
@@ -303,7 +362,17 @@ export const iOutput = {
       </p>
       <p>Version extremely early.</p>
       <p>Click on New Game to Start </p>
-      <Dropdown />
+      <Dropdown list={createPerkList()} action={preparePerk} />
     </>
   )
+};
+
+export const iInventory = {
+  inventory: [],
+  maxSlots: 3
+};
+
+export const iCombat = {
+  armor: armors.C_CLOTH,
+  weapon: weapons.FISTS
 };

@@ -9,7 +9,7 @@ export default class NameInput extends React.Component {
   }
 
   handleChange(e) {
-    store.dispatch(setPlayerName(e.target.value));
+    store.dispatch(setPlayerName(e.target.value || "Timothy"));
   }
   render() {
     return <input onChange={this.handleChange}></input>;
