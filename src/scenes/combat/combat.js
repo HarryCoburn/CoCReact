@@ -71,7 +71,7 @@ const checkCombatResult = () => {
 };
 
 const enemyFight = enemy => {
-  let damage = Math.floor(Math.random() * 5);
+  let damage = enemy.doFight();
   receiveDamage(-damage);
   Core.addText(
     <>
@@ -87,5 +87,6 @@ const combatCleanup = winner => {
     Core.addText(<> You lose some stuff.</>);
   }
   Core.changeButtons([[0, "Go Back", SC.GO_BACK]]);
+  Core.setStats({ hp: 1 });
   reset();
 };
