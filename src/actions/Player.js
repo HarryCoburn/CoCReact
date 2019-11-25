@@ -3,7 +3,6 @@ import * as PlayerMsg from "./playerMsg";
 import * as CockType from "../symbols/cockType";
 import * as Vagina from "../symbols/vaginas";
 import BreastCup from "../symbols/breastCup";
-import Perks from "../symbols/perks";
 
 /**
  * Sends message to set the hp value to equal the maxiumum

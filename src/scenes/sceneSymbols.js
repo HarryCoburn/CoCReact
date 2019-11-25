@@ -14,6 +14,8 @@ export const INSTRUCTIONS = Symbol("Menus/INSTRUCTIONS");
 
 export const GO_BACK = Symbol("Core/GO_BACK");
 
+export const START_COMBAT = Symbol("Combat/START_COMBAT");
+
 //Testing
 export const FETCH_SCENE_TEST = Symbol("Testing/FETCH_SCENE_TEST");
 export const FETCH_SCENE_TEST_NOFUNC = Symbol(

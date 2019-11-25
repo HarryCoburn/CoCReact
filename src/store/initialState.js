@@ -1,5 +1,9 @@
 import React from "react";
-import { START_NEW_GAME, DATA_MENU } from "../scenes/sceneSymbols";
+import {
+  START_NEW_GAME,
+  DATA_MENU,
+  START_COMBAT
+} from "../scenes/sceneSymbols";
 import * as Skin from "../symbols/skin";
 import Face from "../symbols/face";
 import LowerBody from "../symbols/lowerBody";
@@ -7,6 +11,7 @@ import Tongue from "../symbols/tongue";
 import Tail from "../symbols/tail";
 import Wings from "../symbols/wings";
 import { armors, weapons, undergarments } from "../symbols/gear";
+import { Goblin } from "../symbols/enemies/goblin";
 
 export const iUIState = {
   past: [],
@@ -151,7 +156,14 @@ export const iStats = {
 
 export const iLower = {
   past: [],
-  present: [],
+  present: [
+    {
+      label: "Combat Demo",
+      toolTip: "Start combat demo",
+      nextScene: START_COMBAT,
+      params: [Goblin]
+    }
+  ],
   maxButtons: 16
 };
 
@@ -371,5 +383,8 @@ export const iInventory = {
 export const iCombat = {
   armor: armors.C_CLOTH,
   weapon: weapons.FISTS,
-  undergarment: undergarments.C_LOIN
+  undergarment: undergarments.C_LOIN,
+  enemy: null,
+  playerTurn: true,
+  playerAttack: 5
 };

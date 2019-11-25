@@ -3,6 +3,7 @@ import * as Utils from "../utils";
 import * as CoreMsg from "../actions/coreMsg";
 import * as PlayerMsg from "../actions/playerMsg";
 import * as EngineMsg from "../actions/engineMsg";
+import * as EnemyMsg from "../actions/enemyMsg";
 import updateStats from "./updateStats";
 import updateTime from "./updateTime";
 import updateBodyArr from "./updateBodyArr";
@@ -21,7 +22,8 @@ import {
   iPregnancy,
   iCocks,
   iBreasts,
-  iVaginas
+  iVaginas,
+  iCombat
 } from "../store/initialState";
 
 export function uiReducer(uiState = iUIState, action) {
@@ -77,7 +79,12 @@ export function outputReducer(output = iOutput, action) {
       });
     }
     case CoreMsg.UPDATE_VIEW:
-      return Utils.updateObject(output, { ...output, present: action.payload });
+      return Utils.updateObject(output, { ...output, present: [action.payload] });
+    case CoreMsg.ADD_TEXT:
+      return Utils.updateObject(output, {
+        ...output,
+        present: output.present.concat(action.payload)
+      });
     default:
       return output;
   }
@@ -254,6 +261,24 @@ export function vaginasReducer(vaginas = iVaginas, action) {
   }
 }
 
+export function combatReducer(combat = iCombat, action) {
+  switch (action.type) {
+    case EnemyMsg.LOAD_ENEMY:
+      return { ...combat, enemy: action.payload };
+    case EnemyMsg.APPLY_DAMAGE:
+      return {
+        ...combat,
+        enemy: combat.enemy.map((enemy, i) =>
+          i === action.payload.enemyNum
+            ? { ...enemy, hp: enemy.hp - action.payload.damage }
+            : enemy
+        )
+      };
+    default:
+      return combat;
+  }
+}
+
 const appReducer = combineReducers({
   output: outputReducer,
   UI: uiReducer,
@@ -266,7 +291,8 @@ const appReducer = combineReducers({
   pregnancy: pregnancyReducer,
   cocks: cocksReducer,
   breasts: breastsReducer,
-  vaginas: vaginasReducer
+  vaginas: vaginasReducer,
+  combat: combatReducer
 });
 
 export const rootReducer = (state, action) => {

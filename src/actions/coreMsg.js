@@ -1,4 +1,6 @@
 export const UPDATE_VIEW = Symbol("UPDATE_VIEW");
+export const ADD_TEXT = Symbol("ADD_TEXT");
+
 export const UPDATE_BUTTONS = Symbol("UPDATE_BUTTONS");
 export const UPDATE_STATS = Symbol("UPDATE_STATS");
 export const SET_STATS = Symbol("SET_STATS");

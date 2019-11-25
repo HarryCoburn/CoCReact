@@ -29,6 +29,16 @@ export function _updateView(payload) {
   };
 }
 
+export function _addText(payload) {
+  if (payload === undefined || payload === null) {
+    throw Error("Core._addText recevied undefined or null text ouput");
+  }
+  return {
+    type: CoreMsg.ADD_TEXT,
+    payload
+  };
+}
+
 /**
  * Message sender for updating the buttons in the lower part of the UI
  * Shape of object: { b1: { // button info } }
@@ -135,6 +145,8 @@ export const showMenuBar = () =>
 export const changeTime = time => store.dispatch(_updateTime(time));
 export const storeState = () => store.dispatch(_stateStore());
 export const goBack = () => store.dispatch(_goBack());
+export const addText = text => store.dispatch(_addText(text));
+
 /*
 export function gameStarted() {
   return {
