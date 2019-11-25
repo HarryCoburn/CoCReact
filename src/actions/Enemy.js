@@ -9,8 +9,11 @@ function _load_enemy(enemy) {
 }
 
 export const loadEnemy = enemy => store.dispatch(_load_enemy(enemy));
-export const applyDamage = damage =>
+export const applyDamage = (ind = 0, damage) =>
   store.dispatch({
     type: Enemy.APPLY_DAMAGE,
-    payload: { enemyNum: 0, damage: damage }
+    payload: { enemyNum: ind, damage: damage }
   });
+
+export const reset = () => store.dispatch({ type: Enemy.RESET });
+export const changeTurn = () => store.dispatch({ type: Enemy.CHANGE_TURN });

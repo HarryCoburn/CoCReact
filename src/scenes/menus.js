@@ -8,7 +8,6 @@ import {
   INSTRUCTIONS
 } from "./sceneSymbols";
 
-
 export function mainMenu(store) {
   Core.storeState();
   Core.newText(SceneText.Menus[MAIN_MENU].text);

@@ -15,3 +15,5 @@ export const SHOW_MENU_BAR = Symbol("SHOW_MENU_BAR");
 
 export const GO_BACK = Symbol("GO_BACK");
 export const STATE_STORE = Symbol("STATE_STORE");
+
+export const START_COMBAT = Symbol("START_COMBAT");

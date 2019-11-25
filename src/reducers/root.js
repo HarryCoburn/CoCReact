@@ -79,7 +79,10 @@ export function outputReducer(output = iOutput, action) {
       });
     }
     case CoreMsg.UPDATE_VIEW:
-      return Utils.updateObject(output, { ...output, present: [action.payload] });
+      return Utils.updateObject(output, {
+        ...output,
+        present: [action.payload]
+      });
     case CoreMsg.ADD_TEXT:
       return Utils.updateObject(output, {
         ...output,
@@ -214,6 +217,22 @@ export function engineReducer(engine = iEngineState, action) {
           selectedPerk: null
         }
       });
+    case CoreMsg.START_COMBAT:
+      return {
+        ...engine,
+        present: {
+          ...engine.present,
+          inCombat: true
+        }
+      };
+    case EnemyMsg.RESET:
+      return {
+        ...engine,
+        present: {
+          ...engine.present,
+          inCombat: false
+        }
+      };
     default:
       return engine;
   }
@@ -273,6 +292,17 @@ export function combatReducer(combat = iCombat, action) {
             ? { ...enemy, hp: enemy.hp - action.payload.damage }
             : enemy
         )
+      };
+    case EnemyMsg.RESET:
+      return {
+        ...combat,
+        enemy: [],
+        playerTurn: true
+      };
+    case EnemyMsg.CHANGE_TURN:
+      return {
+        ...combat,
+        playerTurn: !combat.playerTurn
       };
     default:
       return combat;

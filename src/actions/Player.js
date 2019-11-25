@@ -3,6 +3,7 @@ import * as PlayerMsg from "./playerMsg";
 import * as CockType from "../symbols/cockType";
 import * as Vagina from "../symbols/vaginas";
 import BreastCup from "../symbols/breastCup";
+import * as Core from "./Core";
 
 /**
  * Sends message to set the hp value to equal the maxiumum
@@ -151,6 +152,13 @@ export function _setSkin(payload) {
   };
 }
 
+export function _receiveDamage(payload) {
+  return {
+    type: PlayerMsg.RECEIVE_DAMAGE,
+    payload: payload
+  };
+}
+
 /* ---- */
 
 export const setPlayerAppearance = stats =>
@@ -178,3 +186,5 @@ export const hasPerk = perk => {
     return perk in item;
   });
 };
+
+export const receiveDamage = damage => Core.changeStats({ hp: damage });

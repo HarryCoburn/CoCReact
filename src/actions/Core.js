@@ -146,6 +146,7 @@ export const changeTime = time => store.dispatch(_updateTime(time));
 export const storeState = () => store.dispatch(_stateStore());
 export const goBack = () => store.dispatch(_goBack());
 export const addText = text => store.dispatch(_addText(text));
+export const setInCombat = () => store.dispatch({ type: CoreMsg.START_COMBAT });
 
 /*
 export function gameStarted() {

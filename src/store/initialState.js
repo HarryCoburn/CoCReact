@@ -82,7 +82,7 @@ export const iStats = {
     },
     hp: {
       name: "HP",
-      value: 0,
+      value: 15,
       max: 100,
       min: 0,
       displayMax: true
@@ -161,7 +161,7 @@ export const iLower = {
       label: "Combat Demo",
       toolTip: "Start combat demo",
       nextScene: START_COMBAT,
-      params: [Goblin]
+      params: [Goblin, Goblin]
     }
   ],
   maxButtons: 16
