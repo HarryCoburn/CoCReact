@@ -75,7 +75,7 @@ const enemyFight = enemy => {
   receiveDamage(-damage);
   Core.addText(
     <>
-      <p>You were attacked! You receive {damage} points of damage!</p>
+      <p>You receive {damage} points of damage!</p>
     </>
   );
 };
