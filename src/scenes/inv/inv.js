@@ -14,6 +14,8 @@ export const startDemo = () => {
     <>
       <p>This is the start of the inventory demo.</p>
       <p>You have {numItems()} items in your inventory.</p>
+      <p>In your inventory, you have:</p>
+      {listInv()}
     </>
   );
   Core.changeButtons([[0, "Add Apple", addItem, [Item.Apple]]]);
@@ -22,4 +24,15 @@ export const startDemo = () => {
 const addItem = payload => {
   Inv.addItem(payload);
   startDemo();
+};
+
+const listInv = () => {
+  if (numItems() === 0) {
+    return <>Nothing</>;
+  }
+  let list = [];
+  itemArr().forEach(item => {
+    list.push(<li>{item.name}</li>);
+  });
+  return <ul>{list}</ul>;
 };
