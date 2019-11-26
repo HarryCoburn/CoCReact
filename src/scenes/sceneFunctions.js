@@ -20,7 +20,7 @@ const SceneFuncs = {
   [SC.GO_BACK]: () => {
     Core.goBack();
   },
-  [SC.START_COMBAT]: Combat.startCombat,
+  [SC.START_COMBAT]: Combat.combatDemo,
   [SC.INVENTORY_DEMO]: Inv.startDemo
 };
 

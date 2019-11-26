@@ -2,7 +2,7 @@ import React from "react";
 import { weighted } from "../../utils";
 import * as Core from "../../actions/Core";
 
-export const Goblin = {
+const Goblin = {
   name: "goblin",
   hp: 5,
   atk: 2,
@@ -19,3 +19,5 @@ const gobCrit = () => {
   Core.addText(<>The Goblin attacks you with a mighty blow!</>);
   return 10;
 };
+
+export default Goblin

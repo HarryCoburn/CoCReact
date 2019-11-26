@@ -12,7 +12,6 @@ import Tongue from "../symbols/tongue";
 import Tail from "../symbols/tail";
 import Wings from "../symbols/wings";
 import { armors, weapons, undergarments } from "../symbols/gear";
-import { Goblin } from "../symbols/enemies/goblin";
 
 export const iUIState = {
   past: [],
@@ -161,8 +160,7 @@ export const iLower = {
     {
       label: "Combat Demo",
       toolTip: "Start combat demo",
-      nextScene: START_COMBAT,
-      params: [Goblin, Goblin]
+      nextScene: START_COMBAT
     },
     {
       label: "Inventory Demo",

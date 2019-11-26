@@ -4,6 +4,7 @@ import { receiveDamage } from "../../actions/Player";
 import * as Core from "../../actions/Core";
 import * as SC from "../sceneSymbols";
 import store from "../../store/store";
+import Goblin from "../../symbols/enemies/goblin";
 
 const enemyDead = () =>
   store.getState().combat.enemy.every(enemy => enemy.hp <= 0);
@@ -11,8 +12,20 @@ const playerDead = () => store.getState().stats.stats.hp.value <= 0;
 const enemyTurn = () => store.getState().combat.playerTurn === false;
 const inCombat = () => store.getState().engine.present.inCombat === true;
 
-export const startCombat = enemy => {
+export const combatDemo = () => {
   Core.storeState();
+  Core.newText(
+    <>
+      <p>What do you want to fight?</p>
+    </>
+  );
+  Core.changeButtons([
+    [0, "1 Goblin", startCombat, [Goblin]],
+    [1, "2 Goblins", startCombat, [Goblin, Goblin]]
+  ]);
+};
+
+export const startCombat = enemy => {
   Core.hideMenuBar();
   Core.showStatBar();
   loadEnemy(enemy);
