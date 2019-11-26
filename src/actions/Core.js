@@ -125,6 +125,8 @@ export const setStats = newStats => store.dispatch(_setStats(newStats));
 export const changeMenus = newMenus => store.dispatch(_menuChange(newMenus));
 export const changeButtons = newButtons =>
   store.dispatch(_buttonChange(newButtons));
+export const addButton = (ind, label, func) =>
+  store.dispatch({ type: CoreMsg.ADD_BUTTON, payload: [ind, label, func] });
 export const newText = text => store.dispatch(_updateView(text)); // This will need tweaking once we get variable text.
 export const hideStatBar = () =>
   store.dispatch({
@@ -148,6 +150,7 @@ export const goBack = () => store.dispatch(_goBack());
 export const addText = text => store.dispatch(_addText(text));
 export const setInCombat = () => store.dispatch({ type: CoreMsg.START_COMBAT });
 
+export const getHours = () => store.getState().time.hour;
 /*
 export function gameStarted() {
   return {

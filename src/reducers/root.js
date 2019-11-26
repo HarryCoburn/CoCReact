@@ -114,6 +114,20 @@ export function lowerReducer(lower = iLower, action) {
         ...lower,
         present: updateButtons(action, lower.maxButtons)
       });
+    case CoreMsg.ADD_BUTTON:
+      return Utils.updateObject(lower, {
+        ...lower,
+        present: lower.present.map((button, index) => {
+          if (index !== action.payload[0]) {
+            return button;
+          }
+          return {
+            ...button,
+            label: action.payload[1],
+            nextScene: action.payload[2]
+          };
+        })
+      });
     default:
       return lower;
   }

@@ -1,6 +1,9 @@
+import * as CoreMsg from "../actions/coreMsg";
+
 const updateButtons = (action, max) => {
   console.log(action);
   if (action.payload === undefined || action.payload === []) return [];
+
   let newButtons = Array(max);
 
   action.payload.forEach((item, ind) => {

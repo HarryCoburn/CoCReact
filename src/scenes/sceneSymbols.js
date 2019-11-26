@@ -16,6 +16,7 @@ export const GO_BACK = Symbol("Core/GO_BACK");
 
 export const START_COMBAT = Symbol("Combat/START_COMBAT");
 export const INVENTORY_DEMO = Symbol("Inventory/INVENTORY_DEMO");
+export const INGNAM_DEMO = Symbol("Scene/INGNAM_DEMO");
 
 //Testing
 export const FETCH_SCENE_TEST = Symbol("Testing/FETCH_SCENE_TEST");

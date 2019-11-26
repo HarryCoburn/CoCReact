@@ -5,6 +5,7 @@ import * as testing from "./tests/testing";
 import * as Core from "../actions/Core";
 import * as Combat from "./combat/combat";
 import * as Inv from "./inv/inv";
+import * as Ingnam from "./ingnam/ingnam";
 import store from "../store/store";
 
 const SceneFuncs = {
@@ -21,7 +22,8 @@ const SceneFuncs = {
     Core.goBack();
   },
   [SC.START_COMBAT]: Combat.combatDemo,
-  [SC.INVENTORY_DEMO]: Inv.startDemo
+  [SC.INVENTORY_DEMO]: Inv.startDemo,
+  [SC.INGNAM_DEMO]: Ingnam.startIngnam
 };
 
 export default SceneFuncs;

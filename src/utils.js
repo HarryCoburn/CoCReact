@@ -92,3 +92,5 @@ export const weighted = function(arr, weights, trim) {
 
   return chosen;
 };
+
+export const rand = num => Math.floor(Math.random() * num) + 1;

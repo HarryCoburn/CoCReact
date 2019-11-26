@@ -3,7 +3,8 @@ import {
   START_NEW_GAME,
   DATA_MENU,
   START_COMBAT,
-  INVENTORY_DEMO
+  INVENTORY_DEMO,
+  INGNAM_DEMO
 } from "../scenes/sceneSymbols";
 import * as Skin from "../symbols/skin";
 import Face from "../symbols/face";
@@ -157,6 +158,11 @@ export const iStats = {
 export const iLower = {
   past: [],
   present: [
+    {
+      label: "Ingnam Demo",
+      toolTip: "Start Ingnam demo",
+      nextScene: INGNAM_DEMO
+    },
     {
       label: "Combat Demo",
       toolTip: "Start combat demo",
