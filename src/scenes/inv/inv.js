@@ -5,7 +5,6 @@ import * as Inv from "../../actions/Inv";
 import store from "../../store/store";
 
 const numItems = () => store.getState().inv.inv.length;
-const maxItems = () => store.getState().inv.inv.maxSlots;
 const itemArr = () => store.getState().inv.inv;
 
 export const startDemo = () => {
@@ -21,7 +20,9 @@ export const startDemo = () => {
   );
   Core.changeButtons([
     [0, "Add Apple", addItem, [Item.Apple]],
-    ...(numItems() >= 1 ? [[1, "Eat Apple", chooseItem]] : [,])
+    ...(numItems() >= 1
+      ? [[1, "Eat Apple", chooseItem], [2, "Drop Apple", chooseDrop]]
+      : [,])
   ]);
 };
 
@@ -56,6 +57,24 @@ const chooseItem = () => {
 
 const useItem = ([item, idx]) => {
   item.effect();
+  Inv.dropItem(idx);
+  startDemo();
+};
+
+const chooseDrop = () => {
+  Core.newText(
+    <>
+      <p>Which item will you drop?</p>
+    </>
+  );
+  let buttons = [];
+  itemArr().forEach((item, idx) => {
+    buttons.push([idx, item.name, dropItem, [idx]]);
+  });
+  Core.changeButtons(buttons);
+};
+
+const dropItem = ([idx]) => {
   Inv.dropItem(idx);
   startDemo();
 };
