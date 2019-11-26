@@ -10,6 +10,7 @@ const itemArr = () => store.getState().inv.inv;
 
 export const startDemo = () => {
   Core.hideMenuBar();
+  Core.showStatBar();
   Core.newText(
     <>
       <p>This is the start of the inventory demo.</p>
@@ -18,7 +19,10 @@ export const startDemo = () => {
       {listInv()}
     </>
   );
-  Core.changeButtons([[0, "Add Apple", addItem, [Item.Apple]]]);
+  Core.changeButtons([
+    [0, "Add Apple", addItem, [Item.Apple]],
+    ...(numItems() >= 1 ? [[1, "Eat Apple", chooseItem]] : [,])
+  ]);
 };
 
 const addItem = payload => {
@@ -35,4 +39,23 @@ const listInv = () => {
     list.push(<li>{item.name}</li>);
   });
   return <ul>{list}</ul>;
+};
+
+const chooseItem = () => {
+  Core.newText(
+    <>
+      <p>Which item will you use?</p>
+    </>
+  );
+  let buttons = [];
+  itemArr().forEach((item, idx) => {
+    buttons.push([idx, item.name, useItem, [item, idx]]);
+  });
+  Core.changeButtons(buttons);
+};
+
+const useItem = ([item, idx]) => {
+  item.effect();
+  Inv.dropItem(idx);
+  startDemo();
 };
