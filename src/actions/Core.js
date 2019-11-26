@@ -128,8 +128,8 @@ export const setStats = newStats => store.dispatch(_setStats(newStats));
 export const changeMenus = newMenus => store.dispatch(_menuChange(newMenus));
 export const changeButtons = newButtons =>
   store.dispatch(_buttonChange(newButtons));
-export const addButton = (ind, label, func) =>
-  store.dispatch({ type: CoreMsg.ADD_BUTTON, payload: [ind, label, func] });
+export const addButton = (ind, label, func, param) =>
+  store.dispatch({ type: CoreMsg.ADD_BUTTON, payload: [ind, label, func, param] });
 export const newText = text => store.dispatch(_updateView(text)); // This will need tweaking once we get variable text.
 export const hideStatBar = () =>
   store.dispatch({

@@ -123,7 +123,7 @@ export const iStats = {
     },
     gems: {
       name: "Gems",
-      value: 0,
+      value: 300,
       min: 0,
       max: 9999
     },

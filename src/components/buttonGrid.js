@@ -7,7 +7,6 @@ class ButtonGridClass extends React.Component {
   buttons = () => {
     let end = [];
     let buttonArr = this.props.buttonState.present;
-    console.log(buttonArr);
     // Forced to use for loop due to sparse arrays
     for (let i = 0, n = this.props.buttonState.maxButtons; i < n; ++i) {
       if (!(i in buttonArr) || !Object.keys(buttonArr[i]).length) {
@@ -36,8 +35,6 @@ class ButtonGridClass extends React.Component {
 const mapDispatchToButtonProps = dispatch => {
   return {
     update: ({ nextScene = null, params = undefined }) => {
-      console.log("The next scene is...");
-      console.log(nextScene);
       if (nextScene === null) {
         console.log("Something tried to dispatch with no nextScene!");
         return;

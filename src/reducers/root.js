@@ -124,7 +124,8 @@ export function lowerReducer(lower = iLower, action) {
           return {
             ...button,
             label: action.payload[1],
-            nextScene: action.payload[2]
+            nextScene: action.payload[2],
+            params: action.payload[3]
           };
         })
       });
@@ -328,8 +329,9 @@ export function combatReducer(combat = iCombat, action) {
 export function inventoryReducer(inv = iInventory, action) {
   switch (action.type) {
     case InvMsg.ADD_ITEM_TO_INV:
+      console.log(action);
       if (inv.inv.length >= inv.maxSlots) return inv;
-      return { ...inv, inv: inv.inv.concat(action.payload[0]) };
+      return { ...inv, inv: inv.inv.concat(action.payload) };
     case InvMsg.DROP_ITEM_FROM_INV:
       return {
         ...inv,

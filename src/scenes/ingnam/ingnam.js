@@ -2,6 +2,8 @@ import React from "react";
 import * as Core from "../../actions/Core";
 import * as Utils from "../../utils";
 import Flags from "../../store/gameFlags";
+import { addShopItem } from "../shopFunctions";
+import Apple from "../../symbols/items/apple";
 
 export const startIngnam = () => {
   // Banished
@@ -80,6 +82,7 @@ const shopsIngnam = () => {
 };
 
 const shopBlacksmith = () => {
+  Core.storeState();
   Core.newText(
     <>
       <p>
@@ -121,7 +124,9 @@ const shopBlacksmith = () => {
   );
   Flags.INGNAM_WEAPONSMITH_TALKED = 1;
   Core.changeButtons();
-  Core.addButton(14, "Leave", shopsIngnam); // Check this
+  addShopItem(Apple, 40);
+  addShopItem(Apple, 40);
+  Core.addButton(14, "Leave", shopsIngnam);
 };
 
 const shopTailor = () => {
@@ -145,6 +150,7 @@ const shopTailor = () => {
       </p>
     </>
   );
+  Core.changeButtons();
   Core.addButton(14, "Leave", shopsIngnam);
 };
 
@@ -195,6 +201,7 @@ const shopAlchemist = () => {
       <u>Alchemy shop pricings</u>
     </b>
   );
+  Core.changeButtons();
   Core.addButton(14, "Leave", shopsIngnam);
 };
 
@@ -216,6 +223,7 @@ const shopTradingPost = () => {
       </p>
     </>
   );
+  Core.changeButtons();
   Core.addButton(14, "Leave", shopsIngnam);
 };
 
@@ -281,6 +289,7 @@ const shopBlackMarket = () => {
       <u>Black market pricings</u>
     </b>
   );
+  Core.changeButtons();
   Core.addButton(14, "Leave", shopsIngnam);
 };
 
