@@ -315,6 +315,7 @@ export function inventoryReducer(inv = iInventory, action) {
   switch (action.type) {
     case InvMsg.ADD_ITEM_TO_INV:
       console.log("Got to reducer");
+      if (inv.inv.length >= inv.maxSlots) return inv;
       return { ...inv, inv: inv.inv.concat(action.payload[0]) };
     default:
       return inv;

@@ -16,6 +16,10 @@ export const startDemo = () => {
       <p>You have {numItems()} items in your inventory.</p>
     </>
   );
-  Core.changeButtons([[0, "Add Apple", Inv.addItem, [Item.Apple]]]);
+  Core.changeButtons([[0, "Add Apple", addItem, [Item.Apple]]]);
 };
 
+const addItem = payload => {
+  Inv.addItem(payload);
+  startDemo();
+};
