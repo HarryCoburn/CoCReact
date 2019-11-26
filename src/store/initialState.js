@@ -2,7 +2,8 @@ import React from "react";
 import {
   START_NEW_GAME,
   DATA_MENU,
-  START_COMBAT
+  START_COMBAT,
+  INVENTORY_DEMO
 } from "../scenes/sceneSymbols";
 import * as Skin from "../symbols/skin";
 import Face from "../symbols/face";
@@ -162,6 +163,11 @@ export const iLower = {
       toolTip: "Start combat demo",
       nextScene: START_COMBAT,
       params: [Goblin, Goblin]
+    },
+    {
+      label: "Inventory Demo",
+      toolTip: "Start inventory demo",
+      nextScene: INVENTORY_DEMO
     }
   ],
   maxButtons: 16
@@ -376,7 +382,7 @@ export const iOutput = {
 };
 
 export const iInventory = {
-  inventory: [],
+  inv: [],
   maxSlots: 3
 };
 

@@ -4,6 +4,7 @@ import * as menus from "./menus";
 import * as testing from "./tests/testing";
 import * as Core from "../actions/Core";
 import * as Combat from "./combat/combat";
+import * as Inv from "./inv/inv";
 import store from "../store/store";
 
 const SceneFuncs = {
@@ -19,7 +20,8 @@ const SceneFuncs = {
   [SC.GO_BACK]: () => {
     Core.goBack();
   },
-  [SC.START_COMBAT]: Combat.startCombat
+  [SC.START_COMBAT]: Combat.startCombat,
+  [SC.INVENTORY_DEMO]: Inv.startDemo
 };
 
 export default SceneFuncs;

@@ -4,6 +4,7 @@ import * as CoreMsg from "../actions/coreMsg";
 import * as PlayerMsg from "../actions/playerMsg";
 import * as EngineMsg from "../actions/engineMsg";
 import * as EnemyMsg from "../actions/enemyMsg";
+import * as InvMsg from "../actions/invMsg";
 import updateStats from "./updateStats";
 import updateTime from "./updateTime";
 import updateBodyArr from "./updateBodyArr";
@@ -23,7 +24,8 @@ import {
   iCocks,
   iBreasts,
   iVaginas,
-  iCombat
+  iCombat,
+  iInventory
 } from "../store/initialState";
 
 export function uiReducer(uiState = iUIState, action) {
@@ -309,6 +311,16 @@ export function combatReducer(combat = iCombat, action) {
   }
 }
 
+export function inventoryReducer(inv = iInventory, action) {
+  switch (action.type) {
+    case InvMsg.ADD_ITEM_TO_INV:
+      console.log("Got to reducer");
+      return { ...inv, inv: inv.inv.concat(action.payload[0]) };
+    default:
+      return inv;
+  }
+}
+
 const appReducer = combineReducers({
   output: outputReducer,
   UI: uiReducer,
@@ -322,7 +334,8 @@ const appReducer = combineReducers({
   cocks: cocksReducer,
   breasts: breastsReducer,
   vaginas: vaginasReducer,
-  combat: combatReducer
+  combat: combatReducer,
+  inv: inventoryReducer
 });
 
 export const rootReducer = (state, action) => {

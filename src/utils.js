@@ -42,9 +42,9 @@ export const weighted = function(arr, weights, trim) {
   }
 
   // scan weights array and sum valid entries
-  var sum = 0;
-  var val;
-  for (var weightIndex = 0; weightIndex < weights.length; ++weightIndex) {
+  let sum = 0;
+  let val;
+  for (let weightIndex = 0; weightIndex < weights.length; ++weightIndex) {
     val = weights[weightIndex];
     if (isNaN(val)) {
       throw new RangeError("Chance: All weights must be numbers");
@@ -66,7 +66,7 @@ export const weighted = function(arr, weights, trim) {
   var total = 0;
   var lastGoodIdx = -1;
   var chosenIdx;
-  for (weightIndex = 0; weightIndex < weights.length; ++weightIndex) {
+  for (let weightIndex = 0; weightIndex < weights.length; ++weightIndex) {
     val = weights[weightIndex];
     total += val;
     if (val > 0) {
