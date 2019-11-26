@@ -3,7 +3,9 @@ import * as Core from "../../actions/Core";
 import * as Utils from "../../utils";
 import Flags from "../../store/gameFlags";
 import { addShopItem } from "../shopFunctions";
-import Apple from "../../symbols/items/apple";
+import weapons from "../../symbols/items/weapons";
+import armors from "../../symbols/items/armors";
+import consumables from "../../symbols/items/consumables";
 
 export const startIngnam = () => {
   // Banished
@@ -124,8 +126,14 @@ const shopBlacksmith = () => {
   );
   Flags.INGNAM_WEAPONSMITH_TALKED = 1;
   Core.changeButtons();
-  addShopItem(Apple, 40);
-  addShopItem(Apple, 40);
+  addShopItem(weapons.DAGGER, 40);
+  addShopItem(weapons.PIPE, 50);
+  addShopItem(weapons.SPEAR, 140);
+  addShopItem(weapons.KATANA, 200);
+  addShopItem(weapons.MACE, 80);
+  addShopItem(armors.LEATHERA, 50);
+  addShopItem(armors.FULLCHN, 150);
+  addShopItem(armors.SCALEML, 200);
   Core.addButton(14, "Leave", shopsIngnam);
 };
 
@@ -151,6 +159,15 @@ const shopTailor = () => {
     </>
   );
   Core.changeButtons();
+  addShopItem(armors.C_CLOTH, 10);
+  addShopItem(armors.ADVCLTH, 75);
+  addShopItem(armors.CLSSYCL, 100);
+  addShopItem(armors.TUBETOP, 40);
+  addShopItem(armors.OVERALL, 30);
+  addShopItem(armors.M_ROBES, 75);
+  addShopItem(armors.LTHRPNT, 200);
+  addShopItem(armors.RBBRCLT, 500);
+  addShopItem(armors.T_BSUIT, 650);
   Core.addButton(14, "Leave", shopsIngnam);
 };
 
@@ -202,6 +219,10 @@ const shopAlchemist = () => {
     </b>
   );
   Core.changeButtons();
+  addShopItem(consumables.REDUCTO, 100);
+  addShopItem(consumables.GROPLUS, 100);
+  addShopItem(consumables.L_DRAFT, 30);
+  addShopItem(consumables.LACTAID, 50);
   Core.addButton(14, "Leave", shopsIngnam);
 };
 
@@ -224,6 +245,9 @@ const shopTradingPost = () => {
     </>
   );
   Core.changeButtons();
+  addShopItem(consumables.VITAL_T, 30, 5);
+  addShopItem(consumables.SMART_T, 30, 5);
+  addShopItem(consumables.FISHFIL, 5, 5);
   Core.addButton(14, "Leave", shopsIngnam);
 };
 
@@ -290,12 +314,51 @@ const shopBlackMarket = () => {
     </b>
   );
   Core.changeButtons();
+  addShopItem(consumables.W_FRUIT, 75, 6);
+  addShopItem(consumables.CANINEP, 75, 6);
+  addShopItem(consumables.EQUINUM, 75, 6);
+  addShopItem(consumables.INCUBID, 75, 6);
+  addShopItem(consumables.SUCMILK, 75, 6);
   Core.addButton(14, "Leave", shopsIngnam);
 };
 
 /* Temple */
 
-const templeIngnam = () => {};
+const templeIngnam = () => {
+  Core.newText(
+    <>
+      <p>
+        The village’s temple appears humble looking from its stony exterior but
+        the interior of temple is truly a marvel to behold - intricately
+        decorated wooden arches adorned with complex patterns of arcane runes of
+        the Old World, walls adorned with majestic tapestries depicting the Gods
+        and their most valiant of feats and, to the end of the temple stands an
+        incredibly designed shrine to the All-Giving, the mother of all Gods.
+      </p>
+      <p>
+        Incense languorously wafts from the alcoves where offerings of fruit are
+        left out for the Gods. Monks passively move amongst the parishioners,
+        offering solace to those in need, food or drink to those who are weary,
+        or in meditation.
+      </p>
+      <p>
+        There are several soft mats on the floor to provide soft areas for
+        people to pray on.
+      </p>
+    </>
+  );
+  Core.changeButtons([[0, "Meditate", meditate], [14, "Leave", startIngnam]]);
+};
+
+const meditate = () => {
+  Core.newText(
+    <>
+      <p>You meditate for 30 minutes and feel refreshed.</p>
+    </>
+  );
+  Core.changeTime({ minute: 30 });
+  Core.changeButtons([[0, "Next", startIngnam]]);
+};
 
 const innIngnam = () => {};
 

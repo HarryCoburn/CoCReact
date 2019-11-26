@@ -43,6 +43,13 @@ export function transactionItemConfirmation([item, price]) {
 }
 
 export function transactionYes([item, price]) {
+  if (Inv.full()) {
+    Core.newText(
+      "You are carrying too many items. The shopkeeper says they'll hold your order until you reduce your inventory."
+    );
+    Core.changeButtons([[0, "Next", Core.goBack]]);
+    return;
+  }
   Core.newText(
     <>
       <p>

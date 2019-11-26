@@ -9,3 +9,7 @@ export function addItem(payload) {
 export function dropItem(payload) {
   store.dispatch({ type: InvMsg.DROP_ITEM_FROM_INV, payload: payload });
 }
+
+export function full() {
+  return store.getState().inv.inv.length >= store.getState().inv.maxSlots;
+}
