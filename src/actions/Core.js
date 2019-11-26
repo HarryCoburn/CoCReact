@@ -47,9 +47,12 @@ export function _addText(payload) {
  * @return {object} Redux action
  */
 export function _buttonChange(payload) {
+  /*
   if (!(payload instanceof Object) || payload === undefined) {
     throw Error("Core._buttonChange did not receive an object");
   }
+  */
+
 
   //TODO Check for all required button properties before sending message
   return {

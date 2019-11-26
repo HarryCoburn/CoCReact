@@ -1,10 +1,10 @@
 import * as CoreMsg from "../actions/coreMsg";
 
 const updateButtons = (action, max) => {
-  console.log(action);
-  if (action.payload === undefined || action.payload === []) return [];
+  if (action.payload === undefined || action.payload === [])
+    return Array(max).fill({});
 
-  let newButtons = Array(max);
+  let newButtons = Array(max).fill({});
 
   action.payload.forEach((item, ind) => {
     let index;
@@ -16,18 +16,18 @@ const updateButtons = (action, max) => {
       index = item[0];
     }
 
-    if (newButtons[index] === undefined) {
-      newButtons[index] = {
-        label: item[1],
-        nextScene: item[2],
-        params: item[3],
-        toolTip: item[4]
-      };
-    } else {
+    //if (newButtons[index] === undefined) {
+    newButtons[index] = {
+      label: item[1],
+      nextScene: item[2],
+      params: item[3],
+      toolTip: item[4]
+    };
+    /*} else {
       throw Error(
         "updateButtons conflict. For safety, entries either all need indexes or none when passed to updateButtons"
       );
-    }
+    }*/
   });
 
   return newButtons;

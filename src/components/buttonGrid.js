@@ -7,9 +7,10 @@ class ButtonGridClass extends React.Component {
   buttons = () => {
     let end = [];
     let buttonArr = this.props.buttonState.present;
+    console.log(buttonArr);
     // Forced to use for loop due to sparse arrays
     for (let i = 0, n = this.props.buttonState.maxButtons; i < n; ++i) {
-      if (!(i in buttonArr) || buttonArr[i] === undefined) {
+      if (!(i in buttonArr) || !Object.keys(buttonArr[i]).length) {
         end.push(<button key={i} id={i} className="blankButton"></button>);
       } else {
         end.push(

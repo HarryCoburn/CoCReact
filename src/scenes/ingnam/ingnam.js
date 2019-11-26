@@ -72,14 +72,9 @@ const shopsIngnam = () => {
   Core.changeButtons([
     [0, "Blacksmith", shopBlacksmith],
     [1, "Tailor", shopTailor],
-    [
-      2,
-      "Alchemist",
-      shopAlchemist
-    ] /*
+    [2, "Alchemist", shopAlchemist],
     [3, "Trading Post", shopTradingPost],
-    [4, "Black Market", shopBlackMarket],*/,
-
+    [4, "Black Market", shopBlackMarket],
     [14, "Back", startIngnam]
   ]);
 };
@@ -125,6 +120,7 @@ const shopBlacksmith = () => {
     </>
   );
   Flags.INGNAM_WEAPONSMITH_TALKED = 1;
+  Core.changeButtons();
   Core.addButton(14, "Leave", shopsIngnam); // Check this
 };
 
@@ -197,6 +193,92 @@ const shopAlchemist = () => {
   Core.addText(
     <b>
       <u>Alchemy shop pricings</u>
+    </b>
+  );
+  Core.addButton(14, "Leave", shopsIngnam);
+};
+
+const shopTradingPost = () => {
+  Core.newText(
+    <>
+      <p>
+        The trading post is one of the larger buildings in the village with its
+        porch covered in barrels filled with pickled goods, preserved delicacies
+        and dried goods from the humble local farm to exotic faraway lands. The
+        interior is packed with crowded shelves that boast a variety of goods,
+        all arranged neatly on shelves.
+      </p>
+      <p>You suspect you could buy some imported goods here.</p>
+      <p>
+        <b>
+          <u>Trading post pricings</u>
+        </b>
+      </p>
+    </>
+  );
+  Core.addButton(14, "Leave", shopsIngnam);
+};
+
+const shopBlackMarket = () => {
+  if (Flags.INGNAM_BLACKMARKET_TALKED === 0) {
+    Core.newText(
+      <>
+        <p>
+          You walk into an alley you swear you have never explored before. You
+          stifle your fear as you walk into the dingy looking alley.
+        </p>
+        <p>
+          Unease creeps over you until you hear a raspy voice whisper from the
+          darkness of the alley. You look around to see a hooded figure skulk
+          from the shadows to approach you.
+        </p>
+        <p>
+          "
+          <i>
+            Greetings. I know you. You’re going to be the new Champion, right?
+          </i>
+          " The hooded figure croaks. His face is mostly concealed by the shade
+          of his hood. Slightly unnerved by the prowling figure you tell him
+          that yes, you’re going to be the Champion of Ingnam.
+        </p>
+        <p>
+          He pulls his hood down, quickly looking for the all-clear and rasps, "
+          <i>
+            I’ve managed to sneak into the portal at the mountains. There is
+            extraordinary stuff that can transform you! It takes me years of
+            planning as the portal is only open for a short window of time
+            before it closes for the rest of the year.
+          </i>
+          "
+        </p>
+        <p>
+          With a skin-crawling chuckle he opens up his coat and shows you the
+          array of goods and says, "
+          <i>
+            I’ve managed to smuggle these in. They aren’t cheap but I guarantee
+            you, they’re the real deal! See anything you like?
+          </i>
+          "
+        </p>
+      </>
+    );
+    Flags.INGNAM_BLACKMARKET_TALKED = 1;
+  } else {
+    Core.newText(
+      <>
+        <p>
+          "Once again, you walk into the alley where the shady dealer should be.
+          He approaches you as if he knows you.
+        </p>
+        <p>
+          <i>Back, I see? See any deals you like?</i>" The shady man asks.
+        </p>
+      </>
+    );
+  }
+  Core.addText(
+    <b>
+      <u>Black market pricings</u>
     </b>
   );
   Core.addButton(14, "Leave", shopsIngnam);
