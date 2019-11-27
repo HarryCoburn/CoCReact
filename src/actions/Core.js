@@ -53,7 +53,6 @@ export function _buttonChange(payload) {
   }
   */
 
-
   //TODO Check for all required button properties before sending message
   return {
     type: CoreMsg.UPDATE_BUTTONS,
@@ -129,7 +128,10 @@ export const changeMenus = newMenus => store.dispatch(_menuChange(newMenus));
 export const changeButtons = newButtons =>
   store.dispatch(_buttonChange(newButtons));
 export const addButton = (ind, label, func, param) =>
-  store.dispatch({ type: CoreMsg.ADD_BUTTON, payload: [ind, label, func, param] });
+  store.dispatch({
+    type: CoreMsg.ADD_BUTTON,
+    payload: [ind, label, func, param]
+  });
 export const newText = text => store.dispatch(_updateView(text)); // This will need tweaking once we get variable text.
 export const hideStatBar = () =>
   store.dispatch({
@@ -161,3 +163,9 @@ export function gameStarted() {
   };
 }
 */
+export const doWait = func => {
+  changeStats({ fat: -8 });
+  changeTime({ hour: 4 });
+  newText("You wait for four hours...");
+  changeButtons([[0, "Next", func]]);
+};

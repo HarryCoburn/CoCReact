@@ -48,7 +48,8 @@ export const startIngnam = () => {
     [1, "Shops", shopsIngnam],
     [2, "Temple", templeIngnam],
     [3, "Inn", INGNAM_INN],
-    [4, "Farm", farmIngnam]
+    [4, "Farm", farmIngnam],
+    [9, "Wait", Core.doWait, startIngnam]
   ]);
 };
 
