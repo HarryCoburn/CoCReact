@@ -188,3 +188,11 @@ export const hasPerk = perk => {
 };
 
 export const receiveDamage = damage => Core.changeStats({ hp: damage });
+export const createStatusEffect = (status, p1, p2, p3, p4) =>
+  store.dispatch({
+    type: PlayerMsg.CREATE_STATUS_EFFECT,
+    payload: [status, p1, p2, p3, p4]
+  });
+
+export const hasStatusEffect = status =>
+  store.getState().engine.present.statuses.some(stat => stat[0] === status);

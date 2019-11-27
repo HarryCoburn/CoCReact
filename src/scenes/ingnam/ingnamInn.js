@@ -1,10 +1,12 @@
 import * as Core from "../../actions/Core";
+import * as Player from "../../actions/Player";
 import Flags from "../../store/gameFlags";
 import store from "../../store/store";
 import { transactionYes } from "../shopFunctions";
 import consumables from "../../symbols/items/consumables";
 import React from "react";
 import { INGNAM_DEMO } from "../sceneSymbols";
+import StatusEffects from "../../symbols/statuses";
 
 export const innIngnam = () => {
   Core.newText(
@@ -74,6 +76,9 @@ const buyBeer = () => {
       <p>You kick back and drink the beer slowly.</p>
     </>
   );
+  if (!Player.hasStatusEffect(StatusEffects.Drunk)) {
+    Player.createStatusEffect(StatusEffects.Drunk, 2, 1, 1, 0);
+  }
   Core.changeTime({ minute: 5 });
   Core.changeButtons([[0, "Next", innIngnam]]);
 };

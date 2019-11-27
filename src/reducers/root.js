@@ -250,6 +250,14 @@ export function engineReducer(engine = iEngineState, action) {
           inCombat: false
         }
       };
+    case PlayerMsg.CREATE_STATUS_EFFECT:
+      return {
+        ...engine,
+        present: {
+          ...engine.present,
+          statuses: engine.present.statuses.concat([action.payload])
+        }
+      };
     default:
       return engine;
   }

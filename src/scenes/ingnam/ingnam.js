@@ -6,18 +6,15 @@ import { addShopItem } from "../shopFunctions";
 import weapons from "../../symbols/items/weapons";
 import armors from "../../symbols/items/armors";
 import consumables from "../../symbols/items/consumables";
-import { INGNAM_INN } from "../sceneSymbols";
+import { INGNAM_INN, MAIN_MENU } from "../sceneSymbols";
+import store from "../../store/store";
 
 export const startIngnam = () => {
-  // Banished
-  //Banished to Mareth.
-  /*
-      if (getGame().time.days >= 0 && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0 && flags[kFLAGS.GRIMDARK_MODE] < 1) {
-          getBanishedToMareth();
-          return;
-      }
-      
-       */
+  if (store.getState().time.day >= 3) {
+    getBanishedToMareth();
+    return;
+  }
+
   Core.newText(
     <>
       <p>
@@ -362,3 +359,24 @@ const meditate = () => {
 };
 
 const farmIngnam = () => {};
+
+const getBanishedToMareth = () => {
+  Core.newText(
+    <>
+      <p>
+        Your time has come to meet up with the village elders. You know you are
+        going to get sent to the demon realm and you're most likely not going to
+        be able to return to Ingnam. You give your family and friends a long
+        farewell.
+      </p>
+      <p>
+        <i>This is the end of the Ingnam demo. Flags will now be reset</i>
+      </p>
+    </>
+  );
+  Flags.INGNAM_BLACKMARKET_TALKED = 0;
+  Flags.INGNAM_RUMORS = 0;
+  Flags.INGNAM_ALCHEMIST_TALKED = 0;
+  Flags.INGNAM_WEAPONSMITH_TALKED = 0;
+  Core.changeButtons([[0, "Back to main", MAIN_MENU]]);
+};

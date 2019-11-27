@@ -33,7 +33,8 @@ export const iEngineState = {
     dungeonLoc: 0,
     inRoomedDungeon: false,
     inRoomedDungeonResume: null,
-    perksGained: []
+    perksGained: [],
+    statuses: []
   }
 };
 
