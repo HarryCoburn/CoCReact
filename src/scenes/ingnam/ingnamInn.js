@@ -78,6 +78,9 @@ const buyBeer = () => {
   );
   if (!Player.hasStatusEffect(StatusEffects.Drunk)) {
     Player.createStatusEffect(StatusEffects.Drunk, 2, 1, 1, 0);
+    Core.changeStats({ str: 0.1, int: -0.5, lib: 0.25 });
+  } else {
+      Player.addStatusValue(StatusEffects.Drunk, 2, 1);
   }
   Core.changeTime({ minute: 5 });
   Core.changeButtons([[0, "Next", innIngnam]]);

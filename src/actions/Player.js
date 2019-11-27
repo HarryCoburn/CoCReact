@@ -196,3 +196,13 @@ export const createStatusEffect = (status, p1, p2, p3, p4) =>
 
 export const hasStatusEffect = status =>
   store.getState().engine.present.statuses.some(stat => stat[0] === status);
+
+export const addStatusValue = (status, param, change) => {
+  if (!hasStatusEffect(status)) return;
+  store.dispatch({
+    type: PlayerMsg.ADD_STATUS_VALUE,
+    status: status,
+    param: param,
+    change: change
+  });
+};

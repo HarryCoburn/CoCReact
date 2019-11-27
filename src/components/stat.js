@@ -33,7 +33,7 @@ class Stat extends React.Component {
           className="statGradient"
           style={{
             width:
-              Math.floor((this.props.value / this.props.max) * this.props.max) +
+              Math.floor((this.props.value / this.props.max) * 100) +
               "%"
           }}
         >

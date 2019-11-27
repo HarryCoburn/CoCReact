@@ -258,6 +258,24 @@ export function engineReducer(engine = iEngineState, action) {
           statuses: engine.present.statuses.concat([action.payload])
         }
       };
+    case PlayerMsg.ADD_STATUS_VALUE:
+      return {
+        ...engine,
+        present: {
+          ...engine.present,
+          statuses: engine.present.statuses.map(status => {
+            if (status[0] !== action.status) {
+              return status;
+            }
+            return status.map((item, index) => {
+              if (index !== action.param) {
+                return item;
+              }
+              return item + action.change;
+            });
+          })
+        }
+      };
     default:
       return engine;
   }
