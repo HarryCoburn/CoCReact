@@ -46,6 +46,14 @@ const consumables = {
   SUCMILK: {
     name: "Succubus Milk",
     longName: "a bottle of succubus milk"
+  },
+  H_BISCU: {
+    name: "Hard Biscuits",
+    longName: "a box of hard biscuits"
+  },
+  TRAILMX: {
+    name: "Trail Mix",
+    longName: "a box of trail mix"
   }
 };
 

@@ -42,12 +42,12 @@ export function transactionItemConfirmation([item, price]) {
   }
 }
 
-export function transactionYes([item, price]) {
+export function transactionYes([item, price, func]) {
   if (Inv.full()) {
     Core.newText(
       "You are carrying too many items. The shopkeeper says they'll hold your order until you reduce your inventory."
     );
-    Core.changeButtons([[0, "Next", Core.goBack]]);
+    Core.changeButtons([[0, "Next", func || Core.goBack]]);
     return;
   }
   Core.newText(
@@ -59,5 +59,5 @@ export function transactionYes([item, price]) {
   );
   Core.changeStats({ gems: -price });
   Inv.addItem(item);
-  Core.changeButtons([[0, "Next", Core.goBack]]);
+  Core.changeButtons([[0, "Next", func || Core.goBack]]);
 }
