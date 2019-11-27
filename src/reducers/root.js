@@ -129,6 +129,16 @@ export function lowerReducer(lower = iLower, action) {
           };
         })
       });
+    case CoreMsg.REMOVE_BUTTON:
+      return Utils.updateObject(lower, {
+        ...lower,
+        present: lower.present.map((button, ind) => {
+          if (ind !== action.payload) {
+            return button;
+          }
+          return {};
+        })
+      });
     default:
       return lower;
   }

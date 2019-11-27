@@ -59,6 +59,13 @@ export const startIngnam = () => {
   ) {
     Core.addButton(9, "Rest", Core.rest, startIngnam);
   }
+  if (store.getState().time.hour >= 21 || store.getState().time.hour < 6) {
+    Core.removeButton(0);
+    Core.removeButton(1);
+    Core.removeButton(2);
+    Core.removeButton(4);
+    Core.addButton(9, "Sleep", Core.doSleep, startIngnam);
+  }
 };
 
 const exploreIngnam = () => {

@@ -133,6 +133,9 @@ export const addButton = (ind, label, func, param) =>
     type: CoreMsg.ADD_BUTTON,
     payload: [ind, label, func, param]
   });
+export const removeButton = ind => {
+  store.dispatch({ type: CoreMsg.REMOVE_BUTTON, payload: ind });
+};
 export const newText = text => store.dispatch(_updateView(text)); // This will need tweaking once we get variable text.
 export const hideStatBar = () =>
   store.dispatch({
@@ -186,5 +189,18 @@ export const rest = func => {
       <p>You like down to rest for {timeQ} hours</p>
     </>
   );
+  changeButtons([[0, "Next", func]]);
+};
+
+//Not the full doSleep
+export const doSleep = func => {
+  changeTime({ hour: 8 });
+  newText(
+    <>
+      <p>You fall asleep for eight hours...</p>
+    </>
+  );
+  setStats({ fat: 0 });
+  changeStats({ hp: 100 });
   changeButtons([[0, "Next", func]]);
 };
