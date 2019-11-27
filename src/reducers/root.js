@@ -276,6 +276,16 @@ export function engineReducer(engine = iEngineState, action) {
           })
         }
       };
+    case PlayerMsg.REMOVE_STATUS_EFFECT:
+      return {
+        ...engine,
+        present: {
+          ...engine.present,
+          statuses: engine.present.statuses.filter(status => {
+            return status[0] !== action.payload;
+          })
+        }
+      };
     default:
       return engine;
   }

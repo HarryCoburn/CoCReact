@@ -188,11 +188,19 @@ export const hasPerk = perk => {
 };
 
 export const receiveDamage = damage => Core.changeStats({ hp: damage });
+
 export const createStatusEffect = (status, p1, p2, p3, p4) =>
   store.dispatch({
     type: PlayerMsg.CREATE_STATUS_EFFECT,
     payload: [status, p1, p2, p3, p4]
   });
+
+export const removeStatusEffect = status => {
+  store.dispatch({
+    type: PlayerMsg.REMOVE_STATUS_EFFECT,
+    payload: status
+  })
+}
 
 export const hasStatusEffect = status =>
   store.getState().engine.present.statuses.some(stat => stat[0] === status);
@@ -206,3 +214,21 @@ export const addStatusValue = (status, param, change) => {
     change: change
   });
 };
+
+export const statusCheck = (status, index) => {
+  if (!hasStatusEffect) {
+    return 0;
+  }
+  let foundStatus = store
+    .getState()
+    .engine.present.statuses.find(stat => stat[0] === status);
+  return foundStatus[index];
+};
+
+export const hasCock = () => {
+  return store.getState().cocks.cocks.length > 0;
+}
+
+export const hasVagina = () => {
+  return store.getState().vaginas.vaginas.length > 0;
+}

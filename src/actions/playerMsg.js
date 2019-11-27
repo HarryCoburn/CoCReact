@@ -16,5 +16,5 @@ export const CHANGE_PREG_STATS = Symbol("player/SET_PREG_STATS");
 export const SET_SKIN = Symbol("player/SET_SKIN");
 export const RECEIVE_DAMAGE = Symbol("player/RECEIVE_DAMAGE");
 export const CREATE_STATUS_EFFECT = Symbol("player/CREATE_STATUS_EFFECT");
-export const HAS_STATUS_EFFECT = Symbol("player/HAS_STATUS_EFFECT");
+export const REMOVE_STATUS_EFFECT = Symbol("player/REMOVE_STATUS_EFFECT");
 export const ADD_STATUS_VALUE = Symbol("player/ADD_STATUS_VALUE");

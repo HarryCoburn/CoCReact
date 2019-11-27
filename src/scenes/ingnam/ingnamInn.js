@@ -80,7 +80,49 @@ const buyBeer = () => {
     Player.createStatusEffect(StatusEffects.Drunk, 2, 1, 1, 0);
     Core.changeStats({ str: 0.1, int: -0.5, lib: 0.25 });
   } else {
-      Player.addStatusValue(StatusEffects.Drunk, 2, 1);
+    Player.addStatusValue(StatusEffects.Drunk, 2, 1);
+    if (Player.statusCheck(StatusEffects.Drunk, 1) < 2) {
+      Player.addStatusValue(StatusEffects.Drunk, 1, 1);
+    }
+    if (Player.statusCheck(StatusEffects.Drunk, 2) === 2) {
+      Core.addText(
+        <b>You feel a bit drunk. Maybe you should cut back on the beers?</b>
+      );
+    }
+    if (Player.statusCheck(StatusEffects.Drunk, 2) === 3) {
+      Core.addText(
+        <p>
+          You feel so drunk. Your vision is blurry and you realize something's
+          not feeling right. Gasp! You have to piss like a racehorse! You
+          stumble toward the back door and go outside.
+        </p>
+      );
+      if (Player.hasVagina() && !Player.hasCock()) {
+        Core.addText(
+          <p>
+            You open up your [armor] and squat down while you release your
+            pressure onto the ground.{" "}
+          </p>
+        );
+      } else {
+        Core.addText(
+          <p>
+            You open up your [armor] and lean against the wall using one of your
+            arms for support while you release your pressure onto the wall.
+          </p>
+        );
+      }
+      Core.addText(<p>It's like as if the floodgate has opened! </p>);
+      Core.addText(
+        <p>
+          It seems to take forever but it eventually stops. You look down to see
+          that your urine has been absorbed into the ground. You close up your
+          [armor] and head back inside.
+        </p>
+      );
+      Core.changeTime({ minute: 5 });
+      Player.removeStatusEffect(StatusEffects.Drunk);
+    }
   }
   Core.changeTime({ minute: 5 });
   Core.changeButtons([[0, "Next", innIngnam]]);
