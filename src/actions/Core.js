@@ -1,4 +1,5 @@
 // The core actions of the engine
+import React from "react";
 import store from "../store/store";
 import * as CoreMsg from "./coreMsg";
 
@@ -167,5 +168,23 @@ export const doWait = func => {
   changeStats({ fat: -8 });
   changeTime({ hour: 4 });
   newText("You wait for four hours...");
+  changeButtons([[0, "Next", func]]);
+};
+
+export const rest = func => {
+  let multiplier = 1.0;
+  let fatRecovery = 4;
+  let hpRecovery = 10;
+  let timeQ = Math.min(4, 21 - store.getState().time.hour);
+  changeStats({
+    hp: timeQ * hpRecovery * multiplier,
+    fat: timeQ * -fatRecovery * multiplier
+  });
+  changeTime({ hour: timeQ });
+  newText(
+    <>
+      <p>You like down to rest for {timeQ} hours</p>
+    </>
+  );
   changeButtons([[0, "Next", func]]);
 };

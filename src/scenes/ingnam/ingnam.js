@@ -51,6 +51,14 @@ export const startIngnam = () => {
     [4, "Farm", farmIngnam],
     [9, "Wait", Core.doWait, startIngnam]
   ]);
+  if (
+    store.getState().stats.stats.fat.value > 40 ||
+    store.getState().stats.stats.hp.value /
+      store.getState().stats.stats.hp.max <=
+      0.9
+  ) {
+    Core.addButton(9, "Rest", Core.rest, startIngnam);
+  }
 };
 
 const exploreIngnam = () => {
