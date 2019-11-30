@@ -1,4 +1,9 @@
 export const weapons = {
+  FISTS: {
+    name: "Fists",
+    longName: "your fists",
+    attack: 1
+  },
   DAGGER: {
     name: "Dagger",
     longName: "a sharp dagger",

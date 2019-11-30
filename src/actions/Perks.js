@@ -1,9 +1,9 @@
-import * as Engine from "./engineMsg";
+import * as PerkMsg from "./messages/perkMsg";
 import store from "../store/store";
 
 const _setPerk = () => {
   return {
-    type: Engine.SET_PERK
+    type: PerkMsg.SET_PERK
   };
 };
 

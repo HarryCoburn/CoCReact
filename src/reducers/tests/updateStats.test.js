@@ -1,6 +1,6 @@
 import updateStats from "../updateStats";
-import * as Core from "../../actions/coreMsg";
-import * as Player from "../../actions/playerMsg";
+import * as Core from "../../actions/messages/coreMsg";
+import * as Player from "../../actions/messages/playerMsg";
 
 describe("Update Stat UI Reducer", () => {
   let statState;

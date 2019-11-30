@@ -1,5 +1,3 @@
-import * as CoreMsg from "../actions/coreMsg";
-
 const updateButtons = (action, max) => {
   if (action.payload === undefined || action.payload === [])
     return Array(max).fill({});

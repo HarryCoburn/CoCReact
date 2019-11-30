@@ -1,5 +1,6 @@
 import store from "../store/store";
-import * as PlayerMsg from "./playerMsg";
+import * as PlayerMsg from "./messages/playerMsg";
+import * as EnemyMsg from "./messages/enemyMsg";
 import * as CockType from "../symbols/cockType";
 import * as Vagina from "../symbols/vaginas";
 import BreastCup from "../symbols/breastCup";
@@ -154,7 +155,7 @@ export function _setSkin(payload) {
 
 export function _receiveDamage(payload) {
   return {
-    type: PlayerMsg.RECEIVE_DAMAGE,
+    type: EnemyMsg.RECEIVE_DAMAGE,
     payload: payload
   };
 }
@@ -199,8 +200,8 @@ export const removeStatusEffect = status => {
   store.dispatch({
     type: PlayerMsg.REMOVE_STATUS_EFFECT,
     payload: status
-  })
-}
+  });
+};
 
 export const hasStatusEffect = status =>
   store.getState().engine.present.statuses.some(stat => stat[0] === status);
@@ -227,8 +228,8 @@ export const statusCheck = (status, index) => {
 
 export const hasCock = () => {
   return store.getState().cocks.cocks.length > 0;
-}
+};
 
 export const hasVagina = () => {
   return store.getState().vaginas.vaginas.length > 0;
-}
+};

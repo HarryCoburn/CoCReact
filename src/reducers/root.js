@@ -1,10 +1,13 @@
 import { combineReducers } from "redux";
 import * as Utils from "../utils";
-import * as CoreMsg from "../actions/coreMsg";
-import * as PlayerMsg from "../actions/playerMsg";
-import * as EngineMsg from "../actions/engineMsg";
-import * as EnemyMsg from "../actions/enemyMsg";
-import * as InvMsg from "../actions/invMsg";
+import * as CoreMsg from "../actions/messages/coreMsg";
+import * as PlayerMsg from "../actions/messages/playerMsg";
+import * as EngineMsg from "../actions/messages/perkMsg";
+import * as EnemyMsg from "../actions/messages/enemyMsg";
+import * as InvMsg from "../actions/messages/invMsg";
+import * as TimeMsg from "../actions/messages/timeMsg";
+import * as OutputMsg from "../actions/messages/outputMsg";
+import * as ButtonMsg from "../actions/messages/buttonMsg";
 import updateStats from "./updateStats";
 import updateTime from "./updateTime";
 import updateBodyArr from "./updateBodyArr";
@@ -51,12 +54,12 @@ export function uiReducer(uiState = iUIState, action) {
         ...uiState,
         present: { ...uiState.present, showStats: true }
       });
-    case CoreMsg.HIDE_MENU_BAR:
+    case ButtonMsg.HIDE_MENU_BAR:
       return Utils.updateObject(uiState, {
         ...uiState,
         present: { ...uiState.present, showMenuBar: false }
       });
-    case CoreMsg.SHOW_MENU_BAR:
+    case ButtonMsg.SHOW_MENU_BAR:
       return Utils.updateObject(uiState, {
         ...uiState,
         present: { ...uiState.present, showMenuBar: true }
@@ -80,12 +83,12 @@ export function outputReducer(output = iOutput, action) {
         past: [...output.past, output.present]
       });
     }
-    case CoreMsg.UPDATE_VIEW:
+    case OutputMsg.CHANGE_TEXT:
       return Utils.updateObject(output, {
         ...output,
         present: [action.payload]
       });
-    case CoreMsg.ADD_TEXT:
+    case OutputMsg.ADD_TEXT:
       return Utils.updateObject(output, {
         ...output,
         present: output.present.concat(action.payload)
@@ -109,12 +112,12 @@ export function lowerReducer(lower = iLower, action) {
         past: [...lower.past, lower.present]
       });
     }
-    case CoreMsg.UPDATE_BUTTONS:
+    case ButtonMsg.CHANGE_BUTTONS:
       return Utils.updateObject(lower, {
         ...lower,
         present: updateButtons(action, lower.maxButtons)
       });
-    case CoreMsg.ADD_BUTTON:
+    case ButtonMsg.ADD_BUTTON:
       return Utils.updateObject(lower, {
         ...lower,
         present: lower.present.map((button, index) => {
@@ -129,7 +132,7 @@ export function lowerReducer(lower = iLower, action) {
           };
         })
       });
-    case CoreMsg.REMOVE_BUTTON:
+    case ButtonMsg.REMOVE_BUTTON:
       return Utils.updateObject(lower, {
         ...lower,
         present: lower.present.map((button, ind) => {
@@ -139,6 +142,7 @@ export function lowerReducer(lower = iLower, action) {
           return {};
         })
       });
+
     default:
       return lower;
   }
@@ -158,7 +162,7 @@ export function upperReducer(upper = iUpper, action) {
         past: [...upper.past, upper.present]
       });
     }
-    case CoreMsg.UPDATE_MENUS:
+    case ButtonMsg.CHANGE_MENUS:
       return Utils.updateObject(upper, {
         ...upper,
         present: updateButtons(action, upper.maxButtons)
@@ -170,7 +174,7 @@ export function upperReducer(upper = iUpper, action) {
 
 export function statsReducer(stats = iStats, action) {
   switch (action.type) {
-    case CoreMsg.UPDATE_STATS:
+    case CoreMsg.CHANGE_STATS:
     case CoreMsg.SET_STATS:
     case PlayerMsg.RESTORE_HP:
       return updateStats(stats, action);
@@ -201,7 +205,7 @@ export function appearanceReducer(appearance = iAppearance, action) {
 
 export function timeReducer(time = iTime, action) {
   switch (action.type) {
-    case CoreMsg.UPDATE_TIME:
+    case TimeMsg.ADD_TIME:
       return updateTime(time, action);
     default:
       return time;
@@ -222,9 +226,9 @@ export function engineReducer(engine = iEngineState, action) {
         past: [...engine.past, engine.present]
       });
     }
-    case EngineMsg.GAME_STARTED:
-      return Utils.updateObject(engine, { gameStarted: true });
-    case EngineMsg.PREPARE_PERK:
+    //case EngineMsg.GAME_STARTED:
+    //  return Utils.updateObject(engine, { gameStarted: true });
+    case EngineMsg.PREPARE_PERK_LIST:
       return Utils.updateObject(engine, {
         ...engine,
         present: { ...engine.present, selectedPerk: action.payload }
@@ -252,7 +256,7 @@ export function engineReducer(engine = iEngineState, action) {
           inCombat: true
         }
       };
-    case EnemyMsg.RESET:
+    case EnemyMsg.END_COMBAT:
       return {
         ...engine,
         present: {
@@ -356,7 +360,7 @@ export function combatReducer(combat = iCombat, action) {
             : enemy
         )
       };
-    case EnemyMsg.RESET:
+    case EnemyMsg.END_COMBAT:
       return {
         ...combat,
         enemy: [],

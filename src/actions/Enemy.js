@@ -1,4 +1,4 @@
-import * as Enemy from "./enemyMsg";
+import * as Enemy from "./messages/enemyMsg";
 import store from "../store/store";
 
 function _load_enemy(enemy) {
@@ -15,5 +15,5 @@ export const applyDamage = (ind = 0, damage) =>
     payload: { enemyNum: ind, damage: damage }
   });
 
-export const reset = () => store.dispatch({ type: Enemy.RESET });
+export const reset = () => store.dispatch({ type: Enemy.END_COMBAT });
 export const changeTurn = () => store.dispatch({ type: Enemy.CHANGE_TURN });

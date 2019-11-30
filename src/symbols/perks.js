@@ -1,4 +1,4 @@
-import * as Engine from "../actions/engineMsg";
+import * as PerkMsg from "../actions/messages/perkMsg";
 
 
 const Perks = {
@@ -16,7 +16,7 @@ export const createPerkList = () => {
 
 export const preparePerk = item => {
   return {
-    type: Engine.PREPARE_PERK,
+    type: PerkMsg.PREPARE_PERK_LIST,
     payload: item
   };
 };

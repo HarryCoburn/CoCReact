@@ -1,4 +1,4 @@
-import * as PlayerMsg from "../actions/playerMsg";
+import * as PlayerMsg from "../actions/messages/playerMsg";
 
 export default function updateBodyArr(part, action) {
   let type = action.type;

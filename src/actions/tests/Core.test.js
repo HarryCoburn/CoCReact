@@ -1,5 +1,5 @@
 import * as Core from "../Core";
-import * as CoreMsg from "../coreMsg";
+import * as CoreMsg from "../messages/coreMsg";
 import * as I from "../../store/initialState";
 import { createStore } from "redux";
 import { rootReducer } from "../../reducers/root";

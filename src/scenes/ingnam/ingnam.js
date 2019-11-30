@@ -1,6 +1,7 @@
 import React from "react";
 import * as Core from "../../actions/Core";
 import * as Utils from "../../utils";
+import * as Inv from "../../actions/Inv";
 import Flags from "../../store/gameFlags";
 import { addShopItem } from "../shopFunctions";
 import weapons from "../../symbols/items/weapons";
@@ -49,7 +50,8 @@ export const startIngnam = () => {
     [2, "Temple", templeIngnam],
     [3, "Inn", INGNAM_INN],
     [4, "Farm", farmIngnam],
-    [9, "Wait", Core.doWait, startIngnam]
+    [7, "Inventory", Inv.inventoryMenu],
+    [9, "Wait", Core.doWait, [startIngnam]]
   ]);
   if (
     store.getState().stats.stats.fat.value > 40 ||

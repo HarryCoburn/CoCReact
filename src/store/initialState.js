@@ -12,7 +12,10 @@ import LowerBody from "../symbols/lowerBody";
 import Tongue from "../symbols/tongue";
 import Tail from "../symbols/tail";
 import Wings from "../symbols/wings";
-import { armors, weapons, undergarments } from "../symbols/gear";
+import weapons from "../symbols/items/weapons";
+import armors from "../symbols/items/armors"
+import lowerGarment from "../symbols/items/lowerGarment";
+
 
 export const iUIState = {
   past: [],
@@ -393,8 +396,11 @@ export const iInventory = {
 
 export const iCombat = {
   armor: armors.C_CLOTH,
+  shield: "",
   weapon: weapons.FISTS,
-  undergarment: undergarments.C_LOIN,
+  upperGarment: "",
+  lowerGarment: lowerGarment.C_LOIN,
+  jewelry: "",
   enemy: null,
   playerTurn: true,
   playerAttack: 5

@@ -1,5 +1,5 @@
 import updateButtons from "../updateButtons";
-import * as CoreMsg from "../../actions/coreMsg";
+import * as CoreMsg from "../../actions/messages/coreMsg";
 
 describe("Testing updateButtons", () => {
   it("returns empty correctly", () => {
