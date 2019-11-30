@@ -1,7 +1,6 @@
 import React from "react";
 import * as Core from "../actions/Core";
 import * as Utils from "../utils";
-import * as Inv from "../actions/Inv";
 import store from "../store/store";
 
 export function addShopItem(item, price) {
@@ -43,7 +42,7 @@ export function transactionItemConfirmation([item, price]) {
 }
 
 export function transactionYes([item, price, func]) {
-  if (Inv.full()) {
+  if (Core.full()) {
     Core.newText(
       "You are carrying too many items. The shopkeeper says they'll hold your order until you reduce your inventory."
     );
@@ -58,6 +57,6 @@ export function transactionYes([item, price, func]) {
     </>
   );
   Core.changeStats({ gems: -price });
-  Inv.addItem(item);
+  Core.addItem(item);
   Core.changeButtons([[0, "Next", func || Core.goBack]]);
 }

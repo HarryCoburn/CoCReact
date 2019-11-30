@@ -1,6 +1,6 @@
 import * as Utils from "../utils";
 import * as PlayerMsg from "../actions/messages/playerMsg";
-import * as CoreMsg from "../actions/messages/coreMsg";
+import * as StatMsg from "../actions/messages/statMsg";
 
 export default function updateStats(stats, action) {
   // Extract the type
@@ -63,12 +63,12 @@ export default function updateStats(stats, action) {
 
 function statChoose(stat, change, type, key) {
   switch (type) {
-    case CoreMsg.CHANGE_STATS:
+    case StatMsg.CHANGE_STATS:
     case PlayerMsg.CHANGE_APPEARANCE:
     case PlayerMsg.CHANGE_PREG_STATS:
     case PlayerMsg.CHANGE_BALLS_STATS:
       return changeStat(stat, change, key);
-    case CoreMsg.SET_STATS:
+    case StatMsg.SET_STATS:
     case PlayerMsg.SET_APPEARANCE:
     case PlayerMsg.SET_HAIR:
     case PlayerMsg.SET_BUTT_STATS:

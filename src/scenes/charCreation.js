@@ -21,7 +21,7 @@ import store from "../store/store";
 
 export const startNewGame = () => {
   Core.changeButtons([
-    ["Confirm Name", genderSelect, , "Click to confirm name"]
+    [0, "Confirm Name", genderSelect, [], "Click to confirm name"]
   ]);
   Core.newText(SceneText.CharCreation[START_NEW_GAME].text);
   Core.changeMenus([MenuButtons.main, MenuButtons.data, MenuButtons.level]);
@@ -53,7 +53,7 @@ export const genderSelect = () => {
     return;
   }
 
-  Core.changeButtons([["Man", isAMan], ["Woman", isAWoman]]);
+  Core.changeButtons([[0, "Man", isAMan], [1, "Woman", isAWoman]]);
   Core.newText(
     "Your name carries little significance beyond it being your name.  What is your gender?"
   );
@@ -80,10 +80,10 @@ export const isAMan = () => {
   );
 
   Core.changeButtons([
-    ["Lean", buildLeanMale],
-    ["Average", buildAverageMale],
-    ["Thick", buildThickMale],
-    ["Girly", buildGirlyMale]
+    [0, "Lean", buildLeanMale],
+    [1, "Average", buildAverageMale],
+    [2, "Thick", buildThickMale],
+    [3, "Girly", buildGirlyMale]
   ]);
 };
 
@@ -144,10 +144,10 @@ export const isAWoman = () => {
     </>
   );
   Core.changeButtons([
-    ["Slender", buildSlenderFemale],
-    ["Average", buildAverageFemale],
-    ["Curvy", buildCurvyFemale],
-    ["Tomboyish", buildTomboyishFemale]
+    [0, "Slender", buildSlenderFemale],
+    [1, "Average", buildAverageFemale],
+    [2, "Curvy", buildCurvyFemale],
+    [3, "Tomboyish", buildTomboyishFemale]
   ]);
 };
 
@@ -194,13 +194,13 @@ const chooseComplexion = () => {
     </>
   );
   Core.changeButtons([
-    ["Light", setComplexion, ["light"]],
-    ["Fair", setComplexion, ["fair"]],
-    ["Olive", setComplexion, ["olive"]],
-    ["Dark", setComplexion, ["dark"]],
-    ["Ebony", setComplexion, ["ebony"]],
-    ["Mahogany", setComplexion, ["mahogany"]],
-    ["Russet", setComplexion, ["russet"]]
+    [0, "Light", setComplexion, ["light"]],
+    [1, "Fair", setComplexion, ["fair"]],
+    [2, "Olive", setComplexion, ["olive"]],
+    [3, "Dark", setComplexion, ["dark"]],
+    [4, "Ebony", setComplexion, ["ebony"]],
+    [5, "Mahogany", setComplexion, ["mahogany"]],
+    [6, "Russet", setComplexion, ["russet"]]
   ]);
 };
 
@@ -220,12 +220,12 @@ const chooseHair = () => {
   );
 
   Core.changeButtons([
-    ["Blonde", setHair, ["blonde"]],
-    ["Brown", setHair, ["brown"]],
-    ["Red", setHair, ["red"]],
-    ["Gray", setHair, ["gray"]],
-    ["White", setHair, ["white"]],
-    ["Auburn", setHair, ["auburn"]]
+    [0, "Blonde", setHair, ["blonde"]],
+    [1, "Brown", setHair, ["brown"]],
+    [2, "Red", setHair, ["red"]],
+    [3, "Gray", setHair, ["gray"]],
+    [4, "White", setHair, ["white"]],
+    [5, "Auburn", setHair, ["auburn"]]
   ]);
 };
 
@@ -266,14 +266,16 @@ export const confirmStyle = () => {
   Core.changeButtons([
     [0, "Complexion", changeComplexion],
     [1, "Hair Color", CONFIRM_HAIR_COLOR],
-    ...(A.mf() === Gender.MALE && A.hasBeard()
-      ? [[2, "Beard Style", CONFIRM_BEARD]]
-      : [,]),
     [3, "Set Height", CONFIRM_HEIGHT],
-    ...(A.hasCock() ? [[4, "Cock Size", CONFIRM_COCK_LENGTH]] : [,]),
     [5, "Breast Size", CONFIRM_BREAST_SIZE],
     [6, "Done", CHOOSE_ENDOWMENT]
   ]);
+  if (A.mf() === Gender.MALE && A.hasBeard()) {
+    Core.addButton(2, "Beard Style", CONFIRM_BEARD);
+  }
+  if (A.hasCock()) {
+    Core.addButton(4, "Cock Size", CONFIRM_COCK_LENGTH);
+  }
 };
 
 export const changeComplexion = () => {
@@ -283,13 +285,13 @@ export const changeComplexion = () => {
     </>
   );
   Core.changeButtons([
-    ["Light", confirmComplexion, ["light"]],
-    ["Fair", confirmComplexion, ["fair"]],
-    ["Olive", confirmComplexion, ["olive"]],
-    ["Dark", confirmComplexion, ["dark"]],
-    ["Ebony", confirmComplexion, ["ebony"]],
-    ["Mahogany", confirmComplexion, ["mahogany"]],
-    ["Russet", confirmComplexion, ["russet"]],
+    [0, "Light", confirmComplexion, ["light"]],
+    [1, "Fair", confirmComplexion, ["fair"]],
+    [2, "Olive", confirmComplexion, ["olive"]],
+    [3, "Dark", confirmComplexion, ["dark"]],
+    [4, "Ebony", confirmComplexion, ["ebony"]],
+    [5, "Mahogany", confirmComplexion, ["mahogany"]],
+    [6, "Russet", confirmComplexion, ["russet"]],
     [15, "Back", confirmStyle]
   ]);
 };

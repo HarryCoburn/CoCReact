@@ -6,97 +6,65 @@ import store from "../store/store";
 import * as Output from "./Output";
 import * as Time from "./Time";
 import * as Button from "./Button";
-import * as ButtonMsg from "./messages/buttonMsg";
-import * as CoreMsg from "./messages/coreMsg";
+import * as Stat from "./Stat";
+import * as State from "./State";
+import * as Enemy from "./Enemy";
+import * as Inv from "./Inv";
 
-import { validate } from "bycontract";
-import { _changeButton } from "./Button";
-import { _changeMenus } from "./Button";
-import { _removeButton } from "./Button";
+/* Stat bar calls */
+export const changeStats = newStats =>
+  store.dispatch(Stat._statChange(newStats));
+export const setStats = newStats => store.dispatch(Stat._setStats(newStats));
+export const hideStatBar = () => store.dispatch(Stat._hideStats);
+export const showStatBar = () => store.dispatch(Stat._showStats);
 
-// Here are our actions
-
-/**
- * Sends message to set a stat to a particular number
- * Payload shape: { strength: 23 }
- * @param {object} payload
- * @return {object} Redux action
- */
-export function _setStats(payload) {
-  if (!(payload instanceof Object) || payload === undefined) {
-    throw Error("Core._setStats did not receive an object");
-  }
-  return {
-    type: CoreMsg.SET_STATS,
-    payload
-  };
-}
-
-/**
- * Sends message to increase or decrease a stat by a particular number
- * Payload shape: { strength: 8 } or { strength: -19 }
- * @param {object} payload
- * @return {object} Redux action
- */
-export function _statChange(payload) {
-  if (!(payload instanceof Object) || payload === undefined) {
-    throw Error("Core._statChange did not receive an object");
-  }
-  return {
-    type: CoreMsg.CHANGE_STATS,
-    payload
-  };
-}
-
-export function _goBack() {
-  return {
-    type: CoreMsg.GO_BACK
-  };
-}
-
-export function _stateStore() {
-  return {
-    type: CoreMsg.STATE_STORE
-  };
-}
-
-export const changeStats = newStats => store.dispatch(_statChange(newStats));
-export const setStats = newStats => store.dispatch(_setStats(newStats));
-
-export const newText = text => store.dispatch(Output._updateView(text)); // This will need tweaking once we get variable text.
-export const hideStatBar = () =>
-  store.dispatch({
-    type: CoreMsg.HIDE_STATS
-  });
-export const showStatBar = () =>
-  store.dispatch({
-    type: CoreMsg.SHOW_STATS
-  });
-export const hideMenuBar = () =>
-  store.dispatch({
-    type: ButtonMsg.HIDE_MENU_BAR
-  });
-export const showMenuBar = () =>
-  store.dispatch({
-    type: ButtonMsg.SHOW_MENU_BAR
-  });
-export const changeTime = time => store.dispatch(Time._addTime(time));
-export const storeState = () => store.dispatch(_stateStore());
-export const goBack = () => store.dispatch(_goBack());
+/* Output window calls */
+export const newText = text => store.dispatch(Output._updateView(text));
 export const addText = text => store.dispatch(Output._addText(text));
-export const setInCombat = () => store.dispatch({ type: CoreMsg.START_COMBAT });
 
+/* Menu bar calls */
+export const changeMenus = newMenus =>
+  store.dispatch(Button._changeMenus(newMenus));
+export const hideMenuBar = () => store.dispatch(Button._hideMenuBar);
+export const showMenuBar = () => store.dispatch(Button._showMenuBar);
+
+/* Button grid calls */
+export const addButton = (ind, label, func, param) =>
+  store.dispatch(Button._addButton(ind, label, func, param));
+export const changeButtons = newButtons =>
+  store.dispatch(Button._changeButtons(newButtons));
+export const removeButton = ind => {
+  store.dispatch(Button._removeButton(ind));
+};
+
+/* Time box calls */
+export const addTime = time => store.dispatch(Time._addTime(time));
 export const getHours = () => store.getState().time.hour;
-/*
-export function gameStarted() {
-  return {
-    type: EngineMsg.GAME_STARTED
-  };
+
+/* State calls */
+export const storeState = () => store.dispatch(State._stateStore());
+export const goBack = () => store.dispatch(State._goBack());
+
+/* Combat calls */
+export const startCombat = () => store.dispatch(Enemy._startCombat);
+export const loadEnemy = enemy => store.dispatch(Enemy._load_enemy(enemy));
+export const applyDamage = (ind = 0, damage) =>
+  store.dispatch(Enemy._applyDamage(ind, damage));
+export const endCombat = () => store.dispatch(Enemy._endCombat);
+export const changeTurn = () => store.dispatch(Enemy._changeTurn);
+
+/* Inventory calls */
+export const addItem = payload => store.dispatch(Inv._addItem(payload));
+export const dropItem = payload => store.dispatch(Inv._dropItem(payload));
+export const numItems = () => store.getState().inv.inv.length;
+export const itemArr = () => store.getState().inv.inv;
+export function full() {
+  return store.getState().inv.inv.length >= store.getState().inv.maxSlots;
 }
-*/
+
 export const doWait = func => {
   changeStats({ fat: -8 });
-  changeTime({ hour: 4 });
+  addTime({ hour: 4 });
   newText("You wait for four hours...");
   changeButtons([[0, "Next", func[0]]]);
 };
@@ -110,7 +78,7 @@ export const rest = func => {
     hp: timeQ * hpRecovery * multiplier,
     fat: timeQ * -fatRecovery * multiplier
   });
-  changeTime({ hour: timeQ });
+  addTime({ hour: timeQ });
   newText(
     <>
       <p>You like down to rest for {timeQ} hours</p>
@@ -121,7 +89,7 @@ export const rest = func => {
 
 //Not the full doSleep
 export const doSleep = func => {
-  changeTime({ hour: 8 });
+  addTime({ hour: 8 });
   newText(
     <>
       <p>You fall asleep for eight hours...</p>
@@ -130,17 +98,4 @@ export const doSleep = func => {
   setStats({ fat: 0 });
   changeStats({ hp: 100 });
   changeButtons([[0, "Next", func[0]]]);
-};
-
-export const addButton = (ind, label, func, param) =>
-  store.dispatch(Button._addButton(ind, label, func, param));
-
-export const changeButtons = newButtons =>
-  store.dispatch(Button._changeButton(newButtons));
-
-export const changeMenus = newMenus =>
-  store.dispatch(Button._changeMenus(newMenus));
-
-export const removeButton = ind => {
-  store.dispatch(_removeButton(ind));
 };

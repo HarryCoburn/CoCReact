@@ -1,5 +1,4 @@
 import React from "react";
-import { loadEnemy, applyDamage, reset, changeTurn } from "../../actions/Enemy";
 import { receiveDamage } from "../../actions/Player";
 import * as Core from "../../actions/Core";
 import * as SC from "../sceneSymbols";
@@ -28,7 +27,7 @@ export const combatDemo = () => {
 export const startCombat = enemy => {
   Core.hideMenuBar();
   Core.showStatBar();
-  loadEnemy(enemy);
+  Core.loadEnemy(enemy);
   Core.newText(
     <>
       <p>You are fighting the {enemy[0].name}! Prepare for battle</p>
@@ -46,7 +45,7 @@ const startRound = () => {
       </>
     );
   }
-  Core.setInCombat();
+  Core.startCombat();
   Core.changeButtons([[0, "Fight", playerFight]]);
 };
 
@@ -54,7 +53,7 @@ const playerFight = () => {
   let damage = Math.floor(Math.random() * 5);
   let enemyInd = store.getState().combat.enemy.findIndex(enemy => enemy.hp > 0);
 
-  applyDamage(enemyInd, damage);
+  Core.applyDamage(enemyInd, damage);
   Core.addText(
     <>
       <p>You deal {damage} points of damage!</p>
@@ -74,7 +73,7 @@ const checkCombatResult = () => {
     return;
   }
 
-  changeTurn();
+  Core.changeTurn();
   if (enemyTurn()) {
     store.getState().combat.enemy.forEach(enemy => enemyFight(enemy));
     checkCombatResult();
@@ -101,5 +100,5 @@ const combatCleanup = winner => {
   }
   Core.changeButtons([[0, "Go Back", SC.GO_BACK]]);
   Core.setStats({ hp: 1 });
-  reset();
+  Core.endCombat();
 };

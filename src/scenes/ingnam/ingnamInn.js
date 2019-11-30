@@ -118,11 +118,11 @@ const buyBeer = () => {
           [armor] and head back inside.
         </p>
       );
-      Core.changeTime({ minute: 5 });
+      Core.addTime({ minute: 5 });
       Player.removeStatusEffect(StatusEffects.Drunk);
     }
   }
-  Core.changeTime({ minute: 5 });
+  Core.addTime({ minute: 5 });
   Core.changeButtons([[0, "Next", innIngnam]]);
 };
 
@@ -148,7 +148,7 @@ const buyMilk = () => {
       <p>You drink the cup of milk. You feel nourished.</p>
     </>
   );
-  Core.changeTime({ minute: 5 });
+  Core.addTime({ minute: 5 });
   Core.changeButtons([[0, "Next", innIngnam]]);
 };
 
@@ -174,7 +174,7 @@ const buyRootBeer = () => {
       <p>You drink the cup of root beer. Refreshing!</p>
     </>
   );
-  Core.changeTime({ minute: 5 });
+  Core.addTime({ minute: 5 });
   Core.changeButtons([[0, "Next", innIngnam]]);
 };
 
@@ -228,7 +228,7 @@ const buySandwich = () => {
       <p>You eat the sandwich. Delicious!</p>
     </>
   );
-  Core.changeTime({ minute: 5 });
+  Core.addTime({ minute: 5 });
   Core.changeButtons([[0, "Next", innIngnam]]);
 };
 
@@ -259,7 +259,7 @@ const buySoup = () => {
       </p>
     </>
   );
-  Core.changeTime({ minute: 5 });
+  Core.addTime({ minute: 5 });
   Core.changeButtons([[0, "Next", innIngnam]]);
 };
 
@@ -379,6 +379,6 @@ const hearRumors = () => {
 
     Flags.INGNAM_RUMORS = 3; //Finished
   }
-  Core.changeTime({ hour: 1 });
+  Core.addTime({ hour: 1 });
   Core.changeButtons([[0, "Next", INGNAM_DEMO]]);
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import * as Core from "../../actions/Core";
 import * as Utils from "../../utils";
-import * as Inv from "../../actions/Inv";
+import * as Menus from "../menus";
 import Flags from "../../store/gameFlags";
 import { addShopItem } from "../shopFunctions";
 import weapons from "../../symbols/items/weapons";
@@ -50,7 +50,7 @@ export const startIngnam = () => {
     [2, "Temple", templeIngnam],
     [3, "Inn", INGNAM_INN],
     [4, "Farm", farmIngnam],
-    [7, "Inventory", Inv.inventoryMenu],
+    [7, "Inventory", Menus.inventoryMenu],
     [9, "Wait", Core.doWait, [startIngnam]]
   ]);
   if (
@@ -80,7 +80,7 @@ const exploreIngnam = () => {
         anything interesting.
       </p>
     );
-    Core.changeTime({ hour: 1 });
+    Core.addTime({ hour: 1 });
     Core.changeButtons([[0, "Next", startIngnam]]);
   }
 };
@@ -372,7 +372,7 @@ const meditate = () => {
       <p>You meditate for 30 minutes and feel refreshed.</p>
     </>
   );
-  Core.changeTime({ minute: 30 });
+  Core.addTime({ minute: 30 });
   Core.changeButtons([[0, "Next", startIngnam]]);
 };
 

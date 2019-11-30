@@ -1,5 +1,8 @@
 /* Messages related to enemies and combat */
 
+/* Starts Combat */
+export const START_COMBAT = Symbol("START_COMBAT");
+
 /* Loads enemy for combat */
 export const LOAD_ENEMY = Symbol("enemy/LOAD_ENEMY");
 

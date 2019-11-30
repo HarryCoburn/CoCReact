@@ -1,19 +1,19 @@
-import * as Enemy from "./messages/enemyMsg";
-import store from "../store/store";
+import * as EnemyMsg from "./messages/enemyMsg";
 
-function _load_enemy(enemy) {
+export function _load_enemy(enemy) {
   return {
-    type: Enemy.LOAD_ENEMY,
+    type: EnemyMsg.LOAD_ENEMY,
     payload: enemy
   };
 }
 
-export const loadEnemy = enemy => store.dispatch(_load_enemy(enemy));
-export const applyDamage = (ind = 0, damage) =>
-  store.dispatch({
-    type: Enemy.APPLY_DAMAGE,
-    payload: { enemyNum: ind, damage: damage }
-  });
+export const _startCombat = { type: EnemyMsg.START_COMBAT };
+export const _endCombat = { type: EnemyMsg.END_COMBAT };
+export const _changeTurn = { type: EnemyMsg.CHANGE_TURN };
 
-export const reset = () => store.dispatch({ type: Enemy.END_COMBAT });
-export const changeTurn = () => store.dispatch({ type: Enemy.CHANGE_TURN });
+export function _applyDamage(ind, damage) {
+  return {
+    type: EnemyMsg.APPLY_DAMAGE,
+    payload: { enemyNum: ind, damage: damage }
+  };
+}

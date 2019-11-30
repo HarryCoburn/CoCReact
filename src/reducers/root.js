@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import * as Utils from "../utils";
-import * as CoreMsg from "../actions/messages/coreMsg";
+import * as StateMsg from "../actions/messages/stateMsg";
+import * as StatMsg from "../actions/messages/statMsg";
 import * as PlayerMsg from "../actions/messages/playerMsg";
 import * as EngineMsg from "../actions/messages/perkMsg";
 import * as EnemyMsg from "../actions/messages/enemyMsg";
@@ -33,23 +34,23 @@ import {
 
 export function uiReducer(uiState = iUIState, action) {
   switch (action.type) {
-    case CoreMsg.GO_BACK:
+    case StateMsg.GO_BACK:
       return Utils.updateObject(uiState, {
         present: uiState.past[uiState.past.length - 1],
         past: uiState.past.slice(0, -1)
       });
-    case CoreMsg.STATE_STORE: {
+    case StateMsg.STATE_STORE: {
       return Utils.updateObject(uiState, {
         ...uiState,
         past: [...uiState.past, uiState.present]
       });
     }
-    case CoreMsg.HIDE_STATS:
+    case StatMsg.HIDE_STATS:
       return Utils.updateObject(uiState, {
         ...uiState,
         present: { ...uiState.present, showStats: false }
       });
-    case CoreMsg.SHOW_STATS:
+    case StatMsg.SHOW_STATS:
       return Utils.updateObject(uiState, {
         ...uiState,
         present: { ...uiState.present, showStats: true }
@@ -71,13 +72,13 @@ export function uiReducer(uiState = iUIState, action) {
 
 export function outputReducer(output = iOutput, action) {
   switch (action.type) {
-    case CoreMsg.GO_BACK:
+    case StateMsg.GO_BACK:
       return Utils.updateObject(output, {
         present: output.past[output.past.length - 1],
         past: output.past.slice(0, -1)
       });
 
-    case CoreMsg.STATE_STORE: {
+    case StateMsg.STATE_STORE: {
       return Utils.updateObject(output, {
         ...output,
         past: [...output.past, output.present]
@@ -100,13 +101,13 @@ export function outputReducer(output = iOutput, action) {
 
 export function lowerReducer(lower = iLower, action) {
   switch (action.type) {
-    case CoreMsg.GO_BACK:
+    case StateMsg.GO_BACK:
       return Utils.updateObject(lower, {
         ...lower,
         present: lower.past[lower.past.length - 1],
         past: lower.past.slice(0, -1)
       });
-    case CoreMsg.STATE_STORE: {
+    case StateMsg.STATE_STORE: {
       return Utils.updateObject(lower, {
         ...lower,
         past: [...lower.past, lower.present]
@@ -150,13 +151,13 @@ export function lowerReducer(lower = iLower, action) {
 
 export function upperReducer(upper = iUpper, action) {
   switch (action.type) {
-    case CoreMsg.GO_BACK:
+    case StateMsg.GO_BACK:
       return Utils.updateObject(upper, {
         ...upper,
         present: upper.past[upper.past.length - 1],
         past: upper.past.slice(0, -1)
       });
-    case CoreMsg.STATE_STORE: {
+    case StateMsg.STATE_STORE: {
       return Utils.updateObject(upper, {
         ...upper,
         past: [...upper.past, upper.present]
@@ -174,8 +175,8 @@ export function upperReducer(upper = iUpper, action) {
 
 export function statsReducer(stats = iStats, action) {
   switch (action.type) {
-    case CoreMsg.CHANGE_STATS:
-    case CoreMsg.SET_STATS:
+    case StatMsg.CHANGE_STATS:
+    case StatMsg.SET_STATS:
     case PlayerMsg.RESTORE_HP:
       return updateStats(stats, action);
     default:
@@ -214,13 +215,13 @@ export function timeReducer(time = iTime, action) {
 
 export function engineReducer(engine = iEngineState, action) {
   switch (action.type) {
-    case CoreMsg.GO_BACK:
+    case StateMsg.GO_BACK:
       return Utils.updateObject(engine, {
         ...engine,
         present: engine.past[engine.past.length - 1],
         past: engine.past.slice(0, -1)
       });
-    case CoreMsg.STATE_STORE: {
+    case StateMsg.STATE_STORE: {
       return Utils.updateObject(engine, {
         ...engine,
         past: [...engine.past, engine.present]
@@ -248,7 +249,7 @@ export function engineReducer(engine = iEngineState, action) {
           selectedPerk: null
         }
       });
-    case CoreMsg.START_COMBAT:
+    case EnemyMsg.START_COMBAT:
       return {
         ...engine,
         present: {
