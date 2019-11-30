@@ -14,11 +14,11 @@ typedef("#buttonArr", [
  * Message sender for updating the buttons in the lower part of the UI
  * Shape of object: { b1: { // button info } }
  * All buttons must have the nextScene property set!
- * @param {Array.<#buttonArr>} payload
+ * @param {Array.<#buttonArr>|undefined} payload
  * @return {object} Redux action
  */
 export function _changeButton(payload) {
-  validate(payload, "#buttonArr[]");
+  validate(payload, "#buttonArr[]|undefined");
   return {
     type: ButtonMsg.CHANGE_BUTTONS,
     payload
@@ -39,10 +39,11 @@ export function _changeMenus(payload) {
   };
 }
 
-export function _addButton(ind, label, func, param) {
+export function _addButton(ind, label, func, param, tooltip) {
+  validate(arguments, "#buttonArr")
   return {
     type: ButtonMsg.ADD_BUTTON,
-    payload: [ind, label, func, param]
+    payload: [ind, label, func, param, tooltip]
   };
 }
 

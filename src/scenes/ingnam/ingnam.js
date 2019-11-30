@@ -59,14 +59,14 @@ export const startIngnam = () => {
       store.getState().stats.stats.hp.max <=
       0.9
   ) {
-    Core.addButton(9, "Rest", Core.rest, startIngnam);
+    Core.addButton(9, "Rest", Core.rest, [startIngnam]);
   }
   if (store.getState().time.hour >= 21 || store.getState().time.hour < 6) {
     Core.removeButton(0);
     Core.removeButton(1);
     Core.removeButton(2);
     Core.removeButton(4);
-    Core.addButton(9, "Sleep", Core.doSleep, startIngnam);
+    Core.addButton(9, "Sleep", Core.doSleep, [startIngnam]);
   }
 };
 

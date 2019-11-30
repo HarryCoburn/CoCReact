@@ -21,21 +21,19 @@ export const innIngnam = () => {
     </>
   );
   Core.changeButtons([
-    [0, "Order Drink", orderDrink, , "Buy some refreshing beverages"],
-    [1, "Order Food", orderFood, , "Buy some food"],
-    ...(Flags.INGNAM_RUMORS < 3
-      ? [
-          [
-            2,
-            "Stories",
-            hearRumors,
-            ,
-            "Hear the story the innkeeper has to offer."
-          ]
-        ]
-      : [,]),
+    [0, "Order Drink", orderDrink, [], "Buy some refreshing beverages"],
+    [1, "Order Food", orderFood, [], "Buy some food"],
     [14, "Leave", INGNAM_DEMO]
   ]);
+  if (Flags.INGNAM_RUMORS < 3) {
+    Core.addButton(
+      2,
+      "Stories",
+      hearRumors,
+      [],
+      "Hear the story the innkeeper has to offer."
+    );
+  }
 };
 
 const orderDrink = () => {

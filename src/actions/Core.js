@@ -98,7 +98,7 @@ export const doWait = func => {
   changeStats({ fat: -8 });
   changeTime({ hour: 4 });
   newText("You wait for four hours...");
-  changeButtons([[0, "Next", func]]);
+  changeButtons([[0, "Next", func[0]]]);
 };
 
 export const rest = func => {
@@ -116,7 +116,7 @@ export const rest = func => {
       <p>You like down to rest for {timeQ} hours</p>
     </>
   );
-  changeButtons([[0, "Next", func]]);
+  changeButtons([[0, "Next", func[0]]]);
 };
 
 //Not the full doSleep
@@ -129,7 +129,7 @@ export const doSleep = func => {
   );
   setStats({ fat: 0 });
   changeStats({ hp: 100 });
-  changeButtons([[0, "Next", func]]);
+  changeButtons([[0, "Next", func[0]]]);
 };
 
 export const addButton = (ind, label, func, param) =>

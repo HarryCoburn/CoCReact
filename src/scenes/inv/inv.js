@@ -14,12 +14,11 @@ export const startDemo = () => {
       {listInv()}
     </>
   );
-  Core.changeButtons([
-    [0, "Add Apple", addItem, [Item.Apple]],
-    ...(Inv.numItems() >= 1
-      ? [[1, "Eat Apple", chooseItem], [2, "Drop Apple", chooseDrop]]
-      : [,])
-  ]);
+  Core.changeButtons([[0, "Add Apple", addItem, [Item.Apple]]]);
+  if (Inv.numItems() >= 1) {
+    Core.addButton(1, "Eat Apple", chooseItem);
+    Core.addButton(2, "Drop Apple", chooseDrop);
+  }
 };
 
 const addItem = payload => {
